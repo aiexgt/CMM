@@ -127,5 +127,22 @@ body{
   .form-box .btn-twitter:hover{
     background: #2eb7e5;
   }
-  
+
+  .invisible{
+    opacity: 0;
+    -webkit-transition: all 0.7s ease;
+		-moz-transition: all 0.7s ease;
+		-ms-transition: all 0.7s ease;
+		-o-transition: all 0.7s ease;
+		transition: all 0.7s ease;
+  }
+
+  .error{
+    opacity: 1;
+		-webkit-transition: all 0.7s ease;
+		-moz-transition: all 0.7s ease;
+		-ms-transition: all 0.7s ease;
+		-o-transition: all 0.7s ease;
+		transition: all 0.7s ease;
+  }
   
