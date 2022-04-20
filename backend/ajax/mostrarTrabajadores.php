@@ -2,7 +2,21 @@
 	//* Enlace BD
 	include("../conexion.php");
 
-	$data = '';
+	$data = ' <table class="table table-striped table-hover">
+				<thead>
+				<tr>
+					<th scope="col">No.</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">DPI</th>
+					<th scope="col">Puesto</th>
+					<th scope="col">Estado</th>
+					<th scope="col col-lg-2"></th>
+					<th scope="col col-lg-2"></th>
+					<th scope="col col-lg-2"></th>
+				</tr>
+				</thead>
+				<tbody id="body-table">';
 
 	$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) 
 	AS puesto, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado FROM personas u ORDER BY u.id, u.puesto_id ASC";
