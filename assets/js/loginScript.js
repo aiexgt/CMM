@@ -1,3 +1,6 @@
+localStorage.removeItem("usuario");
+localStorage.removeItem("password");
+
 const buttonLogin = document.querySelector("#ingresar");
 const error = document.querySelector("#error");
 
@@ -20,6 +23,10 @@ const login = (usuario, password) => {
         password: password
     }, (data, status) => {
         if(data == 1){
+            usuario = CryptoJS.AES.encrypt(usuario, "4d657373616765");
+            password = CryptoJS.AES.encrypt(password, "4d657373616765");
+            localStorage.setItem("usuario", usuario);
+            localStorage.setItem("password", password);
             window.location.href = "menu.html";
         }else{
             showError("Usuario o contraseña incorrectas");
