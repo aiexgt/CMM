@@ -10,3 +10,7 @@ body{
 .bigIcons{
     font-size: 65px;
 }
+
+.invisible{
+    opacity: 0.5;
+}
