@@ -1,9 +1,14 @@
-localStorage.removeItem("usuario");
-localStorage.removeItem("password");
-
+//* Declarar boton y salida de error
 const buttonLogin = document.querySelector("#ingresar");
 const error = document.querySelector("#error");
 
+//* Limpiar variables de sesión
+const limpiarVariables = () =>{
+    localStorage.removeItem("usuario");
+    localStorage.removeItem("password");
+}
+
+//* Mostrar mensaje de error por 2 segundos
 const showError = (mensaje) =>{
     error.innerHTML = "<b>Error: </b>" +mensaje;
     error.classList.remove("invisible");
@@ -12,11 +17,13 @@ const showError = (mensaje) =>{
     setTimeout(hideError,2000);
 }
 
+//* Ocultar mensaje de error
 const hideError = () =>{
     error.classList.remove("error");
     error.classList.add("invisible");
 }
 
+//* Validar variables con la base de datos y encriptar las variables de sesión
 const login = (usuario, password) => {
     $.post("backend/login.php",{
         usuario: usuario,
@@ -27,13 +34,14 @@ const login = (usuario, password) => {
             password = CryptoJS.AES.encrypt(password, "4d657373616765");
             localStorage.setItem("usuario", usuario);
             localStorage.setItem("password", password);
-            window.location.href = "menu.html";
+            window.location.href = "dashboard.html";
         }else{
             showError("Usuario o contraseña incorrectas");
         }
     })
 }
 
+//* Evento cuando se le da al boton de iniciar sesión
 buttonLogin.addEventListener('click', (e) =>{
     e.preventDefault();
     let usuario = document.querySelector("#usuario").value;
@@ -47,3 +55,8 @@ buttonLogin.addEventListener('click', (e) =>{
         login(usuario, password);
     }
 })
+
+//* Limpiar variables cuando cargue toda la pagina
+$(document).ready(() => {
+    limpiarVariables();
+});

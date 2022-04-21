@@ -16,7 +16,7 @@ body{
   
   .img-left{
     width: 45%;
-    background: url('../../img/form-login.jpg') center;
+    background: url('form-login.jpg') center;
     background-size: cover;
   }
   
