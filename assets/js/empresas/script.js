@@ -190,6 +190,10 @@ const ver = (codigo) => {
     $("#exampleModala").modal("show");
 }
 
+btnActualizar.addEventListener('click' () => {
+    
+})
+
 btnEditar.addEventListener('click', () => {
     document.querySelector("#ucodigo").removeAttribute("disabled");
     document.querySelector("#unombre").removeAttribute("disabled");
