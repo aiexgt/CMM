@@ -1,7 +1,6 @@
 let usuario = localStorage.getItem("usuario");
 let password = localStorage.getItem("password");
-
-if(usuario == null || password == null){
+if(usuario === undefined || password === undefined){
     window.location.href = "index.html";
 }else{
     let usuarioD = CryptoJS.AES.decrypt(usuario, "4d657373616765").toString(CryptoJS.enc.Utf8);
@@ -10,9 +9,10 @@ if(usuario == null || password == null){
         usuario: usuarioD,
         password: passwordD
     }, (data, status) => {
-        if(data != "1"){
-            console.log("salir");
+        if(data == 0){
             window.location.href = "index.html";
         }
     })
+
+    document.querySelector("#busuario").innerHTML = usuarioD.toUpperCase();
 }

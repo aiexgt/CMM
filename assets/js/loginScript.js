@@ -4,8 +4,7 @@ const error = document.querySelector("#error");
 
 //* Limpiar variables de sesión
 const limpiarVariables = () =>{
-    localStorage.removeItem("usuario");
-    localStorage.removeItem("password");
+    localStorage.clear();
 }
 
 //* Mostrar mensaje de error por 2 segundos
@@ -29,11 +28,12 @@ const login = (usuario, password) => {
         usuario: usuario,
         password: password
     }, (data, status) => {
-        if(data == 1){
+        if(parseInt(data) >= 1){
             usuario = CryptoJS.AES.encrypt(usuario, "4d657373616765");
             password = CryptoJS.AES.encrypt(password, "4d657373616765");
             localStorage.setItem("usuario", usuario);
             localStorage.setItem("password", password);
+            localStorage.setItem("id",data);
             window.location.href = "dashboard.html";
         }else{
             showError("Usuario o contraseña incorrectas");

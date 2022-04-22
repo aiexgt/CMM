@@ -11,6 +11,9 @@ body{
     font-size: 65px;
 }
 
-.invisible{
-    opacity: 0.5;
+.is-required:after {
+    content: '*';
+    margin-left: 3px;
+    color: red;
+    font-weight: bold;
 }

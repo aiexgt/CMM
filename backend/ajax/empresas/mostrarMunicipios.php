@@ -2,9 +2,11 @@
 	//* Enlace BD
 	include("../../conexion.php");
 
-	$data = '<option value="0" selected>Seleccione País</option>';
+    $departamento = $_POST['departamento'];
 
-	$query = "SELECT id, nombre FROM paises ORDER BY id ASC";
+	$data = '<option value="0" selected>Seleccione Municipio</option>';
+
+	$query = "SELECT id, nombre FROM municipios WHERE departamento_id = $departamento ORDER BY id ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
