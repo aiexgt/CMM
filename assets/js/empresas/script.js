@@ -109,12 +109,29 @@ const guardar = () => {
     }
 }
 
+const limpiarCampos = () => {
+    document.querySelector("#codigo").value = "";
+    document.querySelector("#nombre").value = "";
+    document.querySelector("#nit").value = "";
+    document.querySelector("#pais").value = 0;
+    document.querySelector("#departamento").value = 0;
+    document.querySelector("#municipio").value = 0;
+    document.querySelector("#direccion").value = "";
+    document.querySelector("#codigo_postal").value = "";
+    document.querySelector("#pagina_web").value = "";
+    document.querySelector("#image").value = "";
+    document.querySelector("#email_principal").value = "";
+    document.querySelector("#email_secundario").value = ""
+    document.querySelector("#telefono").value = "";
+    document.querySelector("#celular").value = "";
+}
 
 btnGuardar.addEventListener('click', () => {
     guardar();
 })
 
 btnNuevo.addEventListener('click', () => {
+    limpiarCampos();
     $.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
         selectPais.innerHTML = data;
         selectDepartamento.setAttribute("disabled", "disabled");
