@@ -4,6 +4,7 @@ const btnGuardar = document.querySelector("#btn-guardar");
 let selectPais = document.querySelector("#pais");
 let selectDepartamento = document.querySelector("#departamento");
 let selectMunicipio = document.querySelector("#municipio");
+let busqueda = document.querySelector("#busqueda");
 
 const mostrar = () => {
     $.post("backend/ajax/empresas/mostrarEmpresas.php", {}, (data, status) => {
@@ -104,10 +105,10 @@ const guardar = () => {
                     'success'
                   )
             }
-
         });
     }
 }
+
 
 btnGuardar.addEventListener('click', () => {
     guardar();
@@ -141,6 +142,14 @@ selectDepartamento.addEventListener('change', () => {
         selectMunicipio.removeAttribute("disabled");
         selectMunicipio.innerHTML = data;
     })
+})
+
+busqueda.addEventListener('keyup', () => {
+    $.post("backend/ajax/empresas/buscarEmpresa.php", {
+        busqueda: busqueda.value
+    }, (data, status) => {
+        document.querySelector("#tabla-contenido").innerHTML = data;
+    });
 })
 
 

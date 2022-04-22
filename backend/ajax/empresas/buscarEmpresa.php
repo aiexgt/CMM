@@ -2,6 +2,8 @@
 	//* Enlace BD
 	include("../../conexion.php");
 
+    $busqueda = $_POST['busqueda'];
+
 	$data = ' <table class="table table-striped table-hover">
 				<thead>
 				<tr>
@@ -18,7 +20,8 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT codigo, nombre, nit, email_principal, telefono FROM empresas ORDER BY id ASC LIMIT 15";
+	$query = "SELECT codigo, nombre, nit, email_principal, telefono FROM empresas WHERE 
+    codigo LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR nit LIKE '%$busqueda%' ORDER BY id ASC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
