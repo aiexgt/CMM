@@ -1,9 +1,15 @@
 const btnNuevo = document.querySelector("#btn-nuevo");
 const btnGuardar = document.querySelector("#btn-guardar");
+const btnEditar = document.querySelector("#btn-editar");
+const btnActualizar = document.querySelector("#btn-actualizar")
 
 let selectPais = document.querySelector("#pais");
 let selectDepartamento = document.querySelector("#departamento");
 let selectMunicipio = document.querySelector("#municipio");
+
+let uselectPais = document.querySelector("#upais");
+let uselectDepartamento = document.querySelector("#udepartamento");
+let uselectMunicipio = document.querySelector("#umunicipio");
 let busqueda = document.querySelector("#busqueda");
 
 const mostrar = () => {
@@ -133,10 +139,77 @@ const ver = (codigo) => {
         },
         function (data, status) {
             var unit = JSON.parse(data);
+            
+            document.querySelector("#ucodigo").setAttribute("disabled","disabled");
+            document.querySelector("#ucodigo").value = unit.codigo;
+            document.querySelector("#unombre").setAttribute("disabled","disabled");
+            document.querySelector("#unombre").value = unit.nombre;
+            document.querySelector("#unit").setAttribute("disabled","disabled");
+            document.querySelector("#unit").value = unit.nit;
+            document.querySelector("#upais").setAttribute("disabled","disabled");
+            document.querySelector("#udepartamento").setAttribute("disabled","disabled");
+            document.querySelector("#umunicipio").setAttribute("disabled","disabled");
+            
+            $.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
+                document.querySelector("#upais").innerHTML = data;
+                document.querySelector("#upais").value = unit.pais_id;
+            })
+            $.post("backend/ajax/empresas/mostrarDepartamentos.php", {
+                pais: unit.pais_id
+            }, (data, status) => {
+                document.querySelector("#udepartamento").innerHTML = data;
+                document.querySelector("#udepartamento").value = unit.departamento_id;
+            })
+            $.post("backend/ajax/empresas/mostrarMunicipios.php", {
+                departamento: unit.departamento_id
+            }, (data, status) => {
+                document.querySelector("#umunicipio").innerHTML = data;
+                document.querySelector("#umunicipio").value = unit.municipio_id;
+            })
+
+            document.querySelector("#udireccion").setAttribute("disabled","disabled");
+            document.querySelector("#udireccion").value = unit.direccion;
+            document.querySelector("#ucodigo_postal").setAttribute("disabled","disabled");
+            document.querySelector("#ucodigo_postal").value = unit.codigo_postal;
+            document.querySelector("#upagina_web").setAttribute("disabled","disabled");
+            document.querySelector("#upagina_web").value = unit.pagina_web;
+            document.querySelector("#uemail_principal").setAttribute("disabled","disabled");
+            document.querySelector("#uemail_principal").value = unit.email_principal;
+            document.querySelector("#uemail_secundario").setAttribute("disabled","disabled");
+            document.querySelector("#uemail_secundario").value = unit.email_secundario;
+            document.querySelector("#utelefono").setAttribute("disabled","disabled");
+            document.querySelector("#utelefono").value = unit.telefono;
+            document.querySelector("#ucelular").setAttribute("disabled","disabled");
+            document.querySelector("#ucelular").value = unit.celular;
+            document.querySelector("#uimage").setAttribute("disabled","disabled");
+            document.querySelector("#uimagen").setAttribute("src","img/logo-empresas/" + unit.id + ".jpg");
+            btnActualizar.setAttribute("hidden","hidden");
+            btnEditar.removeAttribute("hidden");
         }
     );
     $("#exampleModala").modal("show");
 }
+
+btnEditar.addEventListener('click', () => {
+    document.querySelector("#ucodigo").removeAttribute("disabled");
+    document.querySelector("#unombre").removeAttribute("disabled");
+    document.querySelector("#unit").removeAttribute("disabled");
+    document.querySelector("#upais").removeAttribute("disabled");
+    document.querySelector("#udepartamento").removeAttribute("disabled");
+    document.querySelector("#umunicipio").removeAttribute("disabled");
+    document.querySelector("#udireccion").removeAttribute("disabled");
+    document.querySelector("#ucodigo_postal").removeAttribute("disabled");
+    document.querySelector("#umunicipio").removeAttribute("disabled");
+    document.querySelector("#udireccion").removeAttribute("disabled");
+    document.querySelector("#upagina_web").removeAttribute("disabled");
+    document.querySelector("#uimage").removeAttribute("disabled");
+    document.querySelector("#uemail_principal").removeAttribute("disabled");
+    document.querySelector("#uemail_secundario").removeAttribute("disabled");
+    document.querySelector("#utelefono").removeAttribute("disabled");
+    document.querySelector("#ucelular").removeAttribute("disabled");
+    btnEditar.setAttribute("hidden","hidden");
+    btnActualizar.removeAttribute("hidden");
+})
 
 btnGuardar.addEventListener('click', () => {
     guardar();
@@ -173,6 +246,26 @@ selectDepartamento.addEventListener('change', () => {
     })
 })
 
+uselectPais.addEventListener('change', () => {
+    $.post("backend/ajax/empresas/mostrarDepartamentos.php", {
+        pais: uselectPais.value
+    }, (data, status) => {
+        uselectDepartamento.removeAttribute("disabled");
+        uselectDepartamento.innerHTML = data;
+        uselectMunicipio.setAttribute("disabled", "disabled");
+        uselectMunicipio.value = 0;
+    })
+})
+
+uselectDepartamento.addEventListener('change', () => {
+    $.post("backend/ajax/empresas/mostrarMunicipios.php", {
+        departamento: uselectDepartamento.value
+    }, (data, status) => {
+        uselectMunicipio.removeAttribute("disabled");
+        uselectMunicipio.innerHTML = data;
+    })
+})
+
 busqueda.addEventListener('keyup', () => {
     $.post("backend/ajax/empresas/buscarEmpresa.php", {
         busqueda: busqueda.value
@@ -180,6 +273,8 @@ busqueda.addEventListener('keyup', () => {
         document.querySelector("#tabla-contenido").innerHTML = data;
     });
 })
+
+
 
 
 $(document).ready(() => {

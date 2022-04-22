@@ -17,3 +17,11 @@ body{
     color: red;
     font-weight: bold;
 }
+
+.mini{
+    margin: auto;
+    max-width: 150px;
+    max-height: 80px;
+    height: auto;
+    width: auto;
+}
