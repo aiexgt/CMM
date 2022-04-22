@@ -163,7 +163,9 @@
                   class="form-select"
                   id="pais"
                   aria-label="Default select example"
-                ></select>
+                >
+                <option value="0" selected>Seleccione País</option>
+              </select>
               </div>
               <div class="col-sm-4">
                 <label for="" class="form-label is-required"
@@ -174,7 +176,9 @@
                   id="departamento"
                   aria-label="Default select example"
                   disabled
-                ></select>
+                >
+                <option value="0" selected>Seleccione Departamento</option>
+              </select>
               </div>
               <div class="col-sm-4">
                 <label for="" class="form-label is-required"
@@ -185,7 +189,9 @@
                   id="municipio"
                   aria-label="Default select example"
                   disabled
-                ></select>
+                >
+                <option value="0" selected>Seleccione Municipio</option>
+              </select>
                 <br />
               </div>
             </div>
@@ -224,9 +230,19 @@
                 />
               </div>
               <div class="col-sm-5">
-                <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+                <form
+                  id="uploadimage"
+                  action=""
+                  method="post"
+                  enctype="multipart/form-data"
+                >
                   <label for="formFile" class="form-label">Logo</label>
-                  <input class="form-control" type="file" id="image" accept="image/png, image/jpeg"/>
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="image"
+                    accept="image/png, image/jpeg"
+                  />
                 </form>
                 <br />
               </div>
@@ -285,7 +301,210 @@
             >
               Cerrar
             </button>
-            <button type="button" id="btn-guardar" class="btn btn-primary">Guardar</button>
+            <button type="button" id="btn-guardar" class="btn btn-primary">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="exampleModala"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Ver Información
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-2">
+                <label for="" class="form-label">Código</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Código"
+                  id="ucodigo"
+                  aria-label="Código"
+                />
+              </div>
+              <div class="col-sm-5">
+                <label for="" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre"
+                  id="unombre"
+                  aria-label="Nombre"
+                />
+              </div>
+              <div class="col-sm-5">
+                <label for="" class="form-label">NIT</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="NIT"
+                  id="unit"
+                  aria-label="NIT"
+                />
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label for="" class="form-label">País</label>
+                <select
+                  class="form-select"
+                  id="upais"
+                  aria-label="Default select example"
+                ></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="" class="form-label"
+                  >Estado o Departamento</label
+                >
+                <select
+                  class="form-select"
+                  id="udepartamento"
+                  aria-label="Default select example"
+                  disabled
+                ></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="" class="form-label"
+                  >Ciudad o Municipio</label
+                >
+                <select
+                  class="form-select"
+                  id="umunicipio"
+                  aria-label="Default select example"
+                  disabled
+                ></select>
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <label for="" class="form-label">Dirección</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Dirección"
+                  id="udireccion"
+                  aria-label="Dirección"
+                />
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <label for="" class="form-label">Código Postal</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Código Postal"
+                  id="ucodigo_postal"
+                  aria-label="Codigo Postal"
+                />
+              </div>
+              <div class="col-sm-5">
+                <label for="" class="form-label">Página Web</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Página Web"
+                  id="upagina_web"
+                  aria-label="Pagina Web"
+                />
+              </div>
+              <div class="col-sm-5">
+                <form
+                  id="uploadimage"
+                  action=""
+                  method="post"
+                  enctype="multipart/form-data"
+                >
+                  <label for="formFile" class="form-label">Logo</label>
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="uimage"
+                    accept="image/png, image/jpeg"
+                  />
+                </form>
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="" class="form-label"
+                  >Email Principal</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email Principal"
+                  id="uemail_principal"
+                  aria-label="Email Principal"
+                />
+              </div>
+              <div class="col-sm-3">
+                <label for="" class="form-label">Email Secundario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email Secundario"
+                  id="uemail_secundario"
+                  aria-label="Email Secundario"
+                />
+              </div>
+              <div class="col-sm-3">
+                <label for="" class="form-label">Teléfono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Teléfono"
+                  id="utelefono"
+                  aria-label="Teléfono"
+                />
+              </div>
+              <div class="col-sm-3">
+                <label for="" class="form-label">Celular</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Celular"
+                  id="ucelular"
+                  aria-label="Celular"
+                />
+                <br />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" id="btn-guardar" class="btn btn-primary">
+              Guardar
+            </button>
           </div>
         </div>
       </div>

@@ -98,7 +98,7 @@ const guardar = () => {
                     }
                 }
             });
-                $(".modal").modal("hide");
+                $("#exampleModal").modal("hide");
                 Swal.fire(
                     'Excelente!',
                     'La empresa se ha añadido!',
@@ -124,6 +124,18 @@ const limpiarCampos = () => {
     document.querySelector("#email_secundario").value = ""
     document.querySelector("#telefono").value = "";
     document.querySelector("#celular").value = "";
+}
+
+const ver = (codigo) => {
+    let ucodigo = document.querySelector(`.codigo${codigo}`).textContent;
+    $.post("backend/ajax/empresas/buscarDetalles.php", {
+            codigo: ucodigo
+        },
+        function (data, status) {
+            var unit = JSON.parse(data);
+        }
+    );
+    $("#exampleModala").modal("show");
 }
 
 btnGuardar.addEventListener('click', () => {

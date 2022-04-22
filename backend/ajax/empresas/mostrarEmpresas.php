@@ -13,7 +13,6 @@
 					<th scope="col">Telefono</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
-					<th scope="col"></th>
 				</tr>
 				</thead>
 				<tbody id="body-table">';
@@ -38,13 +37,10 @@
 				<td class="email_principal'.$number.'">'.$row['email_principal'].'</td>
 				<td class="telefono'.$number.'">'.$row['telefono'].'</td>
 				<td>
-					<button onclick="GetUserDetails('.$number.')" class="btn btn-success"><i class="bx bx-show"></i></button>
+					<button onclick="ver('.$number.')" class="btn btn-success"><i class="bx bx-edit"></i></button>
 				</td>
 				<td>
-					<button onclick="DeleteUser('.$number.')" class="btn btn-primary"><i class="bx bx-user"></i></button>
-				</td>
-				<td>
-					<button onclick="DeleteUser('.$number.')" class="btn btn-danger"><i class="bx bx-trash"></i></button>
+					<button onclick="eliminar('.$number.')" class="btn btn-danger"><i class="bx bx-trash"></i></button>
 				</td>
     		</tr>';
     		$number++;
@@ -52,8 +48,7 @@
     }
     else
     {
-    	// records now found 
-    	$data .= '<tr><td colspan="6">No hay empresas!</td></tr>';
+    	$data = '<h4>No hay resultados para la busqueda!</h4>';
     }
 
     $data .= '</tbody>
