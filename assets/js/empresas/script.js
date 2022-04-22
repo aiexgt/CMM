@@ -98,7 +98,7 @@ const guardar = () => {
                     }
                 }
             });
-
+                $(".modal").modal("hide");
                 Swal.fire(
                     'Excelente!',
                     'La empresa se ha añadido!',
