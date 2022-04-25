@@ -14,7 +14,7 @@ let busqueda = document.querySelector("#busqueda");
 let codigo_anterior;
 
 const mostrar = () => {
-  $.post("backend/ajax/empresas/mostrarEmpresas.php", {}, (data, status) => {
+  $.post("backend/ajax/usuarios/mostrarUsuarios.php", {}, (data, status) => {
     document.querySelector("#tabla-contenido").innerHTML = data;
   });
 };
