@@ -87,30 +87,33 @@ const guardar = () => {
 
             if(data == "1"){
                 let formData = new FormData();
-            let files = $('#image')[0].files[0];
-            formData.append('file',files);
-            formData.append('codigo',codigo);
+            if($("#image").val() != ""){
+                let files = $('#image')[0].files[0];
+                formData.append('file',files);
+                formData.append('codigo',codigo);
 
-            $.ajax({
-                url: 'backend/ajax/empresas/guardarImagen.php',
-                type: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    if (response != 0) {
-                        $(".card-img-top").attr("src", response);
-                    } else {
-                        alert('Formato de imagen incorrecto.');
+                $.ajax({
+                    url: 'backend/ajax/empresas/guardarImagen.php',
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response != 0) {
+                            $(".card-img-top").attr("src", response);
+                        } else {
+                            alert('Formato de imagen incorrecto.');
+                        }
                     }
-                }
-            });
+                });
+            }
                 $("#exampleModal").modal("hide");
                 Swal.fire(
                     'Excelente!',
                     'La empresa se ha añadido!',
                     'success'
                   )
+                  mostrar();
             }
         });
     }
@@ -288,34 +291,37 @@ const actualizar = () => {
                 }, (data, status) => {
         
                     if(data == "1"){
-                        let formData = new FormData();
-                    let files = $('#uimage')[0].files[0];
-                    formData.append('file',files);
-                    formData.append('codigo',codigo);
-        
-                    $.ajax({
-                        url: 'backend/ajax/empresas/actualizarImagen.php',
-                        type: 'post',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function(response) {
-                            if (response != 0) {
-                                $(".card-img-top").attr("src", response);
-                            } else {
-                                alert('Formato de imagen incorrecto.');
-                            }
+                        if($("#uimage").val() != ""){
+                            let formData = new FormData();
+                            
+                            let files = $('#uimage')[0].files[0];
+                            formData.append('file',files);
+                            formData.append('codigo',codigo);
+                
+                            $.ajax({
+                                url: 'backend/ajax/empresas/actualizarImagen.php',
+                                type: 'post',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success: function(response) {
+                                    if (response != 0) {
+                                        $(".card-img-top").attr("src", response);
+                                    } else {
+                                        alert('Formato de imagen incorrecto.');
+                                    }
+                                }
+                            });
                         }
-                    });
-                       
-                        Swal.fire(
-                            'Excelente!',
-                            'La empresa se ha añadido!',
-                            'success'
-                        )
-                        $("#exampleModala").modal("hide");
-                        mostrar();
-                    }
+                        
+                            Swal.fire(
+                                'Excelente!',
+                                'La empresa se ha añadido!',
+                                'success'
+                            )
+                            $("#exampleModala").modal("hide");
+                            mostrar();
+                        }
                 });
                 Swal.fire('Guardado!', '', 'success')
             } else if (result.isDenied) {
@@ -346,6 +352,7 @@ const eliminar = (codigo) => {
                         'La empresa ha sido eliminada.',
                         'success'
                       )
+                    mostrar();
                 }else{
                     Swal.fire(
                         'Error!',
