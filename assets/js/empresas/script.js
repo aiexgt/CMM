@@ -11,6 +11,7 @@ let uselectPais = document.querySelector("#upais");
 let uselectDepartamento = document.querySelector("#udepartamento");
 let uselectMunicipio = document.querySelector("#umunicipio");
 let busqueda = document.querySelector("#busqueda");
+let codigo_anterior;
 
 const mostrar = () => {
     $.post("backend/ajax/empresas/mostrarEmpresas.php", {}, (data, status) => {
@@ -140,6 +141,8 @@ const ver = (codigo) => {
         function (data, status) {
             var unit = JSON.parse(data);
             
+            codigo_anterior = unit.id;
+
             document.querySelector("#ucodigo").setAttribute("disabled","disabled");
             document.querySelector("#ucodigo").value = unit.codigo;
             document.querySelector("#unombre").setAttribute("disabled","disabled");
@@ -183,18 +186,17 @@ const ver = (codigo) => {
             document.querySelector("#ucelular").value = unit.celular;
             document.querySelector("#uimage").setAttribute("disabled","disabled");
             document.querySelector("#uimagen").setAttribute("src","img/logo-empresas/" + unit.id + ".jpg");
+            document.querySelector("#uestado").setAttribute("disabled","disabled");
+            document.querySelector("#uestado").value = unit.estado;
             btnActualizar.setAttribute("hidden","hidden");
             btnEditar.removeAttribute("hidden");
         }
     );
     $("#exampleModala").modal("show");
+    mostrar();
 }
 
-btnActualizar.addEventListener('click' () => {
-    
-})
-
-btnEditar.addEventListener('click', () => {
+const quitarDisabled = () => {
     document.querySelector("#ucodigo").removeAttribute("disabled");
     document.querySelector("#unombre").removeAttribute("disabled");
     document.querySelector("#unit").removeAttribute("disabled");
@@ -211,8 +213,158 @@ btnEditar.addEventListener('click', () => {
     document.querySelector("#uemail_secundario").removeAttribute("disabled");
     document.querySelector("#utelefono").removeAttribute("disabled");
     document.querySelector("#ucelular").removeAttribute("disabled");
+    document.querySelector("#uestado").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
+}
+
+const actualizar = () => {
+    let codigo = document.querySelector("#ucodigo").value;
+    let nombre = document.querySelector("#unombre").value;
+    let nit = document.querySelector("#unit").value;
+    let pais = document.querySelector("#upais").value;
+    let departamento = document.querySelector("#udepartamento").value;
+    let municipio = document.querySelector("#umunicipio").value;
+    let direccion = document.querySelector("#udireccion").value;
+    let codigo_postal = document.querySelector("#ucodigo_postal").value;
+    let pagina_web = document.querySelector("#upagina_web").value;
+    let email_principal = document.querySelector("#uemail_principal").value;
+    let email_secundario = document.querySelector("#uemail_secundario").value;
+    let telefono = document.querySelector("#utelefono").value;
+    let celular = document.querySelector("#ucelular").value;
+    let usuario_id = localStorage.getItem("id");
+    let estado = document.querySelector("#uestado").value
+    if(codigo == ""){
+        errorDF("Código");
+    }else if(nombre == ""){
+        errorDF("Nombre");
+    }else if(nit == ""){
+        errorDF("NIT");
+    }else if(pais == 0){
+        errorDF("País");
+    }else if(departamento == 0){
+        errorDF("Departamento")
+    }else if(municipio == 0){
+        errorDF("Municipio");
+    }else if(direccion == ""){
+        errorDF("Dirección");
+    }else if(email_principal == ""){
+        errorDF("Email Principal");
+    }else if(email_principal.indexOf("@") == -1){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `Email Principal Incorrecto`
+        })
+    }else if(telefono == ""){
+        errorDF("Teléfono");
+    }else{
+        Swal.fire({
+            title: '¿Desea guardar los cambios?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Guardar',
+            denyButtonText: `Descartar`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.post("backend/ajax/empresas/actualizarEmpresa.php", {
+                    codigo_anterior: codigo_anterior,
+                    codigo: codigo,
+                    nombre: nombre,
+                    nit: nit,
+                    pais: pais,
+                    departamento: departamento,
+                    municipio: municipio,
+                    direccion: direccion,
+                    codigo_postal: codigo_postal,
+                    pagina_web: pagina_web,
+                    email_principal: email_principal,
+                    email_secundario: email_secundario,
+                    telefono: telefono,
+                    celular: celular,
+                    usuario_id: usuario_id,
+                    estado: estado
+                }, (data, status) => {
+        
+                    if(data == "1"){
+                        let formData = new FormData();
+                    let files = $('#uimage')[0].files[0];
+                    formData.append('file',files);
+                    formData.append('codigo',codigo);
+        
+                    $.ajax({
+                        url: 'backend/ajax/empresas/actualizarImagen.php',
+                        type: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            if (response != 0) {
+                                $(".card-img-top").attr("src", response);
+                            } else {
+                                alert('Formato de imagen incorrecto.');
+                            }
+                        }
+                    });
+                       
+                        Swal.fire(
+                            'Excelente!',
+                            'La empresa se ha añadido!',
+                            'success'
+                        )
+                        $("#exampleModala").modal("hide");
+                        mostrar();
+                    }
+                });
+                Swal.fire('Guardado!', '', 'success')
+            } else if (result.isDenied) {
+              Swal.fire('Los cambios no fueron guardados', '', 'info')
+            }
+          })
+    }
+}
+
+const eliminar = (codigo) => {
+    let ucodigo = document.querySelector(`.codigo${codigo}`).textContent;
+    Swal.fire({
+        title: '¿Seguro que desea eliminarlo?',
+        text: "Este cambio es irreversible!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.post("backend/ajax/empresas/eliminarEmpresa.php", {
+                codigo: ucodigo
+            }, (data, status) => {
+                if(data == "1"){
+                    Swal.fire(
+                        'Eliminado!',
+                        'La empresa ha sido eliminada.',
+                        'success'
+                      )
+                }else{
+                    Swal.fire(
+                        'Error!',
+                        'No se puede eliminar empresa.',
+                        'error'
+                      )
+                }
+            })
+        }
+    })
+}
+
+btnActualizar.addEventListener('click', () => {
+    actualizar();
+})
+
+
+btnEditar.addEventListener('click', () => {
+    quitarDisabled();
 })
 
 btnGuardar.addEventListener('click', () => {
@@ -277,9 +429,6 @@ busqueda.addEventListener('keyup', () => {
         document.querySelector("#tabla-contenido").innerHTML = data;
     });
 })
-
-
-
 
 $(document).ready(() => {
     mostrar();
