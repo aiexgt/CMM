@@ -9,7 +9,7 @@ if(isset($_POST['id']) && isset($_POST['id']) != "")
     $id = $_POST['id'];
 
     // Get User Details
-    $query = "SELECT * FROM empresas WHERE id = $id";
+    $query = "SELECT * FROM usuarios WHERE id = $id";
     if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
     }

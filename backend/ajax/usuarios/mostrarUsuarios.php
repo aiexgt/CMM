@@ -17,7 +17,7 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT u.nombre, u.apellido, u.usuario, (SELECT r.nombre FROM roles r WHERE r.id = u.rol_id) AS rol, u.estado FROM usuarios u ORDER BY u.id ASC LIMIT 15";
+	$query = "SELECT u.id, u.nombre, u.apellido, u.usuario, (SELECT r.nombre FROM roles r WHERE r.id = u.rol_id) AS rol, u.estado FROM usuarios u ORDER BY u.id ASC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
@@ -31,6 +31,7 @@
     	{
     		$data .= '<tr>
 				<td><b>'.$number.'</b></td>
+				<td class="id'.$number.'" hidden>'.$row['id'].'</td>
 				<td class="nombre'.$number.'">'.$row['nombre'].'</td>
 				<td class="apellido'.$number.'">'.$row['apellido'].'</td>
 				<td class="usuario'.$number.'">'.$row['usuario'].'</td>

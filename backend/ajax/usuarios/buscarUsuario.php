@@ -8,19 +8,19 @@
 				<thead>
 				<tr>
 					<th scope="col">No.</th>
-					<th scope="col">Codigo</th>
 					<th scope="col">Nombre</th>
-					<th scope="col">Nit</th>
-					<th scope="col">Email</th>
-					<th scope="col">Telefono</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Rol</th>
+					<th scope="col">Estado</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT id, codigo, nombre, nit, email_principal, telefono FROM empresas WHERE 
-    codigo LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR nit LIKE '%$busqueda%' ORDER BY id ASC LIMIT 15";
+	$query = "SELECT u.id, u.nombre, u.apellido, u.usuario, (SELECT r.nombre FROM roles r WHERE r.id = u.rol_id) AS rol, u.estado FROM usuarios u WHERE 
+    u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%' OR u.usuario LIKE '%$busqueda%' ORDER BY id ASC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
@@ -35,12 +35,17 @@
     		$data .= '<tr>
 				<td><b>'.$number.'</b></td>
 				<td class="id'.$number.'" hidden>'.$row['id'].'</td>
-				<td class="codigo'.$number.'">'.$row['codigo'].'</td>
 				<td class="nombre'.$number.'">'.$row['nombre'].'</td>
-				<td class="nit'.$number.'">'.$row['nit'].'</td>
-				<td class="email_principal'.$number.'">'.$row['email_principal'].'</td>
-				<td class="telefono'.$number.'">'.$row['telefono'].'</td>
-				<td>
+				<td class="apellido'.$number.'">'.$row['apellido'].'</td>
+				<td class="usuario'.$number.'">'.$row['usuario'].'</td>
+				<td class="rol'.$number.'">'.$row['rol'].'</td>';
+				if($row['estado'] == "1"){
+					$data .= '<td class="estado'.$number.'">Activo</td>';
+				}else{
+					$data .= '<td class="estado'.$number.'">Inactivo</td>';
+				}
+				
+			$data .= '<td>
 					<button onclick="ver('.$number.')" class="btn btn-success"><i class="bx bx-edit"></i></button>
 				</td>
 				<td>

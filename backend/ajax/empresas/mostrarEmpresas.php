@@ -17,7 +17,7 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT codigo, nombre, nit, email_principal, telefono FROM empresas ORDER BY id ASC LIMIT 15";
+	$query = "SELECT id, codigo, nombre, nit, email_principal, telefono FROM empresas ORDER BY id ASC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
@@ -31,6 +31,7 @@
     	{
     		$data .= '<tr>
 				<td><b>'.$number.'</b></td>
+				<td class="id'.$number.'" hidden>'.$row['id'].'</td>
 				<td class="codigo'.$number.'">'.$row['codigo'].'</td>
 				<td class="nombre'.$number.'">'.$row['nombre'].'</td>
 				<td class="nit'.$number.'">'.$row['nit'].'</td>

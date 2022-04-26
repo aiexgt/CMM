@@ -142,11 +142,11 @@ const limpiarCampos = () => {
 };
 
 const ver = (codigo) => {
-  let ucodigo = document.querySelector(`.codigo${codigo}`).textContent;
+  let id = document.querySelector(`.id${codigo}`).textContent;
   $.post(
     "backend/ajax/empresas/buscarDetalles.php",
     {
-      codigo: ucodigo,
+      id: id,
     },
     function (data, status) {
       var unit = JSON.parse(data);
@@ -348,9 +348,15 @@ const actualizar = () => {
                 });
               }
 
-              Swal.fire("Excelente!", "La empresa se ha añadido!", "success");
+              Swal.fire("Excelente!", "La empresa se ha actualizado!", "success");
               $("#exampleModala").modal("hide");
               mostrar();
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ha Ocurrido un error!',
+              })
             }
           }
         );
