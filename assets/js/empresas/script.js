@@ -112,6 +112,12 @@ const guardar = () => {
           $("#exampleModal").modal("hide");
           Swal.fire("Excelente!", "La empresa se ha añadido!", "success");
           mostrar();
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha Ocurrido un error!',
+          })
         }
       }
     );

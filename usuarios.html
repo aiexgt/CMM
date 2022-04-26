@@ -78,7 +78,7 @@
             id="busqueda"
             type="text"
             class="form-control"
-            placeholder="Buscar Empresa"
+            placeholder="Buscar Usuario"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
@@ -94,7 +94,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nueva Empresa
+            Nuevo Usuario
           </button>
         </div>
       </div>
@@ -112,7 +112,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Nuevo Trabajador
+            Registro de Nuevo Usuario
           </h5>
           <button
             type="button"
@@ -147,137 +147,32 @@
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label is-required">País</label>
-              <select
-                class="form-select"
-                id="pais"
-                aria-label="Default select example"
-              >
-                <option value="0" selected>Seleccione País</option>
-              </select>
+              <label for="" class="form-label is-required">Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Usuario"
+                id="usuario"
+                aria-label="Usuario"
+              />
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label is-required"
-                >Estado o Departamento</label
-              >
-              <select
-                class="form-select"
-                id="departamento"
-                aria-label="Default select example"
-                disabled
-              >
-                <option value="0" selected>Seleccione Departamento</option>
-              </select>
+              <label for="" class="form-label is-required">Contraseña</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Contraseña"
+                id="password"
+                aria-label="Contraseña"
+              />
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label is-required"
-                >Ciudad o Municipio</label
-              >
+              <label for="" class="form-label is-required">Rol</label>
               <select
                 class="form-select"
-                id="municipio"
+                id="rol"
                 aria-label="Default select example"
-                disabled
-              >
-                <option value="0" selected>Seleccione Municipio</option>
-              </select>
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Dirección</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Dirección"
-                id="direccion"
-                aria-label="Dirección"
-              />
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">
-              <label for="" class="form-label">Código Postal</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Código Postal"
-                id="codigo_postal"
-                aria-label="Codigo Postal"
-              />
-            </div>
-            <div class="col-sm-5">
-              <label for="" class="form-label">Página Web</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Página Web"
-                id="pagina_web"
-                aria-label="Pagina Web"
-              />
-            </div>
-            <div class="col-sm-5">
-              <form
-                id="uploadimage"
-                action=""
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <label for="formFile" class="form-label">Logo</label>
-                <input
-                  class="form-control"
-                  type="file"
-                  id="image"
-                  accept="image/png, image/jpeg"
-                />
-              </form>
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required"
-                >Email Principal</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Principal"
-                id="email_principal"
-                aria-label="Email Principal"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Email Secundario</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Secundario"
-                id="email_secundario"
-                aria-label="Email Secundario"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Teléfono</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Teléfono"
-                id="telefono"
-                aria-label="Teléfono"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Celular</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Celular"
-                id="celular"
-                aria-label="Celular"
-              />
+              ></select>
               <br />
             </div>
           </div>
@@ -306,7 +201,9 @@
     ><div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ver Información</h5>
+          <h5 class="modal-title" id="exampleModalLabel">
+            Ver Información
+          </h5>
           <button
             type="button"
             class="btn-close"
@@ -316,18 +213,8 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-2">
-              <label for="" class="form-label">Código</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Código"
-                id="ucodigo"
-                aria-label="Código"
-              />
-            </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Nombre</label>
+              <label for="" class="form-label is-required">Nombres</label>
               <input
                 type="text"
                 class="form-control"
@@ -337,152 +224,56 @@
               />
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">NIT</label>
+              <label for="" class="form-label is-required">Apellido</label>
               <input
                 type="text"
                 class="form-control"
-                placeholder="NIT"
-                id="unit"
-                aria-label="NIT"
+                placeholder="Apellido"
+                id="uapellido"
+                aria-label="Apellido"
               />
             </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label">Estado</label>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Estado</label>
               <select
                 class="form-select"
                 id="uestado"
                 aria-label="Default select example"
               >
-                <option value="0">Inactivo</option>
-                <option value="1">Activo</option>
-              </select>
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+            </select>
               <br />
             </div>
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">País</label>
-              <select
-                class="form-select"
-                id="upais"
-                aria-label="Default select example"
-              ></select>
+              <label for="" class="form-label is-required">Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Usuario"
+                id="uusuario"
+                aria-label="Usuario"
+              />
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Estado o Departamento</label>
-              <select
-                class="form-select"
-                id="udepartamento"
-                aria-label="Default select example"
-                disabled
-              ></select>
+              <label for="" class="form-label is-required">Contraseña</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Contraseña"
+                id="upassword"
+                aria-label="Contraseña"
+              />
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Ciudad o Municipio</label>
+              <label for="" class="form-label is-required">Rol</label>
               <select
                 class="form-select"
-                id="umunicipio"
+                id="urol"
                 aria-label="Default select example"
-                disabled
               ></select>
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label">Dirección</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Dirección"
-                id="udireccion"
-                aria-label="Dirección"
-              />
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-2">
-              <label for="" class="form-label">Código Postal</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Código Postal"
-                id="ucodigo_postal"
-                aria-label="Codigo Postal"
-              />
-            </div>
-            <div class="col-sm-5">
-              <label for="" class="form-label">Página Web</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Página Web"
-                id="upagina_web"
-                aria-label="Pagina Web"
-              />
-            </div>
-            <div class="col-sm-3">
-              <form
-                id="uploadimage"
-                action=""
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <label for="formFile" class="form-label">Logo</label>
-                <input
-                  class="form-control"
-                  type="file"
-                  id="uimage"
-                  accept="image/png, image/jpeg"
-                />
-              </form>
-              <br />
-            </div>
-            <div class="col-sm-2">
-              <img id="uimagen" class="mini" src="" alt="" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label">Email Principal</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Principal"
-                id="uemail_principal"
-                aria-label="Email Principal"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Email Secundario</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Secundario"
-                id="uemail_secundario"
-                aria-label="Email Secundario"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Teléfono</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Teléfono"
-                id="utelefono"
-                aria-label="Teléfono"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Celular</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Celular"
-                id="ucelular"
-                aria-label="Celular"
-              />
               <br />
             </div>
           </div>
