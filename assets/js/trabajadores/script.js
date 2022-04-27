@@ -233,7 +233,7 @@ btnGuardar.addEventListener("click", () => {
   guardar();
 });
 
-$.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
+$.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {
   selectPais.innerHTML = data;
   selectDepartamento.setAttribute("disabled", "disabled");
   selectDepartamento.value = 0;
@@ -243,7 +243,7 @@ $.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
 
 selectPais.addEventListener("change", () => {
   $.post(
-    "backend/ajax/empresas/mostrarDepartamentos.php",
+    "backend/ajax/trabajadores/mostrarDepartamentos.php",
     {
       pais: selectPais.value,
     },
@@ -258,7 +258,7 @@ selectPais.addEventListener("change", () => {
 
 selectDepartamento.addEventListener("change", () => {
   $.post(
-    "backend/ajax/empresas/mostrarMunicipios.php",
+    "backend/ajax/trabajadores/mostrarMunicipios.php",
     {
       departamento: selectDepartamento.value,
     },
