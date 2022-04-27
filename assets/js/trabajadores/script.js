@@ -5,6 +5,10 @@ const btnActualizar = document.querySelector("#btn-actualizar");
 let busqueda = document.querySelector("#busqueda");
 let id_cambio;
 
+let selectPais = document.querySelector("#pais");
+let selectDepartamento = document.querySelector("#departamento");
+let selectMunicipio = document.querySelector("#municipio");
+
 const mostrar = () => {
   $.post("backend/ajax/trabajadores/mostrarTrabajadores.php", {}, (data, status) => {
     document.querySelector("#tabla-contenido").innerHTML = data;
@@ -20,19 +24,74 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
+  let cui = document.querySelector("#cui").value;
   let nombre = document.querySelector("#nombre").value;
-  let descripcion = document.querySelector("#descripcion").value;
+  let apellido = document.querySelector("#apellido").value;
+  let estado_civil = document.querySelector("#estado_civil").value;
+  let fecha_nacimiento = document.querySelector("#fecha_nacimiento").value;
+  let fecha_inicio = document.querySelector("#fecha_inicio").value;
+  let fecha_igss = document.querySelector("#fecha_igss").value;
+  let numero_igss = document.querySelector("#numero_igss").value;
+  let puesto = document.querySelector("#puesto").value;
+  let telefono = document.querySelector("#telefono").value;
+  let celular = document.querySelector("#celular").value;
+  let correo = document.querySelector("#correo").value;
+  let pais = document.querySelector("#pais").value;
+  let departamento = document.querySelector("#departamento").value;
+  let municipio = document.querySelector("#municipio").value;
+  let salario = document.querySelector("#salario").value;
+  let direccion = document.querySelector("#direccion").value;
+  let estado_laboral = document.querySelector("#estado_laboral").value;
 
-  if(nombre == ""){
+  if(cui == ""){
+    errorDF("CUI");
+  }else if(nombre == ""){
     errorDF("Nombre");
+  }else if(apellido == ""){
+    errorDF("Apellido");
+  }else if(estado_civil == 0){
+    errorDF("Estado Civil");
+  }else if(fecha_nacimiento == ""){
+    errorDF("Fecha Nacimiento");
+  }else if(fecha_inicio == ""){
+    errorDF("Fecha Inicio");
+  }else if(puesto == 0){
+    errorDF("Puesto");
+  }else if(telefono == ""){
+    errorDF("Teléfono");
+  }else if(pais == 0){
+    errorDF("País");
+  }else if(departamento == 0){
+    errorDF("Departamento");
+  }else if(municipio == 0){
+    errorDF("Municipio");
+  }else if(estado_laboral == 0){
+    errorDF("Estado Laboral");
   }else{
-    $.post("backend/ajax/roles/guardarRol.php", {
+    $.post("backend/ajax/trabajadores/guardarTrabajador.php", {
+      cui: cui,
       nombre: nombre,
-      descripcion: descripcion
+      apellido: apellido,
+      estado_civil: estado_civil,
+      fecha_nacimiento: fecha_nacimiento,
+      fecha_inicio: fecha_inicio,
+      fecha_igss: fecha_igss,
+      numero_igss: numero_igss,
+      puesto: puesto,
+      telefono: telefono,
+      celular: celular,
+      correo: correo,
+      pais: pais,
+      departamento: departamento,
+      municipio: municipio,
+      salario: salario,
+      direccion: direccion,
+      estado_laboral: estado_laboral,
+      id: localStorage.getItem("id")
     }, (data, status) => {
       if(data == "1"){
         $("#exampleModal").modal("hide");
-          Swal.fire("Excelente!", "El rol se ha añadido!", "success");
+          Swal.fire("Excelente!", "El trabajador se ha añadido!", "success");
           mostrar();
       }else{
         Swal.fire({
@@ -47,11 +106,6 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#descripcion").value = "";
-  document.querySelector("#unombre").value = "";
-  document.querySelector("#udescripcion").value = "";
-  document.querySelector("#uestado").value = 1;
 };
 
 const ver = (codigo) => {
@@ -162,6 +216,7 @@ const eliminar = (codigo) => {
   });
 };
 
+
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
 })
@@ -178,6 +233,41 @@ btnGuardar.addEventListener("click", () => {
   guardar();
 });
 
+$.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
+  selectPais.innerHTML = data;
+  selectDepartamento.setAttribute("disabled", "disabled");
+  selectDepartamento.value = 0;
+  selectMunicipio.setAttribute("disabled", "disabled");
+  selectMunicipio.value = 0;
+});
+
+selectPais.addEventListener("change", () => {
+  $.post(
+    "backend/ajax/empresas/mostrarDepartamentos.php",
+    {
+      pais: selectPais.value,
+    },
+    (data, status) => {
+      selectDepartamento.removeAttribute("disabled");
+      selectDepartamento.innerHTML = data;
+      selectMunicipio.setAttribute("disabled", "disabled");
+      selectMunicipio.value = 0;
+    }
+  );
+});
+
+selectDepartamento.addEventListener("change", () => {
+  $.post(
+    "backend/ajax/empresas/mostrarMunicipios.php",
+    {
+      departamento: selectDepartamento.value,
+    },
+    (data, status) => {
+      selectMunicipio.removeAttribute("disabled");
+      selectMunicipio.innerHTML = data;
+    }
+  );
+});
 
 busqueda.addEventListener("keyup", () => {
   $.post(

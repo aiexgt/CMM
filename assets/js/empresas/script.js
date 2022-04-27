@@ -412,13 +412,14 @@ btnGuardar.addEventListener("click", () => {
 
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
-  $.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
-    selectPais.innerHTML = data;
-    selectDepartamento.setAttribute("disabled", "disabled");
-    selectDepartamento.value = 0;
-    selectMunicipio.setAttribute("disabled", "disabled");
-    selectMunicipio.value = 0;
-  });
+});
+
+$.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
+  selectPais.innerHTML = data;
+  selectDepartamento.setAttribute("disabled", "disabled");
+  selectDepartamento.value = 0;
+  selectMunicipio.setAttribute("disabled", "disabled");
+  selectMunicipio.value = 0;
 });
 
 selectPais.addEventListener("change", () => {
