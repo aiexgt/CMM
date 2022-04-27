@@ -21,33 +21,18 @@ const errorDF = (dato) => {
 
 const guardar = () => {
   let nombre = document.querySelector("#nombre").value;
-  let apellido = document.querySelector("#apellido").value;
-  let usuario = document.querySelector("#usuario").value;
-  let password = document.querySelector("#password").value;
-  let rol = document.querySelector("#rol").value;
+  let descripcion = document.querySelector("#descripcion").value;
 
   if(nombre == ""){
     errorDF("Nombre");
-  }else if (apellido == ""){
-    errorDF("Apellido");
-  }else if (usuario == ""){
-    errorDF("Usuario");
-  }else if (password == ""){
-    errorDF("Contraseña");
-  }else if (rol == 0){
-    errorDF("Rol");
   }else{
-    $.post("backend/ajax/usuarios/guardarUsuario.php", {
+    $.post("backend/ajax/roles/guardarRol.php", {
       nombre: nombre,
-      apellido: apellido,
-      usuario: usuario,
-      password: password,
-      rol: rol,
-      id: localStorage.getItem("id")
+      descripcion: descripcion
     }, (data, status) => {
       if(data == "1"){
         $("#exampleModal").modal("hide");
-          Swal.fire("Excelente!", "El usuario se ha añadido!", "success");
+          Swal.fire("Excelente!", "El rol se ha añadido!", "success");
           mostrar();
       }else{
         Swal.fire({
@@ -63,15 +48,10 @@ const guardar = () => {
 
 const limpiarCampos = () => {
   document.querySelector("#nombre").value = "";
-  document.querySelector("#apellido").value = "";
-  document.querySelector("#usuario").value = "";
-  document.querySelector("#password").value = "";
-  document.querySelector("#rol").value = 0;
+  document.querySelector("#descripcion").value = "";
   document.querySelector("#unombre").value = "";
-  document.querySelector("#uapellido").value = "";
-  document.querySelector("#uusuario").value = "";
-  document.querySelector("#upassword").value = "";
-  document.querySelector("#urol").value = 0;
+  document.querySelector("#udescripcion").value = "";
+  document.querySelector("#uestado").value = 1;
 };
 
 const ver = (codigo) => {
@@ -79,7 +59,7 @@ const ver = (codigo) => {
   let id = document.querySelector(`.id${codigo}`).textContent;
   id_cambio = id;
   $.post(
-    "backend/ajax/usuarios/buscarDetalles.php",
+    "backend/ajax/roles/buscarDetalles.php",
     {
       id:id
     },
@@ -87,15 +67,10 @@ const ver = (codigo) => {
       var unit = JSON.parse(data);
       document.querySelector("#unombre").value = unit.nombre;
       document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#uapellido").value = unit.apellido;
-      document.querySelector("#uapellido").setAttribute("disabled","disabled");
-      document.querySelector("#uusuario").value = unit.usuario;
-      document.querySelector("#uusuario").setAttribute("disabled","disabled");
-      document.querySelector("#urol").value = unit.rol_id;
-      document.querySelector("#urol").setAttribute("disabled","disabled");
+      document.querySelector("#udescripcion").value = unit.descripcion;
+      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
       document.querySelector("#uestado").value = unit.estado;
       document.querySelector("#uestado").setAttribute("disabled","disabled");
-      document.querySelector("#upassword").setAttribute("disabled","disabled");
       btnEditar.removeAttribute("hidden");
       btnActualizar.setAttribute("hidden","hidden");
     })
@@ -104,10 +79,7 @@ const ver = (codigo) => {
 
 const quitarDisabled = () => {
     document.querySelector("#unombre").removeAttribute("disabled");
-    document.querySelector("#uapellido").removeAttribute("disabled");
-    document.querySelector("#uusuario").removeAttribute("disabled");
-    document.querySelector("#upassword").removeAttribute("disabled");
-    document.querySelector("#urol").removeAttribute("disabled");
+    document.querySelector("#udescripcion").removeAttribute("disabled");
     document.querySelector("#uestado").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
@@ -116,21 +88,10 @@ const quitarDisabled = () => {
 
 const actualizar = () => {
   let nombre = document.querySelector("#unombre").value;
-  let apellido = document.querySelector("#uapellido").value;
-  let usuario = document.querySelector("#uusuario").value;
-  let password = document.querySelector("#upassword").value;
-  let rol = document.querySelector("#urol").value;
+  let descripcion = document.querySelector("#udescripcion").value;
   let estado = document.querySelector("#uestado").value;
   if(nombre == ""){
     errorDF("Nombre");
-  }else if (apellido == ""){
-    errorDF("Apellido");
-  }else if (usuario == ""){
-    errorDF("Usuario");
-  }else if (password == ""){
-    errorDF("Contraseña");
-  }else if (rol == 0){
-    errorDF("Rol");
   }else{
     Swal.fire({
       title: "¿Desea guardar los cambios?",
@@ -142,19 +103,16 @@ const actualizar = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         $.post(
-          "backend/ajax/usuarios/actualizarUsuario.php",
+          "backend/ajax/roles/actualizarRol.php",
           {
             nombre:nombre,
-            apellido: apellido,
-            usuario: usuario,
-            password: password,
-            rol: rol,
+            descripcion:descripcion,
             estado: estado,
             id: id_cambio
           },
           (data, status) => {
             if (data == "1") {
-              Swal.fire("Excelente!", "El usuario ha sido actualizado!", "success");
+              Swal.fire("Excelente!", "El rol ha sido actualizado!", "success");
               $("#exampleModala").modal("hide");
               mostrar();
             }else{
@@ -187,13 +145,13 @@ const eliminar = (codigo) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "backend/ajax/usuarios/eliminarUsuario.php",
+        "backend/ajax/roles/eliminarRol.php",
         {
           codigo: id,
         },
         (data, status) => {
           if (data == "1") {
-            Swal.fire("Eliminado!", "El usuario ha sido eliminada.", "success");
+            Swal.fire("Eliminado!", "El rol ha sido eliminada.", "success");
             mostrar();
           } else {
             Swal.fire("Error!", "No se puede eliminar usuario.", "error");
@@ -223,7 +181,7 @@ btnGuardar.addEventListener("click", () => {
 
 busqueda.addEventListener("keyup", () => {
   $.post(
-    "backend/ajax/usuarios/buscarUsuario.php",
+    "backend/ajax/roles/buscarRol.php",
     {
       busqueda: busqueda.value,
     },
@@ -236,9 +194,4 @@ busqueda.addEventListener("keyup", () => {
 $(document).ready(() => {
   mostrar();
   limpiarCampos();
-  $.post("backend/ajax/usuarios/mostrarRoles.php", {}, 
-  (data, status) => {
-    document.querySelector("#rol").innerHTML = data;
-    document.querySelector("#urol").innerHTML = data;
-  })
 });
