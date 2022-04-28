@@ -138,6 +138,33 @@ const limpiarCamposA = () => {
 
 }
 
+const calculardiasDiscount = () => {
+  var timeStart = new Date(document.getElementById("ufecha_inicio").value);
+  var actualDate = new Date();
+  if (actualDate > timeStart)
+  {
+      var diff = actualDate.getTime() - timeStart.getTime();
+      document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+  }
+}
+
+const sumarMeses = () => {
+  var d = new Date(document.querySelector("#ufecha_inicio").value);
+  var strDate = d.getFullYear() + "-";
+  if(d.getMonth() <= 7){
+    strDate += "0" + (d.getMonth()+3) + "-";
+  }else{
+    strDate += (d.getMonth()+3) + "-";
+  }
+  if(d.getDate() <= 9){
+    strDate += "0" + (d.getDate());
+  }else{
+    strDate += d.getDate();
+  }
+  document.getElementById("uperiodo_prueba").value = strDate;
+
+}
+
 const ver = (codigo) => {
   limpiarCamposA();
   let id = document.querySelector(`.id${codigo}`).textContent;
@@ -149,12 +176,77 @@ const ver = (codigo) => {
     },
     function (data, status) {
       var unit = JSON.parse(data);
+      document.querySelector("#ucui").value = unit.cui;
+      document.querySelector("#ucui").setAttribute("disabled","disabled");
       document.querySelector("#unombre").value = unit.nombre;
       document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#udescripcion").value = unit.descripcion;
-      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
-      document.querySelector("#uestado").value = unit.estado;
-      document.querySelector("#uestado").setAttribute("disabled","disabled");
+      document.querySelector("#uapellido").value = unit.apellido;
+      document.querySelector("#uapellido").setAttribute("disabled","disabled");
+      document.querySelector("#uestado_civil").value = unit.estado_civil_id;
+      document.querySelector("#uestado_civil").setAttribute("disabled","disabled");
+      document.querySelector("#ufecha_nacimiento").value = unit.fecha_nacimiento;
+      document.querySelector("#ufecha_nacimiento").setAttribute("disabled","disabled");
+      document.querySelector("#ufecha_inicio").value = unit.fecha_inicio;
+      document.querySelector("#ufecha_inicio").setAttribute("disabled","disabled");
+      document.querySelector("#ufecha_igss").value = unit.fecha_igss;
+      document.querySelector("#ufecha_igss").setAttribute("disabled","disabled");
+      document.querySelector("#unumero_igss").value = unit.numero_igss;
+      document.querySelector("#unumero_igss").setAttribute("disabled","disabled");
+      document.querySelector("#upuesto").value = unit.puesto_id;
+      document.querySelector("#upuesto").setAttribute("disabled","disabled");
+      document.querySelector("#utelefono").value = unit.telefono;
+      document.querySelector("#utelefono").setAttribute("disabled","disabled");
+      document.querySelector("#ucelular").value = unit.celular;
+      document.querySelector("#ucelular").setAttribute("disabled","disabled");
+      document.querySelector("#ucorreo").value = unit.correo;
+      document.querySelector("#ucorreo").setAttribute("disabled","disabled");
+      document.querySelector("#upais").value = unit.pais_id;
+      document.querySelector("#upais").setAttribute("disabled","disabled");
+      document.querySelector("#udepartamento").value = unit.departamento_id;
+      document.querySelector("#udepartamento").setAttribute("disabled","disabled");
+      document.querySelector("#umunicipio").value = unit.municipio_id;
+      document.querySelector("#umunicipio").setAttribute("disabled","disabled");
+      document.querySelector("#usalario").value = unit.salario;
+      document.querySelector("#usalario").setAttribute("disabled","disabled");
+      document.querySelector("#udireccion").value = unit.direccion;
+      document.querySelector("#udireccion").setAttribute("disabled","disabled");
+      document.querySelector("#uestado_laboral").value = unit.estado_trabajo_id;
+      document.querySelector("#uestado_laboral").setAttribute("disabled","disabled");
+      document.querySelector("#uempresa").value = unit.empresa_id;
+      document.querySelector("#uempresa").setAttribute("disabled","disabled");
+      document.querySelector("#udias_laborados").setAttribute("disabled","disabled");
+      document.querySelector("#uperiodo_prueba").setAttribute("disabled","disabled");
+      document.querySelector("#ufecha_finalizacion").value = unit.fecha_finalizacion;
+      document.querySelector("#ufecha_finalizacion").setAttribute("disabled","disabled");
+
+      $.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {
+        document.querySelector("#upais").innerHTML = data;
+        document.querySelector("#upais").value = unit.pais_id;
+      });
+      $.post(
+        "backend/ajax/trabajadores/mostrarDepartamentos.php",
+        {
+          pais: unit.pais_id,
+        },
+        (data, status) => {
+          document.querySelector("#udepartamento").innerHTML = data;
+          document.querySelector("#udepartamento").value = unit.departamento_id;
+        }
+      );
+      $.post(
+        "backend/ajax/trabajadores/mostrarMunicipios.php",
+        {
+          departamento: unit.departamento_id,
+        },
+        (data, status) => {
+          document.querySelector("#umunicipio").innerHTML = data;
+          document.querySelector("#umunicipio").value = unit.municipio_id;
+        }
+      );
+
+      calculardiasDiscount();
+      sumarMeses();
+
       btnEditar.removeAttribute("hidden");
       btnActualizar.setAttribute("hidden","hidden");
     })
@@ -265,18 +357,22 @@ btnGuardar.addEventListener("click", () => {
 
 $.post("backend/ajax/trabajadores/mostrarEstadoCivil.php", {}, (data, status) => {
   document.querySelector("#estado_civil").innerHTML = data;
+  document.querySelector("#uestado_civil").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
   document.querySelector("#puesto").innerHTML = data;
+  document.querySelector("#upuesto").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarEstadoLaboral.php", {}, (data, status) => {
   document.querySelector("#estado_laboral").innerHTML = data;
+  document.querySelector("#uestado_laboral").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarEmpresa.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
+  document.querySelector("#uempresa").innerHTML = data;
 });
 
 
