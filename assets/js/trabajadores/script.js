@@ -254,8 +254,9 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
+    document.querySelector("#ucui").removeAttribute("disabled");
     document.querySelector("#unombre").removeAttribute("disabled");
-    document.querySelector("#udescripcion").removeAttribute("disabled");
+    document.querySelector("#uapellido").removeAttribute("disabled");
     document.querySelector("#uestado").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
