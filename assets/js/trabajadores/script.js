@@ -8,6 +8,9 @@ let id_cambio;
 let selectPais = document.querySelector("#pais");
 let selectDepartamento = document.querySelector("#departamento");
 let selectMunicipio = document.querySelector("#municipio");
+let uselectPais = document.querySelector("#upais");
+let uselectDepartamento = document.querySelector("#udepartamento");
+let uselectMunicipio = document.querySelector("#umunicipio");
 
 const mostrar = () => {
   $.post("backend/ajax/trabajadores/mostrarTrabajadores.php", {}, (data, status) => {
@@ -109,15 +112,38 @@ const guardar = () => {
 
 };
 
-const limpiarCampos = () => {
+const limpiarCamposN = () => {
+  document.querySelector("#cui").value = "";
+  document.querySelector("#nombre").value = "";
+  document.querySelector("#apellido").value = "";
+  document.querySelector("#estado_civil").value = 0;
+  document.querySelector("#fecha_nacimiento").value = "2002-01-01";
+  document.querySelector("#fecha_inicio").value = "";
+  document.querySelector("#fecha_igss").value = "";
+  document.querySelector("#numero_igss").value = "";
+  document.querySelector("#puesto").value = 0;
+  document.querySelector("#telefono").value = "";
+  document.querySelector("#celular").value = "";
+  document.querySelector("#correo").value = "";
+  document.querySelector("#pais").value = 0;
+  document.querySelector("#departamento").value = 0;
+  document.querySelector("#municipio").value = 0;
+  document.querySelector("#salario").value = "";
+  document.querySelector("#direccion").value = "";
+  document.querySelector("#estado_laboral").value = 0;
+  document.querySelector("#empresa").value = 0;
 };
 
+const limpiarCamposA = () => {
+
+}
+
 const ver = (codigo) => {
-  limpiarCampos();
+  limpiarCamposA();
   let id = document.querySelector(`.id${codigo}`).textContent;
   id_cambio = id;
   $.post(
-    "backend/ajax/roles/buscarDetalles.php",
+    "backend/ajax/trabajadores/buscarDetalles.php",
     {
       id:id
     },
@@ -222,7 +248,7 @@ const eliminar = (codigo) => {
 
 
 btnNuevo.addEventListener("click", () => {
-  limpiarCampos();
+  limpiarCamposN();
 })
 
 btnActualizar.addEventListener("click", () => {
@@ -290,9 +316,37 @@ selectDepartamento.addEventListener("change", () => {
   );
 });
 
+uselectPais.addEventListener("change", () => {
+  $.post(
+    "backend/ajax/empresas/mostrarDepartamentos.php",
+    {
+      pais: uselectPais.value,
+    },
+    (data, status) => {
+      uselectDepartamento.removeAttribute("disabled");
+      uselectDepartamento.innerHTML = data;
+      uselectMunicipio.setAttribute("disabled", "disabled");
+      uselectMunicipio.value = 0;
+    }
+  );
+});
+
+uselectDepartamento.addEventListener("change", () => {
+  $.post(
+    "backend/ajax/empresas/mostrarMunicipios.php",
+    {
+      departamento: uselectDepartamento.value,
+    },
+    (data, status) => {
+      uselectMunicipio.removeAttribute("disabled");
+      uselectMunicipio.innerHTML = data;
+    }
+  );
+});
+
 busqueda.addEventListener("keyup", () => {
   $.post(
-    "backend/ajax/roles/buscarRol.php",
+    "backend/ajax/trabajadores/buscarTrabajador.php",
     {
       busqueda: busqueda.value,
     },
@@ -304,5 +358,5 @@ busqueda.addEventListener("keyup", () => {
 
 $(document).ready(() => {
   mostrar();
-  limpiarCampos();
+  limpiarCamposN();
 });

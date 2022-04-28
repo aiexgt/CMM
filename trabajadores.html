@@ -369,7 +369,17 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">Nombres</label>
+              <label for="" class="form-label is-required">CUI</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Cui"
+                id="ucui"
+                aria-label="Cui"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Nombre</label>
               <input
                 type="text"
                 class="form-control"
@@ -379,7 +389,7 @@
               />
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Apellido</label>
+              <label for="" class="form-label is-required">Apellido</label>
               <input
                 type="text"
                 class="form-control"
@@ -387,48 +397,213 @@
                 id="uapellido"
                 aria-label="Apellido"
               />
-            </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Estado</label>
-              <select
-                class="form-select"
-                id="uestado"
-                aria-label="Default select example"
-              >
-              <option value="1">Activo</option>
-              <option value="0">Inactivo</option>
-            </select>
               <br />
             </div>
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">Usuario</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Usuario"
-                id="uusuario"
-                aria-label="Usuario"
-              />
-            </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Contraseña</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Contraseña"
-                id="upassword"
-                aria-label="Contraseña"
-              />
-            </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Rol</label>
+              <label for="" class="form-label is-required">Estado Civil</label>
               <select
                 class="form-select"
-                id="urol"
+                id="uestado_civil"
                 aria-label="Default select example"
               ></select>
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Fecha Nacimiento</label>
+              <input
+                type="date"
+                class="form-control"
+                value="2002-01-01"
+                id="ufecha_nacimiento"
+                aria-label="Fecha Nacimiento"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Fecha Inicio</label>
+              <input
+                type="date"
+                class="form-control"
+                id="ufecha_inicio"
+                aria-label="Contraseña"
+              />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Periodo de prueba</label>
+              <input
+                type="date"
+                class="form-control"
+                id="uperiodo_prueba"
+                aria-label="Fecha Nacimiento"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Fecha Finalización</label>
+              <input
+                type="date"
+                class="form-control"
+                id="ufecha_finalizacion"
+                aria-label="Fecha Nacimiento"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Días Laborados</label>
+              <input
+                type="number"
+                class="form-control"
+                value="2002-01-01"
+                id="udias_laborados"
+                aria-label="Fecha Nacimiento"
+              />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label">Fecha IGSS</label>
+              <input
+                type="date"
+                class="form-control"
+                id="ufecha_igss"
+                aria-label="Fecha IGSS"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Numero IGSS</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Número IGSS"
+                id="unumero_igss"
+                aria-label="Número IGSS"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Puesto</label>
+              <select
+                class="form-select"
+                id="upuesto"
+                aria-label="Default select example"
+              ></select>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Teléfono</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Teléfono"
+                id="utelefono"
+                aria-label="Teléfono"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Celular</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Celular"
+                id="ucelular"
+                aria-label="Celular"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Correo</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Correo"
+                id="ucorreo"
+                aria-label="Correo"
+              />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">País</label>
+              <select
+                class="form-select"
+                id="upais"
+                aria-label="Default select example"
+              >
+                <option value="0" selected>Seleccione País</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required"
+                >Estado o Departamento</label
+              >
+              <select
+                class="form-select"
+                id="udepartamento"
+                aria-label="Default select example"
+                disabled
+              >
+                <option value="0" selected>Seleccione Departamento</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required"
+                >Ciudad o Municipio</label
+              >
+              <select
+                class="form-select"
+                id="umunicipio"
+                aria-label="Default select example"
+                disabled
+              >
+                <option value="0" selected>Seleccione Municipio</option>
+              </select>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Salario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Salario"
+                id="usalario"
+                aria-label="Salario"
+              />
+              <br />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Empresa</label>
+              <select
+                class="form-select"
+                id="uempresa"
+                aria-label="Default select example"
+              ></select>
+              <br />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Estado Laboral</label>
+              <select
+                class="form-select"
+                id="uestado_laboral"
+                aria-label="Default select example"
+              ></select>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <label for="" class="form-label is-required">Dirección</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Dirección"
+                id="udireccion"
+                aria-label="Dirección"
+              />
               <br />
             </div>
           </div>
