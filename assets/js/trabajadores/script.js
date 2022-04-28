@@ -42,6 +42,7 @@ const guardar = () => {
   let salario = document.querySelector("#salario").value;
   let direccion = document.querySelector("#direccion").value;
   let estado_laboral = document.querySelector("#estado_laboral").value;
+  let empresa = document.querySelector("#empresa").value;
 
   if(cui == ""){
     errorDF("CUI");
@@ -67,6 +68,8 @@ const guardar = () => {
     errorDF("Municipio");
   }else if(estado_laboral == 0){
     errorDF("Estado Laboral");
+  }else if(empresa == 0){
+    errorDF("Empresa");
   }else{
     $.post("backend/ajax/trabajadores/guardarTrabajador.php", {
       cui: cui,
@@ -86,6 +89,7 @@ const guardar = () => {
       municipio: municipio,
       salario: salario,
       direccion: direccion,
+      empresa: empresa,
       estado_laboral: estado_laboral,
       id: localStorage.getItem("id")
     }, (data, status) => {
@@ -243,6 +247,10 @@ $.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
 
 $.post("backend/ajax/trabajadores/mostrarEstadoLaboral.php", {}, (data, status) => {
   document.querySelector("#estado_laboral").innerHTML = data;
+});
+
+$.post("backend/ajax/trabajadores/mostrarEmpresa.php", {}, (data, status) => {
+  document.querySelector("#empresa").innerHTML = data;
 });
 
 
