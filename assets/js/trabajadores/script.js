@@ -233,6 +233,19 @@ btnGuardar.addEventListener("click", () => {
   guardar();
 });
 
+$.post("backend/ajax/trabajadores/mostrarEstadoCivil.php", {}, (data, status) => {
+  document.querySelector("#estado_civil").innerHTML = data;
+});
+
+$.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
+  document.querySelector("#puesto").innerHTML = data;
+});
+
+$.post("backend/ajax/trabajadores/mostrarEstadoLaboral.php", {}, (data, status) => {
+  document.querySelector("#estado_laboral").innerHTML = data;
+});
+
+
 $.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {
   selectPais.innerHTML = data;
   selectDepartamento.setAttribute("disabled", "disabled");
