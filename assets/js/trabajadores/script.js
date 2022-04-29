@@ -134,17 +134,23 @@ const limpiarCamposN = () => {
   document.querySelector("#empresa").value = 0;
 };
 
-const limpiarCamposA = () => {
-
-}
 
 const calculardiasDiscount = () => {
   var timeStart = new Date(document.getElementById("ufecha_inicio").value);
-  var actualDate = new Date();
-  if (actualDate > timeStart)
-  {
-      var diff = actualDate.getTime() - timeStart.getTime();
-      document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+  if((document.getElementById("ufecha_finalizacion").value) != ""){
+    var timeEnd = new Date(document.getElementById("ufecha_finalizacion").value);
+    if (timeEnd > timeStart)
+    {
+        var diff = timeEnd.getTime() - timeStart.getTime();
+        document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+    }
+  }else{
+    var actualDate = new Date();
+    if (actualDate > timeStart)
+    {
+        var diff = actualDate.getTime() - timeStart.getTime();
+        document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+    }
   }
 }
 
@@ -166,7 +172,6 @@ const sumarMeses = () => {
 }
 
 const ver = (codigo) => {
-  limpiarCamposA();
   let id = document.querySelector(`.id${codigo}`).textContent;
   id_cambio = id;
   $.post(
@@ -249,6 +254,13 @@ const ver = (codigo) => {
 
       btnEditar.removeAttribute("hidden");
       btnActualizar.setAttribute("hidden","hidden");
+
+      $.post("backend/ajax/trabajadores/actualizarPeriodos.php", {
+        prueba : document.querySelector("#uperiodo_prueba").value,
+        cantidad : document.querySelector("#udias_laborados").value,
+        id: unit.id
+      }, (data, status) => {})
+
     })
   $("#exampleModala").modal("show");
 };
@@ -257,7 +269,11 @@ const quitarDisabled = () => {
     document.querySelector("#ucui").removeAttribute("disabled");
     document.querySelector("#unombre").removeAttribute("disabled");
     document.querySelector("#uapellido").removeAttribute("disabled");
-    document.querySelector("#uestado").removeAttribute("disabled");
+    document.querySelector("#uestado_civil").removeAttribute("disabled");
+    document.querySelector("#ufecha_nacimiento").removeAttribute("disabled");
+    document.querySelector("#ufecha_inicio").removeAttribute("disabled");
+    document.querySelector("#ufecha_finalizacion").removeAttribute("disabled");
+    console.log(document.querySelector("#ufecha_finalizacion"))
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
   
