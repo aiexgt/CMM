@@ -411,16 +411,16 @@ const eliminar = (codigo) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "backend/ajax/roles/eliminarRol.php",
+        "backend/ajax/trabajadores/eliminarTrabajador.php",
         {
           codigo: id,
         },
         (data, status) => {
           if (data == "1") {
-            Swal.fire("Eliminado!", "El rol ha sido eliminada.", "success");
+            Swal.fire("Eliminado!", "El trabajador ha sido eliminada.", "success");
             mostrar();
           } else {
-            Swal.fire("Error!", "No se puede eliminar usuario.", "error");
+            Swal.fire("Error!", "No se puede eliminar el trabajador.", "error");
           }
         }
       );
