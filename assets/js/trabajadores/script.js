@@ -135,6 +135,7 @@ const limpiarCamposN = () => {
 };
 
 
+
 const calculardiasDiscount = () => {
   var timeStart = new Date(document.getElementById("ufecha_inicio").value);
   if((document.getElementById("ufecha_finalizacion").value) != ""){
@@ -248,6 +249,7 @@ const ver = (codigo) => {
           document.querySelector("#umunicipio").value = unit.municipio_id;
         }
       );
+      id_cambio = unit.id;
 
       calculardiasDiscount();
       sumarMeses();
@@ -309,7 +311,7 @@ const actualizar = () => {
   let pais = document.querySelector("#upais").value;
   let departamento = document.querySelector("#udepartamento").value;
   let municipio = document.querySelector("#umunicipio").value;
-  let salario = document.querySelector("#usalario").value;
+  let salario = parseFloat(document.querySelector("#usalario").value);
   let direccion = document.querySelector("#udireccion").value;
   let estado_laboral = document.querySelector("#uestado_laboral").value;
   let empresa = document.querySelector("#uempresa").value;
@@ -371,7 +373,8 @@ const actualizar = () => {
             salario: salario,
             empresa: empresa,
             estado_laboral: estado_laboral,
-            direccion, direccion
+            direccion: direccion,
+            id: id_cambio
           },
           (data, status) => {
             if (data == "1") {
