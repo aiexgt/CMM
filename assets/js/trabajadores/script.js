@@ -273,6 +273,19 @@ const quitarDisabled = () => {
     document.querySelector("#ufecha_nacimiento").removeAttribute("disabled");
     document.querySelector("#ufecha_inicio").removeAttribute("disabled");
     document.querySelector("#ufecha_finalizacion").removeAttribute("disabled");
+    document.querySelector("#ufecha_igss").removeAttribute("disabled");
+    document.querySelector("#unumero_igss").removeAttribute("disabled");
+    document.querySelector("#upuesto").removeAttribute("disabled");
+    document.querySelector("#utelefono").removeAttribute("disabled");
+    document.querySelector("#ucelular").removeAttribute("disabled");
+    document.querySelector("#ucorreo").removeAttribute("disabled");
+    document.querySelector("#upais").removeAttribute("disabled");
+    document.querySelector("#udepartamento").removeAttribute("disabled");
+    document.querySelector("#umunicipio").removeAttribute("disabled");
+    document.querySelector("#usalario").removeAttribute("disabled");
+    document.querySelector("#uempresa").removeAttribute("disabled");
+    document.querySelector("#uestado_laboral").removeAttribute("disabled");
+    document.querySelector("#udireccion").removeAttribute("disabled");
     console.log(document.querySelector("#ufecha_finalizacion"))
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
@@ -280,11 +293,52 @@ const quitarDisabled = () => {
 };
 
 const actualizar = () => {
+  let cui = document.querySelector("#ucui").value;
   let nombre = document.querySelector("#unombre").value;
-  let descripcion = document.querySelector("#udescripcion").value;
-  let estado = document.querySelector("#uestado").value;
-  if(nombre == ""){
+  let apellido = document.querySelector("#uapellido").value;
+  let estado_civil = document.querySelector("#uestado_civil").value;
+  let fecha_nacimiento = document.querySelector("#ufecha_nacimiento").value;
+  let fecha_inicio = document.querySelector("#ufecha_inicio").value;
+  let fecha_finalizacion = document.querySelector("#ufecha_finalizacion").value;
+  let fecha_igss = document.querySelector("#ufecha_igss").value;
+  let numero_igss = document.querySelector("#unumero_igss").value;
+  let puesto = document.querySelector("#upuesto").value;
+  let telefono = document.querySelector("#utelefono").value;
+  let celular = document.querySelector("#ucelular").value;
+  let correo = document.querySelector("#ucorreo").value;
+  let pais = document.querySelector("#upais").value;
+  let departamento = document.querySelector("#udepartamento").value;
+  let municipio = document.querySelector("#umunicipio").value;
+  let salario = document.querySelector("#usalario").value;
+  let direccion = document.querySelector("#udireccion").value;
+  let estado_laboral = document.querySelector("#uestado_laboral").value;
+  let empresa = document.querySelector("#uempresa").value;
+  if(cui == ""){
+    errorDF("CUI");
+  }else if(nombre == ""){
     errorDF("Nombre");
+  }else if(apellido == ""){
+    errorDF("Apellido");
+  }else if(estado_civil == 0){
+    errorDF("Estado Civil");
+  }else if(fecha_nacimiento == ""){
+    errorDF("Fecha Nacimiento");
+  }else if(fecha_inicio == ""){
+    errorDF("Fecha Inicio");
+  }else if(puesto == 0){
+    errorDF("Puesto");
+  }else if(telefono == ""){
+    errorDF("Teléfono");
+  }else if(pais == 0){
+    errorDF("País");
+  }else if(departamento == 0){
+    errorDF("Departamento");
+  }else if(municipio == 0){
+    errorDF("Municipio");
+  }else if(estado_laboral == 0){
+    errorDF("Estado Laboral");
+  }else if(empresa == 0){
+    errorDF("Empresa");
   }else{
     Swal.fire({
       title: "¿Desea guardar los cambios?",
@@ -296,16 +350,32 @@ const actualizar = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         $.post(
-          "backend/ajax/roles/actualizarRol.php",
+          "backend/ajax/trabajadores/actualizarTrabajador.php",
           {
-            nombre:nombre,
-            descripcion:descripcion,
-            estado: estado,
-            id: id_cambio
+            cui: cui,
+            nombre: nombre,
+            apellido: apellido,
+            estado_civil: estado_civil,
+            fecha_nacimiento: fecha_nacimiento,
+            fecha_inicio: fecha_inicio,
+            fecha_finalizacion: fecha_finalizacion,
+            fecha_igss: fecha_igss,
+            numero_igss: numero_igss,
+            puesto: puesto,
+            telefono: telefono, 
+            celular: celular,
+            correo: correo,
+            pais: pais,
+            departamento: departamento,
+            municipio: municipio,
+            salario: salario,
+            empresa: empresa,
+            estado_laboral: estado_laboral,
+            direccion, direccion
           },
           (data, status) => {
             if (data == "1") {
-              Swal.fire("Excelente!", "El rol ha sido actualizado!", "success");
+              Swal.fire("Excelente!", "El trabajador ha sido actualizado!", "success");
               $("#exampleModala").modal("hide");
               mostrar();
             }else{
