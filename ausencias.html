@@ -143,7 +143,7 @@
                 <input
                   class="form-control"
                   type="file"
-                  id="uimage"
+                  id="image"
                   accept="image/png, image/jpeg"
                 />
               </form>
@@ -181,6 +181,7 @@
                 placeholder="Fecha Fin"
                 id="fecha_fin"
                 aria-label="Fecha Fin"
+                disabled
               />
               <br>
             </div>
@@ -242,35 +243,86 @@
         </div>
         <div class="modal-body">
           <div class="row">
+            <div class="col-sm-8">
+              <label for="" class="form-label">Trabajador</label>
+              <select
+                class="form-select"
+                id="trabajador"
+                aria-label="Default select example"
+              > 
+              </select> <br>
+            </div>
+            <div class="col-sm-4">
+              <form
+                id="uploadimage"
+                action=""
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <label for="formFile" class="form-label">Imagen</label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="image"
+                  accept="image/png, image/jpeg"
+                />
+              </form>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Nombre"
+                id="fecha"
+                aria-label="Nombre"
+              />
+              <br>
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Cantidad Días</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Cantidad"
+                id="cantidad"
+                aria-label="Cantidad"
+              />
+              <br>
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Fecha Fin</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Fecha Fin"
+                id="fecha_fin"
+                aria-label="Fecha Fin"
+                disabled
+              />
+              <br>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-sm-12">
-              <label for="" class="form-label is-required">Nombre</label>
+              <label for="" class="form-label">Asunto</label>
               <input
                 type="text"
                 class="form-control"
-                placeholder="Nombre"
-                id="unombre"
-                aria-label="Nombre"
-              /> <br>
+                placeholder="Asunto"
+                id="asunto"
+                aria-label="Asunto"
+              />
+              <br>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
               <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-              <textarea class="form-control" id="udescripcion" rows="3"></textarea>
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label">Estado</label>
-              <select
-                class="form-select"
-                id="uestado"
-                aria-label="Default select example"
-              >
-              <option value="1">Activo</option>
-              <option value="0">Inactivo</option>
-            </select>
+              <textarea class="form-control" id="descripcion" rows="3"></textarea>
               <br />
             </div>
           </div>
