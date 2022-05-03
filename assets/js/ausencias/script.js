@@ -165,14 +165,14 @@ document.getElementById("cantidad").addEventListener('keyup',() => {
     if(document.getElementById("cantidad") <= 9){
       strDate += "0" + (d.getDate() + parseInt(document.getElementById("cantidad").value));
     }else{
-      strDate += (d.getDate() + parseInt(document.getElementById("cantidad").value));
+      strDate += (d.getDate() + parseInt(document.getElementById("cantidad").value) +1);
     }
     document.getElementById("fecha_fin").value = strDate;
     console.log(strDate)
   
 })
 
-busqueda.addEventListener("keyup", () => {
+busqueda.addEventListener("change", () => {
   $.post(
     "backend/ajax/ausencias/buscarAusencias.php",
     {
