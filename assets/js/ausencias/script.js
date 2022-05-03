@@ -20,6 +20,7 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
+  limpiarCampos();
   let trabajador = document.getElementById("trabajador").value;
   let fecha = document.getElementById("fecha").value;
   let cantidad = document.getElementById("cantidad").value;
@@ -49,7 +50,6 @@ const guardar = () => {
         if ($("#image").val() != "") {
           let files = $("#image")[0].files[0];
           formData.append("file", files);
-          formData.append("codigo", codigo);
   
           $.ajax({
             url: "backend/ajax/ausencias/guardarImagen.php",
@@ -67,7 +67,7 @@ const guardar = () => {
           });
         }
         $("#exampleModal").modal("hide");
-        Swal.fire("Excelente!", "La empresa se ha añadido!", "success");
+        Swal.fire("Excelente!", "El registro de ausencia se ha añadido!", "success");
         mostrar();
       }else{
         Swal.fire({
@@ -81,11 +81,17 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-  
+    document.getElementById("trabajador").value = 0;
+    document.getElementById("fecha").value = "";
+    document.getElementById("cantidad").value = null;
+    document.getElementById("fecha_fin").value = "";
+    document.getElementById("asunto").value = "";
+    document.getElementById("descripcion").value = "";
+    document.getElementById("image").value = "";
 };
 
 const ver = (codigo) => {
-  
+  $("#exampleModala").modal("show");
 };
 
 const quitarDisabled = () => {
@@ -147,6 +153,24 @@ btnGuardar.addEventListener("click", () => {
   guardar();
 });
 
+document.getElementById("cantidad").addEventListener('keyup',() => {
+
+    var d = new Date(document.querySelector("#fecha").value);
+    var strDate = d.getFullYear() + "-";
+    if(d.getMonth() <= 9){
+      strDate += "0" + (d.getMonth()+1) + "-";
+    }else{
+      strDate += (d.getMonth()+1) + "-";
+    }
+    if(document.getElementById("cantidad") <= 9){
+      strDate += "0" + (d.getDate() + parseInt(document.getElementById("cantidad").value));
+    }else{
+      strDate += (d.getDate() + parseInt(document.getElementById("cantidad").value));
+    }
+    document.getElementById("fecha_fin").value = strDate;
+    console.log(strDate)
+  
+})
 
 busqueda.addEventListener("keyup", () => {
   $.post(
