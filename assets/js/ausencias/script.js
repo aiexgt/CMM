@@ -2,6 +2,7 @@ const btnNuevo = document.querySelector("#btn-nuevo");
 const btnGuardar = document.querySelector("#btn-guardar");
 const btnEditar = document.querySelector("#btn-editar");
 const btnActualizar = document.querySelector("#btn-actualizar");
+const btnVer = document.querySelector("#verComprobante");
 let busqueda = document.querySelector("#busqueda");
 let id_cambio;
 
@@ -130,7 +131,43 @@ const quitarDisabled = () => {
 };
 
 const actualizar = () => {
-  
+  let trabajador = document.getElementById("utrabajador").value;
+  let fecha = document.getElementById("ufecha").value;
+  let cantidad = document.getElementById("ucantidad").value;
+  let fecha_fin = document.getElementById("ufecha_fin").value;
+  let asunto = document.getElementById("uasunto").value;
+  let descripcion = document.getElementById("udescripcion").value;
+  if(trabajador == 0){
+    errorDF("Trabajador");
+  }else if(fecha == ""){
+    errorDF("Fecha")
+  }else if(asunto == ""){
+    errorDF("Asunto")
+  }else if(descripcion == ""){
+    errorDF("Descripción")
+  }else{
+    $.post("backend/ajax/ausencias/actualizarAusencia.php",{
+      trabajador: trabajador,
+      fecha: fecha,
+      cantidad: cantidad,
+      fecha_fin: fecha_fin,
+      asunto: asunto,
+      descripcion: descripcion,
+      id: id_cambio
+    }, (data, status) => {
+      if (data == "1") {
+        Swal.fire("Excelente!", "El registro ha sido actualizado!", "success");
+        $("#exampleModala").modal("hide");
+        mostrar();
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ha Ocurrido un error!',
+        })
+      }
+    })
+  }
 };
 
 const eliminar = (codigo) => {
@@ -163,11 +200,6 @@ const eliminar = (codigo) => {
   });
 };
 
-$.post("backend/ajax/ausencias/mostrarTrabajadores.php", {}, (data, status) => {
-  document.querySelector("#trabajador").innerHTML = data;
-  document.querySelector("#utrabajador").innerHTML = data;
-});
-
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
 })
@@ -184,6 +216,10 @@ btnGuardar.addEventListener("click", () => {
   guardar();
 });
 
+btnVer.addEventListener("click", () => {
+  window.open(`img/doc-ausencias/${id_cambio}.jpg`,'_blank')
+});
+
 busqueda.addEventListener("change", () => {
   $.post(
     "backend/ajax/ausencias/buscarAusencias.php",
@@ -194,6 +230,11 @@ busqueda.addEventListener("change", () => {
       document.querySelector("#tabla-contenido").innerHTML = data;
     }
   );
+});
+
+$.post("backend/ajax/ausencias/mostrarTrabajadores.php", {}, (data, status) => {
+  document.querySelector("#trabajador").innerHTML = data;
+  document.querySelector("#utrabajador").innerHTML = data;
 });
 
 $(document).ready(() => {
