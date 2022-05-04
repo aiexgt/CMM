@@ -99,15 +99,34 @@ const ver = (codigo) => {
     },
     function (data, status) {
       var unit = JSON.parse(data);
-      document.querySelector("")
-
+      id_cambio = unit.id;
+      document.querySelector("#utrabajador").value = unit.persona_id;
+      document.querySelector("#utrabajador").setAttribute("disabled","disabled");
+      document.querySelector("#ufecha").value = unit.fecha_inicio;
+      document.querySelector("#ufecha").setAttribute("disabled","disabled");
+      document.querySelector("#ucantidad").value = unit.cantidad;
+      document.querySelector("#ucantidad").setAttribute("disabled","disabled");
+      document.querySelector("#ufecha_fin").value = unit.fecha_fin;
+      document.querySelector("#ufecha_fin").setAttribute("disabled","disabled");
+      document.querySelector("#uasunto").value = unit.asunto;
+      document.querySelector("#uasunto").setAttribute("disabled","disabled");
+      document.querySelector("#udescripcion").value = unit.descripcion;
+      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
+      btnActualizar.setAttribute("hidden", "hidden");
+      btnEditar.removeAttribute("hidden");
     })
   $("#exampleModala").modal("show");
 };
 
 const quitarDisabled = () => {
-    
-  
+    document.querySelector("#utrabajador").removeAttribute("disabled","disabled");
+    document.querySelector("#ufecha").removeAttribute("disabled","disabled");
+    document.querySelector("#ucantidad").removeAttribute("disabled","disabled");
+    document.querySelector("#ufecha_fin").removeAttribute("disabled","disabled");
+    document.querySelector("#uasunto").removeAttribute("disabled","disabled");
+    document.querySelector("#udescripcion").removeAttribute("disabled","disabled");
+    btnEditar.setAttribute("hidden", "hidden");
+    btnActualizar.removeAttribute("hidden");
 };
 
 const actualizar = () => {
@@ -146,6 +165,7 @@ const eliminar = (codigo) => {
 
 $.post("backend/ajax/ausencias/mostrarTrabajadores.php", {}, (data, status) => {
   document.querySelector("#trabajador").innerHTML = data;
+  document.querySelector("#utrabajador").innerHTML = data;
 });
 
 btnNuevo.addEventListener("click", () => {
