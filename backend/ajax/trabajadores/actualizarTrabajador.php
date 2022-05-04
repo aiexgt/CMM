@@ -37,6 +37,7 @@
         apellido = '$apellido',
         estado_civil_id = $estado_civil,
         fecha_nacimiento = '$fecha_nacimiento',
+        fecha_inicio = '$fecha_inicio',
         fecha_igss = '$fecha_igss',
         puesto_id = $puesto,
         telefono = '$telefono',

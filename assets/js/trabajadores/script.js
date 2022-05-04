@@ -157,17 +157,20 @@ const calculardiasDiscount = () => {
 
 const sumarMeses = () => {
   var d = new Date(document.querySelector("#ufecha_inicio").value);
-  var strDate = d.getFullYear() + "-";
-  if(d.getMonth() <= 7){
-    strDate += "0" + (d.getMonth()+3) + "-";
-  }else{
-    strDate += (d.getMonth()+3) + "-";
+  let dia = d.getDate()+1;
+  let mes = d.getMonth()+3;
+  let anio = d.getFullYear();
+  if(mes > 12){
+    anio++;
+    mes = mes - 12;
   }
-  if(d.getDate() <= 9){
-    strDate += "0" + (d.getDate());
-  }else{
-    strDate += d.getDate();
+  if(mes < 10){
+    mes = "0" + mes;
   }
+  if(dia < 10){
+    dia = "0" + dia;
+  }
+  let strDate = anio + "-" + mes + "-" + dia;
   document.getElementById("uperiodo_prueba").value = strDate;
 
 }
@@ -288,7 +291,6 @@ const quitarDisabled = () => {
     document.querySelector("#uempresa").removeAttribute("disabled");
     document.querySelector("#uestado_laboral").removeAttribute("disabled");
     document.querySelector("#udireccion").removeAttribute("disabled");
-    console.log(document.querySelector("#ufecha_finalizacion"))
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
   

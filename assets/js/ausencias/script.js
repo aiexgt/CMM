@@ -91,6 +91,17 @@ const limpiarCampos = () => {
 };
 
 const ver = (codigo) => {
+  let id = document.querySelector(`.id${codigo}`).textContent;
+  $.post(
+    "backend/ajax/ausencias/buscarDetalles.php",
+    {
+      id: id,
+    },
+    function (data, status) {
+      var unit = JSON.parse(data);
+      document.querySelector("")
+
+    })
   $("#exampleModala").modal("show");
 };
 
@@ -152,25 +163,6 @@ btnEditar.addEventListener("click", () => {
 btnGuardar.addEventListener("click", () => {
   guardar();
 });
-
-document.getElementById("cantidad").addEventListener('keyup',() => {
-
-    var d = new Date(document.querySelector("#fecha").value);
-    var strDate = d.getFullYear() + "-";
-    if(d.getMonth() <= 9){
-      strDate += "0" + (d.getMonth()+1) + "-";
-    }else{
-      strDate += (d.getMonth()+1) + "-";
-    }
-    if(document.getElementById("cantidad") <= 9){
-      strDate += "0" + (d.getDate() + parseInt(document.getElementById("cantidad").value));
-    }else{
-      strDate += (d.getDate() + parseInt(document.getElementById("cantidad").value) +1);
-    }
-    document.getElementById("fecha_fin").value = strDate;
-    console.log(strDate)
-  
-})
 
 busqueda.addEventListener("change", () => {
   $.post(
