@@ -7,7 +7,7 @@ let busqueda = document.querySelector("#busqueda");
 let id_cambio;
 
 const mostrar = () => {
-  $.post("backend/ajax/ausencias/mostrarAusencias.php", {}, (data, status) => {
+  $.post("backend/ajax/vacaciones/mostrarVacaciones.php", {}, (data, status) => {
     document.querySelector("#tabla-contenido").innerHTML = data;
   });
 };
