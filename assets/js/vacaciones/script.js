@@ -37,7 +37,7 @@ const guardar = () => {
   }else if(descripcion == ""){
     errorDF("Descripción")
   }else{
-    $.post("backend/ajax/ausencias/guardarAusencia.php",{
+    $.post("backend/ajax/vacaciones/guardarVacacion.php",{
       trabajador: trabajador,
       fecha: fecha,
       cantidad: cantidad,
