@@ -53,7 +53,7 @@ const guardar = () => {
           formData.append("file", files);
   
           $.ajax({
-            url: "backend/ajax/ausencias/guardarImagen.php",
+            url: "backend/ajax/vacaciones/guardarImagen.php",
             type: "post",
             data: formData,
             contentType: false,
@@ -183,7 +183,7 @@ const eliminar = (codigo) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "backend/ajax/ausencias/eliminarAusencia.php",
+        "backend/ajax/vacaciones/eliminarVacaciones.php",
         {
           codigo: id,
         },
@@ -222,7 +222,7 @@ btnVer.addEventListener("click", () => {
 
 busqueda.addEventListener("change", () => {
   $.post(
-    "backend/ajax/ausencias/buscarAusencias.php",
+    "backend/ajax/vacaciones/buscarVacaciones.php",
     {
       busqueda: busqueda.value,
     },
@@ -232,7 +232,7 @@ busqueda.addEventListener("change", () => {
   );
 });
 
-$.post("backend/ajax/ausencias/mostrarTrabajadores.php", {}, (data, status) => {
+$.post("backend/ajax/vacaciones/mostrarTrabajadores.php", {}, (data, status) => {
   document.querySelector("#trabajador").innerHTML = data;
   document.querySelector("#utrabajador").innerHTML = data;
 });
