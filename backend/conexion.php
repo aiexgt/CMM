@@ -2,8 +2,8 @@
 
 //* Conexión a Base de Datos
 $host = "localhost"; //* dominio
-$user = "root"; //* usuario bd
-$password = ""; //* contraseña bd
+$user = "tubagua"; //* usuario bd
+$password = "Tubagua2022$."; //* contraseña bd
 $database = "bdtk"; //* segmento o base de datos
 
 //* Conectando la base de datos
