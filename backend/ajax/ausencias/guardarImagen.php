@@ -10,7 +10,7 @@
 
     $row = mysqli_fetch_assoc($result);
 
-    if (($_FILES["file"]["type"] == "image/pjpeg")
+    if (($_FILES["file"]["type"] == "image/jpg")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/png")
         || ($_FILES["file"]["type"] == "image/gif")) {
