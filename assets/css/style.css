@@ -25,3 +25,8 @@ body{
     height: auto;
     width: auto;
 }
+
+.logo-icon{
+    width: 20px;
+    height: 20px;
+}
