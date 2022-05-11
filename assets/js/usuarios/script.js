@@ -127,8 +127,6 @@ const actualizar = () => {
     errorDF("Apellido");
   }else if (usuario == ""){
     errorDF("Usuario");
-  }else if (password == ""){
-    errorDF("Contraseña");
   }else if (rol == 0){
     errorDF("Rol");
   }else{

@@ -1,8 +1,7 @@
 <?php
 
 	//* Validación de campos necesarios
-	if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['usuario']) && 
-	isset($_POST['password']))
+	if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['usuario']))
 	{
 		
 		//* Enlace BD
@@ -17,14 +16,25 @@
 		$estado = $_POST['estado'];
 		$id = $_POST['id'];
 
-		//* Insertar datos
-		$query = "UPDATE usuarios SET 
-        nombre = '$nombre',
-        apellido = '$apellido',
-        usuario = '$usuario',
-        password = '$password',
-        rol_id = $rol,
-        estado = $estado WHERE id = $id";
+		if($password != ""){
+			//* Insertar datos
+			$query = "UPDATE usuarios SET 
+			nombre = '$nombre',
+			apellido = '$apellido',
+			usuario = '$usuario',
+			password = '$password',
+			rol_id = $rol,
+			estado = $estado WHERE id = $id";
+		}else{
+			$query = "UPDATE usuarios SET 
+			nombre = '$nombre',
+			apellido = '$apellido',
+			usuario = '$usuario',
+			rol_id = $rol,
+			estado = $estado WHERE id = $id";
+		}
+
+		
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {
