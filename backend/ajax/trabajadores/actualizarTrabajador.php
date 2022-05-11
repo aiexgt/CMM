@@ -29,6 +29,7 @@
         $estado_laboral = $_POST['estado_laboral'];
         $direccion = $_POST['direccion'];
         $id = $_POST['id'];
+        $observaciones = $_POST['observaciones'];
 
 		//* Insertar datos
 		$query = "UPDATE personas SET 
@@ -49,7 +50,8 @@
         salario = $salario,
         empresa_id = $empresa,
         estado_trabajo_id = $estado_laboral,
-        direccion = '$direccion'
+        direccion = '$direccion',
+        observaciones = '$observaciones'
         WHERE id = $id";
 
 		//* Ejecución Query

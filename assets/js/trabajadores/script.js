@@ -46,6 +46,7 @@ const guardar = () => {
   let direccion = document.querySelector("#direccion").value;
   let estado_laboral = document.querySelector("#estado_laboral").value;
   let empresa = document.querySelector("#empresa").value;
+  let observaciones = document.querySelector("#observaciones").value;
 
   if(cui == ""){
     errorDF("CUI");
@@ -94,7 +95,8 @@ const guardar = () => {
       direccion: direccion,
       empresa: empresa,
       estado_laboral: estado_laboral,
-      id: localStorage.getItem("id")
+      id: localStorage.getItem("id"),
+      observaciones: observaciones
     }, (data, status) => {
       if(data == "1"){
         $("#exampleModal").modal("hide");
@@ -132,6 +134,7 @@ const limpiarCamposN = () => {
   document.querySelector("#direccion").value = "";
   document.querySelector("#estado_laboral").value = 0;
   document.querySelector("#empresa").value = 0;
+  document.querySelector("#observaciones").value = "";
 };
 
 
@@ -227,6 +230,8 @@ const ver = (codigo) => {
       document.querySelector("#uperiodo_prueba").setAttribute("disabled","disabled");
       document.querySelector("#ufecha_finalizacion").value = unit.fecha_finalizacion;
       document.querySelector("#ufecha_finalizacion").setAttribute("disabled","disabled");
+      document.querySelector("#uobservaciones").value = unit.observaciones;
+      document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
 
       $.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {
         document.querySelector("#upais").innerHTML = data;
@@ -291,6 +296,7 @@ const quitarDisabled = () => {
     document.querySelector("#uempresa").removeAttribute("disabled");
     document.querySelector("#uestado_laboral").removeAttribute("disabled");
     document.querySelector("#udireccion").removeAttribute("disabled");
+    document.querySelector("#uobservaciones").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
   
@@ -317,6 +323,7 @@ const actualizar = () => {
   let direccion = document.querySelector("#udireccion").value;
   let estado_laboral = document.querySelector("#uestado_laboral").value;
   let empresa = document.querySelector("#uempresa").value;
+  let observaciones = document.querySelector("#uobservaciones").value;
   if(cui == ""){
     errorDF("CUI");
   }else if(nombre == ""){
@@ -376,7 +383,8 @@ const actualizar = () => {
             empresa: empresa,
             estado_laboral: estado_laboral,
             direccion: direccion,
-            id: id_cambio
+            id: id_cambio,
+            observaciones: observaciones
           },
           (data, status) => {
             if (data == "1") {
