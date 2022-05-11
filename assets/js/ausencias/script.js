@@ -69,6 +69,7 @@ const guardar = () => {
         }
         $("#exampleModal").modal("hide");
         Swal.fire("Excelente!", "El registro de ausencia se ha añadido!", "success");
+        limpiarCampos();
         mostrar();
       }else{
         Swal.fire({
@@ -78,7 +79,7 @@ const guardar = () => {
         })
       }
     })
-    limpiarCampos();
+    
   }
 };
 
