@@ -14,11 +14,14 @@
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/png")
         || ($_FILES["file"]["type"] == "image/gif")) {
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], "../../../img/doc-ausencias/".$_FILES['file']['name'])) {
-            rename("../../../img/doc-ausencias/".$_FILES['file']['name'], "../../../img/doc-ausencias/".$row['id'].".jpg");
-            echo 1;
-        } else {
-            echo 0;
+
+            $rep = move_uploaded_file($_FILES["file"]["tmp_name"], "../../../img/doc-ausencias/".$_FILES['file']['name']);
+        //if (move_uploaded_file($_FILES["file"]["tmp_name"], "../../../img/doc-ausencias/".$_FILES['file']['name'])) {
+          //  rename("../../../img/doc-ausencias/".$_FILES['file']['name'], "../../../img/doc-ausencias/".$row['id'].".jpg");
+            //echo 1;
+        //} else {
+          //  echo 0;
+          echo $rep;
         }
     } else {
            echo 0;
