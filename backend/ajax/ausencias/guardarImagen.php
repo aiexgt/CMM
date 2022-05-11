@@ -10,18 +10,15 @@
 
     $row = mysqli_fetch_assoc($result);
 
-    if (($_FILES["file"]["type"] == "image/jpg")
+    if (($_FILES["file"]["type"] == "image/pjpeg")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/png")
         || ($_FILES["file"]["type"] == "image/gif")) {
-
-            $rep = move_uploaded_file($_FILES["file"]["tmp_name"], "../../../img/doc-ausencias/".$_FILES['file']['name']);
-        //if (move_uploaded_file($_FILES["file"]["tmp_name"], "../../../img/doc-ausencias/".$_FILES['file']['name'])) {
-          //  rename("../../../img/doc-ausencias/".$_FILES['file']['name'], "../../../img/doc-ausencias/".$row['id'].".jpg");
-            //echo 1;
-        //} else {
-          //  echo 0;
-          echo $rep;
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], "../../../img/doc-ausencias/".$_FILES['file']['name'])) {
+            rename("../../../img/doc-ausencias/".$_FILES['file']['name'], "../../../img/doc-ausencias/".$row['id'].".jpg");
+            echo 1;
+        } else {
+            echo 0;
         }
     } else {
            echo 0;
