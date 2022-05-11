@@ -21,7 +21,7 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  limpiarCampos();
+  
   let trabajador = document.getElementById("trabajador").value;
   let fecha = document.getElementById("fecha").value;
   let cantidad = document.getElementById("cantidad").value;
@@ -78,6 +78,7 @@ const guardar = () => {
         })
       }
     })
+    limpiarCampos();
   }
 };
 
