@@ -18,9 +18,9 @@
             rename("../../../img/logo-empresas/".$_FILES['file']['name'], "../../../img/logo-empresas/".$row['id'].".jpg");
             echo 1;
         } else {
-            echo 2;
+            echo 0;
         }
     } else {
-           echo 3;
+           echo 0;
     }
 ?>
