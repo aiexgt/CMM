@@ -11,17 +11,15 @@
 		$fecha = $_POST['fecha'];
         $cantidad = $_POST['cantidad'];
 		$fecha_fin = $_POST['fecha_fin'];
-		$asunto = $_POST['asunto'];
-		$descripcion = $_POST['descripcion'];
+		$observaciones = $_POST['observaciones'];
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "UPDATE ausencias SET 
+		$query = "UPDATE vacaciones SET 
         fecha_inicio = '$fecha',
 		cantidad = $cantidad,
 		fecha_fin = '$fecha_fin',
-		asunto = '$asunto',
-		descripcion = '$descripcion' WHERE id = $id";
+		observaciones = '$observaciones' WHERE id = $id";
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

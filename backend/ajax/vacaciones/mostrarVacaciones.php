@@ -6,7 +6,6 @@
 				<thead>
 				<tr>
 					<th scope="col">No.</th>
-					<th scope="col">Asunto</th>
 					<th scope="col">Trabajador</th>
 					<th scope="col">Fecha</th>
 					<th scope="col">Usuario</th>
@@ -16,10 +15,10 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT a.id, a.asunto, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
+	$query = "SELECT a.id, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
 	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
     a.fecha_inicio, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
-	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM ausencias a ORDER BY a.id ASC LIMIT 15";
+	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM vacaciones a ORDER BY a.id ASC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
@@ -34,7 +33,6 @@
     		$data .= '<tr>
 				<td><b>'.$number.'</b></td>
 				<td class="id'.$number.'" hidden>'.$row['id'].'</td>
-				<td class="asunto'.$number.'">'.$row['asunto'].'</td>
                 <td class="persona'.$number.'">'.$row['persona']." ".$row['apersona'].'</td>
                 <td class="fecha'.$number.'">'.$row['fecha_inicio'].'</td>
                 <td class="usuario'.$number.'">'.$row['usuario']." ".$row['ausuario'].'</td>';		
