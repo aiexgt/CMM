@@ -8,11 +8,14 @@ if(isset($_POST['codigo']) && isset($_POST['codigo']) != "")
 
     //* Recepción variables
     $codigo = $_POST['codigo'];
+    
 
     $query = "DELETE FROM ausencias WHERE id = $codigo";
     if (!$result = mysqli_query($con, $query)) {
             exit(mysqli_error($con));
     }
+
+    unlink("../../../img/doc-ausencias/".$codigo.".jpg");
 
     //* Imprimir resultado
     echo $result;
