@@ -78,6 +78,7 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
+    document.getElementById("empresa").value = 0;
     document.getElementById("trabajador").value = 0;
     document.getElementById("fecha").value = "";
     document.getElementById("cantidad").value = null;
