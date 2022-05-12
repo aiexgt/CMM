@@ -8,13 +8,12 @@
 		$fecha = $_POST['fecha'];
 		$cantidad = $_POST['cantidad'];
 		$fecha_fin = $_POST['fecha_fin'];
-		$asunto = $_POST['asunto'];
-		$descripcion = $_POST['descripcion'];
+		$observaciones = $_POST['observaciones'];
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "INSERT INTO ausencias (persona_id, fecha_inicio, cantidad, fecha_fin, asunto, descripcion, usuario_id) 
-		VALUES($trabajador, '$fecha', $cantidad, '$fecha_fin', '$asunto', '$descripcion', $id)";
+		$query = "INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id) 
+		VALUES($trabajador, '$fecha', $cantidad, '$fecha_fin', '$observaciones', $id)";
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

@@ -26,24 +26,18 @@ const guardar = () => {
   let fecha = document.getElementById("fecha").value;
   let cantidad = document.getElementById("cantidad").value;
   let fecha_fin = document.getElementById("fecha_fin").value;
-  let asunto = document.getElementById("asunto").value;
-  let descripcion = document.getElementById("descripcion").value;
+  let observaciones = document.getElementById("observaciones").value;
   if(trabajador == 0){
     errorDF("Trabajador");
   }else if(fecha == ""){
-    errorDF("Fecha")
-  }else if(asunto == ""){
-    errorDF("Asunto")
-  }else if(descripcion == ""){
-    errorDF("Descripción")
+    errorDF("Fecha");
   }else{
-    $.post("backend/ajax/ausencias/guardarAusencia.php",{
+    $.post("backend/ajax/vacaciones/guardarVacacion.php",{
       trabajador: trabajador,
       fecha: fecha,
       cantidad: cantidad,
       fecha_fin: fecha_fin,
-      asunto: asunto,
-      descripcion: descripcion,
+      observaciones: observaciones,
       id: localStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
@@ -53,7 +47,7 @@ const guardar = () => {
           formData.append("file", files);
   
           $.ajax({
-            url: "backend/ajax/ausencias/guardarImagen.php",
+            url: "backend/ajax/vacaciones/guardarImagen.php",
             type: "post",
             data: formData,
             contentType: false,
@@ -68,7 +62,7 @@ const guardar = () => {
           });
         }
         $("#exampleModal").modal("hide");
-        Swal.fire("Excelente!", "El registro de ausencia se ha añadido!", "success");
+        Swal.fire("Excelente!", "El registro de vacaciones se ha añadido!", "success");
         limpiarCampos();
         mostrar();
       }else{
@@ -88,15 +82,14 @@ const limpiarCampos = () => {
     document.getElementById("fecha").value = "";
     document.getElementById("cantidad").value = null;
     document.getElementById("fecha_fin").value = "";
-    document.getElementById("asunto").value = "";
-    document.getElementById("descripcion").value = "";
+    document.getElementById("observaciones").value = "";
     document.getElementById("image").value = "";
 };
 
 const ver = (codigo) => {
   let id = document.querySelector(`.id${codigo}`).textContent;
   $.post(
-    "backend/ajax/ausencias/buscarDetalles.php",
+    "backend/ajax/vacaciones/buscarDetalles.php",
     {
       id: id,
     },
@@ -111,10 +104,8 @@ const ver = (codigo) => {
       document.querySelector("#ucantidad").setAttribute("disabled","disabled");
       document.querySelector("#ufecha_fin").value = unit.fecha_fin;
       document.querySelector("#ufecha_fin").setAttribute("disabled","disabled");
-      document.querySelector("#uasunto").value = unit.asunto;
-      document.querySelector("#uasunto").setAttribute("disabled","disabled");
-      document.querySelector("#udescripcion").value = unit.descripcion;
-      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
+      document.querySelector("#uobservaciones").value = unit.observaciones;
+      document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -125,8 +116,7 @@ const quitarDisabled = () => {
     document.querySelector("#ufecha").removeAttribute("disabled","disabled");
     document.querySelector("#ucantidad").removeAttribute("disabled","disabled");
     document.querySelector("#ufecha_fin").removeAttribute("disabled","disabled");
-    document.querySelector("#uasunto").removeAttribute("disabled","disabled");
-    document.querySelector("#udescripcion").removeAttribute("disabled","disabled");
+    document.querySelector("#uobservaciones").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -136,24 +126,18 @@ const actualizar = () => {
   let fecha = document.getElementById("ufecha").value;
   let cantidad = document.getElementById("ucantidad").value;
   let fecha_fin = document.getElementById("ufecha_fin").value;
-  let asunto = document.getElementById("uasunto").value;
-  let descripcion = document.getElementById("udescripcion").value;
+  let descripcion = document.getElementById("uobservaciones").value;
   if(trabajador == 0){
     errorDF("Trabajador");
   }else if(fecha == ""){
     errorDF("Fecha")
-  }else if(asunto == ""){
-    errorDF("Asunto")
-  }else if(descripcion == ""){
-    errorDF("Descripción")
   }else{
-    $.post("backend/ajax/ausencias/actualizarAusencia.php",{
+    $.post("backend/ajax/vacaciones/actualizarVacacion.php",{
       trabajador: trabajador,
       fecha: fecha,
       cantidad: cantidad,
       fecha_fin: fecha_fin,
-      asunto: asunto,
-      descripcion: descripcion,
+      observaciones: observaciones,
       id: id_cambio
     }, (data, status) => {
       if (data == "1") {
@@ -184,7 +168,7 @@ const eliminar = (codigo) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "backend/ajax/ausencias/eliminarAusencia.php",
+        "backend/ajax/vacaciones/eliminarVacacion.php",
         {
           codigo: id,
         },
@@ -218,12 +202,12 @@ btnGuardar.addEventListener("click", () => {
 });
 
 btnVer.addEventListener("click", () => {
-  window.open(`img/doc-ausencias/${id_cambio}.pdf`,'_blank')
+  window.open(`img/doc-vacaciones/${id_cambio}.pdf`,'_blank')
 });
 
 busqueda.addEventListener("change", () => {
   $.post(
-    "backend/ajax/ausencias/buscarAusencias.php",
+    "backend/ajax/vacaciones/buscarVacacion.php",
     {
       busqueda: busqueda.value,
     },
@@ -233,14 +217,14 @@ busqueda.addEventListener("change", () => {
   );
 });
 
-$.post("backend/ajax/ausencias/mostrarEmpresas.php", {}, (data, status) => {
+$.post("backend/ajax/vacaciones/mostrarEmpresas.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
   //document.querySelector("#uempresas").innerHTML = data;
 });
 
 document.querySelector("#empresa").addEventListener("change",() => {
   let empresa = document.querySelector("#empresa").value;
-  $.post("backend/ajax/ausencias/mostrarTrabajadores.php", {
+  $.post("backend/ajax/vacaciones/mostrarTrabajadores.php", {
     empresa: empresa
   }, (data, status) => {
     document.querySelector("#trabajador").innerHTML = data;
