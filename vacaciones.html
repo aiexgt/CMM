@@ -125,7 +125,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-3">
-              <label for="" class="form-label">Empresa</label>
+              <label for="" class="form-label is-required">Empresa</label>
               <select
                 class="form-select"
                 id="empresa"
@@ -134,7 +134,7 @@
               </select> <br>
             </div>
             <div class="col-sm-5">
-              <label for="" class="form-label">Trabajador</label>
+              <label for="" class="form-label is-required">Trabajador</label>
               <select
                 class="form-select"
                 id="trabajador"
@@ -150,7 +150,7 @@
                 method="post"
                 enctype="multipart/form-data"
               >
-                <label for="formFile" class="form-label">Comprobante</label>
+                <label for="formFile" class="form-label is-required">Comprobante</label>
                 <input
                   class="form-control"
                   type="file"
@@ -163,7 +163,7 @@
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha</label>
+              <label for="" class="form-label is-required">Fecha</label>
               <input
                 type="date"
                 class="form-control"
@@ -174,7 +174,7 @@
               <br>
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Cantidad Días</label>
+              <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
                 class="form-control"
@@ -185,7 +185,7 @@
               <br>
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha Fin</label>
+              <label for="" class="form-label is-required">Fecha Fin</label>
               <input
                 type="date"
                 class="form-control"
@@ -199,7 +199,7 @@
           <div class="row">
             <div class="col-sm-12">
               <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
-              <textarea class="form-control" id="observaciones" rows="3"></textarea>
+              <textarea class="form-control" id="observaciones" rows="3" maxlength="300"></textarea>
               <br />
             </div>
           </div>
@@ -241,7 +241,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-8">
-              <label for="" class="form-label">Trabajador</label>
+              <label for="" class="form-label is-required">Trabajador</label>
               <input
                 type="text"
                 class="form-control"
@@ -251,14 +251,14 @@
               /> <br>
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Comprobante</label><br>
+              <label for="" class="form-label is-required">Comprobante</label><br>
               <button class="btn btn-success" id="verComprobante">Ver</button>
               <br />
             </div>
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha</label>
+              <label for="" class="form-label is-required">Fecha</label>
               <input
                 type="date"
                 class="form-control"
@@ -269,7 +269,7 @@
               <br>
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Cantidad Días</label>
+              <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
                 class="form-control"
@@ -280,7 +280,7 @@
               <br>
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha Fin</label>
+              <label for="" class="form-label is-required">Fecha Fin</label>
               <input
                 type="date"
                 class="form-control"
@@ -294,7 +294,7 @@
           <div class="row">
             <div class="col-sm-12">
               <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
-              <textarea class="form-control" id="uobservaciones" rows="3"></textarea>
+              <textarea class="form-control" id="uobservaciones" maxlength="300" rows="3"></textarea>
               <br />
             </div>
           </div>

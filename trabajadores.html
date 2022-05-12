@@ -133,6 +133,7 @@
                   placeholder="Cui"
                   id="cui"
                   aria-label="Cui"
+                  maxlength="13"
                 />
               </div>
               <div class="col-sm-4">
@@ -143,6 +144,7 @@
                   placeholder="Nombre"
                   id="nombre"
                   aria-label="Nombre"
+                  maxlength="100"
                 />
               </div>
               <div class="col-sm-4">
@@ -153,6 +155,7 @@
                   placeholder="Apellido"
                   id="apellido"
                   aria-label="Apellido"
+                  maxlength="100"
                 />
                 <br />
               </div>
@@ -204,13 +207,14 @@
                 />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label is-required">Numero IGSS</label>
+                <label for="" class="form-label">Numero IGSS</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Número IGSS"
                   id="numero_igss"
                   aria-label="Número IGSS"
+                  maxlength="35"
                 />
               </div>
               <div class="col-sm-4">
@@ -232,6 +236,7 @@
                   placeholder="Teléfono"
                   id="telefono"
                   aria-label="Teléfono"
+                  maxlength="20"
                 />
               </div>
               <div class="col-sm-4">
@@ -242,6 +247,7 @@
                   placeholder="Celular"
                   id="celular"
                   aria-label="Celular"
+                  maxlength="20"
                 />
               </div>
               <div class="col-sm-4">
@@ -252,6 +258,7 @@
                   placeholder="Correo"
                   id="correo"
                   aria-label="Correo"
+                  maxlength="100"
                 />
                 <br />
               </div>
@@ -299,7 +306,7 @@
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">Salario</label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
                   placeholder="Salario"
                   id="salario"
@@ -308,7 +315,7 @@
                 <br />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Empresa</label>
+                <label for="" class="form-label is-required">Empresa</label>
                 <select
                   class="form-select"
                   id="empresa"
@@ -317,7 +324,7 @@
                 <br />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Estado Laboral</label>
+                <label for="" class="form-label is-required">Estado Laboral</label>
                 <select
                   class="form-select"
                   id="estado_laboral"
@@ -335,6 +342,7 @@
                   placeholder="Dirección"
                   id="direccion"
                   aria-label="Dirección"
+                  maxlength="300"
                 />
                 <br />
               </div>
@@ -342,7 +350,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <label for="observaciones" class="form-label">Observaciones</label>
-                <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                <textarea class="form-control" id="observaciones" rows="3" maxlength="300"></textarea>
                 <br />
               </div>
             </div>
@@ -384,40 +392,43 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-sm-4">
-                <label for="" class="form-label">CUI</label>
+                <label for="" class="form-label is-required">CUI</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Cui"
                   id="ucui"
                   aria-label="Cui"
+                  maxlength="13"
                 />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Nombre</label>
+                <label for="" class="form-label is-required">Nombre</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Nombre"
                   id="unombre"
                   aria-label="Nombre"
+                  maxlength="100"
                 />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Apellido</label>
+                <label for="" class="form-label is-required">Apellido</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Apellido"
                   id="uapellido"
                   aria-label="Apellido"
+                  maxlength="100"
                 />
                 <br />
               </div>
             </div>
             <div class="row">
               <div class="col-sm-4">
-                <label for="" class="form-label">Estado Civil</label>
+                <label for="" class="form-label is-required">Estado Civil</label>
                 <select
                   class="form-select"
                   id="uestado_civil"
@@ -425,7 +436,7 @@
                 ></select>
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Fecha Nacimiento</label>
+                <label for="" class="form-label is-required">Fecha Nacimiento</label>
                 <input
                   type="date"
                   class="form-control"
@@ -435,7 +446,7 @@
                 />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Fecha Inicio</label>
+                <label for="" class="form-label is-required">Fecha Inicio</label>
                 <input
                   type="date"
                   class="form-control"
@@ -447,7 +458,7 @@
             </div>
             <div class="row">
               <div class="col-sm-4">
-                <label for="" class="form-label">Periodo de prueba</label>
+                <label for="" class="form-label is-required">Periodo de prueba</label>
                 <input
                   type="date"
                   class="form-control"
@@ -465,7 +476,7 @@
                 />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Días Laborados</label>
+                <label for="" class="form-label is-required">Días Laborados</label>
                 <input
                   type="number"
                   class="form-control"
@@ -494,10 +505,11 @@
                   placeholder="Número IGSS"
                   id="unumero_igss"
                   aria-label="Número IGSS"
+                  maxlength="35"
                 />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Puesto</label>
+                <label for="" class="form-label is-required">Puesto</label>
                 <select
                   class="form-select"
                   id="upuesto"
@@ -508,13 +520,14 @@
             </div>
             <div class="row">
               <div class="col-sm-4">
-                <label for="" class="form-label">Teléfono</label>
+                <label for="" class="form-label is-required">Teléfono</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Teléfono"
                   id="utelefono"
                   aria-label="Teléfono"
+                  maxlength="20"
                 />
               </div>
               <div class="col-sm-4">
@@ -525,6 +538,7 @@
                   placeholder="Celular"
                   id="ucelular"
                   aria-label="Celular"
+                  maxlength="20"
                 />
               </div>
               <div class="col-sm-4">
@@ -535,13 +549,14 @@
                   placeholder="Correo"
                   id="ucorreo"
                   aria-label="Correo"
+                  maxlength="100"
                 />
                 <br />
               </div>
             </div>
             <div class="row">
               <div class="col-sm-4">
-                <label for="" class="form-label">País</label>
+                <label for="" class="form-label is-required">País</label>
                 <select
                   class="form-select"
                   id="upais"
@@ -551,7 +566,7 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Estado o Departamento</label>
+                <label for="" class="form-label is-required">Estado o Departamento</label>
                 <select
                   class="form-select"
                   id="udepartamento"
@@ -562,7 +577,7 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Ciudad o Municipio</label>
+                <label for="" class="form-label is-required">Ciudad o Municipio</label>
                 <select
                   class="form-select"
                   id="umunicipio"
@@ -578,7 +593,7 @@
               <div class="col-sm-4">
                 <label for="" class="form-label">Salario</label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
                   placeholder="Salario"
                   id="usalario"
@@ -587,7 +602,7 @@
                 <br />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Empresa</label>
+                <label for="" class="form-label is-required">Empresa</label>
                 <select
                   class="form-select"
                   id="uempresa"
@@ -596,7 +611,7 @@
                 <br />
               </div>
               <div class="col-sm-4">
-                <label for="" class="form-label">Estado Laboral</label>
+                <label for="" class="form-label is-required">Estado Laboral</label>
                 <select
                   class="form-select"
                   id="uestado_laboral"
@@ -607,13 +622,14 @@
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <label for="" class="form-label">Dirección</label>
+                <label for="" class="form-label is-required">Dirección</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Dirección"
                   id="udireccion"
                   aria-label="Dirección"
+                  maxlength="300"
                 />
                 <br />
               </div>
@@ -621,7 +637,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <label for="uobservaciones" class="form-label">Observaciones</label>
-                <textarea class="form-control" id="uobservaciones" rows="3"></textarea>
+                <textarea class="form-control" id="uobservaciones" rows="3" maxlength="300"></textarea>
                 <br />
               </div>
             </div>
