@@ -103,7 +103,7 @@ const ver = (codigo) => {
     function (data, status) {
       var unit = JSON.parse(data);
       id_cambio = unit.id;
-      document.querySelector("#utrabajador").value = unit.persona_id;
+      document.querySelector("#utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
       document.querySelector("#utrabajador").setAttribute("disabled","disabled");
       document.querySelector("#ufecha").value = unit.fecha_inicio;
       document.querySelector("#ufecha").setAttribute("disabled","disabled");
@@ -122,7 +122,6 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#utrabajador").removeAttribute("disabled","disabled");
     document.querySelector("#ufecha").removeAttribute("disabled","disabled");
     document.querySelector("#ucantidad").removeAttribute("disabled","disabled");
     document.querySelector("#ufecha_fin").removeAttribute("disabled","disabled");

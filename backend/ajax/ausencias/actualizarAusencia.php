@@ -1,14 +1,13 @@
 <?php
 
 	//* Validación de campos necesarios
-	if(isset($_POST['trabajador']))
+	if(isset($_POST['id']))
 	{
 		
 		//* Enlace BD
 		include("../../conexion.php");
 
 		//* Recibir variables
-        $trabajador = $_POST['trabajador'];
 		$fecha = $_POST['fecha'];
         $cantidad = $_POST['cantidad'];
 		$fecha_fin = $_POST['fecha_fin'];
@@ -18,7 +17,6 @@
 
 		//* Insertar datos
 		$query = "UPDATE ausencias SET 
-        persona_id = $trabajador,
         fecha_inicio = '$fecha',
 		cantidad = $cantidad,
 		fecha_fin = '$fecha_fin',
