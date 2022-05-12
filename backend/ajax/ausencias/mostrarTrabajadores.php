@@ -2,9 +2,12 @@
 	//* Enlace BD
 	include("../../conexion.php");
 
+	$empresa = $_POST['empresa'];
+
 	$data = '<option value="0" selected>Seleccione Trabajador</option>';
 
-	$query = "SELECT p.id, p.nombre, p.apellido, (SELECT e.nombre FROM empresas e WHERE e.id = p.empresa_id) AS empresa FROM personas p ORDER BY p.id ASC";
+	$query = "SELECT p.id, p.nombre, p.apellido, (SELECT e.nombre FROM empresas e WHERE e.id = p.empresa_id) AS empresa FROM personas p 
+	WHERE p.empresa_id = $empresa ORDER BY p.id ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

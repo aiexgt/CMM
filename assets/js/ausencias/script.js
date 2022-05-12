@@ -234,10 +234,20 @@ busqueda.addEventListener("change", () => {
   );
 });
 
-$.post("backend/ajax/ausencias/mostrarTrabajadores.php", {}, (data, status) => {
-  document.querySelector("#trabajador").innerHTML = data;
-  document.querySelector("#utrabajador").innerHTML = data;
+$.post("backend/ajax/ausencias/mostrarEmpresas.php", {}, (data, status) => {
+  document.querySelector("#empresa").innerHTML = data;
+  //document.querySelector("#uempresas").innerHTML = data;
 });
+
+document.querySelector("#empresa").addEventListener("change",() => {
+  let empresa = document.querySelector("#empresa").value;
+  $.post("backend/ajax/ausencias/mostrarTrabajadores.php", {
+    empresa: empresa
+  }, (data, status) => {
+    document.querySelector("#trabajador").innerHTML = data;
+    document.querySelector("#trabajador").removeAttribute("disabled");
+  });
+})
 
 $(document).ready(() => {
   mostrar();
