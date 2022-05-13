@@ -24,13 +24,22 @@ const guardar = () => {
   
   let trabajador = document.getElementById("trabajador").value;
   let fecha = document.getElementById("fecha").value;
-  let cantidad = document.getElementById("cantidad").value;
+  let cantidad = parseInt(document.getElementById("cantidad").value);
+  let disponibles = parseInt(document.querySelector("#disponibles").value);
   let fecha_fin = document.getElementById("fecha_fin").value;
   let observaciones = document.getElementById("observaciones").value;
   if(trabajador == 0){
     errorDF("Trabajador");
   }else if(fecha == ""){
     errorDF("Fecha");
+  }else if(cantidad <= 0){
+    errorDF("Cantidad Valida");
+  }else if(cantidad > disponibles){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `Días disponibles insuficientes`,
+    });
   }else{
     $.post("backend/ajax/vacaciones/guardarVacacion.php",{
       trabajador: trabajador,
@@ -38,6 +47,7 @@ const guardar = () => {
       cantidad: cantidad,
       fecha_fin: fecha_fin,
       observaciones: observaciones,
+      disponibles: disponibles,
       id: localStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
@@ -85,6 +95,7 @@ const limpiarCampos = () => {
     document.getElementById("fecha_fin").value = "";
     document.getElementById("observaciones").value = "";
     document.getElementById("image").value = "";
+    document.getElementById("disponibles").value = 0;
 };
 
 const ver = (codigo) => {
@@ -107,6 +118,21 @@ const ver = (codigo) => {
       document.querySelector("#ufecha_fin").setAttribute("disabled","disabled");
       document.querySelector("#uobservaciones").value = unit.observaciones;
       document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
+
+      $.post("backend/ajax/vacaciones/consultarVacaciones.php", {
+        id: unit.persona_id
+      }, (data, status) => {
+        var unit = JSON.parse(data);
+        let dias = parseInt(calculardiasDiscount(unit.fecha_inicio));
+        let dias_disponibles = 0;
+        while(dias > 365){
+          dias_disponibles += 15;
+          dias -= 365;
+        }
+        document.querySelector("#udisponibles").value = (dias_disponibles - parseInt(unit.vacaciones_ocupadas));
+      });
+      
+
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -155,6 +181,18 @@ const actualizar = () => {
     })
   }
 };
+
+const calculardiasDiscount = (fecha_inicio) => {
+  var timeStart = new Date(fecha_inicio);
+
+    var actualDate = new Date();
+    if (actualDate > timeStart)
+    {
+        var diff = actualDate.getTime() - timeStart.getTime();
+        let dias_calculados = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+        return dias_calculados;
+    }
+}
 
 const eliminar = (codigo) => {
   let id = document.querySelector(`.id${codigo}`).textContent;
@@ -222,6 +260,22 @@ $.post("backend/ajax/vacaciones/mostrarEmpresas.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
   //document.querySelector("#uempresas").innerHTML = data;
 });
+
+document.querySelector("#trabajador").addEventListener("change", () => {
+  let trabajador = document.querySelector("#trabajador").value;
+  $.post("backend/ajax/vacaciones/consultarVacaciones.php", {
+    id: trabajador
+  }, (data, status) => {
+    var unit = JSON.parse(data);
+    let dias = parseInt(calculardiasDiscount(unit.fecha_inicio));
+    let dias_disponibles = 0;
+    while(dias > 365){
+      dias_disponibles += 15;
+      dias -= 365;
+    }
+    document.querySelector("#disponibles").value = (dias_disponibles - parseInt(unit.vacaciones_ocupadas));
+  });
+})
 
 document.querySelector("#empresa").addEventListener("change",() => {
   let empresa = document.querySelector("#empresa").value;

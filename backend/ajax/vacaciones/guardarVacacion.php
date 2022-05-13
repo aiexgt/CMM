@@ -7,6 +7,7 @@
 		$trabajador = $_POST['trabajador'];
 		$fecha = $_POST['fecha'];
 		$cantidad = $_POST['cantidad'];
+		$disponibles = $_POST['disponibles'];
 		$fecha_fin = $_POST['fecha_fin'];
 		$observaciones = $_POST['observaciones'];
         $id = $_POST['id'];
@@ -20,6 +21,24 @@
 	        exit(mysqli_error($con));
 	    }
 
+		$query = "SELECT vacaciones_ocupadas FROM personas WHERE id = $trabajador";
+		if (!$result = mysqli_query($con, $query)) {
+	        exit(mysqli_error($con));
+	    }
+		$row = mysqli_fetch_assoc($result);
+
+		$ocupadas = $cantidad + $row['vacaciones_ocupadas'];
+
+		$disponibles = $disponibles - $cantidad;
+
+		$query = "UPDATE personas SET 
+        vacaciones_disponibles = $disponibles,
+		vacaciones_ocupadas = $ocupadas WHERE id = $trabajador";
+		
+		//* Ejecución Query
+		if (!$result = mysqli_query($con, $query)) {
+	        exit(mysqli_error($con));
+	    }
 		//* Imprimir datos
 	    echo $result;
 ?>
