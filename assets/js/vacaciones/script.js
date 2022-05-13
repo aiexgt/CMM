@@ -140,9 +140,6 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#ufecha").removeAttribute("disabled","disabled");
-    document.querySelector("#ucantidad").removeAttribute("disabled","disabled");
-    document.querySelector("#ufecha_fin").removeAttribute("disabled","disabled");
     document.querySelector("#uobservaciones").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
