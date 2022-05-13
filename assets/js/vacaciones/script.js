@@ -221,6 +221,24 @@ const eliminar = (codigo) => {
   });
 };
 
+const calcularDias = () => {
+  var timeStart = new Date(document.getElementById("fecha").value);
+  var timeEnd = new Date(document.querySelector("#fecha_fin").value);
+    if (timeEnd > timeStart)
+    {
+        var diff = timeEnd.getTime() - timeStart.getTime();
+        document.getElementById("cantidad").value = Math.round(diff / (1000 * 60 * 60 * 24)) + 1;
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Fecha Inicial mayor a la Final`,
+      });
+      document.querySelector("#fecha").value = "";
+      document.querySelector("#fecha_fin").value = "";
+    }
+}
+
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
 })
@@ -253,11 +271,6 @@ busqueda.addEventListener("change", () => {
   );
 });
 
-$.post("backend/ajax/vacaciones/mostrarEmpresas.php", {}, (data, status) => {
-  document.querySelector("#empresa").innerHTML = data;
-  //document.querySelector("#uempresas").innerHTML = data;
-});
-
 document.querySelector("#trabajador").addEventListener("change", () => {
   let trabajador = document.querySelector("#trabajador").value;
   $.post("backend/ajax/vacaciones/consultarVacaciones.php", {
@@ -283,6 +296,23 @@ document.querySelector("#empresa").addEventListener("change",() => {
     document.querySelector("#trabajador").removeAttribute("disabled");
   });
 })
+
+document.querySelector("#fecha").addEventListener("change", () => {
+  if(document.querySelector("#fecha_fin").value != ""){
+    calcularDias();
+  }
+})
+
+document.querySelector("#fecha_fin").addEventListener("change", () => {
+  if(document.querySelector("#fecha").value != ""){
+    calcularDias();
+  }
+})
+
+$.post("backend/ajax/vacaciones/mostrarEmpresas.php", {}, (data, status) => {
+  document.querySelector("#empresa").innerHTML = data;
+  //document.querySelector("#uempresas").innerHTML = data;
+});
 
 $(document).ready(() => {
   mostrar();
