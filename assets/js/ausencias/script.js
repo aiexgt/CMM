@@ -202,6 +202,24 @@ const eliminar = (codigo) => {
   });
 };
 
+const calcularDias = () => {
+  var timeStart = new Date(document.getElementById("fecha").value);
+  var timeEnd = new Date(document.querySelector("#fecha_fin").value);
+    if (timeEnd > timeStart)
+    {
+        var diff = timeEnd.getTime() - timeStart.getTime();
+        document.getElementById("cantidad").value = Math.round(diff / (1000 * 60 * 60 * 24)) + 1;
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Fecha Inicial mayor a la Final`,
+      });
+      document.querySelector("#fecha").value = "";
+      document.querySelector("#fecha_fin").value = "";
+    }
+}
+
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
 })
@@ -233,6 +251,18 @@ busqueda.addEventListener("change", () => {
     }
   );
 });
+
+document.querySelector("#fecha").addEventListener("change", () => {
+  if(document.querySelector("#fecha_fin").value != ""){
+    calcularDias();
+  }
+})
+
+document.querySelector("#fecha_fin").addEventListener("change", () => {
+  if(document.querySelector("#fecha").value != ""){
+    calcularDias();
+  }
+})
 
 $.post("backend/ajax/ausencias/mostrarEmpresas.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
