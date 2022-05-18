@@ -1,16 +1,23 @@
+//* Declaración de variables
+
 const btnNuevo = document.querySelector("#btn-nuevo");
 const btnGuardar = document.querySelector("#btn-guardar");
 const btnEditar = document.querySelector("#btn-editar");
 const btnActualizar = document.querySelector("#btn-actualizar");
-let busqueda = document.querySelector("#busqueda");
 let id_cambio;
-
 let selectPais = document.querySelector("#pais");
 let selectDepartamento = document.querySelector("#departamento");
 let selectMunicipio = document.querySelector("#municipio");
 let uselectPais = document.querySelector("#upais");
 let uselectDepartamento = document.querySelector("#udepartamento");
 let uselectMunicipio = document.querySelector("#umunicipio");
+
+let bempresa = document.querySelector("#bempresa");
+let bpuesto = document.querySelector("#bpuesto");
+let busqueda = document.querySelector("#busqueda");
+
+
+//* Funciones
 
 const mostrar = () => {
   $.post("backend/ajax/trabajadores/mostrarTrabajadores.php", {}, (data, status) => {
@@ -137,8 +144,6 @@ const limpiarCamposN = () => {
   document.querySelector("#observaciones").value = "";
 };
 
-
-
 const calculardiasDiscount = () => {
   var timeStart = new Date(document.getElementById("ufecha_inicio").value);
   if((document.getElementById("ufecha_finalizacion").value) != ""){
@@ -156,7 +161,7 @@ const calculardiasDiscount = () => {
         document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
     }
   }
-}
+};
 
 const sumarMeses = () => {
   var d = new Date(document.querySelector("#ufecha_inicio").value);
@@ -176,7 +181,7 @@ const sumarMeses = () => {
   let strDate = anio + "-" + mes + "-" + dia;
   document.getElementById("uperiodo_prueba").value = strDate;
 
-}
+};
 
 const ver = (codigo) => {
   let id = document.querySelector(`.id${codigo}`).textContent;
@@ -438,22 +443,77 @@ const eliminar = (codigo) => {
   });
 };
 
+const buscar = () => {
+  let tipoBusqueda = "";
+  if(busqueda.value != ""){
+    tipoBusqueda += "t";
+  }
+  if(bempresa.value != 0){
+    tipoBusqueda += "e";
+  }
+  if(bpuesto.value != 0){
+    tipoBusqueda += "p";
+  }
 
-btnNuevo.addEventListener("click", () => {
-  limpiarCamposN();
-})
+  if(tipoBusqueda == "t"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "e"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      empresa: bempresa.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "p"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "te"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value,
+      empresa: bempresa.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "tp"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "ep"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      empresa: bempresa.value,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "tep"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value,
+      empresa: bempresa.value,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else{
+    mostrar();
+  }
 
-btnActualizar.addEventListener("click", () => {
-  actualizar();
-});
-
-btnEditar.addEventListener("click", () => {
-  quitarDisabled();
-});
-
-btnGuardar.addEventListener("click", () => {
-  guardar();
-});
+}
 
 $.post("backend/ajax/trabajadores/mostrarEstadoCivil.php", {}, (data, status) => {
   document.querySelector("#estado_civil").innerHTML = data;
@@ -463,6 +523,7 @@ $.post("backend/ajax/trabajadores/mostrarEstadoCivil.php", {}, (data, status) =>
 $.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
   document.querySelector("#puesto").innerHTML = data;
   document.querySelector("#upuesto").innerHTML = data;
+  document.querySelector("#bpuesto").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarEstadoLaboral.php", {}, (data, status) => {
@@ -473,8 +534,8 @@ $.post("backend/ajax/trabajadores/mostrarEstadoLaboral.php", {}, (data, status) 
 $.post("backend/ajax/trabajadores/mostrarEmpresa.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
   document.querySelector("#uempresa").innerHTML = data;
+  document.querySelector("#bempresa").innerHTML = data;
 });
-
 
 $.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {
   selectPais.innerHTML = data;
@@ -497,6 +558,22 @@ selectPais.addEventListener("change", () => {
       selectMunicipio.value = 0;
     }
   );
+});
+
+btnNuevo.addEventListener("click", () => {
+  limpiarCamposN();
+})
+
+btnActualizar.addEventListener("click", () => {
+  actualizar();
+});
+
+btnEditar.addEventListener("click", () => {
+  quitarDisabled();
+});
+
+btnGuardar.addEventListener("click", () => {
+  guardar();
 });
 
 selectDepartamento.addEventListener("change", () => {
@@ -541,15 +618,15 @@ uselectDepartamento.addEventListener("change", () => {
 });
 
 busqueda.addEventListener("keyup", () => {
-  $.post(
-    "backend/ajax/trabajadores/buscarTrabajador.php",
-    {
-      busqueda: busqueda.value,
-    },
-    (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
-    }
-  );
+  buscar();
+});
+
+bempresa.addEventListener("change", () => {
+  buscar();
+});
+
+bpuesto.addEventListener("change", () => {
+  buscar();
 });
 
 $(document).ready(() => {
