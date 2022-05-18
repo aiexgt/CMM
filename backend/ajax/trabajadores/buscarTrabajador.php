@@ -2,8 +2,61 @@
 	//* Enlace BD
 	include("../../conexion.php");
 
-    $busqueda = $_POST['busqueda'];
+	$tipo = $_POST['tipo'];
 
+	if($tipo == "t"){
+		$busqueda = $_POST['busqueda'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%' ORDER BY u.nombre, u.puesto_id ASC";
+	}else if($tipo == "e"){
+		$empresa = $_POST['empresa'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.empresa_id = $empresa ORDER BY u.nombre, u.puesto_id ASC";
+	}else if($tipo == "p"){
+		$puesto = $_POST['puesto'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.puesto_id = $puesto ORDER BY u.nombre, u.puesto_id ASC";
+	}else if($tipo == "te"){
+		$busqueda = $_POST['busqueda'];
+		$empresa = $_POST['empresa'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.empresa_id = $empresa AND (u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%') 
+				  ORDER BY u.nombre, u.puesto_id ASC";
+	}else if($tipo == "tp"){
+		$busqueda = $_POST['busqueda'];
+		$puesto = $_POST['puesto'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.puesto_id = $puesto AND (u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%') 
+				  ORDER BY u.nombre, u.puesto_id ASC";
+	}else if($tipo == "ep"){
+		$puesto = $_POST['puesto'];
+		$empresa = $_POST['empresa'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.empresa_id = $empresa AND u.puesto_id = $puesto ORDER BY u.nombre, u.puesto_id ASC";
+	}else if($tipo == "tep"){
+		$busqueda = $_POST['busqueda'];
+		$empresa = $_POST['empresa'];
+		$puesto = $_POST['puesto'];
+
+		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM personas u WHERE u.empresa_id = $empresa AND u.puesto_id = $puesto AND (u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%') 
+				  ORDER BY u.nombre, u.puesto_id ASC";
+	}
+
+    
 	$data = ' <table class="table table-striped table-hover">
 				<thead>
 				<tr>
@@ -20,10 +73,6 @@
 				</tr>
 				</thead>
 				<tbody id="body-table">';
-
-	$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) 
-	AS puesto,(SELECT em.nombre FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado FROM personas u 
-    WHERE u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%' ORDER BY u.nombre, u.puesto_id ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
