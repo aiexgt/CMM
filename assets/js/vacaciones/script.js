@@ -224,7 +224,7 @@ const eliminar = (codigo) => {
 const calcularDias = () => {
   var timeStart = new Date(document.getElementById("fecha").value);
   var timeEnd = new Date(document.querySelector("#fecha_fin").value);
-    if (timeEnd > timeStart)
+    if (timeEnd => timeStart)
     {
         var diff = timeEnd.getTime() - timeStart.getTime();
         document.getElementById("cantidad").value = Math.round(diff / (1000 * 60 * 60 * 24)) + 1;
