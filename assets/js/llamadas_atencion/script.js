@@ -98,9 +98,9 @@ const ver = (codigo) => {
       id_cambio = unit.id;
       document.querySelector("#utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
       document.querySelector("#utrabajador").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha").value = unit.fecha_inicio;
+      document.querySelector("#ufecha").value = unit.fecha;
       document.querySelector("#ufecha").setAttribute("disabled","disabled");
-      document.querySelector("#uasunto").value = unit.fecha_fin;
+      document.querySelector("#uasunto").value = unit.asunto;
       document.querySelector("#uasunto").setAttribute("disabled","disabled");
       document.querySelector("#uobservaciones").value = unit.observaciones;
       document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
@@ -121,7 +121,7 @@ const actualizar = () => {
   let trabajador = document.getElementById("utrabajador").value;
   let fecha = document.getElementById("ufecha").value;
   let asunto = document.getElementById("uasunto").value;
-  let descripcion = document.getElementById("uobservaciones").value;
+  let observaciones = document.getElementById("uobservaciones").value;
   if(trabajador == 0){
     errorDF("Trabajador");
   }else if(fecha == ""){
@@ -199,7 +199,7 @@ btnGuardar.addEventListener("click", () => {
 });
 
 btnVer.addEventListener("click", () => {
-  window.open(`img/doc-vacaciones/${id_cambio}.pdf`,'_blank')
+  window.open(`img/doc-llamadas/${id_cambio}.pdf`,'_blank')
 });
 
 busqueda.addEventListener("change", () => {
@@ -217,7 +217,7 @@ busqueda.addEventListener("change", () => {
 
 document.querySelector("#empresa").addEventListener("change",() => {
   let empresa = document.querySelector("#empresa").value;
-  $.post("backend/ajax/vacaciones/mostrarTrabajadores.php", {
+  $.post("backend/ajax/llamadas_atencion/mostrarTrabajadores.php", {
     empresa: empresa
   }, (data, status) => {
     document.querySelector("#trabajador").innerHTML = data;
@@ -226,7 +226,7 @@ document.querySelector("#empresa").addEventListener("change",() => {
 })
 
 
-$.post("backend/ajax/vacaciones/mostrarEmpresas.php", {}, (data, status) => {
+$.post("backend/ajax/llamadas_atencion/mostrarEmpresas.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
   //document.querySelector("#uempresas").innerHTML = data;
 });

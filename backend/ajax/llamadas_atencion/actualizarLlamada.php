@@ -9,16 +9,14 @@
 
 		//* Recibir variables
 		$fecha = $_POST['fecha'];
-        $cantidad = $_POST['cantidad'];
-		$fecha_fin = $_POST['fecha_fin'];
+		$asunto = $_POST['asunto'];
 		$observaciones = $_POST['observaciones'];
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "UPDATE vacaciones SET 
-        fecha_inicio = '$fecha',
-		cantidad = $cantidad,
-		fecha_fin = '$fecha_fin',
+		$query = "UPDATE llamada_atencion SET 
+        fecha = '$fecha',
+		asunto = '$asunto',
 		observaciones = '$observaciones' WHERE id = $id";
 
 		//* Ejecución Query
