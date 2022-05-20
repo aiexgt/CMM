@@ -23,6 +23,7 @@ const errorDF = (dato) => {
 const guardar = () => {
   
   let trabajador = document.getElementById("trabajador").value;
+  let tipo = document.getElementById("tipo").value;
   let fecha = document.getElementById("fecha").value;
   let cantidad = document.getElementById("cantidad").value;
   let fecha_fin = document.getElementById("fecha_fin").value;
@@ -39,6 +40,7 @@ const guardar = () => {
   }else{
     $.post("backend/ajax/ausencias/guardarAusencia.php",{
       trabajador: trabajador,
+      tipo: tipo,
       fecha: fecha,
       cantidad: cantidad,
       fecha_fin: fecha_fin,
@@ -85,6 +87,7 @@ const guardar = () => {
 
 const limpiarCampos = () => {
     document.getElementById("empresa").value = 0;
+    document.getElementById("tipo").value = 0;
     document.getElementById("trabajador").value = 0;
     document.getElementById("fecha").value = "";
     document.getElementById("cantidad").value = null;
@@ -104,6 +107,8 @@ const ver = (codigo) => {
     function (data, status) {
       var unit = JSON.parse(data);
       id_cambio = unit.id;
+      document.querySelector("#utipo").value = unit.tipo;
+      document.querySelector("#utipo").setAttribute("disabled","disabled");
       document.querySelector("#utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
       document.querySelector("#utrabajador").setAttribute("disabled","disabled");
       document.querySelector("#ufecha").value = unit.fecha_inicio;
@@ -123,9 +128,6 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#ufecha").removeAttribute("disabled","disabled");
-    document.querySelector("#ucantidad").removeAttribute("disabled","disabled");
-    document.querySelector("#ufecha_fin").removeAttribute("disabled","disabled");
     document.querySelector("#uasunto").removeAttribute("disabled","disabled");
     document.querySelector("#udescripcion").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
@@ -205,7 +207,7 @@ const eliminar = (codigo) => {
 const calcularDias = () => {
   var timeStart = new Date(document.getElementById("fecha").value);
   var timeEnd = new Date(document.querySelector("#fecha_fin").value);
-    if (timeEnd > timeStart)
+    if (timeEnd => timeStart)
     {
         var diff = timeEnd.getTime() - timeStart.getTime();
         document.getElementById("cantidad").value = Math.round(diff / (1000 * 60 * 60 * 24)) + 1;
