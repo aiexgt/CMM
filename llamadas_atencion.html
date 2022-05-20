@@ -95,7 +95,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nuevo Registro de Vacaciones
+            Nueva Llamada de Atención
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Vacaciones
+            Registro de Llamadas de Atención
           </h5>
           <button
             type="button"
@@ -124,7 +124,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Empresa</label>
               <select
                 class="form-select"
@@ -133,7 +133,7 @@
               > 
               </select> <br>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Trabajador</label>
               <select
                 class="form-select"
@@ -143,7 +143,20 @@
               > 
               </select> <br>
             </div>
-            <div class="col-sm-4">
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Nombre"
+                id="fecha"
+                aria-label="Nombre"
+              />
+              <br>
+            </div>
+            <div class="col-sm-6">
               <form
                 id="uploadimage"
                 action=""
@@ -162,48 +175,15 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-4">
-              <label for="" class="form-label is-required">Fecha Inicio</label>
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Asunto</label>
               <input
-                type="date"
+                type="text"
                 class="form-control"
-                placeholder="Nombre"
-                id="fecha"
-                aria-label="Nombre"
-              />
-              <br>
-            </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label is-required">Cantidad Días</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Cantidad"
-                id="cantidad"
-                aria-label="Cantidad"
-              />
-              <br>
-            </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label">Días Disponibles</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Cantidad"
-                id="disponibles"
-                aria-label="Cantidad"
-                disabled
-              />
-              <br>
-            </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label is-required">Fecha Fin</label>
-              <input
-                type="date"
-                class="form-control"
-                placeholder="Fecha Fin"
-                id="fecha_fin"
-                aria-label="Fecha Fin"
+                placeholder="Asunto"
+                id="asunto"
+                aria-label="Asunto"
+                maxlength="100"
               />
               <br>
             </div>
@@ -252,7 +232,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Trabajador</label>
               <input
                 type="text"
@@ -262,15 +242,11 @@
                 aria-label="Nombre"
               /> <br>
             </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label is-required">Comprobante</label><br>
-              <button class="btn btn-success" id="verComprobante">Ver</button>
-              <br />
-            </div>
+
           </div>
           <div class="row">
-            <div class="col-sm-4">
-              <label for="" class="form-label is-required">Fecha Inicio</label>
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Fecha</label>
               <input
                 type="date"
                 class="form-control"
@@ -280,37 +256,22 @@
               />
               <br>
             </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label is-required">Cantidad Días</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Cantidad"
-                id="ucantidad"
-                aria-label="Cantidad"
-              />
-              <br>
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Comprobante</label><br>
+              <button class="btn btn-success" id="verComprobante">Ver</button>
+              <br />
             </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label">Días Disponibles</label>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Asunto</label>
               <input
-                type="number"
+                type="text"
                 class="form-control"
-                placeholder="Cantidad"
-                id="udisponibles"
-                aria-label="Cantidad"
-                disabled
-              />
-              <br>
-            </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label is-required">Fecha Fin</label>
-              <input
-                type="date"
-                class="form-control"
-                placeholder="Fecha Fin"
-                id="ufecha_fin"
-                aria-label="Fecha Fin"
+                placeholder="Asunto"
+                id="uasunto"
+                aria-label="Asunto"
+                maxlength="100"
               />
               <br>
             </div>
@@ -366,6 +327,6 @@
       src="assets/imported/menu/menuScript.js"
     ></script>
     <script type="text/javascript" src="assets/js/securitySession.js"></script>
-    <script type="text/javascript" src="assets/js/vacaciones/script.js"></script>
+    <script type="text/javascript" src="assets/js/llamadas_atencion/script.js"></script>
   </body>
 </html>
