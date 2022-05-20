@@ -79,7 +79,7 @@
             id="busqueda"
             type="text"
             class="form-control"
-            placeholder="Buscar Llamada de atencion"
+            placeholder="Buscar Vacacion"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
@@ -95,7 +95,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nueva Llamada de Atención
+            Nuevo Registro de Vacaciones
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Ausencia
+            Registro de Vacaciones
           </h5>
           <button
             type="button"
@@ -124,12 +124,22 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-8">
-              <label for="" class="form-label">Trabajador</label>
+            <div class="col-sm-3">
+              <label for="" class="form-label is-required">Empresa</label>
+              <select
+                class="form-select"
+                id="empresa"
+                aria-label="Default select example"
+              > 
+              </select> <br>
+            </div>
+            <div class="col-sm-5">
+              <label for="" class="form-label is-required">Trabajador</label>
               <select
                 class="form-select"
                 id="trabajador"
                 aria-label="Default select example"
+                disabled
               > 
               </select> <br>
             </div>
@@ -140,12 +150,12 @@
                 method="post"
                 enctype="multipart/form-data"
               >
-                <label for="formFile" class="form-label">Imagen</label>
+                <label for="formFile" class="form-label is-required">Comprobante</label>
                 <input
                   class="form-control"
                   type="file"
                   id="image"
-                  accept="image/png, image/jpeg"
+                  accept="application/pdf"
                 />
               </form>
               <br />
@@ -153,7 +163,7 @@
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha</label>
+              <label for="" class="form-label is-required">Fecha Inicio</label>
               <input
                 type="date"
                 class="form-control"
@@ -163,8 +173,8 @@
               />
               <br>
             </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Cantidad Días</label>
+            <div class="col-sm-2">
+              <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
                 class="form-control"
@@ -174,8 +184,20 @@
               />
               <br>
             </div>
+            <div class="col-sm-2">
+              <label for="" class="form-label">Días Disponibles</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Cantidad"
+                id="disponibles"
+                aria-label="Cantidad"
+                disabled
+              />
+              <br>
+            </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha Fin</label>
+              <label for="" class="form-label is-required">Fecha Fin</label>
               <input
                 type="date"
                 class="form-control"
@@ -188,21 +210,8 @@
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <label for="" class="form-label">Asunto</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Asunto"
-                id="asunto"
-                aria-label="Asunto"
-              />
-              <br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-              <textarea class="form-control" id="descripcion" rows="3"></textarea>
+              <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
+              <textarea class="form-control" id="observaciones" rows="3" maxlength="300"></textarea>
               <br />
             </div>
           </div>
@@ -244,23 +253,24 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-8">
-              <label for="" class="form-label">Trabajador</label>
-              <select
-                class="form-select"
+              <label for="" class="form-label is-required">Trabajador</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Trabajador"
                 id="utrabajador"
-                aria-label="Default select example"
-              > 
-              </select> <br>
+                aria-label="Nombre"
+              /> <br>
             </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Comprobante</label><br>
+              <label for="" class="form-label is-required">Comprobante</label><br>
               <button class="btn btn-success" id="verComprobante">Ver</button>
               <br />
             </div>
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha</label>
+              <label for="" class="form-label is-required">Fecha Inicio</label>
               <input
                 type="date"
                 class="form-control"
@@ -270,8 +280,8 @@
               />
               <br>
             </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Cantidad Días</label>
+            <div class="col-sm-2">
+              <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
                 class="form-control"
@@ -281,8 +291,20 @@
               />
               <br>
             </div>
+            <div class="col-sm-2">
+              <label for="" class="form-label">Días Disponibles</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Cantidad"
+                id="udisponibles"
+                aria-label="Cantidad"
+                disabled
+              />
+              <br>
+            </div>
             <div class="col-sm-4">
-              <label for="" class="form-label">Fecha Fin</label>
+              <label for="" class="form-label is-required">Fecha Fin</label>
               <input
                 type="date"
                 class="form-control"
@@ -295,21 +317,8 @@
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <label for="" class="form-label">Asunto</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Asunto"
-                id="uasunto"
-                aria-label="Asunto"
-              />
-              <br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-              <textarea class="form-control" id="udescripcion" rows="3"></textarea>
+              <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
+              <textarea class="form-control" id="uobservaciones" maxlength="300" rows="3"></textarea>
               <br />
             </div>
           </div>
@@ -357,6 +366,6 @@
       src="assets/imported/menu/menuScript.js"
     ></script>
     <script type="text/javascript" src="assets/js/securitySession.js"></script>
-    <script type="text/javascript" src="assets/js/ausencias/script.js"></script>
+    <script type="text/javascript" src="assets/js/vacaciones/script.js"></script>
   </body>
 </html>
