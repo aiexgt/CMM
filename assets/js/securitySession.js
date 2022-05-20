@@ -1,3 +1,5 @@
+console.log("Copyright © | Tubagua 2022");
+
 let usuario = localStorage.getItem("usuario");
 let password = localStorage.getItem("password");
 if(usuario === null || password === null){
