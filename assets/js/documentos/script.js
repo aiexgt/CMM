@@ -46,6 +46,7 @@ const ver = (codigo) => {
 
 
 const actualizar = () => {
+  let estado = 1;
   if ($("#dpi").val() != "") {
     let formData = new FormData();
     let files = $("#dpi")[0].files[0];
@@ -60,8 +61,9 @@ const actualizar = () => {
       success: function (response) {
         if (response != 0) {
           $(".card-img-top").attr("src", response);
+          estado = 1;
         } else {
-          alert("Formato de imagen incorrecto.");
+          estado = 0;
         }
       },
     });
@@ -80,8 +82,9 @@ const actualizar = () => {
       success: function (response) {
         if (response != 0) {
           $(".card-img-top").attr("src", response);
+          estado = 1;
         } else {
-          alert("Formato de imagen incorrecto.");
+          estado = 0;
         }
       },
     });
@@ -100,8 +103,9 @@ const actualizar = () => {
       success: function (response) {
         if (response != 0) {
           $(".card-img-top").attr("src", response);
+          estado = 1;
         } else {
-          alert("Formato de imagen incorrecto.");
+          estado = 0;
         }
       },
     });
@@ -120,8 +124,9 @@ const actualizar = () => {
       success: function (response) {
         if (response != 0) {
           $(".card-img-top").attr("src", response);
+          estado = 1;
         } else {
-          alert("Formato de imagen incorrecto.");
+          estado = 0;
         }
       },
     });
@@ -140,11 +145,23 @@ const actualizar = () => {
       success: function (response) {
         if (response != 0) {
           $(".card-img-top").attr("src", response);
+          estado = 1;
         } else {
-          alert("Formato de imagen incorrecto.");
+          estado = 0;
         }
       },
     });
+  }
+
+  if(estado == 1){
+    $("#exampleModala").modal("hide");
+    Swal.fire("Excelente!", "Los cambios se han guardado!", "success");
+  }else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ha Ocurrido un error!',
+    })
   }
 };
 
