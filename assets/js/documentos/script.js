@@ -55,7 +55,7 @@ const ver = (codigo) => {
   document.querySelector(`.apellido${codigo}`).textContent)
 
   $.post("backend/ajax/documentos/verificarDocumento.php",{
-    ruta: `doc-dpi/${codigo}.pdf`
+    ruta: `doc-dpi/${id}.pdf`
   },(data, status) => {
     if(data == "1"){
       document.querySelector(".a1").innerHTML = 
@@ -70,7 +70,7 @@ const ver = (codigo) => {
   })
 
   $.post("backend/ajax/documentos/verificarDocumento.php",{
-    ruta: `doc-cv/${codigo}.pdf`
+    ruta: `doc-cv/${id}.pdf`
   },(data, status) => {
     if(data == "1"){
       document.querySelector(".a2").innerHTML = 
@@ -85,7 +85,7 @@ const ver = (codigo) => {
   })
 
   $.post("backend/ajax/documentos/verificarDocumento.php",{
-    ruta: `doc-apoliciaco/${codigo}.pdf`
+    ruta: `doc-apoliciaco/${id}.pdf`
   },(data, status) => {
     if(data == "1"){
       document.querySelector(".a3").innerHTML = 
@@ -100,7 +100,7 @@ const ver = (codigo) => {
   })
 
   $.post("backend/ajax/documentos/verificarDocumento.php",{
-    ruta: `doc-apenal/${codigo}.pdf`
+    ruta: `doc-apenal/${id}.pdf`
   },(data, status) => {
     if(data == "1"){
       document.querySelector(".a4").innerHTML = 
@@ -115,7 +115,7 @@ const ver = (codigo) => {
   })
 
   $.post("backend/ajax/documentos/verificarDocumento.php",{
-    ruta: `doc-sempleo/${codigo}.pdf`
+    ruta: `doc-sempleo/${id}.pdf`
   },(data, status) => {
     if(data == "1"){
       document.querySelector(".a5").innerHTML = 
