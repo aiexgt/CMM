@@ -153,16 +153,18 @@ const actualizar = () => {
     });
   }
 
-  if(estado == 1){
-    $("#exampleModala").modal("hide");
-    Swal.fire("Excelente!", "Los cambios se han guardado!", "success");
-  }else{
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Ha Ocurrido un error!',
-    })
-  }
+  setTimeout(() => {
+    if(estado == 1){
+      $("#exampleModala").modal("hide");
+      Swal.fire("Excelente!", "Los cambios se han guardado!", "success");
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ha Ocurrido un error!',
+      })
+    }
+  },2000)
 };
 
 const buscar = () => {
