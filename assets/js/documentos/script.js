@@ -54,6 +54,82 @@ const ver = (codigo) => {
   (document.querySelector(`.nombre${codigo}`).textContent + 
   document.querySelector(`.apellido${codigo}`).textContent)
 
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-dpi/${codigo}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a1").innerHTML = 
+      `<a href="img/doc-dpi/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      console.log("no");
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-cv/${codigo}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a2").innerHTML = 
+      `<a href="img/doc-cv/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      console.log("no");
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-apoliciaco/${codigo}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a3").innerHTML = 
+      `<a href="img/doc-apoliciaco/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      console.log("no");
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-apenal/${codigo}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a4").innerHTML = 
+      `<a href="img/doc-apenal/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      console.log("no");
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-sempleo/${codigo}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a5").innerHTML = 
+      `<a href="img/doc-sempleo/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      console.log("no");
+    }
+  })
+  
+  
 };
 
 
@@ -256,31 +332,9 @@ $.post("backend/ajax/documentos/mostrarPuestos.php", {}, (data, status) => {
   document.querySelector("#bpuesto").innerHTML = data;
 });
 
-
 $.post("backend/ajax/documentos/mostrarEmpresa.php", {}, (data, status) => {
   document.querySelector("#bempresa").innerHTML = data;
 });
-
-document.getElementById("cdpi").addEventListener("click", () => {
-  window.open(`img/doc-dpi/${id}.pdf`,'_blank')
-});
-
-document.getElementById("ccv").addEventListener("click", () => {
-  window.open(`img/doc-cv/${id}.pdf`,'_blank')
-});
-
-document.getElementById("capoliciaco").addEventListener("click", () => {
-  window.open(`img/doc-apoliciaco/${id}.pdf`,'_blank')
-});
-
-document.getElementById("capenal").addEventListener("click", () => {
-  window.open(`img/doc-apenal/${id}.pdf`,'_blank')
-});
-
-document.getElementById("csempleo").addEventListener("click", () => {
-  window.open(`img/doc-sempleo/${id}.pdf`,'_blank')
-});
-
 
 btnActualizar.addEventListener("click", () => {
   actualizar();
