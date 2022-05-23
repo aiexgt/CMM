@@ -8,26 +8,26 @@
 		$busqueda = $_POST['busqueda'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%' ORDER BY u.nombre, u.puesto_id ASC";
 	}else if($tipo == "e"){
 		$empresa = $_POST['empresa'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.empresa_id = $empresa ORDER BY u.nombre, u.puesto_id ASC";
 	}else if($tipo == "p"){
 		$puesto = $_POST['puesto'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.puesto_id = $puesto ORDER BY u.nombre, u.puesto_id ASC";
 	}else if($tipo == "te"){
 		$busqueda = $_POST['busqueda'];
 		$empresa = $_POST['empresa'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.empresa_id = $empresa AND (u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%') 
 				  ORDER BY u.nombre, u.puesto_id ASC";
 	}else if($tipo == "tp"){
@@ -35,7 +35,7 @@
 		$puesto = $_POST['puesto'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.puesto_id = $puesto AND (u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%') 
 				  ORDER BY u.nombre, u.puesto_id ASC";
 	}else if($tipo == "ep"){
@@ -43,7 +43,7 @@
 		$empresa = $_POST['empresa'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.empresa_id = $empresa AND u.puesto_id = $puesto ORDER BY u.nombre, u.puesto_id ASC";
 	}else if($tipo == "tep"){
 		$busqueda = $_POST['busqueda'];
@@ -51,7 +51,7 @@
 		$puesto = $_POST['puesto'];
 
 		$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) AS puesto,(SELECT em.nombre 
-				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado 
+				  FROM empresas em WHERE em.id = u.empresa_id) AS empresa 
 				  FROM personas u WHERE u.empresa_id = $empresa AND u.puesto_id = $puesto AND (u.cui LIKE '%$busqueda%' OR u.nombre LIKE '%$busqueda%' OR u.apellido LIKE '%$busqueda%') 
 				  ORDER BY u.nombre, u.puesto_id ASC";
 	}
@@ -66,9 +66,6 @@
 					<th scope="col">DPI</th>
 					<th scope="col">Puesto</th>
 					<th scope="col">Empresa</th>
-					<th scope="col">Estado</th>
-					<th scope="col col-lg-2"></th>
-					<th scope="col col-lg-2"></th>
 					<th scope="col col-lg-2"></th>
 				</tr>
 				</thead>
@@ -92,12 +89,8 @@
 				<td class="dpi'.$number.'">'.$row['cui'].'</td>
 				<td class="puesto'.$number.'">'.$row['puesto'].'</td>
 				<td class="empresa'.$number.'">'.$row['empresa'].'</td>
-				<td class="estado'.$number.'">'.$row['estado'].'</td>
 				<td>
 					<button onclick="ver('.$number.')" class="btn btn-success"><i class="bx bx-edit"></i></button>
-				</td>
-				<td>
-					<button onclick="eliminar('.$number.')" class="btn btn-danger"><i class="bx bx-trash"></i></button>
 				</td>
     		</tr>';
     		$number++;
@@ -106,7 +99,7 @@
     else
     {
     	// records now found 
-    	$data .= '<tr><td colspan="6">No hay trabajadores!</td></tr>';
+    	$data .= '<tr><td colspan="6">No hay médidas!</td></tr>';
     }
 
     $data .= '</tbody>
