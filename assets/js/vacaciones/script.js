@@ -53,12 +53,6 @@ const guardar = () => {
     errorDF("Fecha");
   }else if(cantidad <= 0){
     errorDF("Cantidad Valida");
-  }else if(cantidad > disponibles){
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `Días disponibles insuficientes`,
-    });
   }else{
     $.post("backend/ajax/vacaciones/guardarVacacion.php",{
       trabajador: trabajador,
