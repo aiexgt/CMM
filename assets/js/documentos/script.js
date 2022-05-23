@@ -65,7 +65,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log(data);
+      document.querySelector(".a1").innerHTML = "";
     }
   })
 
@@ -80,7 +80,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log(data);
+      document.querySelector(".a2").innerHTML = "";
     }
   })
 
@@ -95,7 +95,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log(data);
+      document.querySelector(".a3").innerHTML = "";
     }
   })
 
@@ -110,7 +110,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log(data);
+      document.querySelector(".a4").innerHTML = "";
     }
   })
 
@@ -125,7 +125,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log(data);
+      document.querySelector(".a5").innerHTML = "";
     }
   })
   
