@@ -50,6 +50,10 @@ const errorDF = (dato) => {
 const ver = (codigo) => {
   id = document.querySelector(`.id${codigo}`).textContent;
   $("#exampleModala").modal("show");
+  document.querySelector(".nombre").textContent = 
+  (document.querySelector(`.nombre${codigo}`).textContent + 
+  document.querySelector(`.apellido${codigo}`).textContent)
+
 };
 
 
