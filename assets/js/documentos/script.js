@@ -229,6 +229,26 @@ $.post("backend/ajax/documentos/mostrarEmpresa.php", {}, (data, status) => {
   document.querySelector("#bempresa").innerHTML = data;
 });
 
+document.getElementById("cdpi").addEventListener("click", () => {
+  window.open(`img/doc-dpi/${id}.pdf`,'_blank')
+});
+
+document.getElementById("ccv").addEventListener("click", () => {
+  window.open(`img/doc-cv/${id}.pdf`,'_blank')
+});
+
+document.getElementById("capoliciaco").addEventListener("click", () => {
+  window.open(`img/doc-apoliciaco/${id}.pdf`,'_blank')
+});
+
+document.getElementById("capenal").addEventListener("click", () => {
+  window.open(`img/doc-apenal/${id}.pdf`,'_blank')
+});
+
+document.getElementById("csempleo").addEventListener("click", () => {
+  window.open(`img/doc-sempleo/${id}.pdf`,'_blank')
+});
+
 
 btnActualizar.addEventListener("click", () => {
   actualizar();
