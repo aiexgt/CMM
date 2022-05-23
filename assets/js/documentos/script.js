@@ -31,6 +31,14 @@ const mostrar = () => {
   });
 };
 
+const limpiar = () => {
+  document.getElementById("dpi").value = "";
+  document.getElementById("cv").value = "";
+  document.getElementById("apoliciaco").value = "";
+  document.getElementById("apenal").value = "";
+  document.getElementById("sempleo").value = "";
+}
+
 const errorDF = (dato) => {
   Swal.fire({
     icon: "error",
@@ -155,6 +163,7 @@ const actualizar = () => {
 
   setTimeout(() => {
     if(estado == 1){
+      limpiar();
       $("#exampleModala").modal("hide");
       Swal.fire("Excelente!", "Los cambios se han guardado!", "success");
     }else{
