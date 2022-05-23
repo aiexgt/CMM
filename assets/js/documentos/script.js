@@ -65,7 +65,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log("no");
+      console.log(data);
     }
   })
 
@@ -80,7 +80,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log("no");
+      console.log(data);
     }
   })
 
@@ -95,7 +95,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log("no");
+      console.log(data);
     }
   })
 
@@ -110,7 +110,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log("no");
+      console.log(data);
     }
   })
 
@@ -125,7 +125,7 @@ const ver = (codigo) => {
         </button>
       </a>`
     }else{
-      console.log("no");
+      console.log(data);
     }
   })
   
