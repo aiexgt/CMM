@@ -53,7 +53,13 @@ const guardar = () => {
     errorDF("Fecha");
   }else if(cantidad <= 0){
     errorDF("Cantidad Valida");
-  }else{
+  }else if((disponibles - cantidad) < -15 ){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `Días Insuficientes`,
+    });
+  } else{
     $.post("backend/ajax/vacaciones/guardarVacacion.php",{
       trabajador: trabajador,
       fecha: fecha,
@@ -222,7 +228,7 @@ const eliminar = (codigo) => {
           codigo: id,
         },
         (data, status) => {
-          if (data == "1") {
+          if ((data.endsWith("1"))) {
             Swal.fire("Eliminado!", "El registro ha sido eliminada.", "success");
             mostrar();
           } else {
