@@ -200,6 +200,40 @@ const sumarMeses = () => {
 
 };
 
+const calcularEsp = (cantidad) => {
+  let anios = 0;
+  let meses = 0;
+  while(cantidad > 365){
+      anios ++;
+      cantidad -= 365;
+  }
+  while(cantidad > 30){
+      meses ++;
+      cantidad -= 30;
+  }
+  let texto = "";
+
+  if(anios == 1){
+    texto += "1 año";
+  }else if(anios > 1){
+    texto += anios + " años";
+  }
+
+  if(meses == 1){
+    texto += " 1 mes";
+  }else if(meses > 1){
+    texto += " " + meses + " meses";
+  }
+
+  if(cantidad == 1){
+    texto += " 1 día";
+  }else if(cantidad > 1){
+    texto += " " + cantidad + " días";
+  }
+
+  document.getElementById("tiempo").textContent = texto;
+}
+
 const ver = (codigo) => {
   let id = document.querySelector(`.id${codigo}`).textContent;
   id_cambio = id;
@@ -292,6 +326,8 @@ const ver = (codigo) => {
         cantidad : document.querySelector("#udias_laborados").value,
         id: unit.id
       }, (data, status) => {})
+
+      calcularEsp(document.getElementById("udias_laborados").value);
 
     })
   $("#exampleModala").modal("show");
