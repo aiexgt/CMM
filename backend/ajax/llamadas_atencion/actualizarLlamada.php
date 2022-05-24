@@ -14,10 +14,10 @@
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "UPDATE llamada_atencion SET 
-        fecha = '$fecha',
-		asunto = '$asunto',
-		observaciones = '$observaciones' WHERE id = $id";
+		$query = 'UPDATE llamada_atencion SET 
+        fecha = "'.$fecha.'",
+		asunto = "'.$asunto.'",
+		observaciones = "'.$observaciones."' WHERE id = '$id;
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

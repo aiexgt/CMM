@@ -13,8 +13,8 @@
 
 
 		//* Insertar datos
-		$query = "INSERT INTO roles (nombre, descripcion, estado) 
-		VALUES('$nombre','$descripcion',1)";
+		$query ='INSERT INTO roles (nombre, descripcion, estado) 
+		VALUES("'.$nombre.'","'.$descripcion.'",1)';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {
