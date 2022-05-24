@@ -32,12 +32,12 @@
 		$observaciones = $_POST['observaciones'];
 
 		//* Insertar datos
-		$query = "INSERT INTO personas (cui, nombre, apellido, estado_civil_id, fecha_nacimiento, 
+		$query = 'INSERT INTO personas (cui, nombre, apellido, estado_civil_id, fecha_nacimiento, 
         fecha_inicio, fecha_igss, numero_igss, puesto_id, telefono, celular, correo, pais_id, 
         departamento_id, municipio_id, salario, direccion, estado_trabajo_id, usuario_id, empresa_id, observaciones) 
-		VALUES('$cui','$nombre','$apellido',$estado_civil, '$fecha_nacimiento', 
-        '$fecha_inicio', '$fecha_igss', '$numero_igss', $puesto, '$telefono', '$celular', '$correo', $pais, 
-        $departamento, $municipio, '$salario', '$direccion', $estado_laboral, $usuario_id, $empresa, '$observaciones')";
+		VALUES("'.$cui.'","'.$nombre.'","'.$apellido.'",'.$estado_civil.', "'.$fecha_nacimiento.'", 
+        "'.$fecha_inicio.'", "'.$fecha_igss.'", "'.$numero_igss.'", '.$puesto.', "'.$telefono.'", "'.$celular.'", "'.$correo.'", '.$pais.', 
+        '.$departamento.', '.$municipio.', "'.$salario.'", "'.$direccion.'", '.$estado_laboral.', '.$usuario_id.', '.$empresa.', "'.$observaciones.'")';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

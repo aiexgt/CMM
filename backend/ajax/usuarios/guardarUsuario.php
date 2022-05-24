@@ -18,8 +18,8 @@
 
 
 		//* Insertar datos
-		$query = "INSERT INTO usuarios (nombre, apellido, usuario, password, rol_id, usuario_id, estado) 
-		VALUES('$nombre','$apellido','$usuario','$password',$rol,$usuario_id,1)";
+		$query = 'INSERT INTO usuarios (nombre, apellido, usuario, password, rol_id, usuario_id, estado) 
+		VALUES("'.$nombre.'","'.$apellido.'","'.$usuario.'","'.$password.'",'.$rol.','.$usuario_id.',1)';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

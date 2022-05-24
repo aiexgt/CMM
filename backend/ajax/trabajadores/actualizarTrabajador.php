@@ -32,27 +32,27 @@
         $observaciones = $_POST['observaciones'];
 
 		//* Insertar datos
-		$query = "UPDATE personas SET 
-        cui = '$cui',
-        nombre = '$nombre',
-        apellido = '$apellido',
-        estado_civil_id = $estado_civil,
-        fecha_nacimiento = '$fecha_nacimiento',
-        fecha_inicio = '$fecha_inicio',
-        fecha_igss = '$fecha_igss',
-        puesto_id = $puesto,
-        telefono = '$telefono',
-        celular = '$celular',
-        correo = '$correo',
-        pais_id = $pais,
-        departamento_id = $departamento,
-        municipio_id = $municipio,
-        salario = $salario,
-        empresa_id = $empresa,
-        estado_trabajo_id = $estado_laboral,
-        direccion = '$direccion',
-        observaciones = '$observaciones'
-        WHERE id = $id";
+		$query = 'UPDATE personas SET 
+        cui = "'.$cui.'",
+        nombre = "'.$nombre.'",
+        apellido = "'.$apellido.'",
+        estado_civil_id = '.$estado_civil.',
+        fecha_nacimiento = "'.$fecha_nacimiento.'",
+        fecha_inicio = "'.$fecha_inicio.'",
+        fecha_igss = "'.$fecha_igss.'",
+        puesto_id = '.$puesto.',
+        telefono = "'.$telefono.'",
+        celular = "'.$celular.'",
+        correo = "'.$correo.'",
+        pais_id = '.$pais.',
+        departamento_id = '.$departamento.',
+        municipio_id = '.$municipio.',
+        salario = '.$salario.',
+        empresa_id = '.$empresa.',
+        estado_trabajo_id = '.$estado_laboral.',
+        direccion = "'.$direccion.'",
+        observaciones = "'.$observaciones.'"
+        WHERE id = '.$id;
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

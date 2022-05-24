@@ -18,20 +18,20 @@
 
 		if($password != ""){
 			//* Insertar datos
-			$query = "UPDATE usuarios SET 
-			nombre = '$nombre',
-			apellido = '$apellido',
-			usuario = '$usuario',
-			password = '$password',
-			rol_id = $rol,
-			estado = $estado WHERE id = $id";
+			$query = 'UPDATE usuarios SET 
+			nombre = "'.$nombre.'",
+			apellido = "'.$apellido.'",
+			usuario = "'.$usuario.'",
+			password = "'.$password.'",
+			rol_id = '.$rol.',
+			estado = '.$estado.' WHERE id = '.$id;
 		}else{
-			$query = "UPDATE usuarios SET 
-			nombre = '$nombre',
-			apellido = '$apellido',
-			usuario = '$usuario',
-			rol_id = $rol,
-			estado = $estado WHERE id = $id";
+			$query = 'UPDATE usuarios SET 
+			nombre = "'.$nombre.'",
+			apellido = "'.$apellido.'",
+			usuario = "'.$usuario.'",
+			rol_id = '.$rol.',
+			estado = '.$estado.' WHERE id = '.$id;
 		}
 
 		

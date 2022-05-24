@@ -13,8 +13,8 @@
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id) 
-		VALUES($trabajador, '$fecha', $cantidad, '$fecha_fin', '$observaciones', $id)";
+		$query = 'INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id) 
+		VALUES('.$trabajador.', "'.$fecha.'", '.$cantidad.', "'.$fecha_fin.'", "'.$observaciones.'", '.$id.')';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

@@ -15,11 +15,11 @@
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "UPDATE vacaciones SET 
-        fecha_inicio = '$fecha',
-		cantidad = $cantidad,
-		fecha_fin = '$fecha_fin',
-		observaciones = '$observaciones' WHERE id = $id";
+		$query = 'UPDATE vacaciones SET 
+        fecha_inicio = "'.$fecha.'",
+		cantidad = '.$cantidad.',
+		fecha_fin = "'.$fecha_fin.'",
+		observaciones = "'.$observaciones.'" WHERE id = '.$id;
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {
