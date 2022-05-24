@@ -6,8 +6,13 @@
 
 	$data = '<option value="0" selected>Seleccione Trabajador</option>';
 
-	$query = "SELECT p.id, p.nombre, p.apellido FROM personas p 
-	WHERE p.empresa_id = $empresa AND p.estado_trabajo_id != 3  ORDER BY p.id ASC";
+	$query = "SELECT p.id, 
+				p.nombre, 
+				p.apellido 
+				FROM personas p 
+				WHERE p.empresa_id = $empresa 
+				AND p.estado_trabajo_id != 3  
+				ORDER BY p.id ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

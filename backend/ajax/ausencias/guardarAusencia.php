@@ -14,8 +14,18 @@
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "INSERT INTO ausencias (persona_id, tipo, fecha_inicio, cantidad, fecha_fin, asunto, descripcion, usuario_id) 
-		VALUES($trabajador, $tipo, '$fecha', $cantidad, '$fecha_fin', '$asunto', '$descripcion', $id)";
+		$query = 'INSERT INTO ausencias 
+		(persona_id, tipo, fecha_inicio, 
+		cantidad, fecha_fin, asunto, descripcion, 
+		usuario_id) VALUES(
+		'.$trabajador.', 
+		'.$tipo.', 
+		"'.$fecha.'", 
+		'.$cantidad.', 
+		"'.$fecha_fin.'", 
+		"'.$asunto.'", 
+		"'.$descripcion.'", 
+		'.$id.')';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

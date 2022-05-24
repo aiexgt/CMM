@@ -26,12 +26,12 @@
 		$usuario_id = $_POST['usuario_id'];
 
 		//* Insertar datos
-		$query = "INSERT INTO empresas (codigo, nombre, nit, direccion, pais_id, departamento_id, 
+		$query = 'INSERT INTO empresas (codigo, nombre, nit, direccion, pais_id, departamento_id, 
 		municipio_id, codigo_postal, pagina_web, usuario_id, email_principal, email_secundario, 
 		telefono, celular, estado) 
-		VALUES('$codigo', '$nombre', '$nit', '$direccion', $pais, $departamento, $municipio, 
-		'$codigo_postal', '$pagina_web', $usuario_id, '$email_principal', '$email_secundario', 
-		'$telefono', '$celular', 1)";
+		VALUES("'.$codigo.'", "'.$nombre.'", "'.$nit.'", "'.$direccion.'", '.$pais.', '.$departamento.', '.$municipio.', 
+		"'.$codigo_postal.'", "'.$pagina_web.'", '.$usuario_id.', "'.$email_principal.'", "'.$email_secundario.'", 
+		"'.$telefono.'", "'.$celular.'", 1)';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

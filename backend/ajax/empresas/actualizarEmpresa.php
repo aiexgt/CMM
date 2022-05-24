@@ -28,22 +28,22 @@
         $estado = $_POST['estado'];
 
 		//* Insertar datos
-		$query = "UPDATE empresas SET 
-        codigo = '$codigo', 
-        nombre = '$nombre',
-        nit = '$nit',
-        pais_id = $pais,
-        departamento_id = $departamento,
-        municipio_id = $municipio,
-        direccion = '$direccion',
-        codigo_postal = '$codigo_postal',
-        pagina_web = '$pagina_web',
-        email_principal = '$email_principal',
-        email_secundario = '$email_secundario',
-        telefono = '$telefono',
-        celular = '$celular',
-        usuario_id = $usuario_id,
-        estado = $estado WHERE id = $codigo_anterior";
+		$query = 'UPDATE empresas SET 
+        codigo = "'.$codigo.'", 
+        nombre = "'.$nombre.'",
+        nit = "'.$nit.'",
+        pais_id = '.$pais.',
+        departamento_id = '.$departamento.',
+        municipio_id = '.$municipio.',
+        direccion = "'.$direccion.'",
+        codigo_postal = "'.$codigo_postal.'",
+        pagina_web = "'.$pagina_web.'",
+        email_principal = "'.$email_principal.'",
+        email_secundario = "'.$email_secundario.'",
+        telefono = "'.$telefono.'",
+        celular = "'.$celular.'",
+        usuario_id = '.$usuario_id.',
+        estado = '.$estado.' WHERE id = '.$codigo_anterior;
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

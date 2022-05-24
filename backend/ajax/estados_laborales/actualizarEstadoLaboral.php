@@ -13,9 +13,9 @@
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = "UPDATE estado_trabajo SET 
-        nombre = '$nombre',
-        descripcion = '$descripcion' WHERE id = $id";
+		$query = 'UPDATE estado_trabajo SET 
+        nombre = "'.$nombre.'",
+        descripcion = "'.$descripcion.'" WHERE id = '.$id;
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

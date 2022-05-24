@@ -19,12 +19,20 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT a.id, a.tipo, a.asunto, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
-	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
-    a.fecha_inicio, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
-	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM ausencias a WHERE 
-    a.asunto LIKE '%$busqueda%' OR a.fecha_inicio LIKE '%$busqueda%' OR (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id)
-    LIKE '%$busqueda%' OR (SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) LIKE '%$busqueda%' ORDER BY a.id ASC LIMIT 15";
+	$query = "SELECT a.id, 
+				a.tipo, 
+				a.asunto, 
+				(SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
+				(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
+				a.fecha_inicio, 
+				(SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
+				(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario 
+				FROM ausencias a 
+				WHERE a.asunto LIKE '%$busqueda%' 
+				OR a.fecha_inicio LIKE '%$busqueda%' 
+				OR (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) LIKE '%$busqueda%' 
+				OR (SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) LIKE '%$busqueda%' 
+				ORDER BY a.id DESC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

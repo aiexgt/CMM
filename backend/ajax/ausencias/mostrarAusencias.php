@@ -17,10 +17,16 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT a.tipo, a.id, a.asunto, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
-	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
-    a.fecha_inicio, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
-	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM ausencias a ORDER BY a.id ASC";
+	$query = "SELECT a.tipo, 
+				a.id, 
+				a.asunto, 
+				(SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
+				(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
+    			a.fecha_inicio, 
+				(SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
+				(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario 
+				FROM ausencias a 
+				ORDER BY a.id DESC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

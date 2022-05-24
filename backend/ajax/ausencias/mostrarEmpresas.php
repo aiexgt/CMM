@@ -4,7 +4,10 @@
 
 	$data = '<option value="0" selected>Seleccione Empresa</option>';
 
-	$query = "SELECT id, nombre FROM empresas ORDER BY id ASC";
+	$query = "SELECT id, 
+				nombre 
+				FROM empresas 
+				ORDER BY id ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

@@ -13,8 +13,8 @@
 
 
 		//* Insertar datos
-		$query = "INSERT INTO estado_trabajo (nombre, descripcion) 
-		VALUES('$nombre','$descripcion')";
+		$query = 'INSERT INTO estado_trabajo (nombre, descripcion) 
+		VALUES("'.$nombre.'","'.$descripcion.'")';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {
