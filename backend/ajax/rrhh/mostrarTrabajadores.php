@@ -1,6 +1,6 @@
 <?php
 	//* Enlace BD
-	include("../conexion.php");
+	include("../../conexion.php");
 
 	$data = ' <table class="table table-striped table-hover">
 				<thead>
@@ -10,8 +10,8 @@
 					<th scope="col">Apellido</th>
 					<th scope="col">DPI</th>
 					<th scope="col">Puesto</th>
+					<th scope="col">Empresa</th>
 					<th scope="col">Estado</th>
-					<th scope="col col-lg-2"></th>
 					<th scope="col col-lg-2"></th>
 					<th scope="col col-lg-2"></th>
 				</tr>
@@ -19,7 +19,7 @@
 				<tbody id="body-table">';
 
 	$query = "SELECT u.id, u.nombre, u.apellido, u.cui, (SELECT p.nombre FROM puestos p WHERE p.id = u.puesto_id) 
-	AS puesto, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado FROM personas u ORDER BY u.id, u.puesto_id ASC";
+	AS puesto,(SELECT em.nombre FROM empresas em WHERE em.id = u.empresa_id) AS empresa, (SELECT e.nombre FROM estado_trabajo e WHERE e.id = u.estado_trabajo_id) AS estado FROM personas u ORDER BY u.nombre, u.puesto_id ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
@@ -38,15 +38,10 @@
 				<td class="apellido'.$number.'">'.$row['apellido'].'</td>
 				<td class="dpi'.$number.'">'.$row['cui'].'</td>
 				<td class="puesto'.$number.'">'.$row['puesto'].'</td>
+				<td class="empresa'.$number.'">'.$row['empresa'].'</td>
 				<td class="estado'.$number.'">'.$row['estado'].'</td>
 				<td>
-					<button onclick="GetUserDetails('.$number.')" class="btn btn-success"><i class="bx bx-show"></i></button>
-				</td>
-				<td>
-					<button onclick="DeleteUser('.$number.')" class="btn btn-primary"><i class="bx bx-user"></i></button>
-				</td>
-				<td>
-					<button onclick="DeleteUser('.$number.')" class="btn btn-danger"><i class="bx bx-trash"></i></button>
+					<a href="profile.html"><button onclick="ver('.$number.')" class="btn btn-success"><i class="bx bx-user"></i></button></a>
 				</td>
     		</tr>';
     		$number++;

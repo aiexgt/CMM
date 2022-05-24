@@ -25,7 +25,7 @@ let busqueda = document.querySelector("#busqueda");
 //* Funciones
 
 const mostrar = () => {
-  $.post("backend/ajax/trabajadores/mostrarTrabajadores.php", {}, (data, status) => {
+  $.post("backend/ajax/rrhh/mostrarTrabajadores.php", {}, (data, status) => {
     document.querySelector("#tabla-contenido").innerHTML = data;
   });
 };
