@@ -71,49 +71,52 @@
       </div>
     </div>
     <!--Container Main start-->
-    <div class="">
-      <div class="row text-center">
-        <div class="col-sm-3">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Nuevo Trabajador</h5>
-              <p class="card-text"></p>
-              <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Registrar</button>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="input-group flex-nowrap">
+          <input
+            id="busqueda"
+            type="text"
+            class="form-control"
+            placeholder="Buscar Trabajador"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <span class="input-group-text" id="basic-addon2">Buscar</span>
         </div>
-        <div class="col-sm-3">
-          <div class="card text-white bg-success mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Vacaciones</h5>
-              <p class="card-text"></p>
-              <a href="#" class="btn btn-light">Registrar</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card text-white bg-warning mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Falta Justificada</h5>
-              <p class="card-text"></p>
-              <a href="#" class="btn btn-light">Registrar</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card text-white bg-danger mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Llamada de Atención</h5>
-              <p class="card-text"></p>
-              <a href="#" class="btn btn-light">Registrar</a>
-            </div>
-          </div>
+      </div>
+      <div class="col-sm-2">
+        <select
+          class="form-select"
+          id="bempresa"
+          aria-label="Default select example"
+        >
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <select
+          class="form-select"
+          id="bpuesto"
+          aria-label="Default select example"
+        >
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <div class="input-group flex-nowrap">
+          <button
+            type="button"
+            id="btn-nuevo"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Nuevo Trabajador
+          </button>
         </div>
       </div>
     </div>
-
-
-   <div class="tabla-Trabajadores"></div>
+    <br />
+    <div id="tabla-contenido"></div>
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -189,5 +192,5 @@
       type="text/javascript"
       src="assets/imported/menu/menuScript.js"
     ></script>
-    <script type="text/javascript" src="assets/js/ausencias/script.js"></script>
+    <script type="text/javascript" src="assets/js/rrhh/script.js"></script>
   </body>

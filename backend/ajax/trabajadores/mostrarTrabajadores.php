@@ -14,7 +14,6 @@
 					<th scope="col">Estado</th>
 					<th scope="col col-lg-2"></th>
 					<th scope="col col-lg-2"></th>
-					<th scope="col col-lg-2"></th>
 				</tr>
 				</thead>
 				<tbody id="body-table">';

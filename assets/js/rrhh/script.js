@@ -16,16 +16,16 @@ if(usuario === null || password === null){
     })
     document.querySelector("#busuario").innerHTML = usuarioD.toUpperCase();
 }
-
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-let busqueda = document.querySelector("#busqueda");
 let id_cambio;
+let bempresa = document.querySelector("#bempresa");
+let bpuesto = document.querySelector("#bpuesto");
+let busqueda = document.querySelector("#busqueda");
+
+
+//* Funciones
 
 const mostrar = () => {
-  $.post("backend/ajax/estados_laborales/mostrarEstadosLaborales.php", {}, (data, status) => {
+  $.post("backend/ajax/trabajadores/mostrarTrabajadores.php", {}, (data, status) => {
     document.querySelector("#tabla-contenido").innerHTML = data;
   });
 };
@@ -39,172 +39,194 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  let nombre = document.querySelector("#nombre").value;
-  let descripcion = document.querySelector("#descripcion").value;
 
-  if(nombre == ""){
-    errorDF("Nombre");
+};
+
+const limpiarCamposN = () => {
+
+};
+
+const calculardiasDiscount = () => {
+  var timeStart = new Date(document.getElementById("ufecha_inicio").value);
+  if((document.getElementById("ufecha_finalizacion").value) != ""){
+    var timeEnd = new Date(document.getElementById("ufecha_finalizacion").value);
+    if (timeEnd > timeStart)
+    {
+        var diff = timeEnd.getTime() - timeStart.getTime();
+        document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+    }
   }else{
-    $.post("backend/ajax/estados_laborales/guardarEstadoLaboral.php", {
-      nombre: nombre,
-      descripcion: descripcion
-    }, (data, status) => {
-      if(data == "1"){
-        $("#exampleModal").modal("hide");
-          Swal.fire("Excelente!", "El estado laboral se ha añadido!", "success");
-          mostrar();
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Ha Ocurrido un error!',
-        })
-      }
-    })
+    var actualDate = new Date();
+    if (actualDate > timeStart)
+    {
+        var diff = actualDate.getTime() - timeStart.getTime();
+        document.getElementById("udias_laborados").value = Math.round(diff / (1000 * 60 * 60 * 24)) -1;
+    }
+  }
+};
+
+const sumarMeses = () => {
+  var d = new Date(document.querySelector("#ufecha_inicio").value);
+  let dia = d.getDate()+1;
+  let mes = d.getMonth()+3;
+  let anio = d.getFullYear();
+  if(mes > 12){
+    anio++;
+    mes = mes - 12;
+  }
+  if(mes < 10){
+    mes = "0" + mes;
+  }
+  if(dia < 10){
+    dia = "0" + dia;
+  }
+  let strDate = anio + "-" + mes + "-" + dia;
+  document.getElementById("uperiodo_prueba").value = strDate;
+
+};
+
+const calcularEsp = (cantidad) => {
+  let anios = 0;
+  let meses = 0;
+  while(cantidad > 365){
+      anios ++;
+      cantidad -= 365;
+  }
+  while(cantidad > 30){
+      meses ++;
+      cantidad -= 30;
+  }
+  let texto = "";
+
+  if(anios == 1){
+    texto += "1 año";
+  }else if(anios > 1){
+    texto += anios + " años";
   }
 
-};
+  if(meses == 1){
+    texto += " 1 mes";
+  }else if(meses > 1){
+    texto += " " + meses + " meses";
+  }
 
-const limpiarCampos = () => {
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#descripcion").value = "";
-  document.querySelector("#unombre").value = "";
-  document.querySelector("#udescripcion").value = "";
-};
+  if(cantidad == 1){
+    texto += " 1 día";
+  }else if(cantidad > 1){
+    texto += " " + cantidad + " días";
+  }
+
+  document.getElementById("tiempo").textContent = texto;
+}
 
 const ver = (codigo) => {
-  limpiarCampos();
-  let id = document.querySelector(`.id${codigo}`).textContent;
-  id_cambio = id;
-  $.post(
-    "backend/ajax/estados_laborales/buscarDetalles.php",
-    {
-      id:id
-    },
-    function (data, status) {
-      var unit = JSON.parse(data);
-      document.querySelector("#unombre").value = unit.nombre;
-      document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#udescripcion").value = unit.descripcion;
-      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
-      btnEditar.removeAttribute("hidden");
-      btnActualizar.setAttribute("hidden","hidden");
-    })
-  $("#exampleModala").modal("show");
-};
-
-const quitarDisabled = () => {
-    document.querySelector("#unombre").removeAttribute("disabled");
-    document.querySelector("#udescripcion").removeAttribute("disabled");
-    btnEditar.setAttribute("hidden","hidden");
-    btnActualizar.removeAttribute("hidden");
   
 };
 
+const quitarDisabled = () => {
+
+};
+
 const actualizar = () => {
-  let nombre = document.querySelector("#unombre").value;
-  let descripcion = document.querySelector("#udescripcion").value;
-  if(nombre == ""){
-    errorDF("Nombre");
-  }else{
-    Swal.fire({
-      title: "¿Desea guardar los cambios?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Guardar",
-      denyButtonText: `Descartar`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        $.post(
-          "backend/ajax/estados_laborales/actualizarEstadoLaboral.php",
-          {
-            nombre:nombre,
-            descripcion:descripcion,
-            id: id_cambio
-          },
-          (data, status) => {
-            if (data == "1") {
-              Swal.fire("Excelente!", "El estado laboral ha sido actualizado!", "success");
-              $("#exampleModala").modal("hide");
-              mostrar();
-            }else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Ha Ocurrido un error!',
-              })
-            }
-          }
-        );
-        Swal.fire("Guardado!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Los cambios no fueron guardados", "", "info");
-      }
-    });
-  }
+  
 };
 
 const eliminar = (codigo) => {
-  let id = document.querySelector(`.id${codigo}`).textContent;
-  Swal.fire({
-    title: "¿Seguro que desea eliminarlo?",
-    text: "Este cambio es irreversible!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Si, eliminar!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.post(
-        "backend/ajax/estados_laborales/eliminarEstadoLaboral.php",
-        {
-          codigo: id,
-        },
-        (data, status) => {
-          if (data == "1") {
-            Swal.fire("Eliminado!", "El estado laboral ha sido eliminada.", "success");
-            mostrar();
-          } else {
-            Swal.fire("Error!", "No se puede eliminar estado laboral.", "error");
-          }
-        }
-      );
-    }
-  });
+
 };
 
-btnNuevo.addEventListener("click", () => {
-  limpiarCampos();
-})
+const buscar = () => {
+  let tipoBusqueda = "";
+  if(busqueda.value != ""){
+    tipoBusqueda += "t";
+  }
+  if(bempresa.value != 0){
+    tipoBusqueda += "e";
+  }
+  if(bpuesto.value != 0){
+    tipoBusqueda += "p";
+  }
 
-btnActualizar.addEventListener("click", () => {
-  actualizar();
+  if(tipoBusqueda == "t"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "e"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      empresa: bempresa.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "p"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "te"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value,
+      empresa: bempresa.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "tp"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "ep"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      empresa: bempresa.value,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else if(tipoBusqueda == "tep"){
+    $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
+      tipo: tipoBusqueda,
+      busqueda: busqueda.value,
+      empresa: bempresa.value,
+      puesto: bpuesto.value
+    }, (data, status) => {
+      document.querySelector("#tabla-contenido").innerHTML = data;
+    });
+  }else{
+    mostrar();
+  }
+
+}
+
+$.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
+  document.querySelector("#bpuesto").innerHTML = data;
 });
 
-btnEditar.addEventListener("click", () => {
-  quitarDisabled();
+$.post("backend/ajax/trabajadores/mostrarEmpresa.php", {}, (data, status) => {
+  document.querySelector("#bempresa").innerHTML = data;
 });
-
-btnGuardar.addEventListener("click", () => {
-  guardar();
-});
-
 
 busqueda.addEventListener("keyup", () => {
-  $.post(
-    "backend/ajax/estados_laborales/buscarEstadoLaboral.php",
-    {
-      busqueda: busqueda.value,
-    },
-    (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
-    }
-  );
+  buscar();
+});
+
+bempresa.addEventListener("change", () => {
+  buscar();
+});
+
+bpuesto.addEventListener("change", () => {
+  buscar();
 });
 
 $(document).ready(() => {
   mostrar();
-  limpiarCampos();
 });
