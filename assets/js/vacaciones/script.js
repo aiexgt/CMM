@@ -240,6 +240,7 @@ const eliminar = (codigo) => {
   });
 };
 
+
 const calcularDias = () => {
   var timeStart = new Date(document.getElementById("fecha").value);
   var timeEnd = new Date(document.querySelector("#fecha_fin").value);
@@ -302,6 +303,7 @@ document.querySelector("#trabajador").addEventListener("change", () => {
       dias_disponibles += 15;
       dias -= 365;
     }
+    document.querySelector("#acumulados").value = ((12/365)*dias).toFixed(2);
     document.querySelector("#disponibles").value = (dias_disponibles - parseInt(unit.vacaciones_ocupadas));
   });
 })
