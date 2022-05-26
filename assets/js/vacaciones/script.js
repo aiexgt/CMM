@@ -240,23 +240,24 @@ const eliminar = (codigo) => {
   });
 };
 
+function stringToDate(dateString){
+  dateString = dateString.split('-');
+  return new Date(dateString[0], dateString[1] - 1, dateString[2]);
+}
 
 const calcularDias = () => {
-  var timeStart = new Date(document.getElementById("fecha").value);
-  var timeEnd = new Date(document.querySelector("#fecha_fin").value);
-    if (timeEnd => timeStart)
-    {
-        var diff = timeEnd.getTime() - timeStart.getTime();
-        document.getElementById("cantidad").value = Math.round(diff / (1000 * 60 * 60 * 24)) + 1;
-    }else{
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `Fecha Inicial mayor a la Final`,
-      });
-      document.querySelector("#fecha").value = "";
-      document.querySelector("#fecha_fin").value = "";
+  let date1 = stringToDate(document.getElementById("fecha").value);
+  let date2 = stringToDate(document.getElementById("fecha_fin").value);
+  delta = (date2-date1) / (1000 * 60 * 60 * 24) + 1; // calcula el tiempo total
+
+    weeks = 0;
+    for(i = 0; i < delta; i++){
+                     if (date1.getDay () == 0) weeks ++; // agrega 1 si es sábado o domingo
+        date1 = date1.valueOf();
+        date1 += 1000 * 60 * 60 * 24;
+        date1 = new Date(date1);
     }
+    document.getElementById("cantidad").value = (delta - weeks);
 }
 
 btnNuevo.addEventListener("click", () => {
