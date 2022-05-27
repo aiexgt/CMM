@@ -162,7 +162,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Fecha Inicio</label>
               <input
                 type="date"
@@ -173,7 +173,20 @@
               />
               <br>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Fecha Fin</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Fecha Fin"
+                id="fecha_fin"
+                aria-label="Fecha Fin"
+              />
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
               <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
@@ -184,8 +197,8 @@
               />
               <br>
             </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label">Disponibles</label>
+            <div class="col-sm-3">
+              <label for="" class="form-label">Días Disponibles</label>
               <input
                 type="number"
                 class="form-control"
@@ -196,8 +209,8 @@
               />
               <br>
             </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label">Acumulados</label>
+            <div class="col-sm-3">
+              <label for="" class="form-label">Días Acumulados</label>
               <input
                 type="number"
                 class="form-control"
@@ -209,13 +222,14 @@
               <br>
             </div>
             <div class="col-sm-3">
-              <label for="" class="form-label is-required">Fecha Fin</label>
+              <label for="" class="form-label">Saldo Días</label>
               <input
-                type="date"
+                type="number"
                 class="form-control"
-                placeholder="Fecha Fin"
-                id="fecha_fin"
-                aria-label="Fecha Fin"
+                placeholder="Saldo"
+                id="saldo"
+                aria-label="Cantidad"
+                disabled
               />
               <br>
             </div>

@@ -115,6 +115,8 @@ const limpiarCampos = () => {
     document.getElementById("observaciones").value = "";
     document.getElementById("image").value = "";
     document.getElementById("disponibles").value = 0;
+    document.getElementById("acumulados").value = 0;
+    document.getElementById("saldo").value = 0;
 };
 
 const ver = (codigo) => {
@@ -304,8 +306,11 @@ document.querySelector("#trabajador").addEventListener("change", () => {
       dias_disponibles += 15;
       dias -= 365;
     }
-    document.querySelector("#acumulados").value = ((15/365)*dias).toFixed(2);
-    document.querySelector("#disponibles").value = (dias_disponibles - parseInt(unit.vacaciones_ocupadas));
+    let acu = parseFloat(((15/365)*dias).toFixed(2));
+    let dis = parseFloat((dias_disponibles - parseInt(unit.vacaciones_ocupadas)));
+    document.querySelector("#acumulados").value = acu;
+    document.querySelector("#disponibles").value = dis;
+    document.querySelector("#saldo").value = (acu+dis);
   });
 })
 
