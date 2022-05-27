@@ -304,7 +304,7 @@ document.querySelector("#trabajador").addEventListener("change", () => {
       dias_disponibles += 15;
       dias -= 365;
     }
-    document.querySelector("#acumulados").value = ((12/365)*dias).toFixed(2);
+    document.querySelector("#acumulados").value = ((15/365)*dias).toFixed(2);
     document.querySelector("#disponibles").value = (dias_disponibles - parseInt(unit.vacaciones_ocupadas));
   });
 })
