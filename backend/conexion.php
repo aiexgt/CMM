@@ -8,6 +8,7 @@ $database = "bdtk"; //* segmento o base de datos
 
 //* Conectando la base de datos
 $con = new mysqli($host, $user, $password, $database);
+$con->set_charset("utf8");
 
 //* Resultado conexión
 if ($con->connect_error) {
