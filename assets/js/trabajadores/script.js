@@ -21,6 +21,7 @@ const btnNuevo = document.querySelector("#btn-nuevo");
 const btnGuardar = document.querySelector("#btn-guardar");
 const btnEditar = document.querySelector("#btn-editar");
 const btnActualizar = document.querySelector("#btn-actualizar");
+const btnActualizard = document.querySelector("#btn-actualizard");
 let id_cambio;
 let selectPais = document.querySelector("#pais");
 let selectDepartamento = document.querySelector("#departamento");
@@ -331,6 +332,222 @@ const ver = (codigo) => {
 
     })
   $("#exampleModala").modal("show");
+};
+
+const limpiar = () => {
+  document.getElementById("dpi").value = "";
+  document.getElementById("cv").value = "";
+  document.getElementById("apoliciaco").value = "";
+  document.getElementById("apenal").value = "";
+  document.getElementById("sempleo").value = "";
+}
+
+const doc = (codigo) => {
+  id = document.querySelector(`.id${codigo}`).textContent;
+  $("#exampleModalb").modal("show");
+  document.querySelector(".nombre").textContent = 
+  (document.querySelector(`.nombre${codigo}`).textContent + 
+  document.querySelector(`.apellido${codigo}`).textContent)
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-dpi/${id}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a1").innerHTML = 
+      `<a href="img/doc-dpi/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      document.querySelector(".a1").innerHTML = "";
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-cv/${id}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a2").innerHTML = 
+      `<a href="img/doc-cv/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      document.querySelector(".a2").innerHTML = "";
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-apoliciaco/${id}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a3").innerHTML = 
+      `<a href="img/doc-apoliciaco/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      document.querySelector(".a3").innerHTML = "";
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-apenal/${id}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a4").innerHTML = 
+      `<a href="img/doc-apenal/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      document.querySelector(".a4").innerHTML = "";
+    }
+  })
+
+  $.post("backend/ajax/documentos/verificarDocumento.php",{
+    ruta: `doc-sempleo/${id}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a5").innerHTML = 
+      `<a href="img/doc-sempleo/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      document.querySelector(".a5").innerHTML = "";
+    }
+  })
+  
+  
+};
+
+const actualizarDoc = () => {
+  let estado = 1;
+  if ($("#dpi").val() != "") {
+    let formData = new FormData();
+    let files = $("#dpi")[0].files[0];
+    formData.append("file", files);
+    formData.append("id", id);
+    $.ajax({
+      url: "backend/ajax/documentos/guardarDpi.php",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        if (response != 0) {
+          $(".card-img-top").attr("src", response);
+          estado = 1;
+        } else {
+          estado = 0;
+        }
+      },
+    });
+  }
+  if ($("#cv").val() != "") {
+    let formData = new FormData();
+    let files = $("#cv")[0].files[0];
+    formData.append("file", files);
+    formData.append("id", id);
+    $.ajax({
+      url: "backend/ajax/documentos/guardarCv.php",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        if (response != 0) {
+          $(".card-img-top").attr("src", response);
+          estado = 1;
+        } else {
+          estado = 0;
+        }
+      },
+    });
+  }
+  if ($("#apoliciaco").val() != "") {
+    let formData = new FormData();
+    let files = $("#apoliciaco")[0].files[0];
+    formData.append("file", files);
+    formData.append("id", id);
+    $.ajax({
+      url: "backend/ajax/documentos/guardarApoliciaco.php",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        if (response != 0) {
+          $(".card-img-top").attr("src", response);
+          estado = 1;
+        } else {
+          estado = 0;
+        }
+      },
+    });
+  }
+  if ($("#apenal").val() != "") {
+    let formData = new FormData();
+    let files = $("#apenal")[0].files[0];
+    formData.append("file", files);
+    formData.append("id", id);
+    $.ajax({
+      url: "backend/ajax/documentos/guardarApenal.php",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        if (response != 0) {
+          $(".card-img-top").attr("src", response);
+          estado = 1;
+        } else {
+          estado = 0;
+        }
+      },
+    });
+  }
+  if ($("#sempleo").val() != "") {
+    let formData = new FormData();
+    let files = $("#sempleo")[0].files[0];
+    formData.append("file", files);
+    formData.append("id", id);
+    $.ajax({
+      url: "backend/ajax/documentos/guardarSempleo.php",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        if (response != 0) {
+          $(".card-img-top").attr("src", response);
+          estado = 1;
+        } else {
+          estado = 0;
+        }
+      },
+    });
+  }
+
+  setTimeout(() => {
+    if(estado == 1){
+      limpiar();
+      $("#exampleModalb").modal("hide");
+      Swal.fire("Excelente!", "Los cambios se han guardado!", "success");
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ha Ocurrido un error!',
+      })
+    }
+  },2000)
 };
 
 const quitarDisabled = () => {
@@ -668,6 +885,10 @@ uselectDepartamento.addEventListener("change", () => {
       uselectMunicipio.innerHTML = data;
     }
   );
+});
+
+btnActualizard.addEventListener("click", () => {
+  actualizarDoc();
 });
 
 busqueda.addEventListener("keyup", () => {
