@@ -8,6 +8,7 @@
 					<th scope="col">No.</th>
 					<th scope="col">Trabajador</th>
 					<th scope="col">Fecha Inicio</th>
+					<th scope="col">Fecha Fin</th>
 					<th scope="col">Cantidad</th>
 					<th scope="col">Usuario</th>
                     <th scope="col"></th>
