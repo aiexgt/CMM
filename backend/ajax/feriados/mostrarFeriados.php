@@ -15,7 +15,7 @@
 				</thead>
 				<tbody id="body-table">';
 
-				$query = "SELECT id, nombre, descripcion, asunto FROM feriados";
+				$query = "SELECT id, nombre, descripcion, fecha FROM feriados";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

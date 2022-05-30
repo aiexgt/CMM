@@ -17,7 +17,7 @@
 				</thead>
 				<tbody id="body-table">';
 
-	$query = "SELECT id, nombre, descripcion, asunto FROM feriados WHERE 
+	$query = "SELECT id, nombre, descripcion, fecha FROM feriados WHERE 
 	nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%'";
 
 	if (!$result = mysqli_query($con, $query)) {

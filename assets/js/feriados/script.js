@@ -26,7 +26,7 @@ let busqueda = document.querySelector("#busqueda");
 let id_cambio;
 
 const mostrar = () => {
-  $.post("backend/ajax/llamadas_atencion/mostrarLlamadas.php", {}, (data, status) => {
+  $.post("backend/ajax/feriados/mostrarFeriados.php", {}, (data, status) => {
     document.querySelector("#tabla-contenido").innerHTML = data;
   });
 };
@@ -41,47 +41,22 @@ const errorDF = (dato) => {
 
 const guardar = () => {
   
-  let trabajador = document.getElementById("trabajador").value;
+  let nombre = document.getElementById("nombre").value;
+  let descripcion = document.getElementById("descripcion").value;
   let fecha = document.getElementById("fecha").value;
-  let asunto = document.getElementById("asunto").value;
-  let observaciones = document.getElementById("observaciones").value;
-  if(trabajador == 0){
-    errorDF("Trabajador");
+  if(nombre == 0){
+    errorDF("Nombre");
   }else if(fecha == ""){
     errorDF("Fecha");
-  }else if(asunto == ""){
-    errorDF("Asunto");
   }else{
-    $.post("backend/ajax/llamadas_atencion/guardarLlamada.php",{
-      trabajador: trabajador,
-      fecha: fecha,
-      asunto: asunto,
-      observaciones: observaciones,
-      id: localStorage.getItem("id")
+    $.post("backend/ajax/feriados/guardarFeriado.php",{
+      nombre,
+      fecha,
+      descripcion
     }, (data, statur) => {
       if (data == "1") {
-        let formData = new FormData();
-        if ($("#image").val() != "") {
-          let files = $("#image")[0].files[0];
-          formData.append("file", files);
-  
-          $.ajax({
-            url: "backend/ajax/llamadas_atencion/guardarImagen.php",
-            type: "post",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-              if (response != 0) {
-                $(".card-img-top").attr("src", response);
-              } else {
-                alert("Formato de imagen incorrecto.");
-              }
-            },
-          });
-        }
         $("#exampleModal").modal("hide");
-        Swal.fire("Excelente!", "La llamada de atención se ha añadido!", "success");
+        Swal.fire("Excelente!", "El feriado ha sido guardado!", "success");
         limpiarCampos();
         mostrar();
       }else{
@@ -97,32 +72,27 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-    document.getElementById("empresa").value = 0;
-    document.getElementById("trabajador").value = 0;
+    document.getElementById("nombre").value = "";
     document.getElementById("fecha").value = "";
-    document.getElementById("asunto").value = "";
-    document.getElementById("observaciones").value = "";
-    document.getElementById("image").value = "";
+    document.getElementById("descripcion").value = "";
 };
 
 const ver = (codigo) => {
   let id = document.querySelector(`.id${codigo}`).textContent;
   $.post(
-    "backend/ajax/llamadas_atencion/buscarDetalles.php",
+    "backend/ajax/feriados/buscarDetalles.php",
     {
       id: id,
     },
     function (data, status) {
       var unit = JSON.parse(data);
       id_cambio = unit.id;
-      document.querySelector("#utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
-      document.querySelector("#utrabajador").setAttribute("disabled","disabled");
+      document.querySelector("#unombre").value = unit.nombre;
+      document.querySelector("#unombre").setAttribute("disabled","disabled");
       document.querySelector("#ufecha").value = unit.fecha;
       document.querySelector("#ufecha").setAttribute("disabled","disabled");
-      document.querySelector("#uasunto").value = unit.asunto;
-      document.querySelector("#uasunto").setAttribute("disabled","disabled");
-      document.querySelector("#uobservaciones").value = unit.observaciones;
-      document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
+      document.querySelector("#udescripcion").value = unit.descripcion;
+      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -130,33 +100,30 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#uasunto").removeAttribute("disabled","disabled");
-    document.querySelector("#uobservaciones").removeAttribute("disabled","disabled");
+    document.querySelector("#unombre").removeAttribute("disabled","disabled");
+    document.querySelector("#ufecha").removeAttribute("disabled","disabled");
+    document.querySelector("#udescripcion").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
 
 const actualizar = () => {
-  let trabajador = document.getElementById("utrabajador").value;
+  let nombre = document.getElementById("unombre").value;
+  let descripcion = document.getElementById("udescripcion").value;
   let fecha = document.getElementById("ufecha").value;
-  let asunto = document.getElementById("uasunto").value;
-  let observaciones = document.getElementById("uobservaciones").value;
-  if(trabajador == 0){
-    errorDF("Trabajador");
+  if(nombre == 0){
+    errorDF("Nombre");
   }else if(fecha == ""){
-    errorDF("Fecha")
-  }else if(asunto == ""){
-    errorDF("Asunto")
+    errorDF("Fecha");
   }else{
-    $.post("backend/ajax/llamadas_atencion/actualizarLlamada.php",{
-      trabajador: trabajador,
-      fecha: fecha,
-      asunto: asunto,
-      observaciones: observaciones,
+    $.post("backend/ajax/feriados/actualizarFeriado.php",{
+      nombre,
+      fecha,
+      descripcion,
       id: id_cambio
     }, (data, status) => {
       if (data == "1") {
-        Swal.fire("Excelente!", "El registro ha sido actualizado!", "success");
+        Swal.fire("Excelente!", "El feriado se ha actualizado!", "success");
         $("#exampleModala").modal("hide");
         mostrar();
       }else{
@@ -183,13 +150,13 @@ const eliminar = (codigo) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "backend/ajax/llamadas_atencion/eliminarLlamada.php",
+        "backend/ajax/feriados/eliminarFeriado.php",
         {
           codigo: id,
         },
         (data, status) => {
           if (data == "1") {
-            Swal.fire("Eliminado!", "El registro ha sido eliminada.", "success");
+            Swal.fire("Eliminado!", "El feriado ha sido eliminado.", "success");
             mostrar();
           } else {
             Swal.fire("Error!", "No se puede eliminar el registro.", "error");
@@ -217,13 +184,10 @@ btnGuardar.addEventListener("click", () => {
   guardar();
 });
 
-btnVer.addEventListener("click", () => {
-  window.open(`img/doc-llamadas/${id_cambio}.pdf`,'_blank')
-});
 
 busqueda.addEventListener("change", () => {
   $.post(
-    "backend/ajax/llamadas_atencion/buscarLlamada.php",
+    "backend/ajax/feriados/buscarFeriado.php",
     {
       busqueda: busqueda.value,
     },
@@ -233,22 +197,6 @@ busqueda.addEventListener("change", () => {
   );
 });
 
-
-document.querySelector("#empresa").addEventListener("change",() => {
-  let empresa = document.querySelector("#empresa").value;
-  $.post("backend/ajax/llamadas_atencion/mostrarTrabajadores.php", {
-    empresa: empresa
-  }, (data, status) => {
-    document.querySelector("#trabajador").innerHTML = data;
-    document.querySelector("#trabajador").removeAttribute("disabled");
-  });
-})
-
-
-$.post("backend/ajax/llamadas_atencion/mostrarEmpresas.php", {}, (data, status) => {
-  document.querySelector("#empresa").innerHTML = data;
-  //document.querySelector("#uempresas").innerHTML = data;
-});
 
 $(document).ready(() => {
   mostrar();

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCC | Estados Laborales</title>
+    <title>MCC | Feriados</title>
     <link
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
       rel="stylesheet"
@@ -79,7 +79,7 @@
             id="busqueda"
             type="text"
             class="form-control"
-            placeholder="Buscar Estados Civiles"
+            placeholder="Buscar Feriados"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
@@ -95,7 +95,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nuevo Estado Laboral
+            Nuevo Feriado
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="modal-content">
         <div class="modal-header hblue">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Estado Laboral
+            Registro de Feriados
           </h5>
           <button
             type="button"
@@ -133,6 +133,17 @@
                 id="nombre"
                 aria-label="Nombre"
                 maxlength="100"
+              /> <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                id="fecha"
+                aria-label="Nombre"
               /> <br>
             </div>
           </div>
@@ -194,6 +205,17 @@
           </div>
           <div class="row">
             <div class="col-sm-12">
+              <label for="" class="form-label is-required">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                id="ufecha"
+                aria-label="Nombre"
+              /> <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
               <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
               <textarea class="form-control" id="udescripcion" rows="3" maxlength="300"></textarea>
               <br />
@@ -242,6 +264,6 @@
       type="text/javascript"
       src="assets/imported/menu/menuScript.js"
     ></script>
-    <script type="text/javascript" src="assets/js/estados_laborales/script.js"></script>
+    <script type="text/javascript" src="assets/js/feriados/script.js"></script>
   </body>
 </html>
