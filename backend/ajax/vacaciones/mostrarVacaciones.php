@@ -8,7 +8,7 @@
 					<th scope="col">No.</th>
 					<th scope="col">Trabajador</th>
 					<th scope="col">Fecha Inicio</th>
-					<th scope="col">Fecha Fin</th>
+					<th scope="col">Cantidad</th>
 					<th scope="col">Usuario</th>
                     <th scope="col"></th>
 					<th scope="col"></th>
@@ -18,7 +18,7 @@
 
 	$query = "SELECT a.id, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
 	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
-    a.fecha_inicio, a.fecha_fin, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
+    a.fecha_inicio, a.fecha_fin, a.cantidad, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
 	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM vacaciones a ORDER BY a.id ASC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
@@ -37,6 +37,7 @@
                 <td class="persona'.$number.'">'.$row['persona']." ".$row['apersona'].'</td>
                 <td class="fechai'.$number.'">'.$row['fecha_inicio'].'</td>
 				<td class="fechaf'.$number.'">'.$row['fecha_fin'].'</td>
+				<td class="cantidad'.$number.'">'.$row['cantidad'].' días</td>
                 <td class="usuario'.$number.'">'.$row['usuario']." ".$row['ausuario'].'</td>';		
 			$data .= '<td>
 					<button onclick="ver('.$number.')" class="btn btn-success"><i class="bx bx-edit"></i></button>
