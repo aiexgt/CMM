@@ -20,7 +20,7 @@
 	$query = "SELECT a.id, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
 	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
     a.fecha_inicio, a.fecha_fin, a.cantidad, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
-	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM vacaciones a ORDER BY a.id ASC LIMIT 15";
+	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM vacaciones a ORDER BY a.id DESC LIMIT 45";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
