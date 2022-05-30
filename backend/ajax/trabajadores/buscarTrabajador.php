@@ -69,6 +69,7 @@
 					<th scope="col">Estado</th>
 					<th scope="col col-lg-2"></th>
 					<th scope="col col-lg-2"></th>
+					<th scope="col col-lg-2"></th>
 				</tr>
 				</thead>
 				<tbody id="body-table">';
@@ -92,6 +93,9 @@
 				<td class="puesto'.$number.'">'.$row['puesto'].'</td>
 				<td class="empresa'.$number.'">'.$row['empresa'].'</td>
 				<td class="estado'.$number.'">'.$row['estado'].'</td>
+				<td>
+					<button onclick="doc('.$number.')" class="btn btn-primary"><i class="bx bx-clipboard"></i></button>
+				</td>
 				<td>
 					<button onclick="ver('.$number.')" class="btn btn-success"><i class="bx bx-edit"></i></button>
 				</td>
