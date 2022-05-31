@@ -29,7 +29,6 @@ let selectMunicipio = document.querySelector("#municipio");
 let uselectPais = document.querySelector("#upais");
 let uselectDepartamento = document.querySelector("#udepartamento");
 let uselectMunicipio = document.querySelector("#umunicipio");
-
 let bempresa = document.querySelector("#bempresa");
 let bpuesto = document.querySelector("#bpuesto");
 let busqueda = document.querySelector("#busqueda");
