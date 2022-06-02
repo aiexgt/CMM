@@ -162,6 +162,7 @@ const ver = (codigo) => {
 
 const quitarDisabled = () => {
     document.querySelector("#uobservaciones").removeAttribute("disabled","disabled");
+    document.querySelector("#uimage").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -171,7 +172,7 @@ const actualizar = () => {
   let fecha = document.getElementById("ufecha").value;
   let cantidad = document.getElementById("ucantidad").value;
   let fecha_fin = document.getElementById("ufecha_fin").value;
-  let descripcion = document.getElementById("uobservaciones").value;
+  let observaciones = document.getElementById("uobservaciones").value;
   if(trabajador == 0){
     errorDF("Trabajador");
   }else if(fecha == ""){
@@ -186,6 +187,29 @@ const actualizar = () => {
       id: id_cambio
     }, (data, status) => {
       if (data == "1") {
+
+        if ($("#uimage").val() != "") {
+          let formData = new FormData();
+          let files = $("#uimage")[0].files[0];
+          formData.append("file", files);
+          formData.append("id", id_cambio);
+          $.ajax({
+            url: "backend/ajax/vacaciones/actualizarImagen.php",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+              if (response != 0) {
+                $(".card-img-top").attr("src", response);
+                estado = 1;
+              } else {
+                estado = 0;
+              }
+            },
+          });
+        }
+
         Swal.fire("Excelente!", "El registro ha sido actualizado!", "success");
         $("#exampleModala").modal("hide");
         mostrar();

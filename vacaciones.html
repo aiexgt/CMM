@@ -278,7 +278,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Trabajador</label>
               <input
                 type="text"
@@ -288,9 +288,25 @@
                 aria-label="Nombre"
               /> <br>
             </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label is-required">Comprobante</label><br>
-              <button class="btn btn-success" id="verComprobante">Ver</button>
+            <div class="col-sm-6">
+              <form
+                      id="uploadimage"
+                      action=""
+                      method="post"
+                      enctype="multipart/form-data"
+                    >
+                    <label for="" class="form-label is-required">Comprobante</label>
+                        <div class="input-group mb-3">  
+                            <input
+                              class="form-control"
+                              type="file"
+                              id="uimage"
+                              accept="application/pdf"
+                              disabled
+                          />
+                        <button class="btn btn-success" id="verComprobante">Ver</button>
+                    </div>
+                </form>
               <br />
             </div>
           </div>
