@@ -1,3 +1,4 @@
+//!Seguridad para la sesión
 console.log("Copyright © | Tubagua 2022");
 let usuario = localStorage.getItem("usuario");
 let password = localStorage.getItem("password");
@@ -14,20 +15,26 @@ if(usuario === null || password === null){
             window.location.href = "index.html";
         }
     })
-    document.querySelector("#busuario").innerHTML = usuarioD.toUpperCase();
+    document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-const btnVer = document.querySelector("#verComprobante");
-let busqueda = document.querySelector("#busqueda");
+//* Botones
+const btnNuevo = document.getElementById("btn-nuevo");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnEditar = document.getElementById("btn-editar");
+const btnActualizar = document.getElementById("btn-actualizar");
+const btnVer = document.getElementById("verComprobante");
+
+//* Input para buscar
+let busqueda = document.getElementById("busqueda");
+
+//* Variable para actualizar y eliminar
 let id_cambio;
 
+//* Función para mostrar todas las ausencias
 const mostrar = () => {
-  $.post("backend/ajax/ausencias/mostrarAusencias.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+  $.post("backend/ajax/ausencias/mostrarAusencias.php", {}, (data) => {
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -58,21 +65,20 @@ const guardar = () => {
     errorDF("Descripción")
   }else{
     $.post("backend/ajax/ausencias/guardarAusencia.php",{
-      trabajador: trabajador,
-      tipo: tipo,
-      fecha: fecha,
-      cantidad: cantidad,
-      fecha_fin: fecha_fin,
-      asunto: asunto,
-      descripcion: descripcion,
+      trabajador,
+      tipo,
+      fecha,
+      cantidad,
+      fecha_fin,
+      asunto,
+      descripcion,
       id: localStorage.getItem("id")
-    }, (data, statur) => {
+    }, (data) => {
       if (data == "1") {
         let formData = new FormData();
         if ($("#image").val() != "") {
           let files = $("#image")[0].files[0];
           formData.append("file", files);
-  
           $.ajax({
             url: "backend/ajax/ausencias/guardarImagen.php",
             type: "post",
@@ -126,20 +132,20 @@ const ver = (codigo) => {
     function (data, status) {
       var unit = JSON.parse(data);
       id_cambio = unit.id;
-      document.querySelector("#utipo").value = unit.tipo;
-      document.querySelector("#utipo").setAttribute("disabled","disabled");
-      document.querySelector("#utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
-      document.querySelector("#utrabajador").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha").value = unit.fecha_inicio;
-      document.querySelector("#ufecha").setAttribute("disabled","disabled");
-      document.querySelector("#ucantidad").value = unit.cantidad;
-      document.querySelector("#ucantidad").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha_fin").value = unit.fecha_fin;
-      document.querySelector("#ufecha_fin").setAttribute("disabled","disabled");
-      document.querySelector("#uasunto").value = unit.asunto;
-      document.querySelector("#uasunto").setAttribute("disabled","disabled");
-      document.querySelector("#udescripcion").value = unit.descripcion;
-      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
+      document.getElementById("utipo").value = unit.tipo;
+      document.getElementById("utipo").setAttribute("disabled","disabled");
+      document.getElementById("utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
+      document.getElementById("utrabajador").setAttribute("disabled","disabled");
+      document.getElementById("ufecha").value = unit.fecha_inicio;
+      document.getElementById("ufecha").setAttribute("disabled","disabled");
+      document.getElementById("ucantidad").value = unit.cantidad;
+      document.getElementById("ucantidad").setAttribute("disabled","disabled");
+      document.getElementById("ufecha_fin").value = unit.fecha_fin;
+      document.getElementById("ufecha_fin").setAttribute("disabled","disabled");
+      document.getElementById("uasunto").value = unit.asunto;
+      document.getElementById("uasunto").setAttribute("disabled","disabled");
+      document.getElementById("udescripcion").value = unit.descripcion;
+      document.getElementById("udescripcion").setAttribute("disabled","disabled");
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -147,8 +153,8 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#uasunto").removeAttribute("disabled","disabled");
-    document.querySelector("#udescripcion").removeAttribute("disabled","disabled");
+    document.getElementById("uasunto").removeAttribute("disabled","disabled");
+    document.getElementById("udescripcion").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -177,7 +183,7 @@ const actualizar = () => {
       asunto: asunto,
       descripcion: descripcion,
       id: id_cambio
-    }, (data, status) => {
+    }, (data) => {
       if (data == "1") {
         Swal.fire("Excelente!", "El registro ha sido actualizado!", "success");
         $("#exampleModala").modal("hide");
@@ -210,7 +216,7 @@ const eliminar = (codigo) => {
         {
           codigo: id,
         },
-        (data, status) => {
+        (data) => {
           if (data == "1") {
             Swal.fire("Eliminado!", "El registro ha sido eliminada.", "success");
             mostrar();
@@ -269,36 +275,35 @@ busqueda.addEventListener("change", () => {
     {
       busqueda: busqueda.value,
     },
-    (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+    (data) => {
+      getElementById("tabla-contenido").innerHTML = data;
     }
   );
 });
 
-document.querySelector("#fecha").addEventListener("change", () => {
-  if(document.querySelector("#fecha_fin").value != ""){
+document.getElementById("fecha").addEventListener("change", () => {
+  if(document.getElementById("fecha_fin").value != ""){
     calcularDias();
   }
 })
 
-document.querySelector("#fecha_fin").addEventListener("change", () => {
-  if(document.querySelector("#fecha").value != ""){
+document.getElementById("fecha_fin").addEventListener("change", () => {
+  if(document.getElementById("fecha").value != ""){
     calcularDias();
   }
 })
 
 $.post("backend/ajax/ausencias/mostrarEmpresas.php", {}, (data, status) => {
-  document.querySelector("#empresa").innerHTML = data;
-  //document.querySelector("#uempresas").innerHTML = data;
+  document.getElementById("empresa").innerHTML = data;
 });
 
-document.querySelector("#empresa").addEventListener("change",() => {
-  let empresa = document.querySelector("#empresa").value;
+document.getElementById("empresa").addEventListener("change",() => {
+  let empresa = document.getElementById("empresa").value;
   $.post("backend/ajax/ausencias/mostrarTrabajadores.php", {
     empresa: empresa
   }, (data, status) => {
-    document.querySelector("#trabajador").innerHTML = data;
-    document.querySelector("#trabajador").removeAttribute("disabled");
+    document.getElementById("trabajador").innerHTML = data;
+    document.getElementById("trabajador").removeAttribute("disabled");
   });
 })
 

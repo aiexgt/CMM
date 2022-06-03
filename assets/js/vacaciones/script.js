@@ -362,6 +362,7 @@ document.querySelector("#fecha_fin").addEventListener("change", () => {
 
 $.post("backend/ajax/vacaciones/mostrarEmpresas.php", {}, (data, status) => {
   document.querySelector("#empresa").innerHTML = data;
+  document.getElementById("bempresa").innerHTML = data;
   //document.querySelector("#uempresas").innerHTML = data;
 });
 
