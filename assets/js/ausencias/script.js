@@ -1,7 +1,7 @@
 //!Seguridad para la sesión
 console.log("Copyright © | Tubagua 2022");
-let usuario = localStorage.getItem("usuario");
-let password = localStorage.getItem("password");
+let usuario = sessionStorage.getItem("usuario");
+let password = sessionStorage.getItem("password");
 if(usuario === null || password === null){
     window.location.href = "index.html";
 }else{

@@ -1,6 +1,7 @@
+//!Seguridad para la sesión
 console.log("Copyright © | Tubagua 2022");
-let usuario = localStorage.getItem("usuario");
-let password = localStorage.getItem("password");
+let usuario = sessionStorage.getItem("usuario");
+let password = sessionStorage.getItem("password");
 if(usuario === null || password === null){
     window.location.href = "index.html";
 }else{
@@ -14,9 +15,8 @@ if(usuario === null || password === null){
             window.location.href = "index.html";
         }
     })
-    document.querySelector("#busuario").innerHTML = usuarioD.toUpperCase();
+    document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
-
 const btnNuevo = document.querySelector("#btn-nuevo");
 const btnGuardar = document.querySelector("#btn-guardar");
 const btnEditar = document.querySelector("#btn-editar");
