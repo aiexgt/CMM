@@ -47,7 +47,6 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  
   let trabajador = document.getElementById("trabajador").value;
   let tipo = document.getElementById("tipo").value;
   let fecha = document.getElementById("fecha").value;

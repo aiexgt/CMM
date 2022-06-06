@@ -18,24 +18,24 @@ if(usuario === null || password === null){
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
+const btnNuevo = document.getElementById("btn-nuevo");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnEditar = document.getElementById("btn-editar");
+const btnActualizar = document.getElementById("btn-actualizar");
 
-let selectPais = document.querySelector("#pais");
-let selectDepartamento = document.querySelector("#departamento");
-let selectMunicipio = document.querySelector("#municipio");
+let selectPais = document.getElementById("pais");
+let selectDepartamento = document.getElementById("departamento");
+let selectMunicipio = document.getElementById("municipio");
 
-let uselectPais = document.querySelector("#upais");
-let uselectDepartamento = document.querySelector("#udepartamento");
-let uselectMunicipio = document.querySelector("#umunicipio");
-let busqueda = document.querySelector("#busqueda");
+let uselectPais = document.getElementById("upais");
+let uselectDepartamento = document.getElementById("udepartamento");
+let uselectMunicipio = document.getElementById("umunicipio");
+let busqueda = document.getElementById("busqueda");
 let codigo_anterior;
 
 const mostrar = () => {
   $.post("backend/ajax/empresas/mostrarEmpresas.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -48,20 +48,20 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  let codigo = document.querySelector("#codigo").value;
-  let nombre = document.querySelector("#nombre").value;
-  let nit = document.querySelector("#nit").value;
+  let codigo = document.getElementById("codigo").value;
+  let nombre = document.getElementById("nombre").value;
+  let nit = document.getElementById("nit").value;
   let pais = selectPais.value;
   let departamento = selectDepartamento.value;
   let municipio = selectMunicipio.value;
-  let direccion = document.querySelector("#direccion").value;
-  let codigo_postal = document.querySelector("#codigo_postal").value;
-  let pagina_web = document.querySelector("#pagina_web").value;
-  let email_principal = document.querySelector("#email_principal").value;
-  let email_secundario = document.querySelector("#email_secundario").value;
-  let telefono = document.querySelector("#telefono").value;
-  let celular = document.querySelector("#celular").value;
-  let usuario_id = localStorage.getItem("id");
+  let direccion = document.getElementById("direccion").value;
+  let codigo_postal = document.getElementById("codigo_postal").value;
+  let pagina_web = document.getElementById("pagina_web").value;
+  let email_principal = document.getElementById("email_principal").value;
+  let email_secundario = document.getElementById("email_secundario").value;
+  let telefono = document.getElementById("telefono").value;
+  let celular = document.getElementById("celular").value;
+  let usuario_id = sessionStorage.getItem("id");
 
   if (codigo == "") {
     errorDF("Código");
@@ -145,20 +145,20 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-  document.querySelector("#codigo").value = "";
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#nit").value = "";
-  document.querySelector("#pais").value = 0;
-  document.querySelector("#departamento").value = 0;
-  document.querySelector("#municipio").value = 0;
-  document.querySelector("#direccion").value = "";
-  document.querySelector("#codigo_postal").value = "";
-  document.querySelector("#pagina_web").value = "";
-  document.querySelector("#image").value = "";
-  document.querySelector("#email_principal").value = "";
-  document.querySelector("#email_secundario").value = "";
-  document.querySelector("#telefono").value = "";
-  document.querySelector("#celular").value = "";
+  document.getElementById("codigo").value = "";
+  document.getElementById("nombre").value = "";
+  document.getElementById("nit").value = "";
+  document.getElementById("pais").value = 0;
+  document.getElementById("departamento").value = 0;
+  document.getElementById("municipio").value = 0;
+  document.getElementById("direccion").value = "";
+  document.getElementById("codigo_postal").value = "";
+  document.getElementById("pagina_web").value = "";
+  document.getElementById("image").value = "";
+  document.getElementById("email_principal").value = "";
+  document.getElementById("email_secundario").value = "";
+  document.getElementById("telefono").value = "";
+  document.getElementById("celular").value = "";
 };
 
 const ver = (codigo) => {
@@ -173,23 +173,23 @@ const ver = (codigo) => {
 
       codigo_anterior = unit.id;
 
-      document.querySelector("#ucodigo").setAttribute("disabled", "disabled");
-      document.querySelector("#ucodigo").value = unit.codigo;
-      document.querySelector("#unombre").setAttribute("disabled", "disabled");
-      document.querySelector("#unombre").value = unit.nombre;
-      document.querySelector("#unit").setAttribute("disabled", "disabled");
-      document.querySelector("#unit").value = unit.nit;
-      document.querySelector("#upais").setAttribute("disabled", "disabled");
+      document.getElementById("ucodigo").setAttribute("disabled", "disabled");
+      document.getElementById("ucodigo").value = unit.codigo;
+      document.getElementById("unombre").setAttribute("disabled", "disabled");
+      document.getElementById("unombre").value = unit.nombre;
+      document.getElementById("unit").setAttribute("disabled", "disabled");
+      document.getElementById("unit").value = unit.nit;
+      document.getElementById("upais").setAttribute("disabled", "disabled");
       document
-        .querySelector("#udepartamento")
+        .getElementById("udepartamento")
         .setAttribute("disabled", "disabled");
       document
-        .querySelector("#umunicipio")
+        .getElementById("umunicipio")
         .setAttribute("disabled", "disabled");
 
       $.post("backend/ajax/empresas/mostrarPaises.php", {}, (data, status) => {
-        document.querySelector("#upais").innerHTML = data;
-        document.querySelector("#upais").value = unit.pais_id;
+        document.getElementById("upais").innerHTML = data;
+        document.getElementById("upais").value = unit.pais_id;
       });
       $.post(
         "backend/ajax/empresas/mostrarDepartamentos.php",
@@ -197,8 +197,8 @@ const ver = (codigo) => {
           pais: unit.pais_id,
         },
         (data, status) => {
-          document.querySelector("#udepartamento").innerHTML = data;
-          document.querySelector("#udepartamento").value = unit.departamento_id;
+          document.getElementById("udepartamento").innerHTML = data;
+          document.getElementById("udepartamento").value = unit.departamento_id;
         }
       );
       $.post(
@@ -207,42 +207,42 @@ const ver = (codigo) => {
           departamento: unit.departamento_id,
         },
         (data, status) => {
-          document.querySelector("#umunicipio").innerHTML = data;
-          document.querySelector("#umunicipio").value = unit.municipio_id;
+          document.getElementById("umunicipio").innerHTML = data;
+          document.getElementById("umunicipio").value = unit.municipio_id;
         }
       );
 
       document
-        .querySelector("#udireccion")
+        .getElementById("udireccion")
         .setAttribute("disabled", "disabled");
-      document.querySelector("#udireccion").value = unit.direccion;
+      document.getElementById("udireccion").value = unit.direccion;
       document
-        .querySelector("#ucodigo_postal")
+        .getElementById("ucodigo_postal")
         .setAttribute("disabled", "disabled");
-      document.querySelector("#ucodigo_postal").value = unit.codigo_postal;
+      document.getElementById("ucodigo_postal").value = unit.codigo_postal;
       document
-        .querySelector("#upagina_web")
+        .getElementById("upagina_web")
         .setAttribute("disabled", "disabled");
-      document.querySelector("#upagina_web").value = unit.pagina_web;
+      document.getElementById("upagina_web").value = unit.pagina_web;
       document
-        .querySelector("#uemail_principal")
+        .getElementById("uemail_principal")
         .setAttribute("disabled", "disabled");
-      document.querySelector("#uemail_principal").value = unit.email_principal;
+      document.getElementById("uemail_principal").value = unit.email_principal;
       document
-        .querySelector("#uemail_secundario")
+        .getElementById("uemail_secundario")
         .setAttribute("disabled", "disabled");
-      document.querySelector("#uemail_secundario").value =
+      document.getElementById("uemail_secundario").value =
         unit.email_secundario;
-      document.querySelector("#utelefono").setAttribute("disabled", "disabled");
-      document.querySelector("#utelefono").value = unit.telefono;
-      document.querySelector("#ucelular").setAttribute("disabled", "disabled");
-      document.querySelector("#ucelular").value = unit.celular;
-      document.querySelector("#uimage").setAttribute("disabled", "disabled");
+      document.getElementById("utelefono").setAttribute("disabled", "disabled");
+      document.getElementById("utelefono").value = unit.telefono;
+      document.getElementById("ucelular").setAttribute("disabled", "disabled");
+      document.getElementById("ucelular").value = unit.celular;
+      document.getElementById("uimage").setAttribute("disabled", "disabled");
       document
-        .querySelector("#uimagen")
+        .getElementById("uimagen")
         .setAttribute("src", "img/logo-empresas/" + unit.id + ".jpg");
-      document.querySelector("#uestado").setAttribute("disabled", "disabled");
-      document.querySelector("#uestado").value = unit.estado;
+      document.getElementById("uestado").setAttribute("disabled", "disabled");
+      document.getElementById("uestado").value = unit.estado;
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     }
@@ -252,43 +252,43 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-  document.querySelector("#ucodigo").removeAttribute("disabled");
-  document.querySelector("#unombre").removeAttribute("disabled");
-  document.querySelector("#unit").removeAttribute("disabled");
-  document.querySelector("#upais").removeAttribute("disabled");
-  document.querySelector("#udepartamento").removeAttribute("disabled");
-  document.querySelector("#umunicipio").removeAttribute("disabled");
-  document.querySelector("#udireccion").removeAttribute("disabled");
-  document.querySelector("#ucodigo_postal").removeAttribute("disabled");
-  document.querySelector("#umunicipio").removeAttribute("disabled");
-  document.querySelector("#udireccion").removeAttribute("disabled");
-  document.querySelector("#upagina_web").removeAttribute("disabled");
-  document.querySelector("#uimage").removeAttribute("disabled");
-  document.querySelector("#uemail_principal").removeAttribute("disabled");
-  document.querySelector("#uemail_secundario").removeAttribute("disabled");
-  document.querySelector("#utelefono").removeAttribute("disabled");
-  document.querySelector("#ucelular").removeAttribute("disabled");
-  document.querySelector("#uestado").removeAttribute("disabled");
+  document.getElementById("ucodigo").removeAttribute("disabled");
+  document.getElementById("unombre").removeAttribute("disabled");
+  document.getElementById("unit").removeAttribute("disabled");
+  document.getElementById("upais").removeAttribute("disabled");
+  document.getElementById("udepartamento").removeAttribute("disabled");
+  document.getElementById("umunicipio").removeAttribute("disabled");
+  document.getElementById("udireccion").removeAttribute("disabled");
+  document.getElementById("ucodigo_postal").removeAttribute("disabled");
+  document.getElementById("umunicipio").removeAttribute("disabled");
+  document.getElementById("udireccion").removeAttribute("disabled");
+  document.getElementById("upagina_web").removeAttribute("disabled");
+  document.getElementById("uimage").removeAttribute("disabled");
+  document.getElementById("uemail_principal").removeAttribute("disabled");
+  document.getElementById("uemail_secundario").removeAttribute("disabled");
+  document.getElementById("utelefono").removeAttribute("disabled");
+  document.getElementById("ucelular").removeAttribute("disabled");
+  document.getElementById("uestado").removeAttribute("disabled");
   btnEditar.setAttribute("hidden", "hidden");
   btnActualizar.removeAttribute("hidden");
 };
 
 const actualizar = () => {
-  let codigo = document.querySelector("#ucodigo").value;
-  let nombre = document.querySelector("#unombre").value;
-  let nit = document.querySelector("#unit").value;
-  let pais = document.querySelector("#upais").value;
-  let departamento = document.querySelector("#udepartamento").value;
-  let municipio = document.querySelector("#umunicipio").value;
-  let direccion = document.querySelector("#udireccion").value;
-  let codigo_postal = document.querySelector("#ucodigo_postal").value;
-  let pagina_web = document.querySelector("#upagina_web").value;
-  let email_principal = document.querySelector("#uemail_principal").value;
-  let email_secundario = document.querySelector("#uemail_secundario").value;
-  let telefono = document.querySelector("#utelefono").value;
-  let celular = document.querySelector("#ucelular").value;
-  let usuario_id = localStorage.getItem("id");
-  let estado = document.querySelector("#uestado").value;
+  let codigo = document.getElementById("ucodigo").value;
+  let nombre = document.getElementById("unombre").value;
+  let nit = document.getElementById("unit").value;
+  let pais = document.getElementById("upais").value;
+  let departamento = document.getElementById("udepartamento").value;
+  let municipio = document.getElementById("umunicipio").value;
+  let direccion = document.getElementById("udireccion").value;
+  let codigo_postal = document.getElementById("ucodigo_postal").value;
+  let pagina_web = document.getElementById("upagina_web").value;
+  let email_principal = document.getElementById("uemail_principal").value;
+  let email_secundario = document.getElementById("uemail_secundario").value;
+  let telefono = document.getElementById("utelefono").value;
+  let celular = document.getElementById("ucelular").value;
+  let usuario_id = sessionStorage.getItem("id");
+  let estado = document.getElementById("uestado").value;
   if (codigo == "") {
     errorDF("Código");
   } else if (nombre == "") {
@@ -505,7 +505,7 @@ busqueda.addEventListener("keyup", () => {
       busqueda: busqueda.value,
     },
     (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     }
   );
 });
