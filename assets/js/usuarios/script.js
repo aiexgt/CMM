@@ -17,16 +17,16 @@ if(usuario === null || password === null){
     })
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-let busqueda = document.querySelector("#busqueda");
+const btnNuevo = document.getElementById("btn-nuevo");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnEditar = document.getElementById("btn-editar");
+const btnActualizar = document.getElementById("btn-actualizar");
+let busqueda = document.getElementById("busqueda");
 let id_cambio;
 
 const mostrar = () => {
   $.post("backend/ajax/usuarios/mostrarUsuarios.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -39,11 +39,11 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  let nombre = document.querySelector("#nombre").value;
-  let apellido = document.querySelector("#apellido").value;
-  let usuario = document.querySelector("#usuario").value;
-  let password = document.querySelector("#password").value;
-  let rol = document.querySelector("#rol").value;
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+  let usuario = document.getElementById("usuario").value;
+  let password = document.getElementById("password").value;
+  let rol = document.getElementById("rol").value;
 
   if(nombre == ""){
     errorDF("Nombre");
@@ -81,16 +81,16 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#apellido").value = "";
-  document.querySelector("#usuario").value = "";
-  document.querySelector("#password").value = "";
-  document.querySelector("#rol").value = 0;
-  document.querySelector("#unombre").value = "";
-  document.querySelector("#uapellido").value = "";
-  document.querySelector("#uusuario").value = "";
-  document.querySelector("#upassword").value = "";
-  document.querySelector("#urol").value = 0;
+  document.getElementById("nombre").value = "";
+  document.getElementById("apellido").value = "";
+  document.getElementById("usuario").value = "";
+  document.getElementById("password").value = "";
+  document.getElementById("rol").value = 0;
+  document.getElementById("unombre").value = "";
+  document.getElementById("uapellido").value = "";
+  document.getElementById("uusuario").value = "";
+  document.getElementById("upassword").value = "";
+  document.getElementById("urol").value = 0;
 };
 
 const ver = (codigo) => {
@@ -104,17 +104,17 @@ const ver = (codigo) => {
     },
     function (data, status) {
       var unit = JSON.parse(data);
-      document.querySelector("#unombre").value = unit.nombre;
-      document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#uapellido").value = unit.apellido;
-      document.querySelector("#uapellido").setAttribute("disabled","disabled");
-      document.querySelector("#uusuario").value = unit.usuario;
-      document.querySelector("#uusuario").setAttribute("disabled","disabled");
-      document.querySelector("#urol").value = unit.rol_id;
-      document.querySelector("#urol").setAttribute("disabled","disabled");
-      document.querySelector("#uestado").value = unit.estado;
-      document.querySelector("#uestado").setAttribute("disabled","disabled");
-      document.querySelector("#upassword").setAttribute("disabled","disabled");
+      document.getElementById("unombre").value = unit.nombre;
+      document.getElementById("unombre").setAttribute("disabled","disabled");
+      document.getElementById("uapellido").value = unit.apellido;
+      document.getElementById("uapellido").setAttribute("disabled","disabled");
+      document.getElementById("uusuario").value = unit.usuario;
+      document.getElementById("uusuario").setAttribute("disabled","disabled");
+      document.getElementById("urol").value = unit.rol_id;
+      document.getElementById("urol").setAttribute("disabled","disabled");
+      document.getElementById("uestado").value = unit.estado;
+      document.getElementById("uestado").setAttribute("disabled","disabled");
+      document.getElementById("upassword").setAttribute("disabled","disabled");
       btnEditar.removeAttribute("hidden");
       btnActualizar.setAttribute("hidden","hidden");
     })
@@ -122,24 +122,24 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#unombre").removeAttribute("disabled");
-    document.querySelector("#uapellido").removeAttribute("disabled");
-    document.querySelector("#uusuario").removeAttribute("disabled");
-    document.querySelector("#upassword").removeAttribute("disabled");
-    document.querySelector("#urol").removeAttribute("disabled");
-    document.querySelector("#uestado").removeAttribute("disabled");
+    document.getElementById("unombre").removeAttribute("disabled");
+    document.getElementById("uapellido").removeAttribute("disabled");
+    document.getElementById("uusuario").removeAttribute("disabled");
+    document.getElementById("upassword").removeAttribute("disabled");
+    document.getElementById("urol").removeAttribute("disabled");
+    document.getElementById("uestado").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
   
 };
 
 const actualizar = () => {
-  let nombre = document.querySelector("#unombre").value;
-  let apellido = document.querySelector("#uapellido").value;
-  let usuario = document.querySelector("#uusuario").value;
-  let password = document.querySelector("#upassword").value;
-  let rol = document.querySelector("#urol").value;
-  let estado = document.querySelector("#uestado").value;
+  let nombre = document.getElementById("unombre").value;
+  let apellido = document.getElementById("uapellido").value;
+  let usuario = document.getElementById("uusuario").value;
+  let password = document.getElementById("upassword").value;
+  let rol = document.getElementById("urol").value;
+  let estado = document.getElementById("uestado").value;
   if(nombre == ""){
     errorDF("Nombre");
   }else if (apellido == ""){
@@ -245,7 +245,7 @@ busqueda.addEventListener("keyup", () => {
       busqueda: busqueda.value,
     },
     (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     }
   );
 });
@@ -255,7 +255,7 @@ $(document).ready(() => {
   limpiarCampos();
   $.post("backend/ajax/usuarios/mostrarRoles.php", {}, 
   (data, status) => {
-    document.querySelector("#rol").innerHTML = data;
-    document.querySelector("#urol").innerHTML = data;
+    document.getElementById("rol").innerHTML = data;
+    document.getElementById("urol").innerHTML = data;
   })
 });

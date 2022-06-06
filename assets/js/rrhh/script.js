@@ -19,16 +19,16 @@ if(usuario === null || password === null){
 }
 
 let id_cambio;
-let bempresa = document.querySelector("#bempresa");
-let bpuesto = document.querySelector("#bpuesto");
-let busqueda = document.querySelector("#busqueda");
+let bempresa = document.getElementById("bempresa");
+let bpuesto = document.getElementById("bpuesto");
+let busqueda = document.getElementById("busqueda");
 
 
 //* Funciones
 
 const mostrar = () => {
   $.post("backend/ajax/rrhh/mostrarTrabajadores.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -68,7 +68,7 @@ const calculardiasDiscount = () => {
 };
 
 const sumarMeses = () => {
-  var d = new Date(document.querySelector("#ufecha_inicio").value);
+  var d = new Date(document.getElementById("ufecha_inicio").value);
   let dia = d.getDate()+1;
   let mes = d.getMonth()+3;
   let anio = d.getFullYear();
@@ -154,21 +154,21 @@ const buscar = () => {
       tipo: tipoBusqueda,
       busqueda: busqueda.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "e"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
       tipo: tipoBusqueda,
       empresa: bempresa.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "p"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
       tipo: tipoBusqueda,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "te"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -176,7 +176,7 @@ const buscar = () => {
       busqueda: busqueda.value,
       empresa: bempresa.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "tp"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -184,7 +184,7 @@ const buscar = () => {
       busqueda: busqueda.value,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "ep"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -192,7 +192,7 @@ const buscar = () => {
       empresa: bempresa.value,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "tep"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -201,7 +201,7 @@ const buscar = () => {
       empresa: bempresa.value,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else{
     mostrar();
@@ -210,11 +210,11 @@ const buscar = () => {
 }
 
 $.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
-  document.querySelector("#bpuesto").innerHTML = data;
+  document.getElementById("bpuesto").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarEmpresa.php", {}, (data, status) => {
-  document.querySelector("#bempresa").innerHTML = data;
+  document.getElementById("bempresa").innerHTML = data;
 });
 
 busqueda.addEventListener("keyup", () => {

@@ -18,17 +18,17 @@ if(usuario === null || password === null){
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-const btnVer = document.querySelector("#verComprobante");
-let busqueda = document.querySelector("#busqueda");
+const btnNuevo = document.getElementById("#btn-nuevo");
+const btnGuardar = document.getElementById("#btn-guardar");
+const btnEditar = document.getElementById("#btn-editar");
+const btnActualizar = document.getElementById("#btn-actualizar");
+const btnVer = document.getElementById("#verComprobante");
+let busqueda = document.getElementById("#busqueda");
 let id_cambio;
 
 const mostrar = () => {
   $.post("backend/ajax/feriados/mostrarFeriados.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -88,12 +88,12 @@ const ver = (codigo) => {
     function (data, status) {
       var unit = JSON.parse(data);
       id_cambio = unit.id;
-      document.querySelector("#unombre").value = unit.nombre;
-      document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha").value = unit.fecha;
-      document.querySelector("#ufecha").setAttribute("disabled","disabled");
-      document.querySelector("#udescripcion").value = unit.descripcion;
-      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
+      document.getElementById("unombre").value = unit.nombre;
+      document.getElementById("unombre").setAttribute("disabled","disabled");
+      document.getElementById("ufecha").value = unit.fecha;
+      document.getElementById("ufecha").setAttribute("disabled","disabled");
+      document.getElementById("udescripcion").value = unit.descripcion;
+      document.getElementById("udescripcion").setAttribute("disabled","disabled");
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -101,9 +101,9 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#unombre").removeAttribute("disabled","disabled");
-    document.querySelector("#ufecha").removeAttribute("disabled","disabled");
-    document.querySelector("#udescripcion").removeAttribute("disabled","disabled");
+    document.getElementById("unombre").removeAttribute("disabled","disabled");
+    document.getElementById("ufecha").removeAttribute("disabled","disabled");
+    document.getElementById("udescripcion").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -193,7 +193,7 @@ busqueda.addEventListener("change", () => {
       busqueda: busqueda.value,
     },
     (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     }
   );
 });

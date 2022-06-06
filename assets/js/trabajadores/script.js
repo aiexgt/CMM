@@ -18,28 +18,28 @@ if(usuario === null || password === null){
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-const btnActualizard = document.querySelector("#btn-actualizard");
+const btnNuevo = document.getElementById("btn-nuevo");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnEditar = document.getElementById("btn-editar");
+const btnActualizar = document.getElementById("btn-actualizar");
+const btnActualizard = document.getElementById("btn-actualizard");
 let id_cambio;
-let selectPais = document.querySelector("#pais");
-let selectDepartamento = document.querySelector("#departamento");
-let selectMunicipio = document.querySelector("#municipio");
-let uselectPais = document.querySelector("#upais");
-let uselectDepartamento = document.querySelector("#udepartamento");
-let uselectMunicipio = document.querySelector("#umunicipio");
-let bempresa = document.querySelector("#bempresa");
-let bpuesto = document.querySelector("#bpuesto");
-let busqueda = document.querySelector("#busqueda");
+let selectPais = document.getElementById("pais");
+let selectDepartamento = document.getElementById("departamento");
+let selectMunicipio = document.getElementById("municipio");
+let uselectPais = document.getElementById("upais");
+let uselectDepartamento = document.getElementById("udepartamento");
+let uselectMunicipio = document.getElementById("umunicipio");
+let bempresa = document.getElementById("bempresa");
+let bpuesto = document.getElementById("bpuesto");
+let busqueda = document.getElementById("busqueda");
 
 
 //* Funciones
 
 const mostrar = () => {
   $.post("backend/ajax/trabajadores/mostrarTrabajadores.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -52,26 +52,26 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  let cui = document.querySelector("#cui").value;
-  let nombre = document.querySelector("#nombre").value;
-  let apellido = document.querySelector("#apellido").value;
-  let estado_civil = document.querySelector("#estado_civil").value;
-  let fecha_nacimiento = document.querySelector("#fecha_nacimiento").value;
-  let fecha_inicio = document.querySelector("#fecha_inicio").value;
-  let fecha_igss = document.querySelector("#fecha_igss").value;
-  let numero_igss = document.querySelector("#numero_igss").value;
-  let puesto = document.querySelector("#puesto").value;
-  let telefono = document.querySelector("#telefono").value;
-  let celular = document.querySelector("#celular").value;
-  let correo = document.querySelector("#correo").value;
-  let pais = document.querySelector("#pais").value;
-  let departamento = document.querySelector("#departamento").value;
-  let municipio = document.querySelector("#municipio").value;
-  let salario = document.querySelector("#salario").value;
-  let direccion = document.querySelector("#direccion").value;
-  let estado_laboral = document.querySelector("#estado_laboral").value;
-  let empresa = document.querySelector("#empresa").value;
-  let observaciones = document.querySelector("#observaciones").value;
+  let cui = document.getElementById("cui").value;
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+  let estado_civil = document.getElementById("estado_civil").value;
+  let fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+  let fecha_inicio = document.getElementById("fecha_inicio").value;
+  let fecha_igss = document.getElementById("fecha_igss").value;
+  let numero_igss = document.getElementById("numero_igss").value;
+  let puesto = document.getElementById("puesto").value;
+  let telefono = document.getElementById("telefono").value;
+  let celular = document.getElementById("celular").value;
+  let correo = document.getElementById("correo").value;
+  let pais = document.getElementById("pais").value;
+  let departamento = document.getElementById("departamento").value;
+  let municipio = document.getElementById("municipio").value;
+  let salario = document.getElementById("salario").value;
+  let direccion = document.getElementById("direccion").value;
+  let estado_laboral = document.getElementById("estado_laboral").value;
+  let empresa = document.getElementById("empresa").value;
+  let observaciones = document.getElementById("observaciones").value;
 
   if(cui == ""){
     errorDF("CUI");
@@ -140,26 +140,26 @@ const guardar = () => {
 };
 
 const limpiarCamposN = () => {
-  document.querySelector("#cui").value = "";
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#apellido").value = "";
-  document.querySelector("#estado_civil").value = 0;
-  document.querySelector("#fecha_nacimiento").value = "2002-01-01";
-  document.querySelector("#fecha_inicio").value = "";
-  document.querySelector("#fecha_igss").value = "";
-  document.querySelector("#numero_igss").value = "";
-  document.querySelector("#puesto").value = 0;
-  document.querySelector("#telefono").value = "";
-  document.querySelector("#celular").value = "";
-  document.querySelector("#correo").value = "";
-  document.querySelector("#pais").value = 0;
-  document.querySelector("#departamento").value = 0;
-  document.querySelector("#municipio").value = 0;
-  document.querySelector("#salario").value = "";
-  document.querySelector("#direccion").value = "";
-  document.querySelector("#estado_laboral").value = 0;
-  document.querySelector("#empresa").value = 0;
-  document.querySelector("#observaciones").value = "";
+  document.getElementById("cui").value = "";
+  document.getElementById("nombre").value = "";
+  document.getElementById("apellido").value = "";
+  document.getElementById("estado_civil").value = 0;
+  document.getElementById("fecha_nacimiento").value = "2002-01-01";
+  document.getElementById("fecha_inicio").value = "";
+  document.getElementById("fecha_igss").value = "";
+  document.getElementById("numero_igss").value = "";
+  document.getElementById("puesto").value = 0;
+  document.getElementById("telefono").value = "";
+  document.getElementById("celular").value = "";
+  document.getElementById("correo").value = "";
+  document.getElementById("pais").value = 0;
+  document.getElementById("departamento").value = 0;
+  document.getElementById("municipio").value = 0;
+  document.getElementById("salario").value = "";
+  document.getElementById("direccion").value = "";
+  document.getElementById("estado_laboral").value = 0;
+  document.getElementById("empresa").value = 0;
+  document.getElementById("observaciones").value = "";
 };
 
 const calculardiasDiscount = () => {
@@ -182,7 +182,7 @@ const calculardiasDiscount = () => {
 };
 
 const sumarMeses = () => {
-  var d = new Date(document.querySelector("#ufecha_inicio").value);
+  var d = new Date(document.getElementById("ufecha_inicio").value);
   let dia = d.getDate()+1;
   let mes = d.getMonth()+3;
   let anio = d.getFullYear();
@@ -245,54 +245,54 @@ const ver = (codigo) => {
     },
     function (data, status) {
       var unit = JSON.parse(data);
-      document.querySelector("#ucui").value = unit.cui;
-      document.querySelector("#ucui").setAttribute("disabled","disabled");
-      document.querySelector("#unombre").value = unit.nombre;
-      document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#uapellido").value = unit.apellido;
-      document.querySelector("#uapellido").setAttribute("disabled","disabled");
-      document.querySelector("#uestado_civil").value = unit.estado_civil_id;
-      document.querySelector("#uestado_civil").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha_nacimiento").value = unit.fecha_nacimiento;
-      document.querySelector("#ufecha_nacimiento").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha_inicio").value = unit.fecha_inicio;
-      document.querySelector("#ufecha_inicio").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha_igss").value = unit.fecha_igss;
-      document.querySelector("#ufecha_igss").setAttribute("disabled","disabled");
-      document.querySelector("#unumero_igss").value = unit.numero_igss;
-      document.querySelector("#unumero_igss").setAttribute("disabled","disabled");
-      document.querySelector("#upuesto").value = unit.puesto_id;
-      document.querySelector("#upuesto").setAttribute("disabled","disabled");
-      document.querySelector("#utelefono").value = unit.telefono;
-      document.querySelector("#utelefono").setAttribute("disabled","disabled");
-      document.querySelector("#ucelular").value = unit.celular;
-      document.querySelector("#ucelular").setAttribute("disabled","disabled");
-      document.querySelector("#ucorreo").value = unit.correo;
-      document.querySelector("#ucorreo").setAttribute("disabled","disabled");
-      document.querySelector("#upais").value = unit.pais_id;
-      document.querySelector("#upais").setAttribute("disabled","disabled");
-      document.querySelector("#udepartamento").value = unit.departamento_id;
-      document.querySelector("#udepartamento").setAttribute("disabled","disabled");
-      document.querySelector("#umunicipio").value = unit.municipio_id;
-      document.querySelector("#umunicipio").setAttribute("disabled","disabled");
-      document.querySelector("#usalario").value = unit.salario;
-      document.querySelector("#usalario").setAttribute("disabled","disabled");
-      document.querySelector("#udireccion").value = unit.direccion;
-      document.querySelector("#udireccion").setAttribute("disabled","disabled");
-      document.querySelector("#uestado_laboral").value = unit.estado_trabajo_id;
-      document.querySelector("#uestado_laboral").setAttribute("disabled","disabled");
-      document.querySelector("#uempresa").value = unit.empresa_id;
-      document.querySelector("#uempresa").setAttribute("disabled","disabled");
-      document.querySelector("#udias_laborados").setAttribute("disabled","disabled");
-      document.querySelector("#uperiodo_prueba").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha_finalizacion").value = unit.fecha_finalizacion;
-      document.querySelector("#ufecha_finalizacion").setAttribute("disabled","disabled");
-      document.querySelector("#uobservaciones").value = unit.observaciones;
-      document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
+      document.getElementById("ucui").value = unit.cui;
+      document.getElementById("ucui").setAttribute("disabled","disabled");
+      document.getElementById("unombre").value = unit.nombre;
+      document.getElementById("unombre").setAttribute("disabled","disabled");
+      document.getElementById("uapellido").value = unit.apellido;
+      document.getElementById("uapellido").setAttribute("disabled","disabled");
+      document.getElementById("uestado_civil").value = unit.estado_civil_id;
+      document.getElementById("uestado_civil").setAttribute("disabled","disabled");
+      document.getElementById("ufecha_nacimiento").value = unit.fecha_nacimiento;
+      document.getElementById("ufecha_nacimiento").setAttribute("disabled","disabled");
+      document.getElementById("ufecha_inicio").value = unit.fecha_inicio;
+      document.getElementById("ufecha_inicio").setAttribute("disabled","disabled");
+      document.getElementById("ufecha_igss").value = unit.fecha_igss;
+      document.getElementById("ufecha_igss").setAttribute("disabled","disabled");
+      document.getElementById("unumero_igss").value = unit.numero_igss;
+      document.getElementById("unumero_igss").setAttribute("disabled","disabled");
+      document.getElementById("upuesto").value = unit.puesto_id;
+      document.getElementById("upuesto").setAttribute("disabled","disabled");
+      document.getElementById("utelefono").value = unit.telefono;
+      document.getElementById("utelefono").setAttribute("disabled","disabled");
+      document.getElementById("ucelular").value = unit.celular;
+      document.getElementById("ucelular").setAttribute("disabled","disabled");
+      document.getElementById("ucorreo").value = unit.correo;
+      document.getElementById("ucorreo").setAttribute("disabled","disabled");
+      document.getElementById("upais").value = unit.pais_id;
+      document.getElementById("upais").setAttribute("disabled","disabled");
+      document.getElementById("udepartamento").value = unit.departamento_id;
+      document.getElementById("udepartamento").setAttribute("disabled","disabled");
+      document.getElementById("umunicipio").value = unit.municipio_id;
+      document.getElementById("umunicipio").setAttribute("disabled","disabled");
+      document.getElementById("usalario").value = unit.salario;
+      document.getElementById("usalario").setAttribute("disabled","disabled");
+      document.getElementById("udireccion").value = unit.direccion;
+      document.getElementById("udireccion").setAttribute("disabled","disabled");
+      document.getElementById("uestado_laboral").value = unit.estado_trabajo_id;
+      document.getElementById("uestado_laboral").setAttribute("disabled","disabled");
+      document.getElementById("uempresa").value = unit.empresa_id;
+      document.getElementById("uempresa").setAttribute("disabled","disabled");
+      document.getElementById("udias_laborados").setAttribute("disabled","disabled");
+      document.getElementById("uperiodo_prueba").setAttribute("disabled","disabled");
+      document.getElementById("ufecha_finalizacion").value = unit.fecha_finalizacion;
+      document.getElementById("ufecha_finalizacion").setAttribute("disabled","disabled");
+      document.getElementById("uobservaciones").value = unit.observaciones;
+      document.getElementById("uobservaciones").setAttribute("disabled","disabled");
 
       $.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {
-        document.querySelector("#upais").innerHTML = data;
-        document.querySelector("#upais").value = unit.pais_id;
+        document.getElementById("upais").innerHTML = data;
+        document.getElementById("upais").value = unit.pais_id;
       });
       $.post(
         "backend/ajax/trabajadores/mostrarDepartamentos.php",
@@ -300,8 +300,8 @@ const ver = (codigo) => {
           pais: unit.pais_id,
         },
         (data, status) => {
-          document.querySelector("#udepartamento").innerHTML = data;
-          document.querySelector("#udepartamento").value = unit.departamento_id;
+          document.getElementById("udepartamento").innerHTML = data;
+          document.getElementById("udepartamento").value = unit.departamento_id;
         }
       );
       $.post(
@@ -310,8 +310,8 @@ const ver = (codigo) => {
           departamento: unit.departamento_id,
         },
         (data, status) => {
-          document.querySelector("#umunicipio").innerHTML = data;
-          document.querySelector("#umunicipio").value = unit.municipio_id;
+          document.getElementById("umunicipio").innerHTML = data;
+          document.getElementById("umunicipio").value = unit.municipio_id;
         }
       );
       id_cambio = unit.id;
@@ -323,8 +323,8 @@ const ver = (codigo) => {
       btnActualizar.setAttribute("hidden","hidden");
 
       $.post("backend/ajax/trabajadores/actualizarPeriodos.php", {
-        prueba : document.querySelector("#uperiodo_prueba").value,
-        cantidad : document.querySelector("#udias_laborados").value,
+        prueba : document.getElementById("uperiodo_prueba").value,
+        cantidad : document.getElementById("udias_laborados").value,
         id: unit.id
       }, (data, status) => {})
 
@@ -551,54 +551,54 @@ const actualizarDoc = () => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#ucui").removeAttribute("disabled");
-    document.querySelector("#unombre").removeAttribute("disabled");
-    document.querySelector("#uapellido").removeAttribute("disabled");
-    document.querySelector("#uestado_civil").removeAttribute("disabled");
-    document.querySelector("#ufecha_nacimiento").removeAttribute("disabled");
-    document.querySelector("#ufecha_inicio").removeAttribute("disabled");
-    document.querySelector("#ufecha_finalizacion").removeAttribute("disabled");
-    document.querySelector("#ufecha_igss").removeAttribute("disabled");
-    document.querySelector("#unumero_igss").removeAttribute("disabled");
-    document.querySelector("#upuesto").removeAttribute("disabled");
-    document.querySelector("#utelefono").removeAttribute("disabled");
-    document.querySelector("#ucelular").removeAttribute("disabled");
-    document.querySelector("#ucorreo").removeAttribute("disabled");
-    document.querySelector("#upais").removeAttribute("disabled");
-    document.querySelector("#udepartamento").removeAttribute("disabled");
-    document.querySelector("#umunicipio").removeAttribute("disabled");
-    document.querySelector("#usalario").removeAttribute("disabled");
-    document.querySelector("#uempresa").removeAttribute("disabled");
-    document.querySelector("#uestado_laboral").removeAttribute("disabled");
-    document.querySelector("#udireccion").removeAttribute("disabled");
-    document.querySelector("#uobservaciones").removeAttribute("disabled");
+    document.getElementById("ucui").removeAttribute("disabled");
+    document.getElementById("unombre").removeAttribute("disabled");
+    document.getElementById("uapellido").removeAttribute("disabled");
+    document.getElementById("uestado_civil").removeAttribute("disabled");
+    document.getElementById("ufecha_nacimiento").removeAttribute("disabled");
+    document.getElementById("ufecha_inicio").removeAttribute("disabled");
+    document.getElementById("ufecha_finalizacion").removeAttribute("disabled");
+    document.getElementById("ufecha_igss").removeAttribute("disabled");
+    document.getElementById("unumero_igss").removeAttribute("disabled");
+    document.getElementById("upuesto").removeAttribute("disabled");
+    document.getElementById("utelefono").removeAttribute("disabled");
+    document.getElementById("ucelular").removeAttribute("disabled");
+    document.getElementById("ucorreo").removeAttribute("disabled");
+    document.getElementById("upais").removeAttribute("disabled");
+    document.getElementById("udepartamento").removeAttribute("disabled");
+    document.getElementById("umunicipio").removeAttribute("disabled");
+    document.getElementById("usalario").removeAttribute("disabled");
+    document.getElementById("uempresa").removeAttribute("disabled");
+    document.getElementById("uestado_laboral").removeAttribute("disabled");
+    document.getElementById("udireccion").removeAttribute("disabled");
+    document.getElementById("uobservaciones").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
   
 };
 
 const actualizar = () => {
-  let cui = document.querySelector("#ucui").value;
-  let nombre = document.querySelector("#unombre").value;
-  let apellido = document.querySelector("#uapellido").value;
-  let estado_civil = document.querySelector("#uestado_civil").value;
-  let fecha_nacimiento = document.querySelector("#ufecha_nacimiento").value;
-  let fecha_inicio = document.querySelector("#ufecha_inicio").value;
-  let fecha_finalizacion = document.querySelector("#ufecha_finalizacion").value;
-  let fecha_igss = document.querySelector("#ufecha_igss").value;
-  let numero_igss = document.querySelector("#unumero_igss").value;
-  let puesto = document.querySelector("#upuesto").value;
-  let telefono = document.querySelector("#utelefono").value;
-  let celular = document.querySelector("#ucelular").value;
-  let correo = document.querySelector("#ucorreo").value;
-  let pais = document.querySelector("#upais").value;
-  let departamento = document.querySelector("#udepartamento").value;
-  let municipio = document.querySelector("#umunicipio").value;
-  let salario = parseFloat(document.querySelector("#usalario").value);
-  let direccion = document.querySelector("#udireccion").value;
-  let estado_laboral = document.querySelector("#uestado_laboral").value;
-  let empresa = document.querySelector("#uempresa").value;
-  let observaciones = document.querySelector("#uobservaciones").value;
+  let cui = document.getElementById("ucui").value;
+  let nombre = document.getElementById("unombre").value;
+  let apellido = document.getElementById("uapellido").value;
+  let estado_civil = document.getElementById("uestado_civil").value;
+  let fecha_nacimiento = document.getElementById("ufecha_nacimiento").value;
+  let fecha_inicio = document.getElementById("ufecha_inicio").value;
+  let fecha_finalizacion = document.getElementById("ufecha_finalizacion").value;
+  let fecha_igss = document.getElementById("ufecha_igss").value;
+  let numero_igss = document.getElementById("unumero_igss").value;
+  let puesto = document.getElementById("upuesto").value;
+  let telefono = document.getElementById("utelefono").value;
+  let celular = document.getElementById("ucelular").value;
+  let correo = document.getElementById("ucorreo").value;
+  let pais = document.getElementById("upais").value;
+  let departamento = document.getElementById("udepartamento").value;
+  let municipio = document.getElementById("umunicipio").value;
+  let salario = parseFloat(document.getElementById("usalario").value);
+  let direccion = document.getElementById("udireccion").value;
+  let estado_laboral = document.getElementById("uestado_laboral").value;
+  let empresa = document.getElementById("uempresa").value;
+  let observaciones = document.getElementById("uobservaciones").value;
   if(cui == ""){
     errorDF("CUI");
   }else if(nombre == ""){
@@ -730,21 +730,21 @@ const buscar = () => {
       tipo: tipoBusqueda,
       busqueda: busqueda.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "e"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
       tipo: tipoBusqueda,
       empresa: bempresa.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "p"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
       tipo: tipoBusqueda,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "te"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -752,7 +752,7 @@ const buscar = () => {
       busqueda: busqueda.value,
       empresa: bempresa.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "tp"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -760,7 +760,7 @@ const buscar = () => {
       busqueda: busqueda.value,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "ep"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -768,7 +768,7 @@ const buscar = () => {
       empresa: bempresa.value,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else if(tipoBusqueda == "tep"){
     $.post("backend/ajax/trabajadores/buscarTrabajador.php", {
@@ -777,7 +777,7 @@ const buscar = () => {
       empresa: bempresa.value,
       puesto: bpuesto.value
     }, (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     });
   }else{
     mostrar();
@@ -786,25 +786,25 @@ const buscar = () => {
 }
 
 $.post("backend/ajax/trabajadores/mostrarEstadoCivil.php", {}, (data, status) => {
-  document.querySelector("#estado_civil").innerHTML = data;
-  document.querySelector("#uestado_civil").innerHTML = data;
+  document.getElementById("estado_civil").innerHTML = data;
+  document.getElementById("uestado_civil").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarPuestos.php", {}, (data, status) => {
-  document.querySelector("#puesto").innerHTML = data;
-  document.querySelector("#upuesto").innerHTML = data;
-  document.querySelector("#bpuesto").innerHTML = data;
+  document.getElementById("puesto").innerHTML = data;
+  document.getElementById("upuesto").innerHTML = data;
+  document.getElementById("bpuesto").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarEstadoLaboral.php", {}, (data, status) => {
-  document.querySelector("#estado_laboral").innerHTML = data;
-  document.querySelector("#uestado_laboral").innerHTML = data;
+  document.getElementById("estado_laboral").innerHTML = data;
+  document.getElementById("uestado_laboral").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarEmpresa.php", {}, (data, status) => {
-  document.querySelector("#empresa").innerHTML = data;
-  document.querySelector("#uempresa").innerHTML = data;
-  document.querySelector("#bempresa").innerHTML = data;
+  document.getElementById("empresa").innerHTML = data;
+  document.getElementById("uempresa").innerHTML = data;
+  document.getElementById("bempresa").innerHTML = data;
 });
 
 $.post("backend/ajax/trabajadores/mostrarPaises.php", {}, (data, status) => {

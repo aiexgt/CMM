@@ -18,16 +18,16 @@ if(usuario === null || password === null){
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-let busqueda = document.querySelector("#busqueda");
+const btnNuevo = document.getElementById("btn-nuevo");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnEditar = document.getElementById("btn-editar");
+const btnActualizar = document.getElementById("btn-actualizar");
+let busqueda = document.getElementById("busqueda");
 let id_cambio;
 
 const mostrar = () => {
   $.post("backend/ajax/roles/mostrarRoles.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -40,8 +40,8 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
-  let nombre = document.querySelector("#nombre").value;
-  let descripcion = document.querySelector("#descripcion").value;
+  let nombre = document.getElementById("nombre").value;
+  let descripcion = document.getElementById("descripcion").value;
 
   if(nombre == ""){
     errorDF("Nombre");
@@ -67,11 +67,11 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-  document.querySelector("#nombre").value = "";
-  document.querySelector("#descripcion").value = "";
-  document.querySelector("#unombre").value = "";
-  document.querySelector("#udescripcion").value = "";
-  document.querySelector("#uestado").value = 1;
+  document.getElementById("nombre").value = "";
+  document.getElementById("descripcion").value = "";
+  document.getElementById("unombre").value = "";
+  document.getElementById("udescripcion").value = "";
+  document.getElementById("uestado").value = 1;
 };
 
 const ver = (codigo) => {
@@ -85,12 +85,12 @@ const ver = (codigo) => {
     },
     function (data, status) {
       var unit = JSON.parse(data);
-      document.querySelector("#unombre").value = unit.nombre;
-      document.querySelector("#unombre").setAttribute("disabled","disabled");
-      document.querySelector("#udescripcion").value = unit.descripcion;
-      document.querySelector("#udescripcion").setAttribute("disabled","disabled");
-      document.querySelector("#uestado").value = unit.estado;
-      document.querySelector("#uestado").setAttribute("disabled","disabled");
+      document.getElementById("unombre").value = unit.nombre;
+      document.getElementById("unombre").setAttribute("disabled","disabled");
+      document.getElementById("udescripcion").value = unit.descripcion;
+      document.getElementById("udescripcion").setAttribute("disabled","disabled");
+      document.getElementById("uestado").value = unit.estado;
+      document.getElementById("uestado").setAttribute("disabled","disabled");
       btnEditar.removeAttribute("hidden");
       btnActualizar.setAttribute("hidden","hidden");
     })
@@ -98,18 +98,18 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#unombre").removeAttribute("disabled");
-    document.querySelector("#udescripcion").removeAttribute("disabled");
-    document.querySelector("#uestado").removeAttribute("disabled");
+    document.getElementById("unombre").removeAttribute("disabled");
+    document.getElementById("udescripcion").removeAttribute("disabled");
+    document.getElementById("uestado").removeAttribute("disabled");
     btnEditar.setAttribute("hidden","hidden");
     btnActualizar.removeAttribute("hidden");
   
 };
 
 const actualizar = () => {
-  let nombre = document.querySelector("#unombre").value;
-  let descripcion = document.querySelector("#udescripcion").value;
-  let estado = document.querySelector("#uestado").value;
+  let nombre = document.getElementById("unombre").value;
+  let descripcion = document.getElementById("udescripcion").value;
+  let estado = document.getElementById("uestado").value;
   if(nombre == ""){
     errorDF("Nombre");
   }else{
@@ -206,7 +206,7 @@ busqueda.addEventListener("keyup", () => {
       busqueda: busqueda.value,
     },
     (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     }
   );
 });

@@ -18,17 +18,17 @@ if(usuario === null || password === null){
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.querySelector("#btn-nuevo");
-const btnGuardar = document.querySelector("#btn-guardar");
-const btnEditar = document.querySelector("#btn-editar");
-const btnActualizar = document.querySelector("#btn-actualizar");
-const btnVer = document.querySelector("#verComprobante");
-let busqueda = document.querySelector("#busqueda");
+const btnNuevo = document.getElementById("btn-nuevo");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnEditar = document.getElementById("btn-editar");
+const btnActualizar = document.getElementById("btn-actualizar");
+const btnVer = document.getElementById("verComprobante");
+let busqueda = document.getElementById("busqueda");
 let id_cambio;
 
 const mostrar = () => {
   $.post("backend/ajax/llamadas_atencion/mostrarLlamadas.php", {}, (data, status) => {
-    document.querySelector("#tabla-contenido").innerHTML = data;
+    document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
 
@@ -116,14 +116,14 @@ const ver = (codigo) => {
     function (data, status) {
       var unit = JSON.parse(data);
       id_cambio = unit.id;
-      document.querySelector("#utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
-      document.querySelector("#utrabajador").setAttribute("disabled","disabled");
-      document.querySelector("#ufecha").value = unit.fecha;
-      document.querySelector("#ufecha").setAttribute("disabled","disabled");
-      document.querySelector("#uasunto").value = unit.asunto;
-      document.querySelector("#uasunto").setAttribute("disabled","disabled");
-      document.querySelector("#uobservaciones").value = unit.observaciones;
-      document.querySelector("#uobservaciones").setAttribute("disabled","disabled");
+      document.getElementById("utrabajador").value = (document.querySelector(`.persona${codigo}`).textContent)
+      document.getElementById("utrabajador").setAttribute("disabled","disabled");
+      document.getElementById("ufecha").value = unit.fecha;
+      document.getElementById("ufecha").setAttribute("disabled","disabled");
+      document.getElementById("uasunto").value = unit.asunto;
+      document.getElementById("uasunto").setAttribute("disabled","disabled");
+      document.getElementById("uobservaciones").value = unit.observaciones;
+      document.getElementById("uobservaciones").setAttribute("disabled","disabled");
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -131,8 +131,8 @@ const ver = (codigo) => {
 };
 
 const quitarDisabled = () => {
-    document.querySelector("#uasunto").removeAttribute("disabled","disabled");
-    document.querySelector("#uobservaciones").removeAttribute("disabled","disabled");
+    document.getElementById("uasunto").removeAttribute("disabled","disabled");
+    document.getElementById("uobservaciones").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -229,26 +229,26 @@ busqueda.addEventListener("change", () => {
       busqueda: busqueda.value,
     },
     (data, status) => {
-      document.querySelector("#tabla-contenido").innerHTML = data;
+      document.getElementById("tabla-contenido").innerHTML = data;
     }
   );
 });
 
 
-document.querySelector("#empresa").addEventListener("change",() => {
-  let empresa = document.querySelector("#empresa").value;
+document.getElementById("empresa").addEventListener("change",() => {
+  let empresa = document.getElementById("empresa").value;
   $.post("backend/ajax/llamadas_atencion/mostrarTrabajadores.php", {
     empresa: empresa
   }, (data, status) => {
-    document.querySelector("#trabajador").innerHTML = data;
-    document.querySelector("#trabajador").removeAttribute("disabled");
+    document.getElementById("trabajador").innerHTML = data;
+    document.getElementById("trabajador").removeAttribute("disabled");
   });
 })
 
 
 $.post("backend/ajax/llamadas_atencion/mostrarEmpresas.php", {}, (data, status) => {
-  document.querySelector("#empresa").innerHTML = data;
-  //document.querySelector("#uempresas").innerHTML = data;
+  document.getElementById("empresa").innerHTML = data;
+  //document.getElementById("uempresas").innerHTML = data;
 });
 
 $(document).ready(() => {
