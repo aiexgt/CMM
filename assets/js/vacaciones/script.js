@@ -68,7 +68,7 @@ const guardar = () => {
       fecha_fin: fecha_fin,
       observaciones: observaciones,
       disponibles: disponibles,
-      id: localStorage.getItem("id")
+      id: sessionStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
         let formData = new FormData();
