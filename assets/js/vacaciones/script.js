@@ -91,6 +91,14 @@ const guardar = () => {
             },
           });
         }
+        $.post("backend/ajax/vacaciones/generarDocumento.php", {
+          trabajador,
+          fecha,
+          fecha_fin,
+          cantidad
+        }, (data, status) => {
+          console.log("Archivo Generado")
+        });
         $("#exampleModal").modal("hide");
         Swal.fire("Excelente!", "El registro de vacaciones se ha añadido!", "success");
         limpiarCampos();
