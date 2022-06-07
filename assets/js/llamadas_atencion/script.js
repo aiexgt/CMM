@@ -18,7 +18,8 @@ if(usuario === null || password === null){
     document.getElementById("busuario").innerHTML = usuarioD.toUpperCase();
 }
 
-const btnNuevo = document.getElementById("btn-nuevo");
+const btnNuevo = document.
+btn-nuevo");
 const btnGuardar = document.getElementById("btn-guardar");
 const btnEditar = document.getElementById("btn-editar");
 const btnActualizar = document.getElementById("btn-actualizar");
@@ -58,7 +59,7 @@ const guardar = () => {
       fecha: fecha,
       asunto: asunto,
       observaciones: observaciones,
-      id: localStorage.getItem("id")
+      id: sessionStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
         let formData = new FormData();

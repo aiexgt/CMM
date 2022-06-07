@@ -47,6 +47,7 @@ const errorDF = (dato) => {
 };
 
 const guardar = () => {
+  
   let trabajador = document.getElementById("trabajador").value;
   let tipo = document.getElementById("tipo").value;
   let fecha = document.getElementById("fecha").value;
@@ -71,7 +72,7 @@ const guardar = () => {
       fecha_fin,
       asunto,
       descripcion,
-      id: localStorage.getItem("id")
+      id: sessionStorage.getItem("id")
     }, (data) => {
       if (data == "1") {
         let formData = new FormData();
