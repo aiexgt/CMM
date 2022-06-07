@@ -71,7 +71,7 @@ const guardar = () => {
       fecha_fin,
       asunto,
       descripcion,
-      id: sessionStorage.getItem("id")
+      id: localStorage.getItem("id")
     }, (data) => {
       if (data == "1") {
         let formData = new FormData();

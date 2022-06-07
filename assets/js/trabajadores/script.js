@@ -120,7 +120,7 @@ const guardar = () => {
       direccion: direccion,
       empresa: empresa,
       estado_laboral: estado_laboral,
-      id: sessionStorage.getItem("id"),
+      id: localStorage.getItem("id"),
       observaciones: observaciones
     }, (data, status) => {
       if(data == "1"){

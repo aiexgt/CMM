@@ -62,7 +62,7 @@ const guardar = () => {
       usuario: usuario,
       password: password,
       rol: rol,
-      id: sessionStorage.getItem("id")
+      id: localStorage.getItem("id")
     }, (data, status) => {
       if(data == "1"){
         $("#exampleModal").modal("hide");
