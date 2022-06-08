@@ -2,7 +2,9 @@
 	//* Enlace BD
 	include("../../conexion.php");
 
-	$data = ' <table class="table table-striped table-hover">
+	$data = ' 
+		<div class="table-responsive-sm">
+			<table class="table table-hover">
 				<thead>
 				<tr>
 					<th scope="col">No.</th>
@@ -53,7 +55,7 @@
     }
 
     $data .= '</tbody>
-	</table>';
+	</table></div>';
 
     echo $data;
 ?>

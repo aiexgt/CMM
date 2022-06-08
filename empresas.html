@@ -95,7 +95,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nueva Empresa
+            Registrar Empresa
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="modal-content">
         <div class="modal-header hblue">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Nueva Empresa
+            Registro de Empresa
           </h5>
           <button
             type="button"
@@ -123,8 +123,10 @@
           ></button>
         </div>
         <div class="modal-body">
+          <h5>Información Principal</h5>
+          <hr>
           <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Código</label>
               <input
                 type="text"
@@ -135,7 +137,7 @@
                 maxlength="10"
               />
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Nombre</label>
               <input
                 type="text"
@@ -146,7 +148,7 @@
                 maxlength="100"
               />
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">NIT</label>
               <input
                 type="text"
@@ -159,6 +161,9 @@
               <br />
             </div>
           </div>
+          <br>
+          <h5>Ubicación</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-4">
               <label for="" class="form-label is-required">País</label>
@@ -199,7 +204,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
               <label for="" class="form-label is-required">Dirección</label>
               <input
                 type="text"
@@ -209,10 +214,7 @@
                 aria-label="Dirección"
                 maxlength="300"
               />
-              <br />
             </div>
-          </div>
-          <div class="row">
             <div class="col-sm-2">
               <label for="" class="form-label">Código Postal</label>
               <input
@@ -223,8 +225,14 @@
                 aria-label="Codigo Postal"
                 maxlength="10"
               />
+              <br />
             </div>
-            <div class="col-sm-5">
+          </div>
+          <br>
+          <h5>Contacto</h5>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
               <label for="" class="form-label">Página Web</label>
               <input
                 type="text"
@@ -232,49 +240,6 @@
                 placeholder="Página Web"
                 id="pagina_web"
                 aria-label="Pagina Web"
-                maxlength="100"
-              />
-            </div>
-            <div class="col-sm-5">
-              <form
-                id="uploadimage"
-                action=""
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <label for="formFile" class="form-label">Logo</label>
-                <input
-                  class="form-control"
-                  type="file"
-                  id="image"
-                  accept="image/png, image/jpeg"
-                />
-              </form>
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required"
-                >Email Principal</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Principal"
-                id="email_principal"
-                aria-label="Email Principal"
-                maxlength="100"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Email Secundario</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Secundario"
-                id="email_secundario"
-                aria-label="Email Secundario"
                 maxlength="100"
               />
             </div>
@@ -299,6 +264,55 @@
                 aria-label="Celular"
                 maxlength="20"
               />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required"
+                >Email Principal</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email Principal"
+                id="email_principal"
+                aria-label="Email Principal"
+                maxlength="100"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="" class="form-label">Email Secundario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email Secundario"
+                id="email_secundario"
+                aria-label="Email Secundario"
+                maxlength="100"
+              />
+              <br>
+            </div>
+          </div>
+          <br>
+          <h5>Documentos</h5>
+          <hr>
+          <div class="row">
+            <div class="col-sm-5">
+              <form
+                id="uploadimage"
+                action=""
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <label for="formFile" class="form-label">Logo</label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="image"
+                  accept="image/png, image/jpeg"
+                />
+              </form>
               <br />
             </div>
           </div>
@@ -327,7 +341,7 @@
     ><div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header hblue">
-          <h5 class="modal-title" id="exampleModalLabel">Ver Información</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ver Información de Empresa</h5>
           <button
             type="button"
             class="btn-close"
@@ -336,8 +350,10 @@
           ></button>
         </div>
         <div class="modal-body">
+          <h5>Información Principal</h5>
+          <hr>
           <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Código</label>
               <input
                 type="text"
@@ -369,20 +385,12 @@
                 aria-label="NIT"
                 maxlength="20"
               />
-            </div>
-            <div class="col-sm-2">
-              <label for="" class="form-label is-required">Estado</label>
-              <select
-                class="form-select"
-                id="uestado"
-                aria-label="Default select example"
-              >
-                <option value="0">Inactivo</option>
-                <option value="1">Activo</option>
-              </select>
-              <br />
+              <br>
             </div>
           </div>
+          <br>
+          <h5>Ubicación</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-4">
               <label for="" class="form-label is-required">País</label>
@@ -413,7 +421,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
               <label for="" class="form-label is-required">Dirección</label>
               <input
                 type="text"
@@ -423,10 +431,7 @@
                 aria-label="Dirección"
                 maxlength="300"
               />
-              <br />
             </div>
-          </div>
-          <div class="row">
             <div class="col-sm-2">
               <label for="" class="form-label">Código Postal</label>
               <input
@@ -437,8 +442,14 @@
                 aria-label="Codigo Postal"
                 maxlength="10"
               />
+              <br />
             </div>
-            <div class="col-sm-5">
+          </div>
+          <br>
+          <h5>Contacto</h5>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
               <label for="" class="form-label">Página Web</label>
               <input
                 type="text"
@@ -446,50 +457,6 @@
                 placeholder="Página Web"
                 id="upagina_web"
                 aria-label="Pagina Web"
-                maxlength="100"
-              />
-            </div>
-            <div class="col-sm-3">
-              <form
-                id="uploadimage"
-                action=""
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <label for="formFile" class="form-label">Logo</label>
-                <input
-                  class="form-control"
-                  type="file"
-                  id="uimage"
-                  accept="image/png, image/jpeg"
-                />
-              </form>
-              <br />
-            </div>
-            <div class="col-sm-2">
-              <img id="uimagen" class="mini" src="" alt="" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Email Principal</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Principal"
-                id="uemail_principal"
-                aria-label="Email Principal"
-                maxlength="100"
-              />
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label">Email Secundario</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email Secundario"
-                id="uemail_secundario"
-                aria-label="Email Secundario"
                 maxlength="100"
               />
             </div>
@@ -517,6 +484,68 @@
               <br />
             </div>
           </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Email Principal</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email Principal"
+                id="uemail_principal"
+                aria-label="Email Principal"
+                maxlength="100"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="" class="form-label">Email Secundario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email Secundario"
+                id="uemail_secundario"
+                aria-label="Email Secundario"
+                maxlength="100"
+              />
+              <br>
+            </div>
+            </div>
+            <br>
+            <h5>Documentos y Estado</h5>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="" class="form-label is-required">Estado</label>
+                <select
+                  class="form-select"
+                  id="uestado"
+                  aria-label="Default select example"
+                >
+                  <option value="0">Inactivo</option>
+                  <option value="1">Activo</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <form
+                  id="uploadimage"
+                  action=""
+                  method="post"
+                  enctype="multipart/form-data"
+                >
+                  <label for="formFile" class="form-label">Logo</label>
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="uimage"
+                    accept="image/png, image/jpeg"
+                  />
+                </form>
+                <br />
+              </div>
+              <div class="col-sm-3">
+                <br>
+                <img id="uimagen" class="mini" src="" alt="" />
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button
