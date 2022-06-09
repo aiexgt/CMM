@@ -37,33 +37,33 @@
               <span class="nav_logo-name">MCC</span>
             </a>
             <div class="nav_list">
-              <a href="dashboard.html" class="nav_link">
+              <a href="dashboard.php" class="nav_link">
                 <i class="bx bx-grid-alt nav_icon"></i>
                 <span class="nav_name">Panel Principal</span>
               </a>
-              <a href="rrhh.html" class="nav_link">
+              <a href="rrhh.php" class="nav_link">
                 <i class="bx bx-user nav_icon"></i>
                 <span class="nav_name">Recursos Humanos</span>
               </a>
-              <a href="importaciones.html" class="nav_link">
+              <a href="importaciones.php" class="nav_link">
                 <i class="bx bx-message-square-detail nav_icon"></i>
                 <span class="nav_name">Importaciones</span>
               </a>
-              <a href="cooperativa.html" class="nav_link">
+              <a href="cooperativa.php" class="nav_link">
                 <i class="bx bx-bookmark nav_icon"></i>
                 <span class="nav_name">Cooperativa</span>
               </a>
-              <a href="administracion.html" class="nav_link active">
+              <a href="administracion.php" class="nav_link active">
                 <i class="bx bx-folder nav_icon"></i>
                 <span class="nav_name">Administración</span>
               </a>
-              <a href="ayuda.html" class="nav_link">
+              <a href="ayuda.php" class="nav_link">
                 <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
                 <span class="nav_name">Soporte</span>
               </a>
             </div>
           </div>
-          <a href="index.html" class="nav_link">
+          <a href="index.php" class="nav_link">
             <i class="bx bx-log-out nav_icon"></i>
             <span class="nav_name">Cerrar Sesión</span>
           </a>
@@ -79,7 +79,7 @@
             <div class="card-body">
               <h5 class="card-title">Empresas</h5>
               <p class="card-text"><i class="bx bx-building bigIcons"></i></p>
-              <a href="empresas.html" class="btn btn-primary"
+              <a href="empresas.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>
@@ -90,7 +90,7 @@
             <div class="card-body">
               <h5 class="card-title">Usuarios</h5>
               <p class="card-text"><i class="bx bx-user bigIcons"></i></p>
-              <a href="usuarios.html" class="btn btn-primary"
+              <a href="usuarios.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>
@@ -101,7 +101,7 @@
             <div class="card-body">
               <h5 class="card-title">Roles</h5>
               <p class="card-text"><i class="bx bx-tag bigIcons"></i></p>
-              <a href="roles.html" class="btn btn-primary">Adminstrar</a>
+              <a href="roles.php" class="btn btn-primary">Adminstrar</a>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@
               <p class="card-text">
                 <i class="bx bx-user-circle bigIcons"></i>
               </p>
-              <a href="trabajadores.html" class="btn btn-primary"
+              <a href="trabajadores.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>
@@ -126,7 +126,7 @@
             <div class="card-body">
               <h5 class="card-title">Puestos</h5>
               <p class="card-text"><i class="bx bx-briefcase bigIcons"></i></p>
-              <a href="puestos.html" class="btn btn-primary"
+              <a href="puestos.php" class="btn btn-primary"
                 >Adminstrar</a
               >
             </div>
@@ -139,7 +139,7 @@
               <p class="card-text">
                 <i class="bx bx-calendar-exclamation bigIcons"></i>
               </p>
-              <a href="vacaciones.html" class="btn btn-primary"
+              <a href="vacaciones.php" class="btn btn-primary"
                 >Adminstrar</a
               >
             </div>
@@ -153,7 +153,8 @@
             <div class="card-body">
               <h5 class="card-title">Feriados</h5>
               <p class="card-text"><i class="bx bx-football bigIcons"></i></p>
-              <a href="feriados.html" class="btn btn-primary"
+              <a href="feriados.php" class="btn btn-primary"
+              
                 >Administrar</a
               >
             </div>
@@ -166,7 +167,7 @@
               <p class="card-text">
                 <i class="bx bxs-alarm-exclamation bigIcons"></i>
               </p>
-              <a href="ausencias.html" class="btn btn-primary"
+              <a href="ausencias.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>
@@ -179,7 +180,7 @@
               <p class="card-text">
                 <i class="bx bx-traffic-cone bigIcons"></i>
               </p>
-              <a href="llamadas_atencion.html" class="btn btn-primary"
+              <a href="llamadas_atencion.php" class="btn btn-primary"
                 >Adminstrar</a
               >
             </div>
@@ -193,7 +194,7 @@
             <div class="card-body">
               <h5 class="card-title">Bitacora</h5>
               <p class="card-text"><i class="bx bx-archive bigIcons"></i></p>
-              <a href="bitacora.html" class="btn btn-primary"
+              <a href="bitacora.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>
@@ -204,7 +205,7 @@
             <div class="card-body">
               <h5 class="card-title">Contratos</h5>
               <p class="card-text"><i class="bx bxs-file bigIcons"></i></p>
-              <a href="contratos.html" class="btn btn-primary"
+              <a href="contratos.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>
@@ -215,7 +216,7 @@
             <div class="card-body">
               <h5 class="card-title">Estado Laboral</h5>
               <p class="card-text"><i class="bx bx-layer bigIcons"></i></p>
-              <a href="estados_laborales.html" class="btn btn-primary"
+              <a href="estados_laborales.php" class="btn btn-primary"
                 >Administrar</a
               >
             </div>

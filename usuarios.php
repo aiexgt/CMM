@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCC | Puestos</title>
+    <title>MCC | Usuarios</title>
     <link
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
       rel="stylesheet"
@@ -37,33 +37,33 @@
               <span class="nav_logo-name">MCC</span>
             </a>
             <div class="nav_list">
-              <a href="dashboard.html" class="nav_link">
+              <a href="dashboard.php" class="nav_link">
                 <i class="bx bx-grid-alt nav_icon"></i>
                 <span class="nav_name">Panel Principal</span>
               </a>
-              <a href="rrhh.html" class="nav_link">
+              <a href="rrhh.php" class="nav_link">
                 <i class="bx bx-user nav_icon"></i>
                 <span class="nav_name">Recursos Humanos</span>
               </a>
-              <a href="importaciones.html" class="nav_link">
+              <a href="importaciones.php" class="nav_link">
                 <i class="bx bx-message-square-detail nav_icon"></i>
                 <span class="nav_name">Importaciones</span>
               </a>
-              <a href="cooperativa.html" class="nav_link">
+              <a href="cooperativa.php" class="nav_link">
                 <i class="bx bx-bookmark nav_icon"></i>
                 <span class="nav_name">Cooperativa</span>
               </a>
-              <a href="administracion.html" class="nav_link active">
+              <a href="administracion.php" class="nav_link active">
                 <i class="bx bx-folder nav_icon"></i>
                 <span class="nav_name">Administración</span>
               </a>
-              <a href="ayuda.html" class="nav_link">
+              <a href="ayuda.php" class="nav_link">
                 <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
                 <span class="nav_name">Soporte</span>
               </a>
             </div>
           </div>
-          <a href="index.html" class="nav_link">
+          <a href="index.php" class="nav_link">
             <i class="bx bx-log-out nav_icon"></i>
             <span class="nav_name">Cerrar Sesión</span>
           </a>
@@ -79,7 +79,7 @@
             id="busqueda"
             type="text"
             class="form-control"
-            placeholder="Buscar Puestos"
+            placeholder="Buscar Usuario"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
@@ -95,7 +95,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nuevo Puesto
+            Nuevo Usuario
           </button>
         </div>
       </div>
@@ -109,11 +109,11 @@
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-    ><div class="modal-dialog">
+    ><div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header hblue">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Puesto
+            Registro de Nuevo Usuario
           </h5>
           <button
             type="button"
@@ -124,8 +124,8 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Nombre</label>
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Nombres</label>
               <input
                 type="text"
                 class="form-control"
@@ -133,13 +133,51 @@
                 id="nombre"
                 aria-label="Nombre"
                 maxlength="100"
-              /> <br>
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Apellido"
+                id="apellido"
+                aria-label="Apellido"
+                maxlength="100"
+              />
+              <br />
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-              <textarea class="form-control" id="descripcion" rows="3" maxlength="300"></textarea>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Usuario"
+                id="usuario"
+                aria-label="Usuario"
+                maxlength="10"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Contraseña"
+                id="password"
+                aria-label="Contraseña"
+                maxlength="30"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Rol</label>
+              <select
+                class="form-select"
+                id="rol"
+                aria-label="Default select example"
+              ></select>
               <br />
             </div>
           </div>
@@ -180,8 +218,8 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Nombre</label>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Nombres</label>
               <input
                 type="text"
                 class="form-control"
@@ -189,18 +227,20 @@
                 id="unombre"
                 aria-label="Nombre"
                 maxlength="100"
-              /> <br>
+              />
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-              <textarea class="form-control" id="udescripcion" rows="3" maxlength="300"></textarea>
-              <br />
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Apellido"
+                id="uapellido"
+                aria-label="Apellido"
+                maxlength="100"
+              />
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Estado</label>
               <select
                 class="form-select"
@@ -210,6 +250,39 @@
               <option value="1">Activo</option>
               <option value="0">Inactivo</option>
             </select>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Usuario"
+                id="uusuario"
+                aria-label="Usuario"
+                maxlength="10"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Contraseña"
+                id="upassword"
+                aria-label="Contraseña"
+                maxlength="30"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label is-required">Rol</label>
+              <select
+                class="form-select"
+                id="urol"
+                aria-label="Default select example"
+              ></select>
               <br />
             </div>
           </div>
@@ -256,6 +329,6 @@
       type="text/javascript"
       src="assets/imported/menu/menuScript.js"
     ></script>
-    <script type="text/javascript" src="assets/js/puestos/script.js"></script>
+    <script type="text/javascript" src="assets/js/usuarios/script.js"></script>
   </body>
 </html>

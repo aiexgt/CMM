@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCC | Ausencias</title>
+    <title>MCC | Roles</title>
     <link
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
       rel="stylesheet"
@@ -37,33 +37,33 @@
               <span class="nav_logo-name">MCC</span>
             </a>
             <div class="nav_list">
-              <a href="dashboard.html" class="nav_link">
+              <a href="dashboard.php" class="nav_link">
                 <i class="bx bx-grid-alt nav_icon"></i>
                 <span class="nav_name">Panel Principal</span>
               </a>
-              <a href="rrhh.html" class="nav_link">
+              <a href="rrhh.php" class="nav_link">
                 <i class="bx bx-user nav_icon"></i>
                 <span class="nav_name">Recursos Humanos</span>
               </a>
-              <a href="importaciones.html" class="nav_link">
+              <a href="importaciones.php" class="nav_link">
                 <i class="bx bx-message-square-detail nav_icon"></i>
                 <span class="nav_name">Importaciones</span>
               </a>
-              <a href="cooperativa.html" class="nav_link">
+              <a href="cooperativa.php" class="nav_link">
                 <i class="bx bx-bookmark nav_icon"></i>
                 <span class="nav_name">Cooperativa</span>
               </a>
-              <a href="administracion.html" class="nav_link active">
+              <a href="administracion.php" class="nav_link active">
                 <i class="bx bx-folder nav_icon"></i>
                 <span class="nav_name">Administración</span>
               </a>
-              <a href="ayuda.html" class="nav_link">
+              <a href="ayuda.php" class="nav_link">
                 <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
                 <span class="nav_name">Soporte</span>
               </a>
             </div>
           </div>
-          <a href="index.html" class="nav_link">
+          <a href="index.php" class="nav_link">
             <i class="bx bx-log-out nav_icon"></i>
             <span class="nav_name">Cerrar Sesión</span>
           </a>
@@ -79,7 +79,7 @@
             id="busqueda"
             type="text"
             class="form-control"
-            placeholder="Buscar Ausencia"
+            placeholder="Buscar Roles"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
@@ -95,7 +95,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nueva Ausencia
+            Nuevo Rol
           </button>
         </div>
       </div>
@@ -109,11 +109,11 @@
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-    ><div class="modal-dialog modal-xl">
+    ><div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header hblue">
           <h5 class="modal-title" id="exampleModalLabel">
-            Registro de Ausencia
+            Registro de Rol
           </h5>
           <button
             type="button"
@@ -124,108 +124,22 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Empresa</label>
-              <select
-                class="form-select"
-                id="empresa"
-                aria-label="Default select example"
-              > 
-              </select> <br>
-            </div>
-            <div class="col-sm-5">
-              <label for="" class="form-label is-required">Trabajador</label>
-              <select
-                class="form-select"
-                id="trabajador"
-                aria-label="Default select example"
-                disabled
-              > 
-              </select> <br>
-            </div>
-            <div class="col-sm-4">
-              <form
-                id="uploadimage"
-                action=""
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <label for="formFile" class="form-label is-required">Comprobante</label>
-                <input
-                  class="form-control"
-                  type="file"
-                  id="image"
-                  accept="application/pdf"
-                />
-              </form>
-              <br />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Fecha Inicio</label>
-              <input
-                type="date"
-                class="form-control"
-                placeholder="Nombre"
-                id="fecha"
-                aria-label="Nombre"
-              />
-              <br>
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Cantidad Días</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Cantidad"
-                id="cantidad"
-                aria-label="Cantidad"
-              />
-              <br>
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Fecha Fin</label>
-              <input
-                type="date"
-                class="form-control"
-                placeholder="Fecha Fin"
-                id="fecha_fin"
-                aria-label="Fecha Fin"
-              />
-              <br>
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Tipo</label>
-              <select
-                class="form-select"
-                id="tipo"
-                aria-label="Default select example"
-              > 
-                <option value="0" selected>Justificada</option>
-                <option value="1">No Justificada</option>
-              </select>
-              <br>
-            </div>
-          </div>
-          <div class="row">
             <div class="col-sm-12">
-              <label for="" class="form-label is-required">Asunto</label>
+              <label for="" class="form-label is-required">Nombre</label>
               <input
                 type="text"
                 class="form-control"
-                placeholder="Asunto"
-                id="asunto"
-                aria-label="Asunto"
-                maxlength="100"
-              />
-              <br>
+                placeholder="Nombre"
+                id="nombre"
+                aria-label="Nombre"
+                maxlength="50"
+              /> <br>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label is-required">Descripción</label>
-              <textarea class="form-control" id="descripcion" rows="3" maxlength="300"></textarea>
+              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+              <textarea class="form-control" id="descripcion" rows="3" maxlength="100"></textarea>
               <br />
             </div>
           </div>
@@ -266,87 +180,36 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-8">
-              <label for="" class="form-label">Trabajador</label>
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Nombre</label>
               <input
                 type="text"
                 class="form-control"
-                placeholder="Trabajador"
-                id="utrabajador"
+                placeholder="Nombre"
+                id="unombre"
                 aria-label="Nombre"
+                maxlength="50"
               /> <br>
             </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Comprobante</label><br>
-              <button class="btn btn-success" id="verComprobante">Ver</button>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+              <textarea class="form-control" id="udescripcion" rows="3" maxlength="100"></textarea>
               <br />
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Fecha Inicio</label>
-              <input
-                type="date"
-                class="form-control"
-                placeholder="Nombre"
-                id="ufecha"
-                aria-label="Nombre"
-              />
-              <br>
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Cantidad Días</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Cantidad"
-                id="ucantidad"
-                aria-label="Cantidad"
-              />
-              <br>
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Fecha Fin</label>
-              <input
-                type="date"
-                class="form-control"
-                placeholder="Fecha Fin"
-                id="ufecha_fin"
-                aria-label="Fecha Fin"
-              />
-              <br>
-            </div>
-            <div class="col-sm-3">
-              <label for="" class="form-label is-required">Tipo</label>
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Estado</label>
               <select
                 class="form-select"
-                id="utipo"
+                id="uestado"
                 aria-label="Default select example"
-              > 
-                <option value="0" selected>Justificada</option>
-                <option value="1">No Justificada</option>
-              </select>
-              <br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Asunto</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Asunto"
-                id="uasunto"
-                aria-label="Asunto"
-                maxlength="100"
-              />
-              <br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label is-required">Descripción</label>
-              <textarea class="form-control" id="udescripcion" rows="3" maxlength="300"></textarea>
+              >
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+            </select>
               <br />
             </div>
           </div>
@@ -393,6 +256,6 @@
       type="text/javascript"
       src="assets/imported/menu/menuScript.js"
     ></script>
-    <script type="text/javascript" src="assets/js/ausencias/script.js"></script>
+    <script type="text/javascript" src="assets/js/roles/script.js"></script>
   </body>
 </html>

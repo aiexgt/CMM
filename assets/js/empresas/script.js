@@ -39,14 +39,6 @@ const mostrar = () => {
   });
 };
 
-const errorDF = (dato) => {
-  Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: `Falta ${dato}`,
-  });
-};
-
 const guardar = () => {
   let codigo = document.getElementById("codigo").value;
   let nombre = document.getElementById("nombre").value;

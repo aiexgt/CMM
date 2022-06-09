@@ -4,7 +4,7 @@
 
 	$data = ' 
 		<div class="table-responsive-sm">
-			<table class="table table-hover">
+			<table class="table table-striped table-hover">
 				<thead>
 				<tr>
 					<th scope="col">No.</th>

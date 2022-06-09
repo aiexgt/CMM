@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCC | Ayuda</title>
+    <title>MCC | Importaciones</title>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/menuStyle.css" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -29,33 +29,33 @@
             <span class="nav_logo-name">MCC</span>
           </a>
           <div class="nav_list">
-            <a href="menu.html" class="nav_link">
+            <a href="menu.php" class="nav_link">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Panel Principal</span>
             </a>
-            <a href="rrhh.html" class="nav_link">
+            <a href="rrhh.php" class="nav_link">
               <i class="bx bx-user nav_icon"></i>
               <span class="nav_name">Recursos Humanos</span>
             </a>
-            <a href="importaciones.html" class="nav_link">
+            <a href="importaciones.php" class="nav_link active">
               <i class="bx bx-message-square-detail nav_icon"></i>
               <span class="nav_name">Importaciones</span>
             </a>
-            <a href="cooperativa.html" class="nav_link">
+            <a href="cooperativa.php" class="nav_link">
               <i class="bx bx-bookmark nav_icon"></i>
               <span class="nav_name">Cooperativa</span>
             </a>
-            <a href="administracion.html" class="nav_link">
+            <a href="administracion.php" class="nav_link">
               <i class="bx bx-folder nav_icon"></i>
               <span class="nav_name">Administración</span>
             </a>
-            <a href="ayuda.html" class="nav_link active">
+            <a href="ayuda.php" class="nav_link">
               <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
               <span class="nav_name">Soporte</span>
             </a>
           </div>
         </div>
-        <a href="index.html" class="nav_link">
+        <a href="index.php" class="nav_link">
           <i class="bx bx-log-out nav_icon"></i>
           <span class="nav_name">Cerrar Sesión</span>
         </a>

@@ -37,33 +37,33 @@
               <span class="nav_logo-name">MCC</span>
             </a>
             <div class="nav_list">
-              <a href="dashboard.html" class="nav_link">
+              <a href="dashboard.php" class="nav_link">
                 <i class="bx bx-grid-alt nav_icon"></i>
                 <span class="nav_name">Panel Principal</span>
               </a>
-              <a href="rrhh.html" class="nav_link">
+              <a href="rrhh.php" class="nav_link">
                 <i class="bx bx-user nav_icon"></i>
                 <span class="nav_name">Recursos Humanos</span>
               </a>
-              <a href="importaciones.html" class="nav_link">
+              <a href="importaciones.php" class="nav_link">
                 <i class="bx bx-message-square-detail nav_icon"></i>
                 <span class="nav_name">Importaciones</span>
               </a>
-              <a href="cooperativa.html" class="nav_link">
+              <a href="cooperativa.php" class="nav_link">
                 <i class="bx bx-bookmark nav_icon"></i>
                 <span class="nav_name">Cooperativa</span>
               </a>
-              <a href="administracion.html" class="nav_link active">
+              <a href="administracion.php" class="nav_link active">
                 <i class="bx bx-folder nav_icon"></i>
                 <span class="nav_name">Administración</span>
               </a>
-              <a href="ayuda.html" class="nav_link">
+              <a href="ayuda.php" class="nav_link">
                 <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
                 <span class="nav_name">Soporte</span>
               </a>
             </div>
           </div>
-          <a href="index.html" class="nav_link">
+          <a href="index.php" class="nav_link">
             <i class="bx bx-log-out nav_icon"></i>
             <span class="nav_name">Cerrar Sesión</span>
           </a>
@@ -589,6 +589,7 @@
       type="text/javascript"
       src="assets/imported/menu/menuScript.js"
     ></script>
+    <script type="text/javascript" src="assets/imported/funciones/script.js"></script>
     <script type="text/javascript" src="assets/js/empresas/script.js"></script>
   </body>
 </html>
