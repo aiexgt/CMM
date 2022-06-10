@@ -249,11 +249,6 @@ const eliminar = (codigo) => {
   });
 };
 
-function stringToDate(dateString){
-  dateString = dateString.split('-');
-  return new Date(dateString[0], dateString[1] - 1, dateString[2]);
-}
-
 const calcularDias = () => {
   let date1 = stringToDate(document.getElementById("fecha").value);
   let date2 = stringToDate(document.getElementById("fecha_fin").value);
@@ -261,7 +256,7 @@ const calcularDias = () => {
 
     weeks = 0;
     for(i = 0; i < delta; i++){
-                     if (date1.getDay () == 0) weeks ++; // agrega 1 si es sábado o domingo
+                     if (date1.getDay () == 0) weeks ++; // agrega 1 si es domingo
         date1 = date1.valueOf();
         date1 += 1000 * 60 * 60 * 24;
         date1 = new Date(date1);
@@ -333,13 +328,18 @@ document.getElementById("empresa").addEventListener("change",() => {
 
 document.getElementById("fecha").addEventListener("change", () => {
   if(document.getElementById("fecha_fin").value != ""){
-    calcularDias();
+    let date1 = document.getElementById("fecha").value;
+    let date2 = document.getElementById("fecha_fin").value;
+    console.log(calcularDiasSD(date1, date2));
+
   }
 })
 
 document.getElementById("fecha_fin").addEventListener("change", () => {
   if(document.getElementById("fecha").value != ""){
-    calcularDias();
+    let date1 = document.getElementById("fecha").value;
+    let date2 = document.getElementById("fecha_fin").value;
+    console.log(calcularDiasSD(date1, date2));
   }
 })
 
