@@ -23,7 +23,7 @@ const showError = (mensaje) =>{
 
 //* Validar variables con la base de datos y encriptar las variables de sesión
 const login = (usuario, password) => {
-    $.post("./api   /login.php",{
+    $.post("./api/login.php",{
         usuario: usuario,
         password: password
     }, (data, status) => {
