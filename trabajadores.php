@@ -6,20 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MCC | Trabajadores</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/imported/menu/menuStyle.css"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <?php include('./components/header.php') ?>
   </head>
   <body id="body-pd">
     <div id="menu">
@@ -140,6 +127,8 @@
             ></button>
           </div>
           <div class="modal-body">
+          <h5>Información Personal</h5>
+          <hr>
             <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">CUI</label>
@@ -177,7 +166,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-6">
                 <label for="" class="form-label is-required"
                   >Estado Civil</label
                 >
@@ -187,33 +176,51 @@
                   aria-label="Default select example"
                 ></select>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-6">
                 <label for="" class="form-label is-required"
                   >Fecha Nacimiento</label
                 >
                 <input
                   type="date"
                   class="form-control"
-                  value="2002-01-01"
                   id="fecha_nacimiento"
                   aria-label="Fecha Nacimiento"
                 />
               </div>
+              <br />
+            </div>
+            <br>
+            <h5>Información Laboral</h5>
+            <hr>
+            <div class="row">
               <div class="col-sm-4">
-                <label for="" class="form-label is-required"
-                  >Fecha Inicio</label
-                >
-                <input
-                  type="date"
-                  class="form-control"
-                  id="fecha_inicio"
-                  aria-label="Contraseña"
-                />
+                <label for="" class="form-label is-required">Empresa</label>
+                <select
+                  class="form-select"
+                  id="empresa"
+                  aria-label="Default select example"
+                ></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="" class="form-label is-required">Puesto</label>
+                <select
+                  class="form-select"
+                  id="puesto"
+                  aria-label="Default select example"
+                ></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="" class="form-label is-required">Estado Laboral</label>
+                <select
+                  class="form-select"
+                  id="estado_laboral"
+                  aria-label="Default select example"
+                ></select>
                 <br />
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-6">
                 <label for="" class="form-label">Fecha IGSS</label>
                 <input
                   type="date"
@@ -222,7 +229,7 @@
                   aria-label="Fecha IGSS"
                 />
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-6">
                 <label for="" class="form-label">Numero IGSS</label>
                 <input
                   type="text"
@@ -232,17 +239,36 @@
                   aria-label="Número IGSS"
                   maxlength="35"
                 />
+                <br>
               </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Puesto</label>
-                <select
-                  class="form-select"
-                  id="puesto"
-                  aria-label="Default select example"
-                ></select>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="" class="form-label is-required"
+                  >Fecha Inicio</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fecha_inicio"
+                  aria-label="Contraseña"
+                />
+              </div>
+              <div class="col-sm-6">
+                <label for="" class="form-label is-required">Salario Q</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Salario"
+                  id="salario"
+                  aria-label="Salario"
+                />
                 <br />
               </div>
             </div>
+            <br>
+            <h5>Contacto</h5>
+            <hr>
             <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">Teléfono</label>
@@ -279,6 +305,9 @@
                 <br />
               </div>
             </div>
+            <br>
+            <h5>Ubicación</h5>
+            <hr>
             <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">País</label>
@@ -315,37 +344,6 @@
                 >
                   <option value="0" selected>Seleccione Municipio</option>
                 </select>
-                <br />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Salario</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Salario"
-                  id="salario"
-                  aria-label="Salario"
-                />
-                <br />
-              </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Empresa</label>
-                <select
-                  class="form-select"
-                  id="empresa"
-                  aria-label="Default select example"
-                ></select>
-                <br />
-              </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Estado Laboral</label>
-                <select
-                  class="form-select"
-                  id="estado_laboral"
-                  aria-label="Default select example"
-                ></select>
                 <br />
               </div>
             </div>
@@ -406,6 +404,8 @@
             ></button>
           </div>
           <div class="modal-body">
+            <h5>Información Personal</h5>
+            <hr>
             <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">CUI</label>
@@ -443,7 +443,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-6">
                 <label for="" class="form-label is-required">Estado Civil</label>
                 <select
                   class="form-select"
@@ -451,16 +451,71 @@
                   aria-label="Default select example"
                 ></select>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-6">
                 <label for="" class="form-label is-required">Fecha Nacimiento</label>
                 <input
                   type="date"
                   class="form-control"
-                  value="2002-01-01"
                   id="ufecha_nacimiento"
                   aria-label="Fecha Nacimiento"
                 />
+                <br>
               </div>
+            </div>
+            <br>
+            <h5>Información Laboral</h5>
+            <hr>
+            <div class="row">
+              <div class="col-sm-4">
+                <label for="" class="form-label is-required">Empresa</label>
+                <select
+                  class="form-select"
+                  id="uempresa"
+                  aria-label="Default select example"
+                ></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="" class="form-label is-required">Puesto</label>
+                <select
+                  class="form-select"
+                  id="upuesto"
+                  aria-label="Default select example"
+                ></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="" class="form-label is-required">Estado Laboral</label>
+                <select
+                  class="form-select"
+                  id="uestado_laboral"
+                  aria-label="Default select example"
+                ></select>
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="" class="form-label">Fecha IGSS</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="ufecha_igss"
+                  aria-label="Fecha IGSS"
+                />
+              </div>
+              <div class="col-sm-6">
+                <label for="" class="form-label">Numero IGSS</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Número IGSS"
+                  id="unumero_igss"
+                  aria-label="Número IGSS"
+                  maxlength="35"
+                />
+                <br>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">Fecha Inicio</label>
                 <input
@@ -469,10 +524,7 @@
                   id="ufecha_inicio"
                   aria-label="Contraseña"
                 />
-                <br />
               </div>
-            </div>
-            <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">Periodo de prueba</label>
                 <input
@@ -490,50 +542,34 @@
                   id="ufecha_finalizacion"
                   aria-label="Fecha Nacimiento"
                 />
-              </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Días Laborados</label>&nbsp;&nbsp;&nbsp;<b id="tiempo"></b>
-                <input
-                  type="number"
-                  class="form-control"
-                  value="2002-01-01"
-                  id="udias_laborados"
-                  aria-label="Fecha Nacimiento"
-                />
                 <br />
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4">
-                <label for="" class="form-label">Fecha IGSS</label>
+              <div class="col-sm-6">
+                <label for="" class="form-label is-required">Días Laborados</label>&nbsp;&nbsp;&nbsp;<b id="tiempo"></b>
                 <input
-                  type="date"
+                  type="number"
                   class="form-control"
-                  id="ufecha_igss"
-                  aria-label="Fecha IGSS"
+                  id="udias_laborados"
+                  aria-label="Fecha Nacimiento"
                 />
               </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label">Numero IGSS</label>
+              <div class="col-sm-6">
+                <label for="" class="form-label">Salario</label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
-                  placeholder="Número IGSS"
-                  id="unumero_igss"
-                  aria-label="Número IGSS"
-                  maxlength="35"
+                  placeholder="Salario"
+                  id="usalario"
+                  aria-label="Salario"
                 />
-              </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Puesto</label>
-                <select
-                  class="form-select"
-                  id="upuesto"
-                  aria-label="Default select example"
-                ></select>
                 <br />
               </div>
             </div>
+            <br>
+            <h5>Contacto</h5>
+            <hr>
             <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">Teléfono</label>
@@ -570,6 +606,10 @@
                 <br />
               </div>
             </div>
+            <br>
+            <h5>Ubicación</h5>
+            <hr>
+            
             <div class="row">
               <div class="col-sm-4">
                 <label for="" class="form-label is-required">País</label>
@@ -602,37 +642,6 @@
                 >
                   <option value="0" selected>Seleccione Municipio</option>
                 </select>
-                <br />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <label for="" class="form-label">Salario</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Salario"
-                  id="usalario"
-                  aria-label="Salario"
-                />
-                <br />
-              </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Empresa</label>
-                <select
-                  class="form-select"
-                  id="uempresa"
-                  aria-label="Default select example"
-                ></select>
-                <br />
-              </div>
-              <div class="col-sm-4">
-                <label for="" class="form-label is-required">Estado Laboral</label>
-                <select
-                  class="form-select"
-                  id="uestado_laboral"
-                  aria-label="Default select example"
-                ></select>
                 <br />
               </div>
             </div>
@@ -819,34 +828,10 @@
         </div>
       </div>
     </div>
-
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">
-          <p>Copyright &copy; | Tubagua 2022</p>
-        </span>
-      </div>
-    </footer>
-    <!-- Scripts -->
-    <script src="assets/imported/jquery/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
-      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
-      crossorigin="anonymous"
-    ></script>
+    <?php include('./components/footer.php') ?>
     <script
       type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    ></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Scripts Propios -->
-    <script
-      type="text/javascript"
-      src="assets/imported/menu/menuScript.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="assets/js/trabajadores/script.js"
+      src="./src/trabajadores/script.js"
     ></script>
   </body>
 </html>

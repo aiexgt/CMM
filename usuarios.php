@@ -6,20 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MCC | Usuarios</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/imported/menu/menuStyle.css"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <?php include('./components/header.php') ?>
   </head>
   <body id="body-pd">
     <div id="menu">
@@ -123,6 +110,8 @@
           ></button>
         </div>
         <div class="modal-body">
+          <h5>Información Principal</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-6">
               <label for="" class="form-label is-required">Nombres</label>
@@ -148,6 +137,9 @@
               <br />
             </div>
           </div>
+          <br>
+          <h5>Información Sistema</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-4">
               <label for="" class="form-label is-required">Usuario</label>
@@ -217,6 +209,8 @@
           ></button>
         </div>
         <div class="modal-body">
+          <h5>Información Principal</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-4">
               <label for="" class="form-label is-required">Nombres</label>
@@ -253,6 +247,9 @@
               <br />
             </div>
           </div>
+          <br>
+          <h5>Información Sistema</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-4">
               <label for="" class="form-label is-required">Usuario</label>
@@ -305,30 +302,7 @@
       </div>
     </div></div>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">
-          <p>Copyright &copy; | Tubagua 2022</p>
-        </span>
-      </div>
-    </footer>
-    <!-- Scripts -->
-    <script src="assets/imported/jquery/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
-      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    ></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Scripts Propios -->
-    <script
-      type="text/javascript"
-      src="assets/imported/menu/menuScript.js"
-    ></script>
-    <script type="text/javascript" src="assets/js/usuarios/script.js"></script>
+    <?php include('./components/footer.php') ?>
+    <script type="text/javascript" src="./src/usuarios/script.js"></script>
   </body>
 </html>

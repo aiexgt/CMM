@@ -18,7 +18,7 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="assets/imported/login/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./imported/login/style.css"/>
     <!-- Fin Estilos CSS -->
   </head>
   <body>
@@ -81,8 +81,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/imported/jquery/jquery-3.5.1.slim.min.js"></script>
-    <script src="assets/imported/jquery/jquery.min.js"></script>
+    <script src="./imported/jquery/jquery-3.5.1.slim.min.js"></script>
+    <script src="./imported/jquery/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
       integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
@@ -90,6 +90,6 @@
     ></script>
 
     <!-- Scripts Propios -->
-    <script type="text/javascript" src="assets/js/loginScript.js"></script>
+    <script type="text/javascript" src="./src/loginScript.js"></script>
   </body>
 </html>

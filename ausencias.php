@@ -6,20 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MCC | Ausencias</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/imported/menu/menuStyle.css"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <?php include('./components/header.php') ?>
   </head>
   <body id="body-pd">
     <div id="menu">
@@ -123,17 +110,19 @@
           ></button>
         </div>
         <div class="modal-body">
+          <h5>Información Empleado</h5>
+          <hr>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Empresa</label>
               <select
                 class="form-select"
                 id="empresa"
                 aria-label="Default select example"
               > 
-              </select> <br>
+              </select>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
               <label for="" class="form-label is-required">Trabajador</label>
               <select
                 class="form-select"
@@ -143,26 +132,12 @@
               > 
               </select> <br>
             </div>
-            <div class="col-sm-4">
-              <form
-                id="uploadimage"
-                action=""
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <label for="formFile" class="form-label is-required">Comprobante</label>
-                <input
-                  class="form-control"
-                  type="file"
-                  id="image"
-                  accept="application/pdf"
-                />
-              </form>
-              <br />
-            </div>
           </div>
+          <br>
+          <h5>Fechas</h5>
+          <hr>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Fecha Inicio</label>
               <input
                 type="date"
@@ -173,7 +148,7 @@
               />
               <br>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
@@ -184,7 +159,7 @@
               />
               <br>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Fecha Fin</label>
               <input
                 type="date"
@@ -195,6 +170,12 @@
               />
               <br>
             </div>
+            
+          </div>
+          <br>
+          <h5>Justificante</h5>
+          <hr>
+          <div class="row">
             <div class="col-sm-3">
               <label for="" class="form-label is-required">Tipo</label>
               <select
@@ -207,9 +188,7 @@
               </select>
               <br>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-9">
               <label for="" class="form-label is-required">Asunto</label>
               <input
                 type="text"
@@ -226,6 +205,28 @@
             <div class="col-sm-12">
               <label for="exampleFormControlTextarea1" class="form-label is-required">Descripción</label>
               <textarea class="form-control" id="descripcion" rows="3" maxlength="300"></textarea>
+              <br />
+            </div>
+          </div>
+          <br>
+          <h5>Comprobantes</h5>
+          <hr>
+          <div class="row">
+            <div class="col-sm-4">
+              <form
+                id="uploadimage"
+                action=""
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <label for="formFile" class="form-label is-required">Comprobante</label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="image"
+                  accept="application/pdf"
+                />
+              </form>
               <br />
             </div>
           </div>
@@ -265,6 +266,8 @@
           ></button>
         </div>
         <div class="modal-body">
+          <h5>Información Empleado</h5>
+          <hr>
           <div class="row">
             <div class="col-sm-8">
               <label for="" class="form-label">Trabajador</label>
@@ -276,14 +279,12 @@
                 aria-label="Nombre"
               /> <br>
             </div>
-            <div class="col-sm-4">
-              <label for="" class="form-label">Comprobante</label><br>
-              <button class="btn btn-success" id="verComprobante">Ver</button>
-              <br />
-            </div>
           </div>
+          <br>
+          <h5>Fechas</h5>
+          <hr>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Fecha Inicio</label>
               <input
                 type="date"
@@ -294,7 +295,7 @@
               />
               <br>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
@@ -305,7 +306,7 @@
               />
               <br>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Fecha Fin</label>
               <input
                 type="date"
@@ -316,6 +317,11 @@
               />
               <br>
             </div>
+          </div>
+          <br>
+          <h5>Justificante</h5>
+          <hr>
+          <div class="row">
             <div class="col-sm-3">
               <label for="" class="form-label is-required">Tipo</label>
               <select
@@ -328,9 +334,7 @@
               </select>
               <br>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-9">
               <label for="" class="form-label is-required">Asunto</label>
               <input
                 type="text"
@@ -347,6 +351,16 @@
             <div class="col-sm-12">
               <label for="exampleFormControlTextarea1" class="form-label is-required">Descripción</label>
               <textarea class="form-control" id="udescripcion" rows="3" maxlength="300"></textarea>
+              <br />
+            </div>
+          </div>
+          <br>
+          <h5>Comprobantes</h5>
+          <hr>
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="" class="form-label">Comprobante</label><br>
+              <button class="btn btn-success" id="verComprobante">Ver</button>
               <br />
             </div>
           </div>
@@ -369,30 +383,7 @@
       </div>
     </div></div>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">
-          <p>Copyright &copy; | Tubagua 2022</p>
-        </span>
-      </div>
-    </footer>
-    <!-- Scripts -->
-    <script src="assets/imported/jquery/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
-      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    ></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Scripts Propios -->
-    <script
-      type="text/javascript"
-      src="assets/imported/menu/menuScript.js"
-    ></script>
-    <script type="text/javascript" src="assets/js/ausencias/script.js"></script>
+    <?php include('./components/footer.php') ?>
+    <script type="text/javascript" src="./src/ausencias/script.js"></script>
   </body>
 </html>

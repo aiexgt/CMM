@@ -6,29 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MCC | Inicio</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/imported/menu/menuStyle.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <?php include('./components/header.php') ?>
   </head>
   <body id="body-pd">
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <div class="header_img">
-        <img src="img/profile/hczKIze.jpg" alt="" />
-      </div>
+      <b><p id="busuario"></p></b>
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
@@ -110,25 +95,6 @@
         </div>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container"> <span class="text-muted">
-          <p>Copyright &copy; | Tubagua 2022</p>
-          </span> 
-      </div>
-    </footer>
-    <!-- Scripts -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
-      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
-      crossorigin="anonymous"
-    ></script>
-    <script src="assets/imported/jquery/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    ></script>
-
-    <!-- Scripts Propios -->
-    <script type="text/javascript" src="assets/imported/menu/menuScript.js"></script>
+    <?php include('./components/footer.php') ?>
   </body>
 </html>
