@@ -17,7 +17,7 @@ const guardar = () => {
   let trabajador = document.getElementById("trabajador").value;
   let fecha = document.getElementById("fecha").value;
   let cantidad = parseInt(document.getElementById("cantidad").value);
-  let disponibles = parseInt(document.getElementById("disponibles").value);
+  let disponibles = parseInt(document.getElementById("disponiblespa").value);
   let fecha_fin = document.getElementById("fecha_fin").value;
   let observaciones = document.getElementById("observaciones").value;
   if(trabajador == 0){
@@ -26,7 +26,7 @@ const guardar = () => {
     errorDF("Fecha");
   }else if(cantidad <= 0){
     errorDF("Cantidad Valida");
-  }else if((disponibles - cantidad) < -15 ){
+  }else if((disponibles - cantidad) < 0 ){
     Swal.fire({
       icon: "error",
       title: "Oops...",
@@ -98,7 +98,10 @@ const limpiarCampos = () => {
     document.getElementById("observaciones").value = "";
     document.getElementById("image").value = "";
     document.getElementById("disponibles").value = 0;
+    document.getElementById("disponiblespa").value = 0;
     document.getElementById("acumulados").value = 0;
+    document.getElementById("ocupadas").value = 0;
+    document.getElementById("periodo").value = "";
     document.getElementById("saldo").value = 0;
 };
 
@@ -303,7 +306,15 @@ document.getElementById("trabajador").addEventListener("change", () => {
     id: trabajador
   }, (data, status) => {
     var unit = JSON.parse(data);
-    let dias = parseInt(calculardiasDiscount(unit.fecha_inicio));
+    let dias = parseInt(calculardiasDiscount(unit.fecha_inicio)); //Dias laborados
+    let ocupadas = parseInt(unit.vacaciones_ocupadas); //Dias ocupados
+    
+    let fecha = new Date (unit.fecha_inicio);
+    fecha = fecha.getFullYear();
+    while(ocupadas >= 15){
+      ocupadas -= 15;
+      fecha++;
+    }
     let dias_disponibles = 0;
     while(dias > 365){
       dias_disponibles += 15;
@@ -311,9 +322,18 @@ document.getElementById("trabajador").addEventListener("change", () => {
     }
     let acu = parseFloat(((15/365)*dias).toFixed(2));
     let dis = parseFloat((dias_disponibles - parseInt(unit.vacaciones_ocupadas)));
+    let dispa = 0;
+    document.getElementById("ocupadas").value = unit.vacaciones_ocupadas;
+    if(ocupadas == 0){
+      dispa = (dis + 15);
+    }else{
+      dispa = (15 - ocupadas);
+    }
+    document.getElementById("disponiblespa").value = dispa;
+    document.getElementById("periodo").value = (fecha + "-" + (fecha+1)); 
     document.getElementById("acumulados").value = acu;
     document.getElementById("disponibles").value = dis;
-    document.getElementById("saldo").value = (acu+dis);
+    document.getElementById("saldo").value = (acu+dis).toFixed(2);
   });
 })
 

@@ -169,7 +169,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <label for="" class="form-label is-required">Cantidad Días</label>
               <input
                 type="number"
@@ -179,8 +179,33 @@
                 aria-label="Cantidad"
               />
             </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Días Disponibles (Periodo Actual)</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Disponibles"
+                id="disponiblespa"
+                aria-label="Cantidad"
+                disabled
+              />
+            </div>
+            <div class="col-sm-4">
+              <label for="" class="form-label">Periodo</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Disponibles"
+                id="periodo"
+                aria-label="Cantidad"
+                disabled
+              />
+              <br>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-sm-3">
-              <label for="" class="form-label">Días Disponibles</label>
+              <label for="" class="form-label">Días Disponibles (Global)</label>
               <input
                 type="number"
                 class="form-control"
@@ -197,6 +222,17 @@
                 class="form-control"
                 placeholder="Acumulados"
                 id="acumulados"
+                aria-label="Cantidad"
+                disabled
+              />
+            </div>
+            <div class="col-sm-3">
+              <label for="" class="form-label">Días Ocupados</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Acumulados"
+                id="ocupadas"
                 aria-label="Cantidad"
                 disabled
               />
