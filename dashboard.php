@@ -73,7 +73,7 @@
           <div class="card text-white bg-warning mb-3">
             <div class="card-header">Recordatorio</div>
             <div class="card-body">
-              <h5 class="card-title">Descripción del Recordatorio </h5>
+              <h5 class="card-title">Descripción del Recordatorio</h5>
               <p class="card-text"></p>
               <a href="#" class="btn btn-light btn-outline-dark"
                 >Marcar como Leido</a
