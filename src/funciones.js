@@ -1,3 +1,4 @@
+//* Mostrar errores de datos faltantes
 const errorDF = (dato) => {
     Swal.fire({
       icon: "error",
@@ -6,6 +7,7 @@ const errorDF = (dato) => {
     });
 };
 
+//* Calcular cantidad de días hasta hoy
 const calcularDiasHoy = (fecha_inicio) => {
   let timeStart = new Date(fecha_inicio);
     let actualDate = new Date();
@@ -17,11 +19,13 @@ const calcularDiasHoy = (fecha_inicio) => {
     }
 };
 
+//* Convertir string a date
 function stringToDate(dateString){
   dateString = dateString.split('-');
   return new Date(dateString[0], dateString[1] - 1, dateString[2]);
 };
 
+//* Calcular días entre 2 fechas (sin contar domingos o feriados)
 const calcularDiasSD = (fecha_inicio, fecha_fin) => {
   //let date1 = stringToDate(document.getElementById("fecha").value);
   //let date2 = stringToDate(document.getElementById("fecha_fin").value);
@@ -35,12 +39,18 @@ const calcularDiasSD = (fecha_inicio, fecha_fin) => {
         date1 += 1000 * 60 * 60 * 24;
         date1 = new Date(date1);
     }
+    let dias = delta - weeks;
     $.post("./api/funciones/consultarFeriados.php", {
       fecha_inicio,
       fecha_fin
     }, (data, status) => {
-      var unit = JSON.parse(data);
-      let dias_calculados = (delta - weeks - parseInt(unit.dias));
-      document.getElementById("cantidad").value = dias_calculados;
+      var feriados = JSON.parse(data);
+      for(let feriado in feriados){
+        let temp = new Date(feriados[feriado]);
+        if(temp.getDay() != 6){
+          dias--;
+        }
+      }
+      document.getElementById("cantidad").value = dias;
     });
 }

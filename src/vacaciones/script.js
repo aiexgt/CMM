@@ -249,19 +249,20 @@ const eliminar = (codigo) => {
   });
 };
 
-const calcularDias = () => {
-  let date1 = stringToDate(document.getElementById("fecha").value);
-  let date2 = stringToDate(document.getElementById("fecha_fin").value);
-  delta = (date2-date1) / (1000 * 60 * 60 * 24) + 1; // calcula el tiempo total
-
-    weeks = 0;
-    for(i = 0; i < delta; i++){
-                     if (date1.getDay () == 0) weeks ++; // agrega 1 si es domingo
-        date1 = date1.valueOf();
-        date1 += 1000 * 60 * 60 * 24;
-        date1 = new Date(date1);
-    }
-    document.getElementById("cantidad").value = (delta - weeks);
+const validarFechas = () => {
+  let date1 = document.getElementById("fecha").value;
+  let date2 = document.getElementById("fecha_fin").value;
+  if(date1 > date2){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ha Ocurrido un error!',
+    });
+    document.getElementById("fecha").value = "";
+    document.getElementById("fecha_fin").value = "";
+  }else{
+    calcularDiasSD(date1, date2);
+  }
 }
 
 btnNuevo.addEventListener("click", () => {
@@ -328,18 +329,13 @@ document.getElementById("empresa").addEventListener("change",() => {
 
 document.getElementById("fecha").addEventListener("change", () => {
   if(document.getElementById("fecha_fin").value != ""){
-    let date1 = document.getElementById("fecha").value;
-    let date2 = document.getElementById("fecha_fin").value;
-    console.log(calcularDiasSD(date1, date2));
-
+    validarFechas();
   }
 })
 
 document.getElementById("fecha_fin").addEventListener("change", () => {
   if(document.getElementById("fecha").value != ""){
-    let date1 = document.getElementById("fecha").value;
-    let date2 = document.getElementById("fecha_fin").value;
-    console.log(calcularDiasSD(date1, date2));
+    validarFechas();
   }
 })
 
