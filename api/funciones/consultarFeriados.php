@@ -5,7 +5,7 @@ include('../conexion.php');
 $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_fin  = $_POST['fecha_fin'];
 
-$query = "SELECT id, fecha FROM FERIADOS WHERE FECHA 
+$query = "SELECT id, fecha FROM feriados WHERE FECHA 
 BETWEEN '".$fecha_inicio."' AND '".$fecha_fin."' ORDER BY FECHA ASC";
 
 if (!$result = mysqli_query($con, $query)) {
