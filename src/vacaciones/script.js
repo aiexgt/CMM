@@ -24,6 +24,8 @@ const guardar = () => {
   let periodo = document.getElementById("periodo").value;
   if(trabajador == 0){
     errorDF("Trabajador");
+  }else if(fechat == ""){
+    errorDF("Fecha");
   }else if(fecha == ""){
     errorDF("Fecha");
   }else if(cantidad <= 0){
