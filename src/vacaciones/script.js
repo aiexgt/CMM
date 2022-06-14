@@ -255,17 +255,7 @@ const eliminar = (codigo) => {
 const validarFechas = () => {
   let date1 = document.getElementById("fecha").value;
   let date2 = document.getElementById("fecha_fin").value;
-  if(date1 > date2){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'La fecha inicial no puede ser mayor a la final!',
-    });
-    document.getElementById("fecha").value = "";
-    document.getElementById("fecha_fin").value = "";
-  }else{
-    calcularDiasSD(date1, date2);
-  }
+  calcularDiasSD(date1, date2);
 }
 
 btnNuevo.addEventListener("click", () => {
