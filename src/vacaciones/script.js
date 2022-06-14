@@ -14,6 +14,7 @@ const mostrar = () => {
 
 const guardar = () => {
   
+  let fechat = document.getElementById("fecha-temp").value;
   let trabajador = document.getElementById("trabajador").value;
   let fecha = document.getElementById("fecha").value;
   let cantidad = parseInt(document.getElementById("cantidad").value);
@@ -42,6 +43,7 @@ const guardar = () => {
       observaciones,
       disponibles,
       periodo,
+      fechat,
       id: sessionStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
@@ -69,7 +71,8 @@ const guardar = () => {
             fecha,
             fecha_fin,
             cantidad,
-            periodo
+            periodo,
+            fechat
           }, (data, status) => {
           });
         };

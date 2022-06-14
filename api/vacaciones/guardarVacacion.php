@@ -4,6 +4,7 @@
 		include("../conexion.php");
 
 		//* Recibir variables
+		$fechat = $_POST['fechat'];
 		$trabajador = $_POST['trabajador'];
 		$fecha = $_POST['fecha'];
 		$cantidad = $_POST['cantidad'];
@@ -14,8 +15,8 @@
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = 'INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id, periodo) 
-		VALUES('.$trabajador.', "'.$fecha.'", '.$cantidad.', "'.$fecha_fin.'", "'.$observaciones.'", '.$id.',"'.$periodo.'")';
+		$query = 'INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id, periodo,fecha) 
+		VALUES('.$trabajador.', "'.$fecha.'", '.$cantidad.', "'.$fecha_fin.'", "'.$observaciones.'", '.$id.',"'.$periodo.'", "'.$fechat.'")';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

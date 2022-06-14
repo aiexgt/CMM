@@ -12,11 +12,13 @@ if($cantidad == 1){
     $tcantidad = $cantidad." días";
 }
 $periodo = $_POST['periodo'];
-$fecha = date('d-m-Y');
+$fecha = $_POST['fechat'];
 $fechatemp = strtotime($fi);
 $fecha_inicio = date("d-m-Y", $fechatemp);
 $fechatemp = strtotime($ff);
 $fecha_fin = date("d-m-Y", $fechatemp);
+$fechatemp = strtotime($fecha);
+$fecha = date("d-m-Y", $fechatemp);
 $espaciado = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 

@@ -142,6 +142,19 @@
               <br>
             </div>
           </div>
+          <div class="row">
+          <div class="col-sm-6">
+              <label for="" class="form-label is-required">Fecha (Temporal)</label>
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Nombre"
+                id="fecha-temp"
+                aria-label="Nombre"
+              />
+            </div>
+            <br>
+          </div>
           <br>
           <h5>Fechas</h5>
           <hr>
