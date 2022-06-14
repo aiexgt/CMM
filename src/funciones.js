@@ -36,7 +36,7 @@ const calcularDiasSD = (fecha_inicio, fecha_fin) => {
     for(i = 0; i < delta; i++){
                      if (date1.getDay () == 0) weeks ++; // agrega 1 si es domingo
         date1 = date1.valueOf();
-        date1 += 1000 * 60 * 60 * 24;
+        date1 += (1000 * 60 * 60 * 24);
         date1 = new Date(date1);
     }
     let dias = delta - weeks;
@@ -47,6 +47,7 @@ const calcularDiasSD = (fecha_inicio, fecha_fin) => {
       var feriados = JSON.parse(data);
       for(let feriado in feriados){
         let temp = new Date(feriados[feriado]);
+        console.log(temp);
         if(temp.getDay() != 6){
           dias--;
         }

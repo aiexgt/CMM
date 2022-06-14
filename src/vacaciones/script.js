@@ -20,6 +20,7 @@ const guardar = () => {
   let disponibles = parseInt(document.getElementById("disponiblespa").value);
   let fecha_fin = document.getElementById("fecha_fin").value;
   let observaciones = document.getElementById("observaciones").value;
+  let periodo = document.getElementById("periodo").value;
   if(trabajador == 0){
     errorDF("Trabajador");
   }else if(fecha == ""){
@@ -43,13 +44,12 @@ const guardar = () => {
       id: sessionStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
-        let formData = new FormData();
         if ($("#image").val() != "") {
+          let formData = new FormData();
           let files = $("#image")[0].files[0];
           formData.append("file", files);
-  
           $.ajax({
-            url: "./api/vacaciones/guardarImagen.php",
+            url: "./api/vacaciones/guardarDocumentoS.php",
             type: "post",
             data: formData,
             contentType: false,
@@ -62,17 +62,16 @@ const guardar = () => {
               }
             },
           });
-        }
-        /*
-        $.post("./api/vacaciones/generarDocumento.php", {
-          trabajador,
-          fecha,
-          fecha_fin,
-          cantidad
-        }, (data, status) => {
-          console.log("Archivo Generado")
-        });
-        */
+        }else{
+          $.post("./api/vacaciones/generarDocumentoS.php", {
+            trabajador,
+            fecha,
+            fecha_fin,
+            cantidad,
+            periodo
+          }, (data, status) => {
+          });
+        };
         $("#exampleModal").modal("hide");
         Swal.fire("Excelente!", "El registro de vacaciones se ha añadido!", "success");
         limpiarCampos();
@@ -322,14 +321,14 @@ document.getElementById("trabajador").addEventListener("change", () => {
     }
     let acu = parseFloat(((15/365)*dias).toFixed(2));
     let dis = parseFloat((dias_disponibles - parseInt(unit.vacaciones_ocupadas)));
-    let dispa = 0;
+    let dpa = 0;
     document.getElementById("ocupadas").value = unit.vacaciones_ocupadas;
-    if(ocupadas == 0){
-      dispa = (dis + 15);
+    if(dis < 0){
+      dpa = (15+dis);
     }else{
-      dispa = (15 - ocupadas);
+      dpa = 15-ocupadas;
     }
-    document.getElementById("disponiblespa").value = dispa;
+    document.getElementById("disponiblespa").value = dpa;
     document.getElementById("periodo").value = (fecha + "-" + (fecha+1)); 
     document.getElementById("acumulados").value = acu;
     document.getElementById("disponibles").value = dis;

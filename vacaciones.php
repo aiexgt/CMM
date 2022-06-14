@@ -177,6 +177,7 @@
                 placeholder="Cantidad"
                 id="cantidad"
                 aria-label="Cantidad"
+                disabled
               />
             </div>
             <div class="col-sm-4">
@@ -261,7 +262,7 @@
                 method="post"
                 enctype="multipart/form-data"
               >
-                <label for="formFile" class="form-label is-required">Comprobante Solicitud</label>
+                <label for="formFile" class="form-label">Comprobante Solicitud</label>
                 <input
                   class="form-control"
                   type="file"
@@ -270,7 +271,7 @@
                 />
               </form>
               <br />
-            </div>
+            </div> 
           </div>
           <div class="row">
             <div class="col-sm-12">
