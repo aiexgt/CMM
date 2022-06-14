@@ -259,7 +259,7 @@ const validarFechas = () => {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Ha Ocurrido un error!',
+      text: 'La fecha inicial no puede ser mayor a la final!',
     });
     document.getElementById("fecha").value = "";
     document.getElementById("fecha_fin").value = "";
