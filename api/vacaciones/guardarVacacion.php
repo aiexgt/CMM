@@ -10,11 +10,12 @@
 		$disponibles = $_POST['disponibles'];
 		$fecha_fin = $_POST['fecha_fin'];
 		$observaciones = $_POST['observaciones'];
+		$periodo = $_POST['periodo'];
         $id = $_POST['id'];
 
 		//* Insertar datos
-		$query = 'INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id) 
-		VALUES('.$trabajador.', "'.$fecha.'", '.$cantidad.', "'.$fecha_fin.'", "'.$observaciones.'", '.$id.')';
+		$query = 'INSERT INTO vacaciones (persona_id, fecha_inicio, cantidad, fecha_fin, observaciones, usuario_id, periodo) 
+		VALUES('.$trabajador.', "'.$fecha.'", '.$cantidad.', "'.$fecha_fin.'", "'.$observaciones.'", '.$id.',"'.$periodo.'")';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

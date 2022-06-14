@@ -35,12 +35,13 @@ const guardar = () => {
     });
   } else{
     $.post("./api/vacaciones/guardarVacacion.php",{
-      trabajador: trabajador,
-      fecha: fecha,
-      cantidad: cantidad,
-      fecha_fin: fecha_fin,
-      observaciones: observaciones,
-      disponibles: disponibles,
+      trabajador,
+      fecha,
+      cantidad,
+      fecha_fin,
+      observaciones,
+      disponibles,
+      periodo,
       id: sessionStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
