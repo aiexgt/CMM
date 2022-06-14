@@ -217,7 +217,7 @@
               />
             </div>
             <div class="col-sm-3">
-              <label for="" class="form-label">Días Acumulados</label>
+              <label for="" class="form-label">Días Acumulados (Periodo Actual)</label>
               <input
                 type="number"
                 class="form-control"
