@@ -3,20 +3,27 @@
 include("../conexion.php");
 
 $trabajador = $_POST['trabajador'];
+
 $fi = $_POST['fecha'];
+$fechatemp = strtotime($fi);
+$fecha_inicio = date("d-m-Y", $fechatemp);
+
 $ff = $_POST['fecha_fin'];
+$fechatemp = strtotime($ff);
+$fecha_fin = date("d-m-Y", $fechatemp);
+
 $cantidad = $_POST['cantidad'];
 if($cantidad == 1){
     $tcantidad = "1 día";
 }else{
     $tcantidad = $cantidad." días";
 }
+
 $periodo = $_POST['periodo'];
+
 $fecha = date('d-m-Y');
-$fechatemp = strtotime($fi);
-$fecha_inicio = date("d-m-Y", $fechatemp);
-$fechatemp = strtotime($ff);
-$fecha_fin = date("d-m-Y", $fechatemp);
+
+
 $espaciado = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
@@ -63,8 +70,8 @@ $dompdf->loadHtml("
         <p><b>Cargo que desempeña: </b>".$row['puesto']."</p>
         <p>Por medio de la presente hago constar que gocé ".$tcantidad." del periodo 
         de vacaciones correspondientes al año ".$periodo.". Del ".$fecha_inicio." 
-        al ".$fecha_fin.", de acuerdo con la Solicitud de Vacaciones con fecha de.
-        Reanudando mis labores el .</p>
+        al ".$fecha_fin.", de acuerdo con la Solicitud de Vacaciones con fecha de ".$fechaant.".
+        Reanudando mis labores el ".$fechare.".</p>
         <br>
         <center>
             <div>
@@ -80,7 +87,7 @@ $dompdf->loadHtml("
             <p>Gerente de Recursos Humanos</p>
             <p>".$row['empresa']."</p>
         </center>
-        <p>En cumplimiento con lo establecido en el <b>Articulo 137</b> del Código de Trabajo DECRETO 1441. </p>
+        <p>En cumplimiento con lo establecido en el <b>Artículo 137</b> del Código de Trabajo DECRETO 1441. </p>
     </div>
 </div>
 ");

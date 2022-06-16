@@ -130,21 +130,10 @@ const ver = (codigo) => {
       document.getElementById("ufecha_fin").setAttribute("disabled","disabled");
       document.getElementById("uobservaciones").value = unit.observaciones;
       document.getElementById("uobservaciones").setAttribute("disabled","disabled");
-
-      $.post("./api/vacaciones/consultarVacaciones.php", {
-        id: unit.persona_id
-      }, (data, status) => {
-        var unit = JSON.parse(data);
-        let dias = parseInt(calculardiasDiscount(unit.fecha_inicio));
-        let dias_disponibles = 0;
-        while(dias > 365){
-          dias_disponibles += 15;
-          dias -= 365;
-        }
-        document.getElementById("udisponibles").value = (dias_disponibles - parseInt(unit.vacaciones_ocupadas));
-      });
-      
-
+      document.getElementById("ufechah").value = unit.fecha;
+      document.getElementById("ufechah").setAttribute("disabled","disabled");
+      document.getElementById("uperiodo").value = unit.periodo;
+      document.getElementById("uperiodo").setAttribute("disabled","disabled");
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })

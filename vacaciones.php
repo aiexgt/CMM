@@ -339,9 +339,18 @@
                 placeholder="Trabajador"
                 id="utrabajador"
                 aria-label="Nombre"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="" class="form-label is-required">Fecha</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Fecha"
+                id="ufechah"
+                aria-label="Nombre"
               /> <br>
             </div>
-            
           </div>
           <br>
           <h5>Fechas</h5>
@@ -370,13 +379,13 @@
               <br>
             </div>
             <div class="col-sm-2">
-              <label for="" class="form-label">Disponibles</label>
+              <label for="" class="form-label">Periodo</label>
               <input
-                type="number"
+                type="text"
                 class="form-control"
-                placeholder="Cantidad"
-                id="udisponibles"
-                aria-label="Cantidad"
+                placeholder="Periodo"
+                id="uperiodo"
+                aria-label="Periodo"
                 disabled
               />
               <br>
