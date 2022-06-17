@@ -40,6 +40,7 @@ if(isset($_POST['codigo']) && isset($_POST['codigo']) != "")
     }
 
     unlink("../../img/doc-vacaciones/".$codigo.".pdf");
+    unlink("../../img/doc-vacacionesg/".$codigo.".pdf");
 
     //* Imprimir resultado
     echo $result;
