@@ -90,7 +90,7 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Nuevo Trabajador
+            Nuevo Registro
           </button>
         </div>
       </div>
