@@ -11,6 +11,14 @@ $fecha_inicio = date("d-m-Y", $fechatemp);
 $ff = $_POST['fecha_fin'];
 $fechatemp = strtotime($ff);
 $fecha_fin = date("d-m-Y", $fechatemp);
+$fechatemp = strtotime($ff. "+ 1 days");
+$fechare = date("d-m-Y", $fechatemp);
+
+$fa = $_POST['fechat'];
+$fechatemp = strtotime($fa);
+$fechaant = date("d-m-Y", $fechatemp);
+
+
 
 $cantidad = $_POST['cantidad'];
 if($cantidad == 1){
@@ -94,15 +102,7 @@ $dompdf->loadHtml("
 $dompdf->render();
 $contenido = $dompdf->output();
 
-$query = "SELECT id FROM vacaciones ORDER BY id DESC LIMIT 1";
-
-    if (!$result = mysqli_query($con, $query)) {
-        exit(mysqli_error($con));
-    }
-
-$row = mysqli_fetch_assoc($result);
-
-$nombreDelDocumento = "../../img/doc-vacacionesg/".$row['id'].".pdf";
+$nombreDelDocumento = "../../img/doc-vacacionesg/".$_POST['id'].".pdf";
 $bytes = file_put_contents($nombreDelDocumento, $contenido);
 
 ?>

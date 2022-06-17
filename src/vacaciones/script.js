@@ -3,6 +3,8 @@ const btnGuardar = document.getElementById("btn-guardar");
 const btnEditar = document.getElementById("btn-editar");
 const btnActualizar = document.getElementById("btn-actualizar");
 const btnVer = document.getElementById("verComprobante");
+const btnGenerarG = document.getElementById("generarComprobanteG");
+const btnVerG = document.getElementById("verComprobanteG");
 let busqueda = document.getElementById("busqueda");
 let id_cambio;
 
@@ -134,6 +136,21 @@ const ver = (codigo) => {
       document.getElementById("ufechah").setAttribute("disabled","disabled");
       document.getElementById("uperiodo").value = unit.periodo;
       document.getElementById("uperiodo").setAttribute("disabled","disabled");
+      document.getElementById("uimage").setAttribute("disabled","disabled");
+      document.getElementById("uimageg").setAttribute("disabled","disabled");
+
+      $.post("./api/funciones/verificarDocumento.php",{
+        ruta: `doc-vacacionesg/${id}.pdf`
+      },(data, status) => {
+        if(data == "1"){
+          document.getElementById("generarComprobanteG").setAttribute("hidden","hidden");
+          document.getElementById("verComprobanteG").removeAttribute("hidden","hidden");
+        }else{
+          document.getElementById("generarComprobanteG").removeAttribute("hidden","hidden");
+          document.getElementById("verComprobanteG").setAttribute("hidden","hidden");
+        }
+      })
+
       btnActualizar.setAttribute("hidden", "hidden");
       btnEditar.removeAttribute("hidden");
     })
@@ -143,6 +160,7 @@ const ver = (codigo) => {
 const quitarDisabled = () => {
     document.getElementById("uobservaciones").removeAttribute("disabled","disabled");
     document.getElementById("uimage").removeAttribute("disabled","disabled");
+    document.getElementById("uimageg").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -175,6 +193,27 @@ const actualizar = () => {
           formData.append("id", id_cambio);
           $.ajax({
             url: "./api/vacaciones/actualizarImagen.php",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+              if (response != 0) {
+                $(".card-img-top").attr("src", response);
+                estado = 1;
+              } else {
+                estado = 0;
+              }
+            },
+          });
+        }
+        if ($("#uimageg").val() != "") {
+          let formData = new FormData();
+          let files = $("#uimageg")[0].files[0];
+          formData.append("file", files);
+          formData.append("id", id_cambio);
+          $.ajax({
+            url: "./api/vacaciones/actualizarImagenG.php",
             type: "post",
             data: formData,
             contentType: false,
@@ -252,6 +291,29 @@ const validarFechas = () => {
   calcularDiasSD(date1, date2);
 }
 
+const generarG = () => {
+  $.post(
+    "./api/vacaciones/buscarDetalles.php",
+    {
+      id: id_cambio,
+    },
+    function (data, status) {
+      var unit = JSON.parse(data);
+      $.post("./api/vacaciones/generarDocumentoG.php", {
+        id: id_cambio,
+        trabajador: unit.persona_id,
+        fecha: unit.fecha_inicio,
+        fecha_fin: unit.fecha_fin,
+        cantidad: unit.cantidad,
+        periodo: unit.periodo,
+        fechat: unit.fecha
+      }, (data, status) => {
+        document.getElementById("generarComprobanteG").setAttribute("hidden","hidden");
+        document.getElementById("verComprobanteG").removeAttribute("hidden","hidden");
+      });
+    }
+  )}
+
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
 })
@@ -271,6 +333,15 @@ btnGuardar.addEventListener("click", () => {
 btnVer.addEventListener("click", () => {
   window.open(`img/doc-vacaciones/${id_cambio}.pdf`,'_blank')
 });
+
+btnVerG.addEventListener("click", () => {
+  window.open(`img/doc-vacacionesg/${id_cambio}.pdf`,'_blank')
+});
+
+btnGenerarG.addEventListener("click", () => {
+  generarG();
+});
+
 
 busqueda.addEventListener("change", () => {
   $.post(
