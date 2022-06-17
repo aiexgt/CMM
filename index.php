@@ -91,5 +91,6 @@
 
     <!-- Scripts Propios -->
     <script type="text/javascript" src="./src/loginScript.js"></script>
+    <?php  ?>
   </body>
 </html>
