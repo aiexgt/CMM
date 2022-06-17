@@ -1,6 +1,6 @@
 <?php
 // include Database connection file
-include("../../conexion.php");
+include("../conexion.php");
 
 // check request
 if(isset($_POST['id']) && isset($_POST['id']) != "")

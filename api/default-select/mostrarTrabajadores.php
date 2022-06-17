@@ -12,7 +12,7 @@
 				FROM personas p 
 				WHERE p.empresa_id = $empresa 
 				AND p.estado_trabajo_id != 3  
-				ORDER BY p.id ASC";
+				ORDER BY p.nombre ASC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
