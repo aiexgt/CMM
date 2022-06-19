@@ -88,7 +88,7 @@
               <h5 class="card-title">Descripción de la alerta</h5>
               <p class="card-text"></p>
               <a href="#" class="btn btn-light btn-outline-dark"
-                >Marcar como Leido</a
+                >Marcar como Leido </a
               >
             </div>
           </div>
