@@ -408,7 +408,6 @@ document.getElementById("trabajador").addEventListener("change", () => {
       fecha = fecha.setDate(fecha.getDate() + 1);
       fecha = new Date(fecha);
       fecha = fecha.getFullYear();
-      console.log(fecha);
       while (ocupadas >= 15) {
         ocupadas -= 15;
         fecha++;
