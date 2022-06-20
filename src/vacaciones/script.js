@@ -5,7 +5,6 @@ const btnActualizar = document.getElementById("btn-actualizar");
 const btnVer = document.getElementById("verComprobante");
 const btnGenerarG = document.getElementById("generarComprobanteG");
 const btnVerG = document.getElementById("verComprobanteG");
-let busqueda = document.getElementById("busqueda");
 let id_cambio;
 
 const mostrar = () => {
@@ -393,18 +392,6 @@ btnGenerarG.addEventListener("click", () => {
   generarG();
 });
 
-busqueda.addEventListener("change", () => {
-  $.post(
-    "./api/vacaciones/buscarVacacion.php",
-    {
-      busqueda: busqueda.value,
-    },
-    (data, status) => {
-      document.getElementById("tabla-contenido").innerHTML = data;
-    }
-  );
-});
-
 document.getElementById("trabajador").addEventListener("change", () => {
   let trabajador = document.getElementById("trabajador").value;
   $.post(
@@ -418,7 +405,10 @@ document.getElementById("trabajador").addEventListener("change", () => {
       let ocupadas = parseInt(unit.vacaciones_ocupadas); //Dias ocupados
 
       let fecha = new Date(unit.fecha_inicio);
+      fecha = fecha.setDate(fecha.getDate() + 1);
+      fecha = new Date(fecha);
       fecha = fecha.getFullYear();
+      console.log(fecha);
       while (ocupadas >= 15) {
         ocupadas -= 15;
         fecha++;
@@ -458,6 +448,20 @@ document.getElementById("empresa").addEventListener("change", () => {
     (data, status) => {
       document.getElementById("trabajador").innerHTML = data;
       document.getElementById("trabajador").removeAttribute("disabled");
+    }
+  );
+});
+
+document.getElementById("bempresa").addEventListener("change", () => {
+  let empresa = document.getElementById("bempresa").value;
+  $.post(
+    "./api/default-select/mostrarTrabajadores.php",
+    {
+      empresa: empresa,
+    },
+    (data, status) => {
+      document.getElementById("btrabajador").innerHTML = data;
+      document.getElementById("btrabajador").removeAttribute("disabled");
     }
   );
 });

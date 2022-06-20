@@ -64,15 +64,19 @@
   <!--Container Main start-->
 
   <div class="row">
-    <div class="col-sm-4">
-      <div class="input-group flex-nowrap">
-        <input id="busqueda" type="text" class="form-control" placeholder="Buscar Trabajador" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-        <span class="input-group-text" id="basic-addon2">Buscar</span>
-      </div>
-    </div>
     <div class="col-sm-2">
       <select class="form-select" id="bempresa" aria-label="Default select example">
       </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-select" id="btrabajador" aria-label="Default select example" disabled>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <input type="date" class="form-control" placeholder="Fecha Inicio" id="bfechai" aria-label="Nombre" />
+    </div>
+    <div class="col-sm-2">
+      <input type="date" class="form-control" placeholder="Fecha Fin" id="bfechaf" aria-label="Nombre" />
     </div>
     <div class="col-sm-2">
       <div class="input-group flex-nowrap">
