@@ -66,8 +66,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="input-group flex-nowrap">
-        <input id="busqueda" type="text" class="form-control" placeholder="Buscar Vacacion" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-        <span class="input-group-text" id="basic-addon2">Buscar</span>
+        <input type="text">
       </div>
     </div>
     <div class="col-sm-2">
@@ -102,6 +101,7 @@
             <div class="col-sm-6">
               <label for="" class="form-label is-required">Trabajador</label>
               <select class="form-select" id="trabajador" aria-label="Default select example" disabled>
+                <option value="0">Selecciones trabajador</option>
               </select> <br>
             </div>
           </div>
@@ -123,6 +123,15 @@
             <div class="col-sm-6">
               <label for="" class="form-label is-required">Asunto</label>
               <input type="text" class="form-control" placeholder="Asunto" id="asunto" aria-label="Asunto" maxlength="100" />
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="" class="form-label">Constancia Anterior</label>
+              <select class="form-select" id="anterior" aria-label="Default select example" disabled>
+                <option value="0">Ninguna</option>
+              </select>
               <br>
             </div>
           </div>

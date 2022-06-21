@@ -65,6 +65,21 @@ const guardar = () => {
               }
             },
           });
+        }else{
+          /*
+          $.post(
+            "./api/ausencias/generarDocumento.php",
+            {
+              trabajador,
+              fecha,
+              fecha_fin,
+              cantidad,
+              periodo,
+              fechat,
+            },
+            (data, status) => {}
+          );
+          */
         }
         $("#exampleModal").modal("hide");
         Swal.fire("Excelente!", "El registro de ausencia se ha añadido!", "success");

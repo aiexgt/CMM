@@ -3,7 +3,6 @@ const btnGuardar = document.getElementById("btn-guardar");
 const btnEditar = document.getElementById("btn-editar");
 const btnActualizar = document.getElementById("btn-actualizar");
 const btnVer = document.getElementById("verComprobante");
-let busqueda = document.getElementById("busqueda");
 let id_cambio;
 
 const mostrar = () => {
@@ -25,7 +24,7 @@ const guardar = () => {
     errorDF("Fecha");
   }else if(asunto == ""){
     errorDF("Asunto");
-  }else if(nivel == ""){
+  }else if(nivel == 0){
     errorDF("Nivel");
   }else{
     $.post("./api/llamadas_atencion/guardarLlamada.php",{
@@ -210,19 +209,6 @@ btnVer.addEventListener("click", () => {
   window.open(`img/doc-llamadas/${id_cambio}.pdf`,'_blank')
 });
 
-busqueda.addEventListener("change", () => {
-  $.post(
-    "./api/llamadas_atencion/buscarLlamada.php",
-    {
-      busqueda: busqueda.value,
-    },
-    (data, status) => {
-      document.getElementById("tabla-contenido").innerHTML = data;
-    }
-  );
-});
-
-
 document.getElementById("empresa").addEventListener("change",() => {
   let empresa = document.getElementById("empresa").value;
   $.post("./api/default-select/mostrarTrabajadores.php", {
@@ -231,6 +217,18 @@ document.getElementById("empresa").addEventListener("change",() => {
     document.getElementById("trabajador").innerHTML = data;
     document.getElementById("trabajador").removeAttribute("disabled");
   });
+})
+
+document.getElementById("trabajador").addEventListener("change", () => {
+  let id = document.getElementById("trabajador").value;
+  $.post("./api/default-select/mostrarLlamadas.php",
+    {
+      id
+    }, (data) => {
+      document.getElementById("anterior").innerHTML = data;
+      document.getElementById("anterior").removeAttribute("disabled");
+    }
+  )
 })
 
 
