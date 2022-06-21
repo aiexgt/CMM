@@ -24,7 +24,7 @@
     a.fecha, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
 	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM llamada_atencion a WHERE 
     a.fecha LIKE '%$busqueda%' OR (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id)
-    LIKE '%$busqueda%' OR (SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) LIKE '%$busqueda%' ORDER BY a.id ASC LIMIT 15";
+    LIKE '%$busqueda%' OR (SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) LIKE '%$busqueda%' ORDER BY a.id DESC LIMIT 15";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

@@ -17,6 +17,7 @@ const guardar = () => {
   let trabajador = document.getElementById("trabajador").value;
   let fecha = document.getElementById("fecha").value;
   let asunto = document.getElementById("asunto").value;
+  let nivel = document.getElementById("nivel").value;
   let observaciones = document.getElementById("observaciones").value;
   if(trabajador == 0){
     errorDF("Trabajador");
@@ -24,12 +25,15 @@ const guardar = () => {
     errorDF("Fecha");
   }else if(asunto == ""){
     errorDF("Asunto");
+  }else if(nivel == ""){
+    errorDF("Nivel");
   }else{
     $.post("./api/llamadas_atencion/guardarLlamada.php",{
-      trabajador: trabajador,
-      fecha: fecha,
-      asunto: asunto,
-      observaciones: observaciones,
+      trabajador,
+      fecha,
+      asunto,
+      nivel,
+      observaciones,
       id: sessionStorage.getItem("id")
     }, (data, statur) => {
       if (data == "1") {
@@ -52,6 +56,17 @@ const guardar = () => {
               }
             },
           });
+        }else{
+          /*
+          $.post(
+            "./api/llamadas_atencion/generarDocumento.php",
+            {
+              trabajador,
+
+            },
+            (data, status) => {}
+          );
+          */
         }
         $("#exampleModal").modal("hide");
         Swal.fire("Excelente!", "La llamada de atención se ha añadido!", "success");
@@ -76,6 +91,7 @@ const limpiarCampos = () => {
     document.getElementById("asunto").value = "";
     document.getElementById("observaciones").value = "";
     document.getElementById("image").value = "";
+    document.getElementById("nivel").value = 0;
 };
 
 const ver = (codigo) => {
@@ -220,6 +236,11 @@ document.getElementById("empresa").addEventListener("change",() => {
 
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;
+  //document.getElementById("uempresas").innerHTML = data;
+});
+
+$.post("./api/default-select/mostrarNiveles.php", {}, (data, status) => {
+  document.getElementById("nivel").innerHTML = data;
   //document.getElementById("uempresas").innerHTML = data;
 });
 
