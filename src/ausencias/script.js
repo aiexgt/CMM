@@ -27,8 +27,11 @@ const guardar = () => {
   let fecha_fin = document.getElementById("fecha_fin").value;
   let asunto = document.getElementById("asunto").value;
   let descripcion = document.getElementById("descripcion").value;
+  let fechat = document.getElementById("fecha-temp").value;
   if(trabajador == 0){
     errorDF("Trabajador");
+  }else if(fechat == ""){
+    errorDF("Fecha")
   }else if(fecha == ""){
     errorDF("Fecha")
   }else if(asunto == ""){
@@ -44,6 +47,7 @@ const guardar = () => {
       fecha_fin,
       asunto,
       descripcion,
+      fechat,
       id: sessionStorage.getItem("id")
     }, (data) => {
       if (data == "1") {
@@ -66,7 +70,6 @@ const guardar = () => {
             },
           });
         }else{
-          /*
           $.post(
             "./api/ausencias/generarDocumento.php",
             {
@@ -74,12 +77,13 @@ const guardar = () => {
               fecha,
               fecha_fin,
               cantidad,
-              periodo,
-              fechat,
+              tipo,
+              asunto,
+              descripcion,
+              fechat
             },
             (data, status) => {}
           );
-          */
         }
         $("#exampleModal").modal("hide");
         Swal.fire("Excelente!", "El registro de ausencia se ha añadido!", "success");
@@ -142,6 +146,7 @@ const ver = (codigo) => {
 const quitarDisabled = () => {
     document.getElementById("uasunto").removeAttribute("disabled","disabled");
     document.getElementById("udescripcion").removeAttribute("disabled","disabled");
+    document.getElementById("uimage").removeAttribute("disabled","disabled");
     btnEditar.setAttribute("hidden", "hidden");
     btnActualizar.removeAttribute("hidden");
 };
@@ -172,6 +177,27 @@ const actualizar = () => {
       id: id_cambio
     }, (data) => {
       if (data == "1") {
+        if ($("#uimage").val() != "") {
+          let formData = new FormData();
+          let files = $("#uimage")[0].files[0];
+          formData.append("file", files);
+          formData.append("id", id_cambio);
+          $.ajax({
+            url: "./api/ausencias/actualizarImagen.php",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+              if (response != 0) {
+                $(".card-img-top").attr("src", response);
+                estado = 1;
+              } else {
+                estado = 0;
+              }
+            },
+          });
+        }
         Swal.fire("Excelente!", "El registro ha sido actualizado!", "success");
         $("#exampleModala").modal("hide");
         mostrar();
@@ -216,25 +242,12 @@ const eliminar = (codigo) => {
   });
 };
 
-function stringToDate(dateString){
-  dateString = dateString.split('-');
-  return new Date(dateString[0], dateString[1] - 1, dateString[2]);
-}
 
-const calcularDias = () => {
-  let date1 = stringToDate(document.getElementById("fecha").value);
-  let date2 = stringToDate(document.getElementById("fecha_fin").value);
-  delta = (date2-date1) / (1000 * 60 * 60 * 24) + 1; // calcula el tiempo total
-
-    weeks = 0;
-    for(i = 0; i < delta; i++){
-                     if (date1.getDay () == 0) weeks ++; // agrega 1 si es sábado o domingo
-        date1 = date1.valueOf();
-        date1 += 1000 * 60 * 60 * 24;
-        date1 = new Date(date1);
-    }
-    document.getElementById("cantidad").value = (delta - weeks);
-}
+const validarFechas = () => {
+  let date1 = document.getElementById("fecha").value;
+  let date2 = document.getElementById("fecha_fin").value;
+  calcularDiasSD(date1, date2);
+};
 
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
@@ -269,16 +282,16 @@ busqueda.addEventListener("change", () => {
 });
 
 document.getElementById("fecha").addEventListener("change", () => {
-  if(document.getElementById("fecha_fin").value != ""){
-    calcularDias();
+  if (document.getElementById("fecha_fin").value != "") {
+    validarFechas();
   }
-})
+});
 
 document.getElementById("fecha_fin").addEventListener("change", () => {
-  if(document.getElementById("fecha").value != ""){
-    calcularDias();
+  if (document.getElementById("fecha").value != "") {
+    validarFechas();
   }
-})
+});
 
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;

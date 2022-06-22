@@ -12,12 +12,13 @@
 		$asunto = $_POST['asunto'];
 		$descripcion = $_POST['descripcion'];
         $id = $_POST['id'];
+		$fechat = $_POST['fechat'];
 
 		//* Insertar datos
 		$query = 'INSERT INTO ausencias 
 		(persona_id, tipo, fecha_inicio, 
 		cantidad, fecha_fin, asunto, descripcion, 
-		usuario_id) VALUES(
+		usuario_id, fecha) VALUES(
 		'.$trabajador.', 
 		'.$tipo.', 
 		"'.$fecha.'", 
@@ -25,7 +26,7 @@
 		"'.$fecha_fin.'", 
 		"'.$asunto.'", 
 		"'.$descripcion.'", 
-		'.$id.')';
+		'.$id.',"'.$fechat.'")';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

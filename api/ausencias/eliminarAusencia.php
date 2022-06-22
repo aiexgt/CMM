@@ -15,7 +15,7 @@ if(isset($_POST['codigo']) && isset($_POST['codigo']) != "")
             exit(mysqli_error($con));
     }
 
-    unlink("../../../img/doc-ausencias/".$codigo.".pdf");
+    unlink("../../img/doc-ausencias/".$codigo.".pdf");
 
     //* Imprimir resultado
     echo $result;
