@@ -126,6 +126,7 @@ const ver = (codigo) => {
       document.getElementById("uasunto").value = unit.asunto;
       document.getElementById("uasunto").setAttribute("disabled", "disabled");
       document.getElementById("uobservaciones").value = unit.observaciones;
+      document.getElementById("univel").value = unit.nivel;
       document
         .getElementById("uobservaciones")
         .setAttribute("disabled", "disabled");
@@ -300,6 +301,7 @@ $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
 
 $.post("./api/default-select/mostrarNiveles.php", {}, (data, status) => {
   document.getElementById("nivel").innerHTML = data;
+  document.getElementById("univel").innerHTML = data;
   //document.getElementById("uempresas").innerHTML = data;
 });
 

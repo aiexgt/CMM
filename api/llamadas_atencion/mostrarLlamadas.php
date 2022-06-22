@@ -7,6 +7,7 @@
 				<thead>
 				<tr>
 					<th scope="col">No.</th>
+					<th scope="col">Nivel</th>
 					<th scope="col">Asunto</th>
 					<th scope="col">Trabajador</th>
 					<th scope="col">Fecha</th>
@@ -20,7 +21,8 @@
 	$query = "SELECT a.id, a.asunto, (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS persona,
 	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
     a.fecha, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
-	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario FROM llamada_atencion a ORDER BY a.id DESC";
+	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario,
+	(SELECT n.nombre FROM niveles n WHERE n.id = a.nivel) AS nivel FROM llamada_atencion a ORDER BY a.id DESC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
@@ -35,6 +37,7 @@
     		$data .= '<tr>
 				<td><b>'.$number.'</b></td>
 				<td class="id'.$number.'" hidden>'.$row['id'].'</td>
+				<td>'.$row['nivel'].'</td>
 				<td class="asunto'.$number.'">'.$row['asunto'].'</td>
                 <td class="persona'.$number.'">'.$row['persona']." ".$row['apersona'].'</td>
                 <td class="fecha'.$number.'">'.$row['fecha'].'</td>

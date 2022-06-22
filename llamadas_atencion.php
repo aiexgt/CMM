@@ -190,10 +190,15 @@
           <h5>Fecha y Asunto</h5>
           <hr>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <label for="" class="form-label is-required">Fecha</label>
               <input type="date" class="form-control" placeholder="Nombre" id="ufecha" aria-label="Nombre" />
               <br>
+            </div>
+            <div class="col-sm-2">
+              <label for="" class="form-label is-required">Nivel</label>
+              <select class="form-select" id="univel" aria-label="Default select example" disabled>
+              </select>
             </div>
             <div class="col-sm-8">
               <label for="" class="form-label is-required">Asunto</label>
