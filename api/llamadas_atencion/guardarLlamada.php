@@ -10,10 +10,11 @@
 		$observaciones = $_POST['observaciones'];
 		$nivel = $_POST['nivel'];
         $id = $_POST['id'];
+		$anterior = $_POST['anterior'];
 
 		//* Insertar datos
-		$query = 'INSERT INTO llamada_atencion (persona_id, fecha, asunto, observaciones, usuario_id, nivel) 
-		VALUES('.$trabajador.', "'.$fecha.'", "'.$asunto.'", "'.$observaciones.'", '.$id.', '.$nivel.')';
+		$query = 'INSERT INTO llamada_atencion (persona_id, fecha, asunto, observaciones, usuario_id, nivel, anterior) 
+		VALUES('.$trabajador.', "'.$fecha.'", "'.$asunto.'", "'.$observaciones.'", '.$id.', '.$nivel.', '.$anterior.')';
 
 		//* Ejecución Query
 		if (!$result = mysqli_query($con, $query)) {

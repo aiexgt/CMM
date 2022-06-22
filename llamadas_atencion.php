@@ -212,10 +212,14 @@
           <h5>Comprobantes</h5>
           <hr>
           <div class="row">
-            <div class="col-sm-6">
-              <label for="" class="form-label is-required">Comprobante</label><br>
-              <button class="btn btn-success" id="verComprobante">Ver</button>
-              <br />
+          <div class="col-sm-6">
+              <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+                <label for="" class="form-label is-required">Comprobante Solicitud</label>
+                <div class="input-group mb-3">
+                  <input class="form-control" type="file" id="uimage" accept="application/pdf" disabled />
+                  <button class="btn btn-success" id="verComprobante">Ver</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
