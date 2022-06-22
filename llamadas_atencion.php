@@ -64,10 +64,19 @@
   <!--Container Main start-->
 
   <div class="row">
-    <div class="col-sm-6">
-      <div class="input-group flex-nowrap">
-        <input type="text">
-      </div>
+    <div class="col-sm-2">
+      <select class="form-select" id="bempresa" aria-label="Default select example">
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-select" id="btrabajador" aria-label="Default select example" disabled>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <input type="date" class="form-control" placeholder="Fecha Inicio" id="bfechai" aria-label="Nombre" />
+    </div>
+    <div class="col-sm-2">
+      <input type="date" class="form-control" placeholder="Fecha Fin" id="bfechaf" aria-label="Nombre" />
     </div>
     <div class="col-sm-2">
       <div class="input-group flex-nowrap">
@@ -217,7 +226,7 @@
           <h5>Comprobantes</h5>
           <hr>
           <div class="row">
-          <div class="col-sm-6">
+            <div class="col-sm-6">
               <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
                 <label for="" class="form-label is-required">Comprobante Solicitud</label>
                 <div class="input-group mb-3">
