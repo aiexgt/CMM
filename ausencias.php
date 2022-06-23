@@ -142,6 +142,7 @@
               <select class="form-select" id="tipo" aria-label="Default select example">
                 <option value="0" selected>Justificada</option>
                 <option value="1">No Justificada</option>
+                <option value="2">IGSS</option>
               </select>
               <br>
             </div>
@@ -230,6 +231,7 @@
               <select class="form-select" id="utipo" aria-label="Default select example">
                 <option value="0" selected>Justificada</option>
                 <option value="1">No Justificada</option>
+                <option value="2">IGSS</option>
               </select>
               <br>
             </div>
