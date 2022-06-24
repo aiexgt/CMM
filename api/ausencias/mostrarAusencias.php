@@ -44,8 +44,10 @@
 				<td class="id'.$number.'" hidden>'.$row['id'].'</td>';
 			if($row['tipo'] == 0){
 				$data .= '<td class="tipo'.$number.'">Justificada</td>';
-			}else{
+			}else if($row['tipo'] == 1){
 				$data .= '<td class="tipo'.$number.'">No Justificada</td>';
+			}else if($row['tipo'] == 2){
+				$data .= '<td class="tipo'.$number.'">IGSS</td>';
 			}
 
 			$data .='<td class="asunto'.$number.'">'.$row['asunto'].'</td>

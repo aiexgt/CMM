@@ -24,7 +24,7 @@ $descripcion = $_POST['descripcion'];
 $espaciado = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-$query = "SELECT p.nombre, p.apellido, p.empresa_id,
+$query = "SELECT p.nombre, p.apellido, p.empresa_id, p.numero_igss,
 (SELECT pp.nombre FROM puestos pp WHERE pp.id = p.puesto_id) AS puesto,
 (SELECT e.nombre FROM empresas e WHERE e.id = p.empresa_id) AS empresa
     FROM personas p WHERE p.id = $trabajador";
@@ -86,7 +86,7 @@ if($tipo == 0){
         </div>
     </div>
     ");
-}else{
+}else if($tipo == 1){
     $dompdf->loadHtml("
     <style>
         .bod{
@@ -113,6 +113,52 @@ if($tipo == 0){
         <div class='texto'>
             <p class='iz'><b>Fecha: </b>".$fecha." </p>
             <p><b>Nombre del empleado: </b>".$row['nombre']." ".$row['apellido']."</p>
+            <p><b>Cargo que desempeña: </b>".$row['puesto']."</p>
+            <p><b>Fechas: </b>".$fecha_inicio." - ".$fecha_fin." (".$cantidad." día(s))</p>
+            <p><b>Asunto: </b>".$asunto."</p><br>
+            <p>".$descripcion."</p>
+            <br>
+            <center>
+                <div>
+                    <p>___________________________
+                    ".$espaciado."
+                    ___________________________</p>
+                    <p>Firma EmpleadoVo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    ".$espaciado."
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bo. Jefe Inmediato</p>
+                </div>
+            </center>
+        </div>
+    </div>
+    ");
+}else if($tipo == 2){
+    $dompdf->loadHtml("
+    <style>
+        .bod{
+            margin: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .texto{
+            text-align: justify;
+            line-height: 2em;
+        }
+        .logo{
+            height: 100px;
+        }
+        .iz{
+            text-align: right;
+        }
+    </style>
+    <div class='bod'>
+        <center>
+            <img class='logo' src='../../img/logo-empresas/".$row['empresa_id'].".jpg'/>
+            <h1>".$row['empresa']."</h1>
+            <h2>CONSTANCIA DE AUSENCIA POR IGSS</h2>
+        </center>
+        <div class='texto'>
+            <p class='iz'><b>Fecha: </b>".$fecha." </p>
+            <p><b>Nombre del empleado: </b>".$row['nombre']." ".$row['apellido']."</p>
+            <p><b>Número de afiliación: </b>".$row['numero_igss']."</p>
             <p><b>Cargo que desempeña: </b>".$row['puesto']."</p>
             <p><b>Fechas: </b>".$fecha_inicio." - ".$fecha_fin." (".$cantidad." día(s))</p>
             <p><b>Asunto: </b>".$asunto."</p><br>
