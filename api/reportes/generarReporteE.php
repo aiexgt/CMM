@@ -76,9 +76,18 @@ $dompdf->loadHtml("
             <h3>DEL ".$fecha_inicio." al ".$fecha_fin."</h3>
         </center>
         <div class='texto'>
+        <h4>DATOS EMPLEADOS QUE INICIARON RELACION LABORAL RECIENTEMENTE EN PERIODO DE PRUEBA POR 2 MESES.</h4>
+        <p></p>
         </div>
         <div class='break'></div>
         <div class='texto'>
+        <h4>DATOS EMPLEADOS QUE TERMINARON RELACION LABORAL RECIENTEMENTE.</h4>
+        <p></p>
+        </div>
+        <div class='break'></div>
+        <div class='texto'>
+        <h4>DATOS EMPLEADOS SUSPENDIDOS POR ENFERMEDAD COMUN POR EL IGSS.</h4>
+        <p></p>
         </div>
     </div>
     ");
@@ -94,5 +103,5 @@ if (!$result = mysqli_query($con, $query)) {
 
 $row = mysqli_fetch_assoc($result);
 
-$nombreDelDocumento = "../../img/doc-llamadas/" . $row['id'] . ".pdf";
+$nombreDelDocumento = "../../img/rep-empleados/" . $row['id'] . ".pdf";
 $bytes = file_put_contents($nombreDelDocumento, $contenido);
