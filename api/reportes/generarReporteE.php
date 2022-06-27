@@ -77,17 +77,22 @@ $dompdf->loadHtml("
         </center>
         <div class='texto'>
         <h4>DATOS EMPLEADOS QUE INICIARON RELACION LABORAL RECIENTEMENTE EN PERIODO DE PRUEBA POR 2 MESES.</h4>
-        <p></p>
+        <table>
+            <thead></thead>
+            <tbody></tbody>
+        </table>
         </div>
         <div class='break'></div>
         <div class='texto'>
         <h4>DATOS EMPLEADOS QUE TERMINARON RELACION LABORAL RECIENTEMENTE.</h4>
-        <p></p>
+        <table>
+        </table>
         </div>
         <div class='break'></div>
         <div class='texto'>
         <h4>DATOS EMPLEADOS SUSPENDIDOS POR ENFERMEDAD COMUN POR EL IGSS.</h4>
-        <p></p>
+        <table>
+        </table>
         </div>
     </div>
     ");
