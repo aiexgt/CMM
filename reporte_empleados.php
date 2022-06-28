@@ -185,7 +185,7 @@
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+              <label for="exampleFormControlTextarea1" class="form-label">Descripción </label>
               <textarea class="form-control" id="udescripcion" rows="3" maxlength="100"></textarea>
               <br />
             </div>
