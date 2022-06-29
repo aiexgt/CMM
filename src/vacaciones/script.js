@@ -477,12 +477,6 @@ document.getElementById("fecha_fin").addEventListener("change", () => {
   }
 });
 
-$.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
-  document.getElementById("empresa").innerHTML = data;
-  document.getElementById("bempresa").innerHTML = data;
-  //document.getElementById("uempresas").innerHTML = data;
-});
-
 $(document).ready(() => {
   mostrar();
   limpiarCampos();
