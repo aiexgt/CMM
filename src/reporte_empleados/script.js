@@ -31,7 +31,7 @@ const guardar = () => {
     }, (data, status) => {
       if(data == "1"){
         $.post(
-          "./api/vacaciones/generarDocumentoS.php",
+          "./api/reporte_empleados/generarReporteE.php",
           {
             empresa,
             fechaInicio,
