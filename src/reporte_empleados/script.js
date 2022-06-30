@@ -20,7 +20,7 @@ const guardar = () => {
   }else if(fechaFin == ""){
     errorDF("Fecha Fin")
   }else{
-    $.post("./api/reporte_empleados/guardarRol.php", {
+    $.post("./api/reporte_empleados/guardarReporte.php", {
       empresa,
       fechaInicio,
       fechaFin,
