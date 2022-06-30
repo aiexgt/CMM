@@ -16,12 +16,13 @@ $empresa = $_POST['empresa'];
 $inicioRelacion = "";
 $finRelacion = "";
 $suspensionIGSS = "";
+$noJustificada = "";
 
 $query = "SELECT p.nombre, p.apellido, p.fecha_inicio, 
 (SELECT pu.nombre FROM puestos pu WHERE pu.id = p.puesto_id) AS puesto, 
 p.periodo_prueba FROM personas p
-WHERE ('".$fechaInicio."' BETWEEN p.fecha_inicio AND p.periodo_prueba) OR (
-'".$fechaFin."' BETWEEN p.fecha_inicio AND p.periodo_prueba)";
+WHERE (('".$fechaInicio."' BETWEEN p.fecha_inicio AND p.periodo_prueba) OR (
+'".$fechaFin."' BETWEEN p.fecha_inicio AND p.periodo_prueba)) AND p.empresa_id = ".$empresa;
 
 if (!$result = mysqli_query($con, $query)) {
     exit(mysqli_error($con));
@@ -61,13 +62,12 @@ if (mysqli_num_rows($result) > 0) {
                 <tbody></tbody>
             </table>
         </div>
-        <div class='break'></div>
         ";
 }
 
 $query = "SELECT p.nombre, p.apellido, p.fecha_inicio, 
 p.fecha_finalizacion FROM personas p
-WHERE p.fecha_finalizacion BETWEEN '".$fechaInicio."' AND '".$fechaFin."'";
+WHERE (p.fecha_finalizacion BETWEEN '".$fechaInicio."' AND '".$fechaFin."')  AND p.empresa_id = ".$empresa;
 
 if (!$result = mysqli_query($con, $query)) {
     exit(mysqli_error($con));
@@ -75,6 +75,7 @@ if (!$result = mysqli_query($con, $query)) {
 
 if (mysqli_num_rows($result) > 0) {
     $finRelacion .= "
+        <div class='break'></div>
         <div class='texto'>
             <h4>DATOS EMPLEADOS QUE TERMINARON RELACION LABORAL RECIENTEMENTE.</h4>
             <table>
@@ -106,14 +107,14 @@ if (mysqli_num_rows($result) > 0) {
                 <tbody></tbody>
             </table>
         </div>
-        <div class='break'></div>
         ";
 }
 
 $query = "SELECT (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS nombre,
 (SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apellido, a.fecha_inicio,
 a.fecha_fin  FROM ausencias a
-WHERE a.fecha_inicio BETWEEN '".$fechaInicio."' AND '".$fechaFin."'";
+WHERE (a.fecha_inicio BETWEEN '".$fechaInicio."' AND '".$fechaFin."') AND a.tipo = 2 AND 
+(SELECT p.empresa_id FROM personas p WHERE p.id = a.persona_id) = ".$empresa;
 
 if (!$result = mysqli_query($con, $query)) {
     exit(mysqli_error($con));
@@ -121,6 +122,7 @@ if (!$result = mysqli_query($con, $query)) {
 
 if (mysqli_num_rows($result) > 0) {
     $suspensionIGSS .= "
+    <div class='break'></div>
         <div class='texto'>
             <h4>DATOS EMPLEADOS SUSPENDIDOS POR ENFERMEDAD COMUN POR EL IGSS.</h4>
             <table>
@@ -151,7 +153,52 @@ if (mysqli_num_rows($result) > 0) {
                 <tbody></tbody>
             </table>
         </div>
-        <div class='break'></div>
+        ";
+}
+
+$query = "SELECT (SELECT p.nombre FROM personas p WHERE p.id = a.persona_id) AS nombre,
+(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apellido, a.fecha_inicio,
+a.fecha_fin  FROM ausencias a
+WHERE (a.fecha_inicio BETWEEN '".$fechaInicio."' AND '".$fechaFin."') AND a.tipo = 1 AND 
+(SELECT p.empresa_id FROM personas p WHERE p.id = a.persona_id) = ".$empresa;
+
+if (!$result = mysqli_query($con, $query)) {
+    exit(mysqli_error($con));
+}
+
+if (mysqli_num_rows($result) > 0) {
+    $noJustificada .= "
+    <div class='break'></div>
+        <div class='texto'>
+            <h4>DATOS EMPLEADOS CON AUSENCIAS NO JUSTIFICADAS.</h4>
+            <table>
+                <thead>
+                    <tr style='background-color:#50F550;'>
+                        <th>NOMBRE</th>
+                        <th>FECHA DE NOTIFICACION DE LA AUSENCIA</th>
+                        <th>OBSERVACIONES</th>
+                    </tr>
+                </thead>
+                ";
+    while($row = mysqli_fetch_assoc($result)){
+        $fechaF = strtotime($row['fecha_fin']);
+        $fechaF = date("d-m-Y", $fechaF);
+        $fechaIL = strtotime($row['fecha_inicio']);
+        $fechaIL = date("d-m-Y", $fechaIL);
+
+        $noJustificada .= "
+            <tr>
+                <td>".$row['nombre']." <br>".$row['apellido']."</td>
+                <td>".$fechaIL."</td>
+                <td><b>Inicio Ausencia: </b>".$fechaIL." <br>
+                <b>Fin Ausencia: </b>".$fechaF."</td>
+            </tr>
+        ";
+    }
+    $noJustificada .= "
+                <tbody></tbody>
+            </table>
+        </div>
         ";
 }
 
@@ -214,6 +261,7 @@ $dompdf->loadHtml("
         ".$inicioRelacion."
         ".$finRelacion."
         ".$suspensionIGSS."
+        ".$noJustificada."
     </div>
     ");
 

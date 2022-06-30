@@ -131,60 +131,6 @@
       </div>
     </div>
   </div>
-
-  <div class="modal fade" id="exampleModala" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header hblue">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Ver Información
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h5>Información General</h5>
-          <hr>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Empresa</label>
-              <select class="form-select" id="uempresa" aria-label="Default select example">
-              </select>
-              <br>
-            </div>
-          </div>
-          <br>
-          <h5>Fechas</h5>
-          <hr>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Fecha Inicio</label>
-              <input type="date" class="form-control" placeholder="Nombre" id="ufechaInicio" aria-label="Nombre" />
-              <br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="" class="form-label is-required">Fecha Fin</label>
-              <input type="date" class="form-control" placeholder="Nombre" id="ufechaFin" aria-label="Nombre" />
-              <br>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-          <button type="button" id="btn-editar" class="btn btn-success">
-            Editar
-          </button>
-          <button type="button" id="btn-actualizar" class="btn btn-primary">
-            Actualizar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <?php include('./components/footer.php') ?>
   <script type="text/javascript" src="./src/reporte_empleados/script.js"></script>
 </body>

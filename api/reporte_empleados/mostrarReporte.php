@@ -37,6 +37,9 @@
 				
 			$data .= '
 				<td>
+					<button onclick="ver('.$row['id'].')" class="btn btn-success"><i class="bx bx-search"></i></button>
+				</td>
+				<td>
 					<button onclick="eliminar('.$number.')" class="btn btn-danger"><i class="bx bx-trash"></i></button>
 				</td>
     		</tr>';

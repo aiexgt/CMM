@@ -1,8 +1,6 @@
 //* Botones
 const btnNuevo = document.getElementById("btn-nuevo");
 const btnGuardar = document.getElementById("btn-guardar");
-const btnEditar = document.getElementById("btn-editar");
-const btnActualizar = document.getElementById("btn-actualizar");
 let id_cambio;
 
 const mostrar = () => {
@@ -15,7 +13,6 @@ const guardar = () => {
   let empresa = document.getElementById("empresa").value;
   let fechaInicio = document.getElementById("fechaInicio").value;
   let fechaFin = document.getElementById("fechaFin").value;
-
   if(empresa == 0){
     errorDF("Empresa");
   }else if(fechaInicio == ""){
@@ -37,11 +34,14 @@ const guardar = () => {
             fechaInicio,
             fechaFin
           },
-          (data, status) => { }
+          (data, status) => {
+            if(data > 0){
+              $("#exampleModal").modal("hide");
+              Swal.fire("Excelente!", "El reporte se ha creado!", "success");
+              mostrar();
+            }
+          }
         );
-        $("#exampleModal").modal("hide");
-          Swal.fire("Excelente!", "El reporte se ha creado!", "success");
-          mostrar();
       }else{
         Swal.fire({
           icon: 'error',
@@ -55,95 +55,13 @@ const guardar = () => {
 };
 
 const limpiarCampos = () => {
-  /*
-  document.getElementById("nombre").value = "";
-  document.getElementById("descripcion").value = "";
-  document.getElementById("unombre").value = "";
-  document.getElementById("udescripcion").value = "";
-  document.getElementById("uestado").value = 1;
-  */
+  document.getElementById("empresa").value = 0;
+  document.getElementById("fechaInicio").value = "";
+  document.getElementById("fechaFin").value = "";
 };
 
 const ver = (codigo) => {
-  /*
-  limpiarCampos();
-  let id = document.getElementById(`id${codigo}`).textContent;
-  id_cambio = id;
-  $.post(
-    "./api/reporte_empleados/buscarDetalles.php",
-    {
-      id
-    },
-    function (data, status) {
-      var unit = JSON.parse(data);
-      document.getElementById("unombre").value = unit.nombre;
-      document.getElementById("unombre").setAttribute("disabled","disabled");
-      document.getElementById("udescripcion").value = unit.descripcion;
-      document.getElementById("udescripcion").setAttribute("disabled","disabled");
-      document.getElementById("uestado").value = unit.estado;
-      document.getElementById("uestado").setAttribute("disabled","disabled");
-      btnEditar.removeAttribute("hidden");
-      btnActualizar.setAttribute("hidden","hidden");
-    })
-    */
-  $("#exampleModala").modal("show");
-};
-
-const quitarDisabled = () => {
-  /*
-    document.getElementById("unombre").removeAttribute("disabled");
-    document.getElementById("udescripcion").removeAttribute("disabled");
-    document.getElementById("uestado").removeAttribute("disabled");
-    btnEditar.setAttribute("hidden","hidden");
-    btnActualizar.removeAttribute("hidden");
-  */
-};
-
-const actualizar = () => {
-  /*
-  let nombre = document.getElementById("unombre").value;
-  let descripcion = document.getElementById("udescripcion").value;
-  let estado = document.getElementById("uestado").value;
-  if(nombre == ""){
-    errorDF("Nombre");
-  }else{
-    Swal.fire({
-      title: "¿Desea guardar los cambios?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Guardar",
-      denyButtonText: `Descartar`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.post(
-          "./api/reporte_empleados/actualizarRol.php",
-          {
-            nombre,
-            descripcion,
-            estado,
-            id: id_cambio
-          },
-          (data, status) => {
-            if (data == "1") {
-              Swal.fire("Excelente!", "El rol ha sido actualizado!", "success");
-              $("#exampleModala").modal("hide");
-              mostrar();
-            }else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Ha Ocurrido un error!',
-              })
-            }
-          }
-        );
-        Swal.fire("Guardado!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Los cambios no fueron guardados", "", "info");
-      }
-    });
-  }
-  */
+  window.open(`img/rep-empleados/${codigo}.pdf`, "_blank");
 };
 
 const eliminar = (codigo) => {
@@ -159,16 +77,16 @@ const eliminar = (codigo) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "./api/reporte_empleados/eliminarRol.php",
+        "./api/reporte_empleados/eliminarReporte.php",
         {
           codigo: id,
         },
         (data, status) => {
-          if (data == "1") {
-            Swal.fire("Eliminado!", "El rol ha sido eliminada.", "success");
+          if (data.endsWith("1")) {
+            Swal.fire("Eliminado!", "El reporte ha sido eliminada.", "success");
             mostrar();
           } else {
-            Swal.fire("Error!", "No se puede eliminar usuario.", "error");
+            Swal.fire("Error!", "No se puede eliminar reporte.", "error");
           }
         }
       );
@@ -178,20 +96,11 @@ const eliminar = (codigo) => {
 
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;
-  document.getElementById("uempresa").innerHTML = data;
 });
 
 btnNuevo.addEventListener("click", () => {
   limpiarCampos();
 })
-
-btnActualizar.addEventListener("click", () => {
-  actualizar();
-});
-
-btnEditar.addEventListener("click", () => {
-  quitarDisabled();
-});
 
 btnGuardar.addEventListener("click", () => {
   guardar();
