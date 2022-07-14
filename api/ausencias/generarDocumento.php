@@ -80,7 +80,7 @@ if($tipo == 0){
                     ___________________________</p>
                     <p>Firma Empleado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                     ".$espaciado."
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo. Jefe Inmediato</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo.Bo. Jefe Inmediato</p>
                 </div>
             </center>
         </div>
@@ -125,7 +125,7 @@ if($tipo == 0){
                     ___________________________</p>
                     <p>Firma Empleado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                     ".$espaciado."
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo. Jefe Inmediato</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo.Bo. Jefe Inmediato</p>
                 </div>
             </center>
         </div>
@@ -171,7 +171,7 @@ if($tipo == 0){
                     ___________________________</p>
                     <p>Firma Empleado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                     ".$espaciado."
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo. Jefe Inmediato</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo.Bo. Jefe Inmediato</p>
                 </div>
             </center>
         </div>
