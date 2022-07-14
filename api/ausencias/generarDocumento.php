@@ -78,9 +78,9 @@ if($tipo == 0){
                     <p>___________________________
                     ".$espaciado."
                     ___________________________</p>
-                    <p>Firma EmpleadoVo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <p>Firma Empleado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                     ".$espaciado."
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bo. Jefe Inmediato</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo.Bo. Jefe Inmediato</p>
                 </div>
             </center>
         </div>
@@ -123,9 +123,9 @@ if($tipo == 0){
                     <p>___________________________
                     ".$espaciado."
                     ___________________________</p>
-                    <p>Firma EmpleadoVo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <p>Firma Empleado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                     ".$espaciado."
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bo. Jefe Inmediato</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo.Bo. Jefe Inmediato</p>
                 </div>
             </center>
         </div>
@@ -169,9 +169,9 @@ if($tipo == 0){
                     <p>___________________________
                     ".$espaciado."
                     ___________________________</p>
-                    <p>Firma EmpleadoVo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <p>Firma Empleado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                     ".$espaciado."
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bo. Jefe Inmediato</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vo.Bo. Jefe Inmediato</p>
                 </div>
             </center>
         </div>
