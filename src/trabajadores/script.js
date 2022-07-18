@@ -395,6 +395,21 @@ const doc = (codigo) => {
       document.querySelector(".a5").innerHTML = "";
     }
   })
+
+  $.post("./api/documentos/verificarDocumento.php",{
+    ruta: `doc-despido/${id}.pdf`
+  },(data, status) => {
+    if(data == "1"){
+      document.querySelector(".a6").innerHTML = 
+      `<a href="img/doc-despido/${id}.pdf" target="_blank">
+        <button class="btn btn-primary" type="button">
+        Ver
+        </button>
+      </a>`
+    }else{
+      document.querySelector(".a6").innerHTML = "";
+    }
+  })
   
   
 };
@@ -492,6 +507,27 @@ const actualizarDoc = () => {
     formData.append("id", id);
     $.ajax({
       url: "./api/documentos/guardarSempleo.php",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        if (response != 0) {
+          $(".card-img-top").attr("src", response);
+          estado = 1;
+        } else {
+          estado = 0;
+        }
+      },
+    });
+  }
+  if ($("#sdespido").val() != "") {
+    let formData = new FormData();
+    let files = $("#sdespido")[0].files[0];
+    formData.append("file", files);
+    formData.append("id", id);
+    $.ajax({
+      url: "./api/documentos/guardarDespido.php",
       type: "post",
       data: formData,
       contentType: false,

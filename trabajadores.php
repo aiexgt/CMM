@@ -811,6 +811,26 @@
                     </form>
                     <br/>
                 </div>
+                <div class="col-sm-6">
+                    <form
+                      id="uploadimage"
+                      action=""
+                      method="post"
+                      enctype="multipart/form-data"
+                    >
+                        <label for="formFile" class="form-label">Notificación de Despido</label>
+                        <div class="input-group mb-3">  
+                            <input
+                                class="form-control"
+                                type="file"
+                                id="sdespido"
+                                accept="application/pdf"
+                            />
+                            <span class="a6"></span>
+                        </div>
+                    </form>
+                    <br/>
+                </div>
             </div>
           </div>
           <div class="modal-footer">
