@@ -312,6 +312,7 @@ const limpiar = () => {
   document.getElementById("apoliciaco").value = "";
   document.getElementById("apenal").value = "";
   document.getElementById("sempleo").value = "";
+  document.getElementById("sdespido").value = "";
 }
 
 const doc = (codigo) => {
