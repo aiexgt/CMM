@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="icon" href="img/logo/logo.ico">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCC | Importaciones</title>
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/menuStyle.css" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/rrhhStyle.css">
-  </head>
-  <body id="body-pd">
-    <div id="menu">
+
+<head>
+  <link rel="icon" href="img/logo/logo.ico">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCC | Bodega</title>
+  <?php include('./components/header.php') ?>
+</head>
+
+<body id="body-pd">
+  <div id="menu">
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <div class="header_img">
-        <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
-      </div>
+      <b>
+        <p id="busuario"></p>
+      </b>
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
@@ -29,7 +28,7 @@
             <span class="nav_logo-name">MCC</span>
           </a>
           <div class="nav_list">
-            <a href="menu.php" class="nav_link">
+            <a href="dashboard.php" class="nav_link">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Panel Principal</span>
             </a>
@@ -37,14 +36,14 @@
               <i class="bx bx-user nav_icon"></i>
               <span class="nav_name">Recursos Humanos</span>
             </a>
-            <a href="importaciones.php" class="nav_link active">
+            <a href="importaciones.php" class="nav_link">
               <i class="bx bx-message-square-detail nav_icon"></i>
               <span class="nav_name">Importaciones</span>
             </a>
-            <a href="bodega.php" class="nav_link">
+            <a href="bodega.php" class="nav_link active">
               <i class="bx bx-bookmark nav_icon"></i>
               <span class="nav_name">Bodega</span>
-              </a>
+            </a>
             <a href="administracion.php" class="nav_link">
               <i class="bx bx-folder nav_icon"></i>
               <span class="nav_name">Administración</span>
@@ -62,13 +61,11 @@
       </nav>
     </div>
   </div>
-    <!--Container Main start-->
+  <!--Container Main start-->
 
+  <div class="">
+      </div>
+  <?php include('./components/footer.php') ?>
+</body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="assets/js/menuScript.js"></script>
-    <script type="text/javascript" src="assets/js/rrhhScript.js"></script>
-   
-  </body>
 </html>

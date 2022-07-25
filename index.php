@@ -1,96 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <link rel="icon" href="img/logo/logo.ico">
-    <title>CMM | Iniciar Sesión</title>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Estilos CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="./imported/login/style.css"/>
-    <!-- Fin Estilos CSS -->
-  </head>
-  <body>
-    <div class="alert alert-danger invisible" id="error"></div>
-    <div class="container">
-      <div class="row px-3">
-        <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
-          <div class="img-left d-none d-md-flex"></div>
-          <div class="card-body text-center">
-            <img src="img/logo/logo100x100.png" class="logo-login" alt="">
-            <h4 class="title text-center mt-4">Iniciar Sesión</h4>
-            <form class="form-box px-3">
-              <div class="form-input">
-                <span><i class="fa fa-user"></i></span>
-                <input
-                  type="text"
-                  name=""
-                  placeholder="Usuario"
-                  tabindex="10"
-                  id="usuario"
-                />
+<head>
+  <link rel="icon" href="img/logo/logo.ico">
+  <title>CMM | Iniciar Sesión</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="./imported/login/style.css" />
+  <!-- Fin Estilos CSS -->
+</head>
+
+<body>
+  <div class="alert alert-danger invisible" id="error"></div>
+  <div class="container">
+    <div class="row px-3">
+      <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+        <div class="img-left d-none d-md-flex"></div>
+        <div class="card-body text-center">
+          <img src="img/logo/logo100x100.png" class="logo-login" alt="">
+          <h4 class="title text-center mt-4">Iniciar Sesión</h4>
+          <form class="form-box px-3">
+            <div class="form-input">
+              <span><i class="fa fa-user"></i></span>
+              <input type="text" name="" placeholder="Usuario" tabindex="10" id="usuario" />
+            </div>
+            <div class="form-input">
+              <span><i class="fa fa-key"></i></span>
+              <input type="password" id="password" placeholder="Contraseña" />
+            </div>
+            <div class="mb-3">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="cb1" name="" />
+                <label class="custom-control-label" for="cb1">Recuerdame</label>
               </div>
-              <div class="form-input">
-                <span><i class="fa fa-key"></i></span>
-                <input type="password" id="password" placeholder="Contraseña" />
-              </div>
-              <div class="mb-3">
-                <div class="custom-control custom-checkbox">
-                  <input
-                    type="checkbox"
-                    class="custom-control-input"
-                    id="cb1"
-                    name=""
-                  />
-                  <label class="custom-control-label" for="cb1"
-                    >Recuerdame</label
-                  >
-                </div>
-              </div>
-              <div class="mb-3">
-                <button
-                  type="submit"
-                  id="ingresar"
-                  class="btn btn-block text-uppercase"
-                >
-                  Iniciar Sesión
-                </button>
-              </div>
-              <div class="text-right">
-                <a href="#" class="forget-link"> ¿Olvidaste tu contraseña? </a>
-              </div>
-              <hr class="my-4" />
-              <div class="text-center mb-2">
-                <p>Copyright &copy; | Tubagua 2022</p>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="mb-3">
+              <button type="submit" id="ingresar" class="btn btn-block text-uppercase">
+                Iniciar Sesión
+              </button>
+            </div>
+            <div class="text-right">
+              <a href="#" class="forget-link"> ¿Olvidaste tu contraseña? </a>
+            </div>
+            <hr class="my-4" />
+            <div class="text-center mb-2">
+              <p>Copyright &copy; | Tubagua 2022</p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="./imported/jquery/jquery-3.5.1.slim.min.js"></script>
-    <script src="./imported/jquery/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
-      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
-      crossorigin="anonymous"
-    ></script>
+  <!-- Scripts -->
+  <script src="./imported/jquery/jquery-3.5.1.slim.min.js"></script>
+  <script src="./imported/jquery/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 
-    <!-- Scripts Propios -->
-    <script type="text/javascript" src="./src/loginScript.js"></script>
-    <?php  ?>
-  </body>
+  <!-- Scripts Propios -->
+  <script type="text/javascript" src="./src/loginScript.js"></script>
+  <?php  ?>
+</body>
+
 </html>

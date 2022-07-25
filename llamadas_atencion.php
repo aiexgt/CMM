@@ -40,10 +40,10 @@
               <i class="bx bx-message-square-detail nav_icon"></i>
               <span class="nav_name">Importaciones</span>
             </a>
-            <a href="cooperativa.php" class="nav_link">
+            <a href="bodega.php" class="nav_link">
               <i class="bx bx-bookmark nav_icon"></i>
-              <span class="nav_name">Cooperativa</span>
-            </a>
+              <span class="nav_name">Bodega</span>
+              </a>
             <a href="administracion.php" class="nav_link active">
               <i class="bx bx-folder nav_icon"></i>
               <span class="nav_name">Administración</span>
