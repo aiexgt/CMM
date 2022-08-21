@@ -15,7 +15,7 @@
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <b><p id="busuario"></p></b>
+      <b><p id="busuario"> </p></b>
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
