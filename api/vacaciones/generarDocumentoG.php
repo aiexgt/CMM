@@ -79,7 +79,7 @@ $dompdf->loadHtml("
         <p>Por medio de la presente hago constar que gocé ".$tcantidad." del periodo 
         de vacaciones correspondientes al año ".$periodo.". Del ".$fecha_inicio." 
         al ".$fecha_fin.", de acuerdo con la Solicitud de Vacaciones con fecha de ".$fechaant.".
-        Reanudando mis labores el ".$fechare.".</p>
+        Reanudando mis labores el siguiente día hábil.</p>
         <br>
         <center>
             <div>
