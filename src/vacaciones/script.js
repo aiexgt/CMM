@@ -7,8 +7,8 @@ const btnGenerarG = document.getElementById("generarComprobanteG");
 const btnVerG = document.getElementById("verComprobanteG");
 let id_cambio;
 
-const mostrar = () => {
-  $.post("./api/vacaciones/mostrarVacaciones.php", {}, (data, status) => {
+const mostrar = (trabajador) => {
+  $.post("./api/vacaciones/mostrarVacaciones.php", {trabajador}, (data, status) => {
     document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
@@ -451,16 +451,16 @@ document.getElementById("empresa").addEventListener("change", () => {
   );
 });
 
-document.getElementById("bempresa").addEventListener("change", () => {
-  let empresa = document.getElementById("bempresa").value;
+document.getElementById("filtroEmpresa").addEventListener("change", () => {
+  let empresa = document.getElementById("filtroEmpresa").value;
   $.post(
     "./api/default-select/mostrarTrabajadores.php",
     {
       empresa: empresa,
     },
     (data, status) => {
-      document.getElementById("btrabajador").innerHTML = data;
-      document.getElementById("btrabajador").removeAttribute("disabled");
+      document.getElementById("filtroTrabajador").innerHTML = data;
+      document.getElementById("filtroTrabajador").removeAttribute("disabled");
     }
   );
 });
@@ -479,7 +479,13 @@ document.getElementById("fecha_fin").addEventListener("change", () => {
 
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;
+  document.getElementById("filtroEmpresa").innerHTML = data;
 });
+
+document.getElementById("filtroTrabajador").addEventListener("change", ()=>{
+    let trabajador = document.getElementById("filtroTrabajador").value;
+    mostrar(trabajador);
+})
 
 $(document).ready(() => {
   mostrar();

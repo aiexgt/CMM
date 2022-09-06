@@ -65,18 +65,12 @@
 
   <div class="row">
     <div class="col-sm-2">
-      <select class="form-select" id="bempresa" aria-label="Default select example">
+      <select class="form-select" id="filtroEmpresa" aria-label="Default select example">
       </select>
     </div>
     <div class="col-sm-2">
-      <select class="form-select" id="btrabajador" aria-label="Default select example" disabled>
+      <select class="form-select" id="filtroTrabajador" aria-label="Default select example" disabled>
       </select>
-    </div>
-    <div class="col-sm-2">
-      <input type="date" class="form-control" placeholder="Fecha Inicio" id="bfechai" aria-label="Nombre" />
-    </div>
-    <div class="col-sm-2">
-      <input type="date" class="form-control" placeholder="Fecha Fin" id="bfechaf" aria-label="Nombre" />
     </div>
     <div class="col-sm-2">
       <div class="input-group flex-nowrap">
