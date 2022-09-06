@@ -459,6 +459,7 @@ document.getElementById("filtroEmpresa").addEventListener("change", () => {
       empresa: empresa,
     },
     (data, status) => {
+      mostrar(0);
       document.getElementById("filtroTrabajador").innerHTML = data;
       document.getElementById("filtroTrabajador").removeAttribute("disabled");
     }
