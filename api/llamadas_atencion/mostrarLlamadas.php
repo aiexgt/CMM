@@ -2,6 +2,12 @@
 	//* Enlace BD
 	include("../conexion.php");
 
+	if(isset($_POST['trabajador']) && $_POST['trabajador']>0){
+		$trabajador = "WHERE persona_id = ". $_POST['trabajador'];
+	}else{
+		$trabajador = "";
+	}
+
 	$data = ' <div class="table-responsive-sm">
 	<table class="table table-striped table-hover">
 				<thead>
@@ -22,7 +28,7 @@
 	(SELECT p.apellido FROM personas p WHERE p.id = a.persona_id) AS apersona,
     a.fecha, (SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
 	(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario,
-	(SELECT n.nombre FROM niveles n WHERE n.id = a.nivel) AS nivel FROM llamada_atencion a ORDER BY a.id DESC";
+	(SELECT n.nombre FROM niveles n WHERE n.id = a.nivel) AS nivel FROM llamada_atencion a $trabajador ORDER BY a.id DESC";
 
 	if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));

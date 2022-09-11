@@ -5,15 +5,12 @@ const btnEditar = document.getElementById("btn-editar");
 const btnActualizar = document.getElementById("btn-actualizar");
 const btnVer = document.getElementById("verComprobante");
 
-//* Input para buscar
-let busqueda = document.getElementById("busqueda");
-
 //* Variable para actualizar y eliminar
 let id_cambio;
 
 //* Función para mostrar todas las ausencias
-const mostrar = () => {
-  $.post("./api/ausencias/mostrarAusencias.php", {}, (data) => {
+const mostrar = (trabajador) => {
+  $.post("./api/ausencias/mostrarAusencias.php", {trabajador}, (data) => {
     document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
@@ -269,17 +266,6 @@ btnVer.addEventListener("click", () => {
   window.open(`img/doc-ausencias/${id_cambio}.pdf`,'_blank')
 });
 
-busqueda.addEventListener("change", () => {
-  $.post(
-    "./api/ausencias/buscarAusencias.php",
-    {
-      busqueda: busqueda.value,
-    },
-    (data) => {
-      getElementById("tabla-contenido").innerHTML = data;
-    }
-  );
-});
 
 document.getElementById("fecha").addEventListener("change", () => {
   if (document.getElementById("fecha_fin").value != "") {
@@ -295,6 +281,7 @@ document.getElementById("fecha_fin").addEventListener("change", () => {
 
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;
+  document.getElementById("filtroEmpresa").innerHTML = data;
 });
 
 document.getElementById("empresa").addEventListener("change",() => {
@@ -305,6 +292,26 @@ document.getElementById("empresa").addEventListener("change",() => {
     document.getElementById("trabajador").innerHTML = data;
     document.getElementById("trabajador").removeAttribute("disabled");
   });
+})
+
+document.getElementById("filtroEmpresa").addEventListener("change", () => {
+  let empresa = document.getElementById("filtroEmpresa").value;
+  $.post(
+    "./api/default-select/mostrarTrabajadores.php",
+    {
+      empresa: empresa,
+    },
+    (data, status) => {
+      mostrar(0);
+      document.getElementById("filtroTrabajador").innerHTML = data;
+      document.getElementById("filtroTrabajador").removeAttribute("disabled");
+    }
+  );
+});
+
+document.getElementById("filtroTrabajador").addEventListener("change", ()=>{
+  let trabajador = document.getElementById("filtroTrabajador").value;
+  mostrar(trabajador);
 })
 
 $(document).ready(() => {

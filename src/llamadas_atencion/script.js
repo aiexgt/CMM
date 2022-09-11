@@ -5,8 +5,8 @@ const btnActualizar = document.getElementById("btn-actualizar");
 const btnVer = document.getElementById("verComprobante");
 let id_cambio;
 
-const mostrar = () => {
-  $.post("./api/llamadas_atencion/mostrarLlamadas.php", {}, (data, status) => {
+const mostrar = (trabajador) => {
+  $.post("./api/llamadas_atencion/mostrarLlamadas.php", {trabajador}, (data, status) => {
     document.getElementById("tabla-contenido").innerHTML = data;
   });
 };
@@ -280,6 +280,21 @@ document.getElementById("empresa").addEventListener("change", () => {
   );
 });
 
+document.getElementById("filtroEmpresa").addEventListener("change", () => {
+  let empresa = document.getElementById("filtroEmpresa").value;
+  $.post(
+    "./api/default-select/mostrarTrabajadores.php",
+    {
+      empresa: empresa,
+    },
+    (data, status) => {
+      mostrar(0);
+      document.getElementById("filtroTrabajador").innerHTML = data;
+      document.getElementById("filtroTrabajador").removeAttribute("disabled");
+    }
+  );
+});
+
 document.getElementById("trabajador").addEventListener("change", () => {
   let id = document.getElementById("trabajador").value;
   $.post(
@@ -296,6 +311,7 @@ document.getElementById("trabajador").addEventListener("change", () => {
 
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;
+  document.getElementById("filtroEmpresa").innerHTML = data;
   //document.getElementById("uempresas").innerHTML = data;
 });
 
@@ -304,6 +320,11 @@ $.post("./api/default-select/mostrarNiveles.php", {}, (data, status) => {
   document.getElementById("univel").innerHTML = data;
   //document.getElementById("uempresas").innerHTML = data;
 });
+
+document.getElementById("filtroTrabajador").addEventListener("change", ()=>{
+  let trabajador = document.getElementById("filtroTrabajador").value;
+  mostrar(trabajador);
+})
 
 $(document).ready(() => {
   mostrar();

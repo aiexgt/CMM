@@ -175,9 +175,9 @@
       <div class="col-sm-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Contratos</h5>
-            <p class="card-text"><i class="bx bxs-file bigIcons"></i></p>
-            <a href="contratos.php" class="btn btn-primary">Administrar</a>
+            <h5 class="card-title">Roles</h5>
+            <p class="card-text"><i class="bx bx-tag bigIcons"></i></p>
+            <a href="roles.php" class="btn btn-primary">Adminstrar</a>
           </div>
         </div>
       </div>
@@ -190,17 +190,6 @@
           </div>
         </div>
         <br />
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Roles</h5>
-            <p class="card-text"><i class="bx bx-tag bigIcons"></i></p>
-            <a href="roles.php" class="btn btn-primary">Adminstrar</a>
-          </div>
-        </div>
       </div>
     </div>
     <br /><br />

@@ -33,7 +33,7 @@ const login = (usuario, password) => {
             sessionStorage.setItem("usuario", usuario);
             sessionStorage.setItem("password", password);
             sessionStorage.setItem("id",data);
-            window.location.href = "dashboard.php";
+            window.location.href = "administracion.php";
         }else{
             showError("Usuario o contraseña incorrectas");
         }

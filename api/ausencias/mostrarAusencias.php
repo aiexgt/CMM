@@ -2,6 +2,13 @@
 	//* Enlace BD
 	include("../conexion.php");
 
+
+	if(isset($_POST['trabajador']) && $_POST['trabajador']>0){
+		$trabajador = "WHERE persona_id = ". $_POST['trabajador'];
+	}else{
+		$trabajador = "";
+	}
+
 	$data = ' <div class="table-responsive-sm">
 	<table class="table table-striped table-hover">
 				<thead>
@@ -26,7 +33,7 @@
     			a.fecha_inicio, 
 				(SELECT u.nombre FROM usuarios u WHERE u.id = a.usuario_id) AS usuario,
 				(SELECT u.apellido FROM usuarios u WHERE u.id = a.usuario_id) AS ausuario 
-				FROM ausencias a 
+				FROM ausencias a $trabajador
 				ORDER BY a.id DESC";
 
 	if (!$result = mysqli_query($con, $query)) {

@@ -43,7 +43,7 @@
             <a href="bodega.php" class="nav_link">
               <i class="bx bx-bookmark nav_icon"></i>
               <span class="nav_name">Bodega</span>
-              </a>
+            </a>
             <a href="administracion.php" class="nav_link active">
               <i class="bx bx-folder nav_icon"></i>
               <span class="nav_name">Administración</span>
@@ -65,18 +65,12 @@
 
   <div class="row">
     <div class="col-sm-2">
-      <select class="form-select" id="bempresa" aria-label="Default select example">
+      <select class="form-select" id="filtroEmpresa" aria-label="Default select example">
       </select>
     </div>
     <div class="col-sm-2">
-      <select class="form-select" id="btrabajador" aria-label="Default select example" disabled>
+      <select class="form-select" id="filtroTrabajador" aria-label="Default select example" disabled>
       </select>
-    </div>
-    <div class="col-sm-2">
-      <input type="date" class="form-control" placeholder="Fecha Inicio" id="bfechai" aria-label="Nombre" />
-    </div>
-    <div class="col-sm-2">
-      <input type="date" class="form-control" placeholder="Fecha Fin" id="bfechaf" aria-label="Nombre" />
     </div>
     <div class="col-sm-2">
       <div class="input-group flex-nowrap">

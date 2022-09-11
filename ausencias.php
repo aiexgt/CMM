@@ -64,11 +64,13 @@
   <!--Container Main start-->
 
   <div class="row">
-    <div class="col-sm-6">
-      <div class="input-group flex-nowrap">
-        <input id="busqueda" type="text" class="form-control" placeholder="Buscar Ausencia" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-        <span class="input-group-text" id="basic-addon2">Buscar</span>
-      </div>
+    <div class="col-sm-2">
+      <select class="form-select" id="filtroEmpresa" aria-label="Default select example">
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <select class="form-select" id="filtroTrabajador" aria-label="Default select example" disabled>
+      </select>
     </div>
     <div class="col-sm-2">
       <div class="input-group flex-nowrap">
