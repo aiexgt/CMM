@@ -5,6 +5,7 @@ const btnActualizar = document.getElementById("btn-actualizar");
 const btnVer = document.getElementById("verComprobante");
 const btnGenerarG = document.getElementById("generarComprobanteG");
 const btnVerG = document.getElementById("verComprobanteG");
+const btnGenerarReporte = document.getElementById("btn-generarReporte");
 let id_cambio;
 
 const mostrar = (trabajador) => {
@@ -481,11 +482,26 @@ document.getElementById("fecha_fin").addEventListener("change", () => {
 $.post("./api/default-select/mostrarEmpresas.php", {}, (data, status) => {
   document.getElementById("empresa").innerHTML = data;
   document.getElementById("filtroEmpresa").innerHTML = data;
+  document.getElementById("empresaReporte").innerHTML = data;
 });
 
 document.getElementById("filtroTrabajador").addEventListener("change", ()=>{
     let trabajador = document.getElementById("filtroTrabajador").value;
     mostrar(trabajador);
+})
+
+
+btnGenerarReporte.addEventListener("click", ()=>{
+  const empresa = document.getElementById("empresaReporte").value;
+  const fecha = document.getElementById("fechaReporte").value;
+  if(empresa > 0 && fecha != ""){
+    $.post('./api/vacaciones/generarReporte.php', {
+      empresa,
+      fecha
+    }, (data, status) => {
+        window.open(`img/doc-vacacionesGen/reporte.pdf`, "_blank");
+    })
+  }
 })
 
 $(document).ready(() => {

@@ -72,10 +72,17 @@
       <select class="form-select" id="filtroTrabajador" aria-label="Default select example" disabled>
       </select>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-4">
       <div class="input-group flex-nowrap">
         <button type="button" id="btn-nuevo" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Nuevo Registro
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group flex-nowrap">
+        <button type="button" id="btn-nuevo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reporteModal">
+          Generar Reporte
         </button>
       </div>
     </div>
@@ -283,6 +290,44 @@
           </button>
           <button type="button" id="btn-actualizar" class="btn btn-primary">
             Actualizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="reporteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header hblue">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Reporte Vacaciones
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Empresa</label>
+              <select class="form-select" id="empresaReporte" aria-label="Default select example">
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="" class="form-label is-required">Fecha</label>
+              <input type="date" class="form-control" id="fechaReporte" value="<?php echo date("Y-m-d");?>" aria-label="Nombre" />
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button type="button" id="btn-generarReporte" class="btn btn-primary">
+            Generar Reporte
           </button>
         </div>
       </div>
