@@ -52,7 +52,7 @@ if(mysqli_num_rows($result) > 0)
                     <td>'.$vacaciones_ocupadas.'</td>
                     <td>'.(15-$vacaciones_ocupadas).'</td>
                     <td>'.$row['vacaciones_ocupadas'].'</td>
-                    <td>'.round(($saldoDias-$row['vacaciones_ocupadas   ']),2).'</td>
+                    <td>'.round(($saldoDias-$row['vacaciones_ocupadas']),2).'</td>
                 </tr>
             ';
             $number++;
