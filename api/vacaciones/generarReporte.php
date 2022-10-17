@@ -4,6 +4,8 @@ include("../conexion.php");
 
 $empresa = $_POST['empresa'];
 $fecha = $_POST['fecha'];
+$fechaFo = strtotime($fecha);
+$fechaFo = date("d-m-Y", $fechaFo);
 $number = 1;
 $subdata = "";
 
@@ -110,6 +112,7 @@ $dompdf->loadHtml("
     <center>
         <img class='logo' src='../../img/logo-empresas/".$empresa.".jpg'/>
         <h2>REPORTE VACACIONES</h2>
+        <h3>".$fechaFo."</h3>
     </center>
     <table>
         <thead>
